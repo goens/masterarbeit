@@ -1,0 +1,159 @@
+\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Gram{\text{Gram}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{definition}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{rem}[Satz]{Remark}
+\newtheorem{defn}[Satz]{Definition}
+\newtheorem{lem}[Satz]{Lemma}
+
+\title{Álgebra de Diferencias}
+\author{Andr\'{e}s Goens}
+\date{\today}
+\begin{document}
+
+$\N = \{0,1,\cdots \}, \NE = \{1,2,\cdots \}, \n := \{1,2,\ldots, n\}, \n_0 := n \cup \{0\}$
+\section{(Mixed) Difference Ideals}
+\begin{defn}
+Let  $\a \si R$ be a $\s$-ideal of $R$. 
+\begin{itemize}
+\item Then $\a$ is called a mixed ideal if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$.
+\item $\a$ is called perfect, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$.
+\item $\a$ is called reflexive, if $\s(a) \in \a$ implies $a \in \a$.
+\item $\a$ is called $\s$-prime, if $\a$ is a prime, reflexive ideal.
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+It is easy to see from the definitions, that $\s$-prime ideals are perfect, perfect $\s$-ideals are mixed, radical and reflexive, prime $\s$-ideals are also mixed, but not necesarilly perfect. Note that there is a difference between a prime $\s$-ideal, and a $\s$-prime ideal, 
+the former needs not be reflexive, as does the latter. The roles of these both will be very clearly marked, and that makes this distinction a very important one.
+\end{rem}
+
+\begin{lem}\label{bijmapping}
+Let $\varphi: R \rightarrow S$ be a morphism of $\s$-Rings and $\a \si S$ a $\s$-ideal. Then $\varphi^{-1}(\a) \si R$ is a $\s$-ideal. Similarly, if $\a$ is a mixed ideal, then so is $\varphi^{-1}(\a)$. The same is true for perfect and for reflexive ideals.
+\begin{bew}
+Since $\a \unlhd S$ is an ideal, so is $\b := \varphi^{-1}(\a) \unlhd R$ one. Let $b \in \b$. Then $\varphi(b) =: a \in \a$ by definition. Since $\a \si S$ is a $\s$-ideal, $\s(a) \in \a$, and since $\varphi$ is a $\s$-morphism
+ it follows that $\sigma(a) = \sigma(\varphi(b)) = \varphi (\s (b)) \in \a$. Hence, $\s(b) \in \b$ which in turn implies that $\b$ is a $\s$ ideal. Now let $\a$ be mixed and $fg \in \b$. This means by definition of $\b$, 
+that $\varphi(fg) = \varphi(f) \varphi(g) \in \a$. Since $\a$ is mixed, this in turn implies, that $\varphi(f) \s \varphi(g) = \varphi(f) \varphi(\s(g)) \in \a$, which yields $f\s(g) \in \b$, so that $\b$ is also mixed. 
+The result for perfect and for reflexive difference ideals is analogous.
+\end{bew}
+\end{lem}
+
+\begin{rem}
+Let $R$ be a $\s$-ring and $\a \si R$ a $\s$-ideal. We can define a canonical $\s$-ring structure on the quotient ring $R/\a$ via $\s(r+\a):= \s(r) + \a$. 
+This is well defined and in particular makes the canonical ring-epimorphism $\tau: R \rightarrow R/\a$ a morphism of $\s$-rings.
+\end{rem}
+
+\begin{prop}
+Let $R$ be a $\s$-ring and $\a \si R$ a $\s$-ideal. Then there is a bijection between the sets $\{ \b \si R/\a \}$ and $\{ \a \si \b \si R \}$, which is given by the mapping induced by the canonical embedding as in Lemma \ref{bijmapping}. The same holds if we restrict both sets to radical, mixed or perfect ideals.
+\begin{bew}
+
+\end{bew}
+\end{prop}
+
+\begin{rem}\label{wmwelldef}
+Let $R$ be a $\s$-ring, and $F \subseteq R$ a subset of $R$. Any intersection of mixed, radical $\s$-ideals containing $F$ is also a mixed, radical ideal, which of course contains $F$. 
+This means that fhere is a smallest (with respect to inclusion) mixed, radical $\s$-ideal $\a$ contaning $F$; namely, the intersection of all such ideals:
+\begin{align*} \bigcap_{\substack{ \b \si R, \\ \b \text{ mixed and rad.}}} \b \end{align*}
+\begin{proof}
+Let $I$ be an index set and $\a_i \si R \fa i \in I$ be mixed, radical $\s$-ideals. Further let $\b := \bigcap_{i \in I} \a_i$ be the intersection of these. If $a \in \a_i \fa i \in I$, then $\s(a) \in \a_i \fa i \in I$, since each $\a_i$ is a $\s$-ideal.
+It follows that $\s(a) \in \b$. Analogous arguments prove the other two properties.
+\end{proof}
+\end{rem}
+
+\begin{defn}
+The $\s$-ideal $\a$ from Remark \ref{wmwelldef} is called the mixed closure of $F$, and denoted by $\{F\}_{m}$.
+\end{defn}
+
+\begin{rem}\label{remshuffling}
+Let $R$ be a $\s$-ring, $\a \si R$ a $\s$-ideal. To try to find $\{a\}_m$ it might be tempting to define $\a':= \{ f\s(g) \mid fg \in \a \}$. A quick example shows that this is not enough, since $\a'$ is not an ideal in general: 
+For example, take $R=k\{y_1,y_2,y_3\}$ for a constant field $k$, and $\a = [y_1y_2, y_2y_3] \si R$. Then $\nexists f,g \in R: f \s(g) = \s(y_2)y_3 + \s(y_1)y_2$ and $fg \in \a$. 
+If we take the $\s$-ideal generated by $\a'$, we now have no guarantee that it will remain mixed. Indeed, in the former example, $y_1\s^2(y_2) \notin [\a']$, even though $y_1 \s(y_2) \in \a'$. We could repeat the process once more,
+ but this would leave $y_1 \s^3(y_2)$ out, and so forth. But the union of all sets gained this way does indeed work, as is the result of the next lemma.
+\end{rem}
+
+\begin{lem}
+Let $R$ be a $\s$-ring and $F \subseteq R$. Further let $F' := \{f\s(g) \mid fg \in F \}$ as in Remark \ref{remshuffling}, and set $F^{\{1\}}:= [F]'$, $F^{\{n\}}:= [F^{\{n-1\}}]'$. Then
+\begin{align} \{F\}_m = \sqrt(\bigcup_{n=1}^{\infty} F^{\{n\}}) \end{align}
+This way of obtaining $\{F\}_m$ is called a shuffling processes and has an analogue for perfect $\s$-ideals.
+\begin{proof}
+Let $\a:= \bigcup_{n=1}^{\infty} F^{\{n\}}$. It is obvious from the construction that $\a$ is a mixed $\s$-ideal, and that $F \subseteq \a$. 
+By induction on the iterative steps $F^{\{n\}}$ it follows that for every mixed $\s$-ideal $\b$ which contains $F$, $F^{\{n\}} \subseteq$. Hence, $\a$ is the smallest mixed $\s$-ideal containing $F$.
+It remains to show that $\sqrt \a$ is still mixed, as this would show that in turn $\sqrt a$ is indeed the smallest mixed, radical $\s$-ideal of $R$ containing $F$. Let thus $f,g \in R$ be such,
+that $fg \in \sqrt \a$. By definition there exists an $n \in \NE$ such, that $f^n g^n = (fg)^n \in \a$. Since $\a$ is mixed, this implies that $f^n \s(g^n) = f^n \s(g)^n = (f\s(g))^n \in \a$. 
+But this means that $f\s(g) \in \sqrt \a$, which was to be shown.
+\end{proof}
+\end{lem}
+
+One very important result in commutative algebra is the fact that every radical ideal is the intersection of prime ideals. This has an analgous for perfect $\s$-ideals, as well as for mixed $\s$-ideals. 
+We will prove the latter, but for that we need a few additional tools.
+
+\begin{defn}
+Let $U$ be a set. And let $F \subseteq \text{Pot}(U)$, where $\text{Pot}(U)$ denotes the power set on $U$. Then F is called a filter if it satisfies the following axioms: 
+\begin{itemize}
+\item  $U \in F$ and $\emptyset \notin F$
+\item If $V,W \subseteq U$ with $V \subseteq W \text{ and }V  \in F $ it holds that $W \in F$
+\item For $V_1, \ldots, V_n \in F$ it holds that \[ \bigcap_{i = 1}^n V_i \in F \]
+\end{itemize}
+\end{defn}
+
+\begin{lem}
+
+\end{lem}
+
+\end{document}
