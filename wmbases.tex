@@ -1,0 +1,117 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\text{Spec}}
+\def\sSpec{\sigma\text{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{definition}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{rem}[Satz]{Remark}
+\newtheorem{defn}[Satz]{Definition}
+\newtheorem{lem}[Satz]{Lemma}
+\begin{document}
+\section{Bases}
+\begin{defn}
+Let $R$ be a $\s$-ring, $F \subseteq R$ be a subset of $R$. 
+\begin{itemize}
+\item Then we say that $F$ has a perfect basis if there exisits a finite subset $B \subseteq F$ such, 
+that $\{F\} = \{ B \}$. 
+\item We say that $F$ has a mixed, radical basis (or just mixed, for short), if there exisits a finite $B \subseteq F$ such that $\{F\}_m = \{B\}_m$
+\item We say that $F$ has a weak perfect basis, if there exists a finite $B \subseteq R$ (not necessarily $B \subseteq F)$ such that $\{B\} = \{F\}$.
+\item We say that $F$ has a weak mixed, radical basis, - a w.m. basis for short - if there exists a finite $B \subseteq R$ such that $\{B\}_m = \{F\}_m$.
+\end{itemize}
+\end{defn}
+
+\begin{lem}\label{lemmabases}
+Let $R$ be a $\s$-ring, $F \subseteq R$ be a finite subset of $R$. If $F$ has mixed basis $B$, then $B$ is also a perfect basis for $F$. Additionaly, $F$ has a perfect basis iff $F$ has a weak perfect basis, and $F$ has a mixed, radical basis iff $F$ has a weak mixed basis.
+\begin{bew}
+Let $B \subseteq F$ be a mixed basis of $F$. Then we know that $\{B\}_m = \{F\}_m$.
+Since for a mixed ideal $\a$ it holds that $\{\a\} = \sqrt{\a}^*$, we know that
+\begin{align*}
+\{\{B\}_m\} = (\{B\}_m)^* = (\{F\}_m)^* = \{F\}
+\end{align*}
+It thus sufficies to show that $\{B\} = \{\{B\}\}_m$.  The inclusion $\{B\} \subseteq \{\{B\}\}_m$ is trivial. For the other inclusion we know:
+\begin{align*}
+\{ B \}_m \subseteq \{ B \}
+\Rightarrow \{ \{B\}_m \} \subseteq \{ \{ B \} \} = \{B \}
+\end{align*}
+In particular this means that $\{B\} = \{F\}$, so that $B$ is a perfect basis for $F$. 
+We now turn our attention to the equivalence of having a perfect basis and a weak perfect one. That every perfect basis is also a weak perfect one is obvious. Let thus $F \subseteq R$ have a weak perfect basis $B = b_1,\ldots,b_n \subseteq R$. 
+This means that $\{ F \} = \{ B \}$. Consider now $b_1 \in B$. By the shuffling process, there exisits an $m \in \N$ such that $b_1 \in F^{\{m\}}$. By the definition of $F^{\{m\}}$ there are only finite many $f \in F$ ``involved'' in $b_1$,
+i.e., there exist $f_{1,1}, \ldots, f_{1,k_1} \in F$ such that $b_1 \in (f_{1,1}, \ldots, f_{1,k_1})^{\{m\}} \subseteq \{ f_{1,1}, \ldots, f_{1,k_1} \}$. In a similar way  we get $f_{2,1}, \ldots, f_{2,k_2} \in F$ such that $b_2 \in \{ f_{2,1}, \ldots, f_{2,k_2} \}$, and so forth.
+In particular, this means that $B \subseteq \{ f_{1,1}, \ldots, f_{1,k_1},f_{2,1}, \ldots, f_{2,k_2}, \ldots, f_{n,k_n} \} \subseteq \{F\}$. But that means  that $\{F\} = \{B\} \subseteq \{ f_{1,1} \ldots, f_{n,k_n}\} = \{F\}$, so that $f_{1,1} \ldots, f_{n,k_n}$ is a a perfect basis of $F$. 
+The equivalence for having mixed and weak mixed bases is obtained in an analogous fashion.
+\end{bew}
+\end{lem}
+
+\begin{rem}
+Let R be a $\s$-ring and let $F \subseteq R$ be a subset. Then, the last direction of Lemma \ref{lemmabases} does not hold in general, i.e. a set that has a perfect basis does not necesarilly have a mixed basis.
+\begin{bew}
+Let $k$ be a $\s$-field and consider the ring $R:= k\{y_1\}^*$ (reflexive closure). Then the perfect ideal $\a:= \{y_1\} = [y_1]^* = [ \sigma^{-i}(y_1) \mid i \in \N] \si R$ has a perfect basis but does not have a mixed basis.
+$y_1$ is obviously a perfect basis for $\a$. Now let $B \subset \a$ be a finite subset of $\a$. For every element $b \in B$, there is a maximal $i \in \N$ such that $\s^{-i}(y_1)$ appears in a monomial of $b$. 
+Let then \[ i := \max_{i \in \N} \s^{-i}(y_1) \text{ appears in }b \text{, for a }b \in B \]
+Then $\s^{-i-1}(y_1) \notin \{B\}_m$. %% is this R ritt? I think it is.
+\end{bew}
+\end{rem}
+
+\end{document}
