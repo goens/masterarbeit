@@ -49,9 +49,9 @@
 \def\fa{\text{ for all }}
 \def\Tr{\text{Tr}}
 \def\Id{\text{Id}}
-\def\Sym{\text{Sym}}
+\def\ker{\text{ker}}
 \def\H{\mathcal{H}}
-\def\wt{\text{wt}}
+\def\trdeg{\text{trdeg}}
 \def\sdim{\sigma\text{-dim}}
 
 
@@ -79,11 +79,11 @@
 \begin{document}
 \section{Difference Kernels}
 
-blah blah de entrada...
-\begin{theorem}
+%% blah blah de entrada...
+%% \begin{theorem}
 
-Let $k$ be a $\s$-field and $a$ 
-\end{theorem}
+%% Let $k$ be a $\s$-field and $a$ 
+%% \end{theorem}
 
 \begin{defn}
 Let $\p \unlhd k\{y\}[d], d \geq 1$ be a prime ideal of $k\{y\}[d]$. Then $\p$ is called a weak difference kernel of length $d$, if $\s(\p[d-1]) \subseteq \p$. It is called a difference kernel of length $d$, if $\s^{-1}(\p) = \p[d-1]$.
@@ -109,7 +109,7 @@ It is in fact the case, that weak kernels are exactly of the form $\p[d]$ for pr
 and kernels for $\s$-prime ones, i.e., we can always find a regular realization of (weak) kernels. 
 To prove this, however, we still need to develop more of a framework around difference kernels.
 
-\begin{rem}
+\begin{rem}\label{sigmawelldeffker}
 Let $\p \subseteq k\{y\}$ be a weak difference kernel of length $d$. Then, $\s$ induces a well-defined mapping 
 \begin{align*}
 \s: k[y,\ldots,\s^{d-1}(y)]/\p[d-1] \rightarrow k[y,\ldots,\s^{d}(y)]/\p
@@ -139,8 +139,74 @@ Then we call $\p'$ a \emph{prolongation} of $\p$, iff $\p'[d] = \p$. If it holds
 Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $\p'$ be a realization of $\p$. We call $\p'$ a principal realization of $\p$, iff $\p'[i+1]$ is a generic prolongation of $\p'[i]$ for all $i \geq d$.
 \end{defn}
 
-\begin{lem}
-Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$. Then there exists a generic prolongation of $\p$. 
+\begin{lem}\label{genericprol}
+Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$. Then there exists a prolongation of $\p$. If $\p$ is a kernel, then there exists a prologation that is generic. 
+\begin{bew}
+Consider the canonical epimorphism of rings $k[y,\ldots,\s^{d}(y)] \rightarrow k[y,\ldots,\s^{d}(y)]/\p$ and let $a = y + \p$ be the image of $y$ under it. 
+Then the we have a subring $R_1: = k[a,\ldots,\s^{d-1}(a)] \subseteq k[a,\ldots,\s^{d}(a)] = k[y,\ldots,\s^{d}(y)]/\p =: R$. Now, consider the univariate polynomial ring over $R_1$ on the free variable $\s^d(y)$:
+\[ R_1[\s^d(y)] = k[a,\ldots,\s^{d-1}(a)][s^d(y)] = k[a,\ldots,\s^{d-1}(a),s^d(y)] \]
+We have a natural morphism of rings \[ R_1[s^d(y)] \rightarrow R = k[a,\ldots,\s^{d}(a)], \s^d(y) \mapsto \s^d(a) \]
+Let $\p_1$ be the kernel of this morphism. Since $R$ is an integer domain (as $\p$ is prime), so is $\p_1$ also prime. 
+Now we consider the univariate polynomial ring $R[\s^{d+1}(y)] \supset R = k[a,\ldots, \s^d(a)]$. Here we get a natural definition of $\s: R_1[\s^d(y)] \rightarrow R[\s^{d+1}(y)]$ by mapping $\s( \s^d(y))  := \s^{d+1}(y)$.
+Let then $\p_2 \supset \s(p_1)$ be a minimal prime ideal of $R[\s^{d+1}(y)]$ containing $\s(p_1)$ (this exists, since $R$ is an integral domain). 
+We thus get a well-defined maping
+\[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2 \]
+We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ was prime. Since $\p_2$ is minimal over $\s(\p_1)$ we can use this notation unambiguosly:
+this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\p$ (or rather, we have a natural bijection between said residue classes).
+The kernel $\p'$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
+Further we have $\p \subseteq \p'$ by construction (as $\p = 0 \subset R_2$). In fact, it holds that $\p'[d] = \p$ since: 
+\begin{align*}
+\p'[d] = \{ f \in k[y,\ldots,\s^d(y)] \mid f(a) = 0 \} = \ker( k\{y\}[d] \rightarrow k[a,\ldots,\s^{d}(a)]) = \p
+\end{align*}
+where the first equality uses the minimality of $\p_2$ over $\s(\p_1)$, as noted by the use of the notation explained above, and last equality holds by definition of $a \in R$. This means, that $\p'$ is a prolongation of $\p$. 
+
+Now, if additionaly, $\p$ is a kernel, then $\s$ from Remark \ref{sigmawelldeffker} is injective and we can go over to the quotient fields:
+We let $\tilde \p_1$ be the prime ideal which is the kernel of the morphism of rings
+\[ \text{Quot}(R_1)[s^d(y)] \rightarrow \text{Quot}(R) = k(a,\ldots,\s^{d}(a)), \s^d(y) \mapsto \s^d(a) \]
+And let $\tilde \p_2$ be a minimal prime ideal in 
+\[k(a,\ldots,\s^d(a))[\s^{d+1}(y)] = \text{Quot}(k[a,\ldots,\s^d(a)])[\s^{d+1}(y)] \] containing $\s(\tilde \p_1)$.
+In particular, $\s$ is injective and thus an isomorphism to the prime ideal $\s(\tilde \p_1) \subseteq \s(k)(\s(a),\ldots,\s^d(a))[\s^{d+1}(y)]$.
+It holds that the mapping
+\[ \s: k(a,\ldots,\s^{d-1}(a))[\s^d(y)]/\tilde \p_1 \rightarrow k(a,\ldots, \s^d(a))[\s^{d+1}(y)]/\tilde \p_2 \]
+is well-defined and injective as well. By abuse of notation (and because of the minimality of $\tilde \p_2$ again) 
+we will also call $\s^{d+1}(a)$ the image of $\s^{d+1}(y)$ in $k(\tilde \p_2) = \text{Quot}(k(a,\ldots, \s^d(a))[\s^{d+1}(y)]/\tilde \p_2)$.
+Then the kernel $\q$ of \[ k[y,\ldots,\s^{d+1}(y)] \rightarrow k(\tilde p_2), \s^{i}(y) \mapsto \s^{i}(a) \] is a prolongation of $\p$, as above, and we have:
+\begin{align*}
+\sdim(\p) = \trdeg( k(a,\ldots,\s^d(a)) / k(a,\ldots,\s^{d-1}(a))) = \text{dim}(k(a,\ldots,\s^{d-1}(a))[\s^d(y)]/\tilde \p_1) \\ = \text{dim}(\s(k)(\s(a),\ldots,\s^d(a))[\s^{d+1}(y)]/\s(\tilde \p_1)) 
+= \text{dim}(k(a,\ldots,\s^{d}(a))[\s^{d+1}(y)]/\tilde \p_2) \\ = \trdeg(k(a,\ldots,\s^{d+1}(a))/k(a,\ldots,\s^d(a))) = \sdim(\q)
+\end{align*}
+\end{bew}
 \end{lem}
 
+\begin{defn}
+Let $k$ be a $\s$-field and  $\a \si k\{y\}$ be a $\s$-ideal. 
+Further let $d_1, d_2 \in \Z$ with $-1 \leq d_1 < d_2$ We define $\a[d_1, d_2]:= \a[d_2] \backslash \a[d_1] = \{ r \in a[d_2] \mid r \notin a[d_1]$.
+Note that this is not an ideal, as, for example, $0 \notin \a[d_1,d_2]$, but every element in $r \in a[d_1,d_2]$ has the property that $d_1 < $Ord$(r) \leq d_2$.
+\end{defn}
+
+\begin{prop}
+Let $\p \subseteq k\{y\}$ be a (weak) kernel of length $d$. Then there exists a realization of $\p$. If $\p$ is a kernel, then this realization is principal.
+In particular, weak kernels are exactly of the form $\p[d]$ for a prime $\s$-ideal $\p \si k\{y\}$, and similarly kernels for $\s$-prime ideals.
+\begin{bew}
+By Lemma \ref{genericprol} there exists a chain of prolongations $\p_{d+1} \supset \p$, $\p_{d+2} \supset \p_{d+1}, \ldots$, which are generic if $\p$ is a kernel.
+Consider \[ \p':= \bigcup_{i \geq d} \p_i \]
+This is a prime $\s$-ideal, since for $f \in \p'$ there exists an $i \in \N$ such that $f \in \p_i$. Then $\s(f) \in \s(p_{i+1}) \subset \p'$.
+Since all $p_i$ are prime, any product $fg \in \p'$ must already be in a $\p_i$ for $i \in \N$ and thus $f \in \p_i$ or $g \in \p_i$. Further,
+ if $\p$ is a kernel, then $\s^{-1}(\p_i) = \p_{i-1} \subset \p'$, so $\p'$ is reflexive. By construction is $\p'[d] = \p$ and if $\p$ is a kernel then the
+ prolongations are all generic and thus $\p'$ is principal. Since for a prime $\s$-ideal $\p$ we have that $\p[d]$ is a weak kernel, and a kernel if $\p$ is also reflexive, 
+the final assertion follows.
+\end{bew}
+\end{prop}
+
+%% \begin{lem}
+%% Let $\p \si k\{y\}$ be a prime $\s$-ideal and let $\p' := \p^* \supseteq \p$ be its reflexive closure (which is $\s$-prime). Then there exists an $n \in \N$ such that 
+%% $\p[d_1,d_2] = \p'[d_1,d_2] \fa n \leq d_1 < d_2$.
+%% \begin{bew}
+%% We know that there exists an $n \in \N$ such that $\s^{-n}(\p) = \p^* = \p'$ is $\s$-prime. Let $d > n$. Then 
+%% we have $\s^{-n}(\p[d]) = \s^{-n}(\p \cap k\{y\}[d]) = \s^{-n}(\p)\cap\s^{-n}(k\{y\}[d]) = \p'[d-n]$. 
+%% Since $\p'[d-n]$ is a kernel of length $d-n$, we know that there exist unique generic prolongations of $\p'[n-d]$
+%% \end{bew}
+%% \end{lem}
+
 \end{document}
+
