@@ -52,7 +52,7 @@
 \def\Sym{\text{Sym}}
 \def\H{\mathcal{H}}
 \def\wt{\text{wt}}
-\def\Perf{\text{Perf}}
+\def\sdim{\sigma\text{-dim}}
 
 
 \renewcommand{\labelenumi}{\alph{enumi})}
@@ -69,13 +69,78 @@
 \newtheorem{rem}[Satz]{Remark}
 \newtheorem{defn}[Satz]{Definition}
 \newtheorem{lem}[Satz]{Lemma}
+
+
 \makeindex
 \title{Difference Kernels}
 \author{Andr\'{e}s Goens}
 \date{\today}
+
 \begin{document}
+\section{Difference Kernels}
+
+blah blah de entrada...
 \begin{theorem}
 
+Let $k$ be a $\s$-field and $a$ 
 \end{theorem}
+
+\begin{defn}
+Let $\p \unlhd k\{y\}[d], d \geq 1$ be a prime ideal of $k\{y\}[d]$. Then $\p$ is called a weak difference kernel of length $d$, if $\s(\p[d-1]) \subseteq \p$. It is called a difference kernel of length $d$, if $\s^{-1}(\p) = \p[d-1]$.
+\end{defn}\index{(weak) kernels}
+
+\begin{rem}
+It is easy to see that a kernel is always a weak kernel, but the converse is not necesarilly true: a weak kernel only guarantees the inculsion $\p[d-1] \subseteq \s^{-1}(\p)$.
+\end{rem}
+
+\begin{ex}
+Let $\p \si k\{y\}$ be a prime $\s$-ideal, $d \geq 1$. Then $\p[d] \unlhd k\{y\}[d]$ is a weak kernel: since $\p$ is a $\s$-ideal we have $\s(\p[d-1]) \subseteq \p$, 
+and since $\p$ is prime we know that $\p[d]$ has to be prime as well. If $\p$ is also reflexive (i.e. a $\s$-prime ideal), then $\p[d]$ is a kernel. 
+\end{ex}
+
+Inspired by the former example we define the following:
+\begin{defn}
+Let $\p \unlhd k\{y\}[d]$ be a weak kernel of length $d$, and $\p' \si k\{y\}$ be a prime $\s$-ideal. Then we call $\p'$ a realization of $p$, iff $\p \subseteq \p'$, 
+and we call the realization regular if it also holds that $\p'[d] = \p$. Similarly, if $\p$ is a kernel, then we require a realization to be a $\s$-prime ideal.
+\end{defn}\index{(regular) realization}
+
+The former example and the acompanying definition is actually much more general than it would seem to be at first. 
+It is in fact the case, that weak kernels are exactly of the form $\p[d]$ for prime $\s$ ideals,
+and kernels for $\s$-prime ones, i.e., we can always find a regular realization of (weak) kernels. 
+To prove this, however, we still need to develop more of a framework around difference kernels.
+
+\begin{rem}
+Let $\p \subseteq k\{y\}$ be a weak difference kernel of length $d$. Then, $\s$ induces a well-defined mapping 
+\begin{align*}
+\s: k[y,\ldots,\s^{d-1}(y)]/\p[d-1] \rightarrow k[y,\ldots,\s^{d}(y)]/\p
+\end{align*}
+If $\p$ is a difference kernel, then this mapping is injective. 
+If we set $a := \bar y = y + \p \in k(\p) = k\{y\}[d]/\p$, then we can extend $\s$ to the quotient fields:
+\[ \s: k(a,\ldots,s^{d-1}(a)) \cong \text{Quot}(k[y,\ldots,\s^{d-1}(y)]/\p[d-1]) \rightarrow k(a,\ldots,\s^d(a)) = k(\p) \]
+\end{rem}
+
+Even in the case of weak difference kernels we can work with the properties of field extensions, though we cannot properly extend $\s$ to the fields.
+ In particular, we get a nice way of defining some sort of ``difference degree'' of (weak) kernels:
+\begin{defn}
+Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $a:= y + \p \in k(p)$; we define the difference dimension of $\p$ as follows:
+\begin{align*} \sdim(\p) := \text{trdeg}(k(\p)/k(p[d-1]) = \text{trdeg}((k\{y\}[d]/\p)/(k\{y\}[d-1]/p[d-1])) \\  = \text{trdeg}(k(a,\ldots,\s^{d}(a))/k(a,\ldots,\s^{d-1}(a))) \end{align*}
+\end{defn}\index{$\s$-dimension of a $\s$-kernel}
+
+If we want to show that (weak) difference kernels are the intersection of (prime $\s$-ideals) $\s$-prime ideals with $k\{y\}[d]$,
+it is reasonable to consider some sort of extension, or \emph{prolongation} of a (weak) kernel, which would be the intesrection with $k\{y\}[d+1]$. 
+This motivates the following definition:
+
+\begin{defn}
+Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and $\p' \supset \p$ be a further (weak) difference kernel, of length $d+1$.
+Then we call $\p'$ a \emph{prolongation} of $\p$, iff $\p'[d] = \p$. If it holds further that $\sdim(\p) = \sdim(p')$, then we call the prolongation \emph{generic}.
+\end{defn}\index{prolongation, generic}
+
+\begin{defn}
+Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $\p'$ be a realization of $\p$. We call $\p'$ a principal realization of $\p$, iff $\p'[i+1]$ is a generic prolongation of $\p'[i]$ for all $i \geq d$.
+\end{defn}
+
+\begin{lem}
+Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$. Then there exists a generic prolongation of $\p$. 
+\end{lem}
 
 \end{document}
