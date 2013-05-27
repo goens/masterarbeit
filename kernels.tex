@@ -141,10 +141,11 @@ Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $
 \end{defn}
 
 \begin{lem}\label{primeoverp1}
-Let R be an integral domain and $F \subseteq R[y]$ be a subset of $R[y] = R[y_1,\ldots,y_n]$ which satisfies that $I \cap R = \{ 0 \}$.
+Let R be an integral domain and $I \subseteq R[y]$ be a subset of $R[y] = R[y_1,\ldots,y_n]$ which satisfies that $I \cap R = \{ 0 \}$.
 Then there exists a prime ideal $P \supset I$ with $P \cap R = \{0\}$.
 \begin{proof}
-We can assume without loss of generality that $I$ is an ideal: Let $f = \sum_{i=1}^kr_i x_i \in (I)$, where $r_i \in R[y], x_i \in (I), i = 1,\ldots,k$. If $f \in R$, by a degree argument it has to hold that $x_i, r_i \in R, i=1,\ldots,k$.
+We can assume without loss of generality that $I$ is an ideal: Let $f = \sum_{i=1}^kr_i x_i \in (I)$, where $r_i \in R[y], x_i \in (I), i = 1,\ldots,k$. If $f \in R$, by a degree argument it has to hold that $x_i, r_i \in R, i=1,\ldots,k$
+(up to leaving out terms of higher degree which cancel each other out).
 But that means that $r_i \in R \cap I = \{0\}, i=1,\ldots,k$, hence $f = 0$. Similarly, we can assume that I is radical:
 Namely, if $f \in \sqrt{I} \cap R$, then there exists an $m \in \N$ such that $f^m \in I \cap R = \{0\}$, and since $R$ is an integral domain this already means that $f = 0$.
 We then note that for two sets $A,B \subseteq R[y]$ it holds that $\sqrt{A}\sqrt{B} \subseteq \sqrt{AB}$: Consider $f \in \sqrt{A}, g \in \sqrt{B}$. Then there exist $m, \tilde m \in \N$ such that $f^m \in (A), g^{\tilde m} \in (B)$;
@@ -152,8 +153,8 @@ We then note that for two sets $A,B \subseteq R[y]$ it holds that $\sqrt{A}\sqrt
 Now, for the proof, consider the set of all radical ideals $J$ contaning $I$ which satisify $J \cap R = \{0\}$. This set is not empty and is inductively ordered by inclusion.
 By Zorn's lemma this means that there is a maximal element $P$ of this set. This ideal $P$ is prime, then: assume there exist $f,g \notin P$ with $fg \in P$. 
 Then the radical ideals $\sqrt{P \cup \{f\}}$, $\sqrt{P \cup \{f\}}$ strictly include $P$, and by the maximality of $P$ it means there exist $t_1, t_2 \in R\backslash\{0\}$ such that
-$t_1 \in \sqrt{P \cup \{f\}}$, $t_2 \in \sqrt{P \cup \{g\}}$. But in particular this implies that
- \[t_1t_2 \in \sqrt{P \cup \{f\}}\sqrt{P \cup \{g\}} \subseteq \sqrt{ \underbrace{(P \cup \{f\})(P \cup \{g\})}_{=P\text{, since }fg \in P}} = P\]
+$t_1 \in \sqrt{P \cup \{f\}}$, $t_2 \in \sqrt{P \cup \{g\}}$. But in particular, because $R$ is free of zero divisors, this implies that
+ \[0 \neq t_1t_2 \in \sqrt{P \cup \{f\}}\sqrt{P \cup \{g\}} \subseteq \sqrt{ \underbrace{(P \cup \{f\})(P \cup \{g\})}_{=P\text{, since }fg \in P}} = P\]
 A contradiction.
 \end{proof}
 \end{lem}
@@ -168,10 +169,10 @@ We have a natural morphism of rings \[ R_1[s^d(y)] \rightarrow R = k[a,\ldots,\s
 Let $\p_1$ be the kernel of this morphism. Since $R$ is an integer domain (as $\p$ is prime), so is $\p_1$ also prime. 
 Now we consider the univariate polynomial ring $R[\s^{d+1}(y)] \supset R = k[a,\ldots, \s^d(a)]$. Here we get a natural definition of $\s: R_1[\s^d(y)] \rightarrow R[\s^{d+1}(y)]$ by mapping $\s( \s^d(y))  := \s^{d+1}(y)$.
 By definition of $\p_1$ we have that $\s(\p_1) \cap R = \{0\}$. 
-By Lemma \ref{primeoverp1} there exists a minimal prime ideal $\p_2 \supset \s(p_1)$ of $R[\s^{d+1}(y)]$ containing $\s(p_1)$ with $\p_2 \cap R = \{0\}$. 
+By Lemma \ref{primeoverp1} there exists a minimal prime ideal $\p_2 \supset \s(\p_1)$ of $R[\s^{d+1}(y)]$ containing $\s(p_1)$ with $\p_2 \cap R = \{0\}$. 
 We thus get a well-defined maping
 \[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2 \]
-We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ was prime. Since $\p_2 \cap R = \{0}$ we can use this notation unambiguosly:
+We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ was prime. Since $\p_2 \cap R = \{0\}$ we can use this notation unambiguosly:
 this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\p$.
 The kernel $\p'$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
 Further we have $\p \subseteq \p'$ by construction (as $\p = 0 \subset R_2$). In fact, it holds that $\p'[d] = \p$ since: 
