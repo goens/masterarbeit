@@ -1,0 +1,491 @@
+\documentclass[letterpaper]{article}
+\usepackage[spanish]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage[paper=letterpaper,right=3cm,left=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+
+\def\P{\mathcal{P}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\N{\mathbb{N}} 
+\def\NE{\mathbb{N}_{\geq 1}}
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\text{Spec}}
+\def\sSpec{\sigma\text{-Spec}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\Gram{\text{Gram}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ para todo }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{definition}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Teorema}
+\newtheorem{ex}[Satz]{Ejemplo}
+\newtheorem{cor}[Satz]{Corolar}
+\newtheorem{algorithm}[Satz]{Algoritmo}
+\newtheorem{prop}[Satz]{Proposici\'{o}n}
+\newtheorem{rem}[Satz]{Comentario}
+\newtheorem{defn}[Satz]{Definici\'on}
+\newtheorem{lem}[Satz]{Lema}
+
+\title{\'Algebra de Diferencias}
+\author{Andr\'{e}s Goens}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Introducci\'on}
+%Acerca mio: Yo soy un estudiante salvadore\~no de matem\'atica. Tengo una licenciatura en f\'isica y otra en matem\'atica de la universidad de Aquisgr\'an ``RWTH Aachen University''.
+%Ahora estoy por terminar la maestr\'ia en matem\'atica en la misma universidad, y escribo mi t\'esis en el \'area de \'algebra de diferencias, las bases de la cual quiero compartir en este art\'iculo.
+
+El \'algebra de diferencias es una rama peque\~na de las matem\'aticas, cuyo origen est\'a cercanamente relacionado con el del \'algebra diferencial, rama m\'as grande con la que comparte mucha similitud. Es una rama relativamente nueva a su vez: 
+se puede decir que naci\'o como una nueva rama de las matem\'aticas al rededor los a\~nos 1930, por una serie de art\'iculos publicados por J. Ritt entre 1929 y 1939. Sin embargo, no fue hasta la d\'ecada de los 1950 que gracias a R. Cohn 
+el \'algebra de diferencias alcanzo niveles comparables con el de su rama hermana, el \'algebra diferencial. A partir de ah\'i ha gozado de un crecimiento satisfactorio gracias a un n\'umero grande de matem\'aticos y a peser
+ de seguir siendo una rama peque\~na hoy en d\'ia, cuenta con muchos resultados importantes y una estructura madura. Una rese\~na hist\'orica m\'as detallada se puede encontrar en el prefacio del texto de Levin, \cite{levin}.
+\\
+
+Para dar una primera idea del objeto de estudio de \'algebra de diferencias, veremos un par de ejemplos de ecuaciones de diferencias. Probablemente uno de los ejemplos mejor conocidos es la sucesi\'on de Fibonacci $1,1,2,3,5,8,13,\ldots$ que se puede ver como una soluci\'on de la siguiente ecuaci\'on recursiva: 
+\begin{align*}
+a_0 = 1,  a_1 = 1 \\ a_n = a_{n-1} + a_{n-2}, n\geq 2
+\end{align*}
+
+Otro ejemplo que probablemente tambi\'en conozca cualquier matem\'atico o f\'isico es la ecuaci\'on funcional de la funci\'on Gamma:
+
+\begin{align*}
+\Gamma(x+1) = x \Gamma(x)
+\end{align*}
+
+Un resultado cl\'asico del an\'alisis complejo dice que cualquier funci\'on que cumpla esta ecuaci\'on es un m\'ultiplo de la funci\'on $\Gamma$,
+a la que se le considera una generalizaci\'on del factorial:
+\begin{align*}
+\Gamma(x) = \int_0^\infty{\frac{t^x}{t} e^{-t} dt}
+\end{align*}
+
+Estos dos son ejemplos notables de ecuaciones de diferencias. En el \'algebra de diferencias no se busca, sin embargo,
+encontrar soluciones de estas ecuaciones de manera ``expl\'icita'', como lo son los n\'umeros en la sucesi\'on de Fibonacci,
+o la representaci\'on integral de la funci\'on $\Gamma$. Se investiga, m\'as bien, la estructura que tienen dichas ecuaciones y en s\'i la existencia de tales. 
+
+\subsection{Requisitos para este art\'iculo}
+
+Este art\'iculo pretende presentar lo m\'as b\'asico de la teor\'ia del \'algebra de diferencias, la cual en muchos aspectos se basa en geometr\'ia algebraica. Aunque conocimiento de geometr\'ia algebraica ser\'ia de mucha ayuda para entender este art\'iculo, trat\'e de escribirlo
+de tal manera que no sea necesaria. Sin embargo, conocimientos b\'asicos de \'algebra, como anillos, ideales, etc. y cierta madurez matem\'atica probablemente sean verdaderamente indispensables para comprender este art\'iculo. 
+Para aquel lector que tenga inter\'es en leerlo, pero tenga alguna alguna de conocimiento en el \'algebra b\'asica, recomiendo consultar el texto de Lang \cite{lang}. Para aquellos que quieran buscar algo m\'as espec\'ifico de \'algebra conmutativa o geometr\'ia algebraica, recomiendo los textos de Eisenbud \cite{eisenbud} o Hartshorne \cite{hartshorne}. El contenido de \'algebra de diferencias de este art\'iculo est\'a basado en los fundamentos de mi tesis, a\'un en desarrollo, 
+los cuales a su vez est\'an fuertemente basados en los apuntes de la ponencia en \'algebra de diferencias en el invierno 2012/13 de Michael Wibmer \cite{wibmer}.
+Al final del art\'iculo el lector que quiera solidificar su comprensi\'on podr\'a encontrar ejercicios, los cuales estar\'an desglosados por secci\'on.
+\section{Fundamentos de \'algebra de diferencias}\label{fundamentos}
+\begin{defn}
+Sea $R$ un anillo (en este art\'iculo, todos los anillos van a ser conmutativos con unidad), y  sea $
+\sigma: R \rightarrow R$ un endomorfismo de anillos en $R$. Entonces llamamos al par $(R,\sigma)$ un \emph{anillo de diferencias}, o un $\sigma$\emph{-anillo}. Por abuso de notaci\'on diremos que $R$ es un $\sigma$-anillo  para referirnos al par, y si $R'$ es otro $\sigma$-anillo  usaremos siempre la notaci\'on $\sigma$ para el endomorfismo de $R'$; esto no deber\'ia causar confusi\'on, puesto que se podr\'a inferir del contexto de 
+qu\'e endomorf\'ismo se est\'a hablando.
+\end{defn}
+
+\begin{defn}
+Sean $R, R'$  $\sigma$ -anillos y sea $\varphi: R \rightarrow R'$ un homomorfismo de anillos. Decimos que $\varphi$ es un \emph{homomorfismo de $\sigma$-anillos}  si 
+\begin{align*}
+\sigma(\varphi(r)) = \varphi(\sigma(r)) \fa r \in R
+\end{align*}
+\end{defn}
+
+\begin{ex} Hay un sinf\'in de ejemplos de $\sigma$-anillos. Un par de los m\'as importantes son los siguientes:
+
+\begin{itemize}
+\item Cualquier anillo $R$ es un $\sigma$-anillo con $\sigma = \Id_R$. A este le llamamos un $\sigma$- \emph{anillo constante}.
+\item El cuerpo de las funciones meromorfas $\C \rightarrow \C$, que denotaremos por $\mathcal{M}$,
+ es un $\sigma$-anillo junto con $\sigma(f)(x) = f(x+1)$ para todo $x \in \C$.
+\item Las sucesiones de n\'umeros enteros, que denominaremos $\text{Seq}(\Z)$, forman un $\sigma$-anillo junto con la operaci\'on de correr sus t\'erminos hacia la izquierda:
+\begin{align*} \sigma: (a_n)_{n \in \N} \mapsto (a_{n+1})_{n \in \N}. \end{align*}
+\end{itemize}
+\end{ex}
+
+\begin{defn}
+Sea $R$ un $\sigma$-anillo. Si $R$ tambi\'en es un cuerpo, llamamos al par $(R,\sigma)$ un $\sigma$\emph{-cuerpo}. 
+Si $k$ es un $\sigma$-cuerpo, $A$ una $k$-\'algebra que (como anillo) es un $\sigma$-anillo y cumple
+$\sigma(ar) = \sigma(a) \sigma(r)$, entonces llamamos a $A$ una  $k$-$\sigma$\emph{-\'algebra}.
+\end{defn}
+
+\begin{ex}
+Un ejemplo adicional de especial importancia es el de los $\sigma$\emph{-anillos de polinomios}.
+Sea $k$ un cuerpo. Consideremos el anillo de polinomios $R:= k[y,\sigma(y),\sigma^2(y),\ldots]$,
+ donde $y,\sigma(y),\sigma^2(y),\ldots$ son por el momento simplemente nombres de variables (algebraicamente independientes).
+A este anillo lo podemos convertir en una $k$-$\sigma$-\'algebra definiendo 
+\begin{align*} 
+\sigma:  R \rightarrow R, y \mapsto \sigma(y), \sigma^{n-1}(y) \mapsto \sigma^{n}(y) \fa n > 1 
+\end{align*}
+y extendi\'endolo $k$-linealmente de la manera obvia. Denotamos este $\sigma$-anillo de polinomios por $k\{y\}$. De forma an\'aloga podemos definir $\sigma$-anillos de polinomios $k\{y_1, \ldots, y_n \}$ en muchas variables.
+\end{ex}
+
+\begin{defn} $\phantom{}$
+\begin{itemize}
+\item Dados un $\sigma$-anillo $S$  y un subanillo $R \leq S$, decimos que $R$ es un $\sigma$\emph{-subanillo} de $S$ si $(R,\sigma|_{R})$ es un $\sigma$-anillo,
+es decir, si la imagen de $\sigma|_{R}$ est\'a contenida en $R$.
+\item Un $\sigma$\emph{-ideal} es un ideal $I \unlhd R$ que a la vez es un $\sigma$-subanillo de $R$; le denotamos por $I \si R$. En este caso, no es dif\'icil convencerse de que existe una estructura can\'onica de $\sigma$-anillo en el anillo cociente $R/I$:
+\begin{align*} \sigma: R/I \rightarrow R/I, a + I \mapsto \sigma(a) + I. \end{align*}
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+Sea $R$ un $\s$-anillo, y sea $I \si R$ un $\s$-ideal de $R$. Para elementos $a_1, \ldots, a_k \in R$ denotamos por $[a_1, \ldots, a_k] \si R$ al $\s$-ideal minimal de $R$ que contenga a $a_1,\ldots,a_k$. 
+De hecho, se cumple que \[[a_1,\ldots,a_k] = \{ \sum_{i=1}^n \s^{j_i}(x_i) \mid n \geq 1, j_i \geq 0, x_i \in \{a_1,\ldots,a_k\}, i=1,\ldots,n \} \]. Si existen $b_1,\ldots,b_r \in I$ tales que $I = [b_1,\ldots,b_r]$,
+ decimos que $I$ es finitamente $\s$-generado como $\s$-ideal.
+\end{defn}
+
+\begin{defn}
+Una $k$-$\sigma$-\'algebra  $A$ es \emph{finitamente $\sigma$-generada}, si existen elementos $f_1, \ldots, f_n$ tales que $$A = k[f_1,f_2,\ldots,f_n,\sigma(f_1),\ldots,\sigma(f_n),\sigma^2(f_1),\ldots].$$
+\end{defn}
+
+\begin{rem}\label{epipoli}
+Si $A$ es una $k$-$\sigma$-\'algebra , $\sigma$-generada por $f_1, \ldots, f_n$, entonces tenemos un epimorfismo can\'onico de $k$-$\sigma$-\'algebras del $\sigma$-anillo de polinomios $k\{y_1, \ldots, y_n \}$ a $A$: $y_i \mapsto f_i, i = 1, \ldots, n$. Vemos entonces que los $\sigma$-anillos de polinomios son objetos libres en la categor\'ia de $k$-$\sigma$-\'algebras finitamente generadas. Por ello, denotamos a la $\sigma$-\'algebra  generada por $f_1, \ldots, f_n$ por $k\{f_1, \ldots, f_n\}$.
+\end{rem}
+
+\begin{defn}
+Si el n\'ucleo $I$ del epimorfismo mencionado en el Comentario \ref{epipoli} es a su vez finitamente $\sigma$-generado, digamos por $r_1, \ldots, r_m$, entonces decimos que el \'algebra $A$ es \emph{finitamente $\sigma$-presentada}.
+\end{defn}
+
+\begin{rem}
+En las condiciones de la definicion anterior, por el teorema de isomorf\'ia tenemos $A \cong k\{y_1, \ldots, y_n\}/(r_1,\ldots,r_m)$. N\'otese tambi\'en que los conceptos ``finitamente $\sigma$-generado'' y ``finitamente $\sigma$-presentado'' son ver\-da\-de\-ra\-men\-te diferentes: a diferencia del caso de anillos polinomiales comunes, no se cumple el teorema de la base de Hilbert, lo que quiere decir que $k\{y_1, \ldots, y_n\}$ no es un anillo noetheriano. En particular, a pesar de ser 
+finitamente $\sigma$ generada el \'algebra, el ideal $I$ puede no serlo.
+\end{rem}
+
+\begin{ex}
+Sea $k$ un $\sigma$-cuerpo y sea $I \si k\{y\} $ el $\sigma$-ideal generado por $y\s(y), y\s^2(y), y\s^3(y), \ldots$, es decir $I = [y \s^i(y) \mid i\geq 1]$. Entonces el $\sigma$-anillo $R := k\{y\}/I$ (donde $\s (r + I) := \s(r) + I)$ es 
+finitamente $\sigma$-generado: $R = k\{ y + I \}$, pero no finitamente $\sigma$-presentado, pues $I$ no es finitamente $\sigma$-generado.
+\end{ex}
+
+\begin{rem}
+As\'i como las ecuaciones algebraicas ordinarias se reducen a buscar soluciones de un polinomio, 
+las ecuaciones de diferencias las podemos expresar como la b\'usqueda de soluciones para  polinomios $\sigma$. Enti\'endase aqu\'i un homomorfismo como el del Comentario \ref{epipoli}.
+\end{rem}
+
+\begin{ex}
+Ahora podemos expresar los dos ejemplos de la introducci\'on en el lenguaje del \'algebra de diferencias:
+La sucesi\'on de Fibonacci es una soluci\'on del polinomio $\sigma^2(y) + \sigma(y) - y$ en el $\sigma$-anillo  $\text{Seq}(\Z)$; esta es precisamente la relaci\'on de recurrencia $a_{n+2} + a_{n+1} = a_n$.
+De la misma manera, la funci\'on $\Gamma$ es la soluci\'on del polinomio $\sigma(y) - zy$, donde $z \in \C(z)$ denota a la funci\'on constante $z \mapsto z$.
+\end{ex}
+
+\section{Ideales de diferencias}\label{ideales}
+
+\begin{defn}
+Sea  $\a \si R$ un $\sigma$-ideal de $R$. 
+\begin{itemize}
+\item Decimos que  $\a$ un $\sigma$\emph{-ideal mezclado} si para cualesquiera $f,g \in R$, $fg \in \a$ implica que $f \sigma(g) \in \a$.
+\item Decimos que $\a$ es \emph{perfecto} si $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implica que $f \in \a$, donde $n \geq 1, i_j \geq 0 \fa j \in \{1,\ldots,n\}$.
+\item Decimos que $\a$ es \emph{reflexivo} si $\s(a) \in \a$ implica que $a \in \a$.
+\item Decimos que $\a$ es $\s$\emph{-primo} si $\a$ es un ideal primo y $\sigma$-reflexivo.
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+Es f\'acil ver de sus definiciones que los $\sigma$-ideales $\sigma$-primos son perfectos, y que los $\sigma$-ideales perfectos son mezclados, radicales y reflexivos. Los $\sigma$-ideales primos (en el sentido de la teor\'ia de anillos) tambi\'en son mezclados, pero no necesariamente perfectos. N\'otese que hay una diferencia ente un $\sigma$-ideal $\sigma$-primo y un $\s$-ideal primo: el primero debe ser necesariamente reflexivo, lo cual no es el caso para el segundo. 
+Estos dos tipos de $\sigma$-ideales est\'an estrechamente relacionados con los $\sigma$-ideales perfectos y mezclados, respectivamente.
+\end{rem}
+
+\begin{lem}\label{bijmapping}
+Sea $\varphi: R \rightarrow S$ un homomorfismo de $\sigma$-anillos y sea $\a \si S$ un $\s$-ideal. Entonces $\varphi^{-1}(\a) \si R$ es un $\sigma$-ideal. De forma similar, si $\a$ es un $\sigma$-ideal mezclado, tambi\'en lo es $\varphi^{-1}(\a)$. Lo mismo es cierto para los $\sigma$-ideales perfectos y reflexivos. \end{lem}
+\begin{proof}
+Ya que $\a \unlhd S$ es un ideal, tambi\'en lo es $\b := \varphi^{-1}(\a) \unlhd R$. Sea $b \in \b$. Entonces  por definici\'on $a:=\varphi(b)\in \a$. Ya que $\a \si S$ es un $\sigma$-ideal, $\sigma(a) \in \a$, y ya que $\varphi$ es un homomorfismo de $\sigma$-anillos, se sigue que $\sigma(a) = \sigma(\varphi(b)) = \varphi (\s (b)) \in \a$. Por tanto, $\sigma(b) \in \b$, lo cual implica a su vez que $\b$ es un $\sigma$-ideal.\\
+
+Ahora, sea $\a$ un $\sigma$-ideal mezclado y supongamos que $fg \in \b$. Por definici\'on de $\b$, 
+esto significa que $\varphi(fg) = \varphi(f) \varphi(g) \in \a$. Ya que $\a$ es mezclado, esto a su vez implica que $\varphi(f) \s \varphi(g) = \varphi(f) \varphi(\s(g)) \in \a$, lo cual significa que $f\s(g) \in \b$, por lo que $\b$ tambi\'en es mezclado.
+El resultado para ideales de diferencias perfectos y reflexivos es an\'alogo.
+\end{proof}
+
+
+\begin{rem}
+Sea $R$ un $\sigma$-anillo y $\a \si R$ un $\sigma$-ideal. Podemos definir una estructura can\'onica de $\sigma$-anillo en el anillo cociente $R/\a$ mediante $\s(r+\a):= \s(r) + \a$. 
+Este homomorfismo est\'a bien definido, y en particular convierte al epimorfismo de anillos can\'onico $\tau: R \rightarrow R/\a$ en un homomorfismo de $\sigma$-anillos.
+\end{rem}
+
+\begin{prop}\label{bijideals}
+Sea $R$ un $\sigma$-anillo y $\a \si R$ un $\sigma$-ideal. Entonces existe una biyecci\'on entre los conjuntos $\{ \b \si R/\a \}$ y $\{ \a \si \b \si R \}$, la cual est\'a dada por la funci\'on inducida por el encaje can\'onico del Lema \ref{bijmapping}. 
+Esto sigue siendo cierto si restringimos ambos conjuntos a los ideales $\s$ que sean radicales, mezclados, primos, $\sigma$-primos o perfectos.
+%% \begin{bew}
+%% fixme: proof!
+%% \end{bew}
+\end{prop}
+
+\begin{rem}\label{wmwelldef}
+Sea $R$ un $\sigma$-anillo, y $F \subseteq R$ un subconjunto de $R$. Cualquier intersecci\'on de ideales $\sigma$-mezclados y radicales que contengan a $F$ tambi\'en es un ideal $\sigma$-mezclado y radical, que por supuesto contiene a $F$. 
+Esto significa que existe un $\sigma$-ideal radical y mezclado minimal (con respecto a la inclusi\'on) que contiene a $F$; concretamente es la intersecci\'on de todo dicho ideal:
+%\begin{align*} \bigcap_{\substack{ \b \si R \\ \b \text{ mezclado y radical}}} \b. \end{align*}
+\begin{proof}
+Sea $I$ un conjunto de \'indices, y sean $\a_i \si R \fa i \in I$ $\sigma$-ideales radicales y mezclados. Adem\'as, sea $\b := \bigcap_{i \in I} \a_i$ la intersecci\'on de estos. Si $a \in \a_i \fa i \in I$, entonces $\s(a) \in \a_i \fa i \in I$, ya que cada $\a_i$ es un $\sigma$-ideal.
+Esto implica que $\sigma(a) \in \b$. Argumentos an\'alogos demuestran las otras dos propiedades.
+\end{proof}
+\end{rem}
+
+\begin{defn}
+Al $\sigma$-ideal $\a$ del Comentario \ref{wmwelldef} se le llama la \emph{clausura radical y mezclada} de $F$, y se le denota por $\{F\}_{m}$.
+\end{defn}
+
+\begin{rem}\label{remshuffling}
+Sea $R$ un $\sigma$-anillo, $\a \si R$ un $\sigma$-ideal. Para tratar de encontrar $\{\a\}_m$ es tentador definir $\a':= \{ f\s(g) \mid fg \in \a \}$. Un ejemplo sencillo nos muestra que esto no basta, ya que $\a'$ no es un ideal en general.
+Sea $R=k\{y_1,y_2,y_3\}$, donde $k$ es un $\sigma$-cuerpo, y $\a = [y_1y_2, y_2y_3] \si R$. Entonces no existen $f,g \in R$ tales que $ f \s(g) = \s(y_2)y_3 + \s(y_1)y_2 \in \{\a\}_m$ y $fg \in \a$. 
+Si tomamos el $\sigma$-ideal generado por $\a'$, $[\a']$ no tenemos ninguna garant\'ia que este siga siendo mezclado. De hecho, en el mismo ejemplo $y_1\s^2(y_2) \notin [\a']$ a pesar que $y_1 \s(y_2) \in \a'$. 
+Podr\'iamos repetir este proceso, pero esto nos dejar\'ia sin $y_1 \s^3(y_2)$, y as\'i sucesivamente. Pero la uni\'on de todos los conjuntos obtenidos as\'i s\'i funciona, como lo veremos en los siguientes lemas.
+\end{rem}
+
+\begin{lem}\label{sqrtmixed}
+Sea $R$ un $\sigma$-anillo y $\a$ un $\sigma$-ideal mezclado. Entonces el radical $\sqrt{\a}$ de $\a$ tambi\'en es mezclado. \end{lem}
+
+\begin{proof}
+Sean $f,g \in R$ tales que $fg \in \sqrt \a$. Por definici\'on existe un $n \geq 1$ tal que $f^n g^n = (fg)^n \in \a$. Ya que $\a$ es mezclado, esto implica que $f^n \s(g^n) = f^n \s(g)^n = (f\s(g))^n \in \a$. 
+Pero esto implica que $f\s(g) \in \sqrt \a$, que era lo que deb\'ia mostrarse.
+\end{proof}
+
+
+\begin{lem}\label{lemsuffling}
+Sea $R$ un $\sigma$-anillo y $F \subseteq R$. Adem\'as, sea $F' := \{f\s(g) \mid fg \in F \}$ como en el Commentario \ref{remshuffling}, y sean $F^{\{1\}}:= [F]'$, $F^{\{n\}}:= [F^{\{n-1\}}]'$. Entonces
+\begin{align} \{F\}_m = \sqrt{\bigcup_{n=1}^{\infty} F^{\{n\}}}. \end{align}
+Esta manera de obtener a $\{F\}_m$ se denomina \emph{proceso de mezcla} y tiene un an\'alogo para ideales $\sigma$- perfectos. \index{Shuffling process}
+\begin{proof}
+Sea $\a:= \bigcup_{n=1}^{\infty} F^{\{n\}}$. Es obvio de la construcci\'on que $\a$ es un $\sigma$-ideal mezclado, y que $F \subseteq \a$. 
+Por inducci\'on en los pasos iterativos $F^{\{n\}}$ obtenemos que para cada $\sigma$-ideal mezclado $\b$ que contiene a $F$ se cumple que $F^{\{n\}} \subseteq \b$. Por tanto, $\a$ es el $\sigma$-ideal mezclado m\'as peque\~no que contiene a $F$.
+Por el Lema \ref{sqrtmixed} sabemos que $\sqrt{\a}$ sigue siendo mezclado, lo cual a su vez demuestra que $\sqrt{\a}$ es, de hecho, el $\sigma$-ideal radical y mezclado m\'as peque\~no que contiene a $F$. 
+\end{proof}
+\end{lem}
+
+En la geometr\'ia algebraica, al tratar con variedades afines, el enfoque moderno es el de definir una topolog\'ia en el espectro del anillo, la \emph{topolog\'ia de Zariski}. A continuaci\'on haremos una generalizaci\'on de este principio para el caso de $\sigma$-anillos. El lector que no este familiarizado con este concepto no debe preocuparse, 
+pues lo que sigue en este art\'iculo no requiere dicho conocimiento, s\'olo que tal vez le costar\'a m\'as entender el porqu\'e de estas construcciones. 
+No obstante, para la demostraci\'on del teorema principal de este art\'iculo, el Teorema \ref{intersectionprimes}, vamos a hacer uso de un par de resultados del \'algebra conmutativa
+que s\'olo se repetir\'an en el siguiente lema. Al lector que no los conozca y quiera saber m\'as se le sugiere consultar cualquier texto b\'asico de \'algebra conmutativa o geometr\'ia algebraica,
+tal y como \cite{eisenbud} \'o \cite{hartshorne}.
+
+\begin{lem}\label{commalg}
+Sea $R$ un anillo (conmutativo y con unidad). Entonces:
+\begin{itemize}
+\item Si $R \leq S$ es una extensi\'on de anillos, y $\p$ un ideal primo minimal de $R$, entonces existe un ideal primo minimal $\q$ de $S$ tal que $\p = \q \cap R$
+\item Cada ideal radical de $R$ es la intersecci\'on de ideales primos. Si $R$ is noetheriano, entonces esta intersecci\'on es finita.
+\item Si $R$ es noetheriano y $\p \unlhd R$ es un ideal primo minimal de $R$, entonces existe un elemento $a \in R$ tal que $\p$ es el ideal aniquilador de $a$, es decir $\p = \text{Ann}(a) = \{ r \in R \mid ra = 0 \}$.
+\end{itemize}
+\end{lem}
+
+\begin{prop}\label{mixedintersectionprimesfinite}
+Sea $R$ un $\sigma$-anillo finitamente $\sigma$-generado por $\Z$, es decir, para el cual existe un conjunto finito $A \subseteq R$ de tal manera que cada $f \in R$ pueda ser escrito como una combinaci\'on $\Z$-linear finita de potencias de $\sigma$ de elementos en $A$(en otras palabras, existe un $n \in \NE$ tal que $f \in \Z[A,\sigma(A),\ldots,\s^n(A)]$). Entonces, cada $\sigma$-ideal radical y $\sigma$-mezclado es la intersecci\'on de ideales de diferencias primos.
+
+\end{prop}
+\begin{proof}
+Sea $\a \si R$ un $\sigma$-ideal mezclado y radical. Por la Proposici\'on \ref{bijideals} existe una biyecci\'on entre los ideales primos de $R$ que contienen a $\a$ y los de $R/\a$. Por consiguiente podemos asumir sin p\'erdida de la generalidad que $\a = [0] \si R$, reemplazando $R$ por $R/\a$. Esto quiere decir que basta con demostrar que el ideal $[0]$ de un $\sigma$-anillo bien-mezclado (se le define as\'i a un anillo cuyo ideal $0$ es mezclado) y reducido es la intersecci\'on de todos sus $\sigma$-ideales primos.
+N\'otese que esta suposici\'on no cambia el hecho que $R$ sea finitamente $\sigma$-generado por $\Z$.\\
+
+Sea, pues, $f \in R$ tal que $f \notin \q \fa \q \si R$ primo. Aseveramos que $f$ entonces tiene que ser $0$. Si asumimos que este no es el caso, es decir, $f \neq 0$, entonces por la suposici\'on sobre $R$ existe un $n \in \N$ tal que $f \in \Z[A,\s(A),\ldots,\s^n(A)]$.
+Ahora usamos el caso especial para ideales (de anillos conmutativos): Puesto que $\Z[A,\s(A),\ldots,\s^n(A)]$ es reducido, $(0) \unlhd R$ es la intersecci\'on de todos los ideales primos de $R$. En particular, existen ideales primos que no contienen a $f$.\\
+
+Sea $\q_0 \unlhd R$ uno de dichos ideales, es decir, $f \notin \q_0$, minimal con respecto a la inclusi\'on. Ya que $f \in \Z[A,\s(A),\ldots,\s^n(A)] \subset \Z[A,\s(A),\ldots,\s^{n+1}(A)]$, nuevamente por el Lema \ref{commalg} 
+podemos encontrar un $\q_1 \unlhd \Z[A,\s(A),\ldots,\s^{n+1}(A)]$ tal que $\q_1 \cap \Z[A,\s(A),\ldots,\s^{n}(A)] = \q_0$. Prosiguiendo inductivamente encontramos una cadena de ideales primos minimales
+ $\q_i, i \in \N$, $\q_i \unlhd \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, con $\q_{i+1} \cap \Z[A,\s(A),\ldots,\s^{n+i}(A)] = \q_i$ para todo $i \in \N$.
+Entonces $\q := \bigcup_{i=0}^{\infty} \q_i$ es un ideal primo de $R$, que cumple que $f \notin \q$. \\
+
+Afirmamos que, de hecho, $\q$ es un $\sigma$-ideal de $R$. Sea $a \in \q$; queremos demostrar que  $\s(a) \in \q$.  
+Por la construcci\'on de $\q$ existe un $i \in \N$ tal, que $a \in \q_{i-1} \subseteq \Z[A,\s(A),\ldots,\s^{n+i-1}(A)]$, lo que a su vez implica que $\s(a) \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$. 
+El Lema \ref{commalg} dice entonces que existe un $h \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$ tal, que $ \q_i = \text{Ann}(h)$.
+Esto implica que $ah = 0$, y puesto que $R$ es bien-mezclado, esto implica tambi\'en que $\s(a)h = 0$, por tanto, $\s(a) \in \q_i \subseteq \q$. 
+Pero esto significa que  $\q$ es un $\sigma$-ideal primo de $R$ que no contiene a $f$, lo cual contradice la definici\'on de $f$. Por tanto $f = 0$.
+\end{proof}
+
+
+Para demostrar el caso general necesitamos otra herramienta todav\'ia: el concepto de filtros.
+
+\begin{defn}
+Sea $U$ un conjunto, y sea $F \subseteq \text{Pot}(U)$, donde $\text{Pot}(U)$ denota el conjunto potencia de $U$. Decimos que $F$ es un \emph{filtro} si satisface los siguientes axiomas:
+\begin{itemize}
+\item  $U \in F$ y $\emptyset \notin F$.
+\item Si $V,W \subseteq U$ con $V \subseteq W \text{ y }V  \in F $ implica que $W \in F$.
+\item Para cualesquiera $V_1, \ldots, V_n \in F$ se cumple que \[ \bigcap_{i = 1}^n V_i \in F. \]
+\end{itemize}
+Un \emph{ultrafiltro} es un filtro $F$ tal que para cualquier $V \subseteq U$ se cumple que $V \in F$ o $U \backslash V \in F$. N\'otese que los axiomas primero y tercero juntos implican que no pueden ambos serlo.
+\end{defn}
+
+\begin{rem}
+Sea $U$ un conjunto. Entonces, el conjunto de filtros sobre $U$ est\'a ordenado inductivamente por la inclusi\'on. Por el lema de Zorn, para cada filtro $F$ sobre $U$ debe haber un filtro maximal $G$ con respecto a la inclusi\'on, tal que $F \subseteq G$.
+La maximalidad del filtro $G$ implica que $G$ ser\'a un ultrafiltro, ya que en caso contrario podr\'iamos encontrar un filtro en el que $G$ est\'e propiamente incluido al a\~nadir uno de los conjuntos que contradicen el que $G$ sea un ultrafiltro.
+\end{rem}
+
+La raz\'on por la que este concepto es \'util en este contexto es la siguiente:
+
+\begin{lem}\label{lemmafilters}
+Sea $R$ un $\sigma$-anillo, y sea $M$ el conjunto de todos los $\sigma$-subanillos de $R$ que son finitamente $\s$-generados sobre $\Z$. Dado cualquier subconjunto fijo $F \subseteq R$, consideramos el conjunto $M_F:= \{ T \subseteq M \mid \{S \in M \mid F \subseteq S \} \subseteq T \} \subseteq \text{Pot}(M)$. Entonces, \[ \mathcal{F}:= \bigcup_{ F \subseteq R \text{ finito} } M_F \]
+ define un filtro sobre $M$. Si $\mathcal{G}$ es un ultrafiltro que contiene a $\mathcal{F}$, y $P:= \prod_{S \in M} S$ con operaciones definidas en cada componente,
+ entonces el ultrafiltro $\mathcal{G}$ define una relaci\'on de equivalencia en $P$ mediante $(g_s)_{S \in M} \sim (h_s)_{S \in M} : \Leftrightarrow \{ S \in M \mid g_s = h_s \} \in \mathcal{G}$. 
+El conjunto de clases de equivalencia $P/\mathcal{G}:= P/\sim$ tiene una estructura natural de $\sigma$-anillo y se denomina \emph{ultraproducto}. %%fixme: of what?
+\begin{proof}
+$\mathcal{F}$ es un filtro, puesto que para $F \subseteq R$ finito, $[F] \in \{ S \in M \mid F \subseteq S \} \neq \emptyset$, y ya que $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, se tiene adem\'as $\emptyset \notin M_F$ (n\'otese que $[\emptyset] = (0)$).
+  Que $M \in M_F$ para cualquier $F \subseteq R$ es obvio, al igual que que $T \subseteq U, T \in M_F$, $U \in M_F$. S\'olo necesitamos demostrar entonces que para $U,T \in \mathcal{F}$ se cumple que $U \cap T \in \mathcal{F}$.\\
+	
+  Sean $u, t \subseteq R$ finitos, tal que $U \in M_u, T \in M_t$, $u \cup t \subseteq R$ tambi\'en sea finito y que se cumpla que $\{ S \in M \mid u \cup t \subseteq S \} \subseteq \{ S \in M \mid u \subseteq S \} \subseteq U$,
+ y de forma similar para $T$. Esto significa que $U \cap T \in M_{u \cup t} \subseteq \mathcal{F}$, lo que concluye la demostraci\'on que $\mathcal{F}$ es un filtro.\\
+
+ Ahora, consideremos un ultrafiltro $\mathcal{G} \supseteq \mathcal{F}$ y definamos $\sim$ en $P$ como antes. Veamos que esta es una relaci\'on de equivalencia: Sea $f \sim g, g \sim h$ para $f,g,h \in P$. 
+ Esto significa que  $\{ S \in M \mid f_s = g_s \} \in \mathcal{G}, \{ S \in M \mid g_s = h_s \} \in \mathcal{G}$. Pero entonces $\{ S \in M \mid f_s = g_s \} \cap \{ S \in M \mid g_s = h_s \} \subseteq \{ S \in M \mid f_s = h_s \} \in \mathcal{G}$, ya que  $\mathcal{G}$ es un filtro.
+ La reflexividad es una consecuencia del hecho que $M \in \mathcal{G}$, y la simetr\'ia es obvia. Solo falta entonces demostrar que tenemos una estructura bien definida de $\sigma$-anillo en $P/ \sim$.\\
+
+ Consideremos $f,f' \in P$ con $f \sim f'$. Sabemos que para todo $S \in M$ con $f_S = f'_S$ se cumple que   $\sigma(f)_S = \sigma(f')_S$. Pero entonces $\{ S \in M \mid \s(f)_S = \s(f')_S \} \supseteq \{ S \in M \mid f_S = f'_S \} \in \mathcal{G}$ por hip\'otesis, y ya que $\mathcal{G}$ es un filtro, esto significa que $\{ S \in M \mid \s(f)_S = \s(f')_S \} \in \mathcal{G}$.
+ Por tanto $\s(f) \sim \s(f')$. Se demuestra de una manera similar que las operaciones del anillo est\'an bien definidas.
+\end{proof}
+\end{lem}
+
+Ahora demostraremos el caso general de la Proposici\'on \ref{mixedintersectionprimesfinite}. 
+
+
+\begin{theorem}\label{intersectionprimes}
+Sea $R$ un $\sigma$-anillo, y $F \subseteq R$ be un subconjunto de $R$. Entonces, 
+\begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ primo}}} \p \end{align*}
+En particular, cada $\sigma$-ideal mezclado y radical de $R$ es la intersecci\'on de ideales de diferencias primos.
+\end{theorem}
+\begin{proof}
+Basta con mostrar que cada $\sigma$-ideal radical y mezclado es la intersecci\'on de $\sigma$-ideales primos. Puesto que un $\sigma$-ideal que sea primo tambi\'en es radical y mezclado,
+es claro que $\{F\}_m \subseteq \p$ para cada $\p \si R$ primo con $F \subseteq \p$, lo que nos da la representaci\'on
+\begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ primo}}} \p. \end{align*}
+Ahora, por el mismo argumento que en la Proposici\'on \ref{mixedintersectionprimesfinite}, es suficiente demostrar en el caso que $R$ sea bien-mezclado y reducido, que la intersecci\'on de todos los $\sigma$-ideales primos es $[0]$.
+Sea $0 \neq f \in R$. Vamos a construir un $\sigma$-ideal y primo que no contenga a $f$.\\
+
+Sea $P/\mathcal{G}$ el anillo de diferencias como en el Lema \ref{lemmafilters}. Consideremos la aplicaci\'on $\varphi: R \rightarrow P/\mathcal{G}, g \mapsto (g_S)_{S \in M}$ donde $(g_S) = g \fa S \in M$ con $g \in S$. 
+Ya que $\{ S \in M \mid g \in S \} \in M_g$ (donde $M_g$ se define tal y como en el Lema \ref{lemmafilters}), todos los $(g_S)$ as\'i est\'an en la misma clase de equivalencia respecto a $\sim$, independientemente de los $g_s$ para $g \notin S$. 
+Por este hecho no es dif\'icil ver que $\varphi$ es un homomorfismo de $\sigma$-anillos bien definido. \\
+
+Por la proposici\'on \ref{mixedintersectionprimesfinite} sabemos que para cada $S \in M$ existe un $\s$-ideal primo $\p_S \si S$ tal que $f \notin S$. 
+Definimos $\p \si P/\mathcal{G}$ como el conjunto de todas las clases de equivalencia de elementos $(g_s)_{S \in M}$ tales, que $\{ S \in M \mid g_s \in \p_S \} \in \mathcal{G}$. 
+Para $[(g_s)_{S \in M}]_{\sim}, [(h_s)_{S \in M}]_{\sim} \in \p$ se tiene que $$ \mathcal{G} \ni \{ S \in M \mid  g_s \in \p_S \} \cap  \{ S \in M \mid  h_s \in \p_S \} \subseteq \{ S \in M \mid  g_s + h_s \in \p_S \} \in \mathcal{G}$$
+ya que $\mathcal{G}$ es un filtro. Argumentos similares para $\s(g), gh$ y $h \in P/\mathcal{G}$ muestran que $\p$ en efecto es un $\sigma$-ideal. M\'as a\'un, $\p$ tambi\'en es primo, como probaremos a continuaci\'on.\\
+
+Sean $g,h \in P$ tales que $\{ S \in M \mid g_Sh_S \in \p_S \} \in \mathcal{G}$. Si $[g]_\sim \notin \p$, entonces $V:= \{ S \in M \mid g_S \in \p_S \} \notin \mathcal{G}$. Ya que $\mathcal{G}$ es un ultrafiltro, 
+esto significa que $M \backslash V \in \mathcal{G}$. Pero $$\mathcal{G} \ni (M \backslash V) \cap \{ S \in M \mid g_S h_S \in \p_S \} \subseteq \{ S \in M \mid h_S \in \p_S \} \in \mathcal{G},$$ lo que significa que $[h]_\sim \in \p$.
+Pero la preimagen de un ideal primo $\varphi^{-1}(\p) \si R$ tambi\'en es prima, al igual que la de un ideal de diferencias. Por construcci\'on, $[\varphi(f)]_\sim \notin \p$, lo que significa que $f \notin \varphi^{-1}(\p)$, como dese\'abamos. Esto concluye la demostraci\'on.
+\end{proof}
+
+
+\section{Un an\'alogo de la topolog\'ia de Zariski}\label{topologia}
+
+Para finalizar este art\'iculo, veremos c\'omo podemos definir en un $\sigma$-anillo una topolog\'ia an\'aloga a la topolog\'ia de Zariski.
+
+\begin{defn}
+Sea $R$ un $\sigma$-anillo. Definimos al conjunto de todos los ideales de diferencia primos como $\s$-$\Spec(R):= \{ \p \si R \mid \p \text{ primo}\}$. De forma similar, definimos el conjunto de los ideales $\s$-primos como $\Spec^\s(R):= \{ \p \si R \mid \p ~ \s\text{-primo}\}$.
+\end{defn}
+
+\begin{rem}
+En general puede ocurrir que tanto $\Spec^\sigma(R)$ como $\sigma$-Spec($R)$ sean vac\'ios. Por ejemplo, sea $R$ un $\sigma$-anillo y considere el $\sigma$-anillo $R \oplus R$, con $\s( (r,s)):= (\s(s),\s(r))$. Este anillo no tiene ideales de diferencias primos. Sea $\p \unlhd R$ primo. Entonces $0 = (1,0)(0,1) \in \p$, lo que significa que $(1,0) \in \p$ \'o $(0,1) \in \p$. Pero entonces $R \oplus 0 \subseteq \p$ \'o $0 \oplus R \subseteq \p$. Si asumimos que $\p$ es un $\sigma$-ideal, entonces
+lo anteriormente concluido implica que $R \oplus R \subseteq \p$, lo cual no puede ocurrir por la definici\'on de ideal primo.
+\end{rem}
+
+En la geometr\'ia algebraica se define usalmente una topolog\'ia en $\Spec(R) = \{ \p \unlhd R \mid p \text { primo} \}$, llamada la \emph{topolog\'ia de Zariski}. Esto tiene un an\'alogo en $\Spec^\s(R)$, llamada usualmente la \emph{topolog\'ia de Cohn}. Aqu\'i vamos a hacer otra definici\'on en $\s$-Spec$(R)$ an\'aloga a las dos anteriores, y que es la topolog\'ia ``correcta'' para trabajar con ideales de diferencias mezclados (por el Teorema \ref{intersectionprimes}, por ejemplo).
+
+\begin{defn}
+Sea $R$ un $\sigma$-anillo y $F \subseteq R$. Definimos $\Vm (F):= \{ \p \in \s$-Spec$(R) \mid F \subseteq \p \}$. 
+%%Similarly, for a subset $A \subseteq \s$-Spec$(R)$ we set $\I(A):= \{ r \in R \mid 
+\end{defn}
+
+\begin{lem}\label{topologywelldef}
+Sea $R$ un $\sigma$-anillo. Entonces tenemos:
+\begin{enumerate}
+\item $\Vm((0)) = \s$-Spec$(R)$, y $\Vm(R) = \emptyset$.
+\item Para cualesquiera dos ideales $\a,\b \unlhd R$ tenemos $\Vm(\a) \cup \V(\b) = \Vm(\a \cap \b)$.
+\item Para cualquier familia de ideales $(\a_i)_{i \in I}$, donde $I$ es un conjunto de \'indices, tenemos $$\bigcap_{i \in I} \Vm(\a_i) = \Vm \left(\sum_{i \in I} \a_i \right).$$
+\end{enumerate}
+\end{lem}
+\begin{proof} $\phantom{}$
+\begin{enumerate}
+\item Es claro que $(0) \subseteq \p \fa \p \in \sSpec(R)$, al igual que $R \not\subseteq \p \fa \p \in \sSpec(R)$.
+\item Sean $\a, \b \unlhd R$ dos ideales de $R$. Entonces $\Vm(\a) \cup \Vm(\b) \subseteq \Vm(\a \cap \b)$, ya que para $\p \si R$ primo $\a \subseteq \p$ implica que $\a \cap \b \subseteq \p$, y similarmente para $\b$.
+Por otro lado, sea $\p \si R$ primo con $\a \cap \b \subseteq \p$, y $\a \not\subseteq \p$ (en caso contrario $\p \in \Vm(\a)$ y hemos terminado). Entonces existe un $f \in \a$ tal que $f \notin \p$. 
+Para cualquier $g \in \b$, esto implica que $fg \in \a \cap \b \subseteq \p$. Ya que $\p$ es primo, esto significa que $g \in \p$ y por tanto $\b \subseteq \p$, lo que concluye la demostraci\'on.
+\item Sea $(\a_i)_{i \in I}$ una familia de ideales de $R$. Entonces $\p \in \cap_{i \in I} \Vm(\a_i)$ si y s\'olo si $\a_i \subseteq \p \fa i \in I$, es decir si y s\'olo si $\p \in \Vm(\sum_{i \in I} \a_i)$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{rem}\label{vmsequal}
+Ya que en un $\sigma$-anillo cualquier $\sigma$-ideal y primo es radical y mezclado, se cumple que para cualquier $F \subseteq R$ y cualquier $\sigma$-ideal y primo $\p \si R$ tal que $F \subseteq \p$:
+$$(F) \subseteq [F] \subseteq \{ F \}_m \subseteq \p.$$ En particular, esto significa que $\Vm(F) = \Vm((F)) = \Vm([F]) = \Vm(\{F\}_m)$.
+\end{rem}
+
+\begin{defn} $\phantom{}$
+
+\begin{enumerate}
+\item Sea $R$ un $\sigma$-anillo. Definimos una topolog\'ia en $\sSpec(R)$ declarando que $A \subseteq \sSpec(R)$ es cerrado si y s\'olo si $A = \Vm(\a)$ para alg\'un ideal $\a \unlhd R$, o de forma equivalente,
+ declarando que un conjunto abierto si es el complemento de un conjunto de la forma $\Vm(\a)$ (esta es una topolog\'ia bien definida gracias al Lema \ref{topologywelldef}).
+\item Dado $f \in R$, definimos $\sigma$-$D(f):= \sSpec(R) \backslash \Vm(f)$. Por el Comentario \ref{vmsequal}, $\s$-$D(f)$ es el complemento de un conjunto cerrado, y por consiguiente, abierto.
+Llamamos a los conjuntos de la forma $\s$-$D(f) \subseteq \sSpec(R)$ los \emph{abiertos b\'asicos} de $\sSpec(R)$.
+\end{enumerate}
+\end{defn}
+
+Con estas definiciones ya podemos empezar a trabajar con aspectos geom\'etricos en \'algebra de diferencias, y el lector que conozca la geometr\'ia algebraica apreciar\'a que estamos ya en un my buen camino.
+Desafortunadamente hasta aqu\'i se limita este art\'iculo, pero se recomienda al lector que desea informarse m\'as acerca del tema que consulte los textos \cite{cohn} o \cite{levin}.
+
+\section*{Ejercicios}
+Estos ejercicios le servir\'an al lector que quiera solidificar su comprensi\'on del art\'iculo. 
+\begin{itemize}
+\item Secci\'on \ref{fundamentos}
+  \begin{enumerate}
+  \item Sea $R$ un $\s$-anillo. Demuestre que el anillo cociente m\'odulo un $\s$-ideal $I$, $R/I$, es un $\s$-anillo con
+ \begin{align*} \sigma: R/I \rightarrow R/I, a + I \mapsto \sigma(a) + I. \end{align*}
+ \item Sea $R$ un $\s$ anillo, $a_1,\ldots,a_k \in R$. Demuestre que el $\s$-ideal minimo que incluye a $a_1,\ldots,a_k$: $[a_1,\ldots,a_k]$ puede ser descrito de la siguiente manera:
+  \[[a_1,\ldots,a_k] = \{ \sum_{i=1}^n \s^{j_i}(x_i) \mid n \geq 1, j_i \geq 0, x_i \in \{a_1,\ldots,a_k\}, i=1,\ldots,n \} \]
+\item Sea $k$ un $\s$-cuerpo. Considere la  $k$-$\s$-\'algebra $A:= k[y_1,y_2,\ldots]$, con \[ \s(y_1) = y_1, \s(y_i) := y_{i+1}, i = 2,3, \ldots, y_1 \cdot y_i = y_{i+2}, i = 2,3, \ldots \]
+?`Es $A$ finitamente $\s$-generada? ?`Es $A$ finitamente $\s$-presentada? En dado caso encuentre un sistema de $\s$-generadores finito o una $\s$-presentaci\'on, o demuestre que no existen.
+  \end{enumerate}
+\item Secci\'on \ref{ideales}
+  \begin{enumerate}
+  \item Sea $\varphi: R \rightarrow S$ un morphismo de $\s$-anillos, y sea $\a \si S$ un $\s$-ideal perfecto; de forma similar $\b \si S$ sea reflexivo.
+    Demuestre que $\varphi^{-1}(\a)$ es un $\s$-ideal perfecto de $R$, y $\varphi^{-1}(\b)$ es reflexivo.
+  \item Demuestre la Proposici\'on \ref{bijideals}: Sea $R$ un $\sigma$-anillo y $\a \si R$ un $\sigma$-ideal. Entonces existe una biyecci\'on entre los conjuntos $\{ \b \si R/\a \}$ y $\{ \a \si \b \si R \}$, la cual est\'a dada por la funci\'on inducida por el encaje can\'onico del Lema \ref{bijmapping}. 
+Esto sigue siendo cierto si restringimos ambos conjuntos a los ideales $\s$ que sean radicales, mezclados, primos, $\sigma$-primos o perfectos.
+\item Si no conoc\'ia los resultados del Lema \ref{commalg}, familiar\'icese con ellos. Trate de demostrarlos, o buscarlos en la literatura mencionada.
+\item Sea $(U,\mathcal{T})$ un espacio topol\'ogico con la topolog\'ia $\mathcal{T}$, y sea $x \in U$ un punto. Definimos el conjunto de entornos de $x$:
+ \[ \mathcal{U}_x := \{ x \in F \subseteq U \mid \text{ existe un } V \in \mathcal{T}: V \subseteq F\} \]
+Demuestre que $\mathcal{U}_x$ es un filtro.
+  \end{enumerate}
+\item Secci\'on \ref{topologia}
+  \begin{enumerate}
+\item (*) ?`Es posible agudizar la aseveraci\'on del Teorema \ref{intersectionprimes}, como en el caso de ideales radicales en un anillo noetheriano (ver Lema \ref{commalg}), 
+para asegurar que la intersecci\'on sea finita? En otras palabras, ?`es $\sSpec(R)$ un espacio topol\'ogico noetheriano? ?`Qu\'e propiedades debe tener $R$ para que esto se cumpla siempre?
+(*: La respuesta de este ejercicio todav\'ia no se conoce en general)
+\item En el caso de ideales radicales, para $I,J \unlhd R$ se cumple que $\sqrt{I} \cap \sqrt{J} = \sqrt{IJ}$. Demuestre o refute el an\'alogo para ideales mezclados radicales:
+Para $\a, \b \si R$: $\{\a\}_m \cap \{b\}_m = \{\a\b\}_m$.
+\item Sea $(U,\mathcal{T})$ un espacio topol\'ogico. A un conjunto $B \subseteq \mathcal{T}$ Se le llama una \emph{base} de la topolog\'ia,
+ si cada conjunto abierto $V \in \mathcal{T}$ puede ser escrito como la uni\'on de conjuntos en $B$, es decir, si existe un $B_V \subseteq B$ tal que $V = \cup_{X \in B_V} X$. 
+ Demuestre que los conjuntos abiertos b\'asicos $\s$-$D(f), f \in R$ forman una base de la topolog\'ia en $\sSpec(R)$.
+  \end{enumerate}
+
+\end{itemize}
+
+
+\begin{thebibliography}{9}
+\bibitem{wibmer} Wibmer, Michael, \emph{Algebraic Difference Equations (Lecture Notes)}. http://www.algebra.rwth-aachen.de/de/Mitarbeiter/Wibmer/Algebraic\%20difference\%20equations.pdf.
+\bibitem{lang} Serge Lang, \emph{Algebra}, Revised Third Edition, Springer, 2005.
+\bibitem{eisenbud} Eisenbud, David \emph{Commutative Algebra with a View Toward Algebraic Geometry}, Springer, 1995.
+\bibitem{hartshorne} Hartshorne, Robin, \emph{Algebric Geometry}, Springer, 1977.
+\bibitem{cohn} Cohn,  Richard, \emph{Difference Algebra}, Interscience Publishers, 1965.
+\bibitem{levin} Levin, Alexander, \emph{Difference Algebra}, Springer, 2008.
+\end{thebibliography}
+
+
+\end{document}
