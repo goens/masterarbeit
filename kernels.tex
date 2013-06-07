@@ -79,6 +79,7 @@
 \begin{document}
 \section{Difference Kernels}
 
+Not corrected.
 %% blah blah de entrada...
 %% \begin{theorem}
 
@@ -135,18 +136,72 @@ Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and $\p' 
 Then we call $\p'$ a \emph{prolongation} of $\p$, iff $\p'[d] = \p$. If it holds further that $\sdim(\p) = \sdim(p')$, then we call the prolongation \emph{generic}.
 \end{defn}\index{prolongation, generic}
 
-
 \begin{defn}
 Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $\p'$ be a realization of $\p$. We call $\p'$ a principal realization of $\p$, iff $\p'[i+1]$ is a generic prolongation of $\p'[i]$ for all $i \geq d$.
 \end{defn}
 
+\begin{ex}
+Consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
+A calculation with \cite{M2} quickly identifies that the ideal $(f_1,f_2) \unlhd R$ is prime, and in fact, $f_1,f_2$ is a Gr\"{o}bner Basis of $(f_1,f_2)$ with respect to the
+term ordering $y_1 < y_2 < \s(y_1) < \s(y_2)$. This means in particular, that $(f_1,f_2)[0] = \{0\}$, and thus $(f_1,f_2)$ is a weak kernel of length $1$ of $k\{y_1,y_2\}$. However,
+\[ f_1 \cdot (\s^2(y_1) + \s(y_1) + 1 ) - \s(f_2) = 1 \]
+Which means that any $\s$-ideal of $k\{y_1,y_2\}$ containing $f_1, f_2$ is already the whole ring, and is not prime, by definition.
+\end{ex}
+
+We see thus, that we need a stronger concept for weak kernels. 
+
+\begin{defn}
+Let $\p \unlhd k\{y\}[d]$ be a weak kernel of length $d$. We define 
+\[\p^* := ([\p]^*)[d] = \{ f \in k\{y\} \mid \text{ there exists an } n \in \N: \s^n(f) \in [\p] \} \cap k\{y\}[d] \]
+Then $\p^*$ is an ideal in $k\{y\}[d]$. We say that $\p$ is \emph{regular} if $\p^* \unlhd k\{y\}[d]$ is prime. \index{regular weak kernel}
+\end{defn}
+
+\begin{rem}\label{regular->kernel}
+From the definitions it is easily clear that for a weak kernel $\p \unlhd k\{y\}[d]$, $\p^*$ is a kernel if and only if $\p$ is regular. 
+\end{rem}
+
+The definition of $\p^*$ for a weak kernel $\p$ of length $d$, while clear from the theoretical standpoint, makes use of the whole difference polynomial ring $k\{y\}$. 
+We would want a way of locally obtaining $\p^*$, i.e., only in $k\{y\}[d]$. Luckily, there is a nice algorithmical way of doing this using Gröbner bases.
+To do this, we fix a lexicographical ordering on the variables $y = y_1, \ldots, y_n$, and from this we define a lexicographical ordering on $k\{y\}$, namely:
+\[ \s^{m_1}(y_{i_1}) < \s^{m_2}(y_{i_2})\text{ if and only if }m_1 > m_2\text{ or }m_1 = m_2\text{ and }y_{i_1} < y_{i_2} \]
+ By a lexicograhpical order we mean that for two variables $a, b$:
+\[ a^{k_1} < b^{k_2}\text{ if and only if }a < b\text{ or }a = b\text{ and }k_1 < k_2 \]
+We will use this term ordering for the remainder of this section.
+\begin{rem}\label{remorder}
+A polynomial $f \in k\{y\}$ and its leading term $LT(f)$ have the same order. Further, if $k$ is inversive it holds that if $f$ is a power of $\s$, i.e. $f = \s^m(f')$ for an $f \in k\{y\}$,
+if and only if it is the case with $LT(f)$, and then it holds that $LT(f) = s^k(LT(f')) = LT(\s^k(f'))$.
+\begin{bew}
+That Ord$(f) \leq $Ord($LT(f)$) is obvious. Assume then that Ord$(f) < $Ord($LT(f)$). Then there exists a monomial $m$ of $f$
+with Ord($f$) = Ord($m) <$ Ord($LT(f)$). But then $m > LT(f)$, a contradiction. If $f =  \s^k(f')$, then every monomial of $f$ is as well an $k$-th power of $\s$, in particular, $LT(f)$ as well.
+On the other hand let $LT(f) = \s^k(g)$ for a monomial $g \in k\{y\}$, and assume $f$ cannot be written as $\s^k(f')$ for an $f' \in k\{y\}$. 
+Then there must be a monomial $m$ of $f$ which cannot be written as $\s^k(m')$ for a monomial $m' \in k\{y\}$. In particular, since $k$ is inversive, $m'$ has a variable $\s^j(y_i)$ with $j < k$, which is not the case
+for $LT(f)$ by assumption. This means, however, that $m' > LT(f)$, again a contradiction. 
+The last equalities all hold by the definition of the term ordering.
+\end{bew}
+\end{rem}
+
+\begin{lem}
+Let $k$ be a $\s$-field, and $k^*$ its inversive closure. Further let $\p \subset k\{y\}[d]$ be a weak kernel of length $d$, and $f_1, \ldots, f_k$ be a Gröbner basis for $\p$. 
+Then the ideal $\p^*$ is given by 
+\[ \p^* = \underbrace{(\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq k)}_{\unlhd k^*\{y\}[d]} \cap k\{y\}[d] \]
+where we by this notation ignore the $\s^{-i}(f_j)$ which do not exist. 
+In particual, if $k$ is inversive, it holds that
+\[ \p^* = (\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq k) \unlhd k\{y\}[d] \]
+\begin{bew}
+We consider first the special case where $k$ is inversive. One inclusion is obvious, as the elements $\s^{-i}(f_j)$, if they exist, have to be in $\p^*$. For the other inclusion let $f \in \p^*$.
+It is enough to show that there exists a $\s^{-i}(f_j)$ such that $LT(\s^{-i}(f_j))$ divides $LT(f)$ (see for example \cite{cox}, p.75). 
+By definition of $\p^*$ there exists an $n \in \N$ such that $\s^n(f) \in [\p]$. This means that $\s^n(LT(f)) \in LT([\p][d+n])$. 
+Since $f_j, 0 \leq j \leq k$ is a Gröbner basis of $\p$, it is clear that $LT([\p][d+n])$ is generated by $LT(\s^i(f_j)), 0 \leq i \leq n, 0 \leq j \leq k$ as an ideal in $k\{y}[d+n]$.
+Hence, there exists a $\s^i(f_j)$ and a monomial $m \in k\{y\}[d+n]$ such that $\s^n(LT(f)) = LT(\s^i(f_j)) h$. Since these are monomials and $k$ is inversive, it follows that $LT(\s^i(f_j
+By Remark \ref{remorder}
+\end{bew}
+\end{lem}
+
 \begin{lem}\label{primeoverp1}
-Let R be an integral domain and $I \subseteq R[y]$ be a subset of $R[y] = R[y_1,\ldots,y_n]$ which satisfies that $I \cap R = \{ 0 \}$.
-Then there exists a prime ideal $P \supset I$ with $P \cap R = \{0\}$.
+Let R be an integral domain and $I \unlhd R[y]$ be an ideal of $R[y] = R[y_1,\ldots,y_n]$ which satisfies that $I \cap R = \{ 0 \}$.
+Then there exists a prime ideal $P, I \subseteq P \subseteq R[y] $ with $P \cap R = \{0\}$.
 \begin{proof}
-We can assume without loss of generality that $I$ is an ideal: Let $f = \sum_{i=1}^kr_i x_i \in (I)$, where $r_i \in R[y], x_i \in (I), i = 1,\ldots,k$. If $f \in R$, by a degree argument it has to hold that $x_i, r_i \in R, i=1,\ldots,k$
-(up to leaving out terms of higher degree which cancel each other out).
-But that means that $r_i \in R \cap I = \{0\}, i=1,\ldots,k$, hence $f = 0$. Similarly, we can assume that I is radical:
+We can assume without loss of generality that I is radical:
 Namely, if $f \in \sqrt{I} \cap R$, then there exists an $m \in \N$ such that $f^m \in I \cap R = \{0\}$, and since $R$ is an integral domain this already means that $f = 0$.
 We then note that for two sets $A,B \subseteq R[y]$ it holds that $\sqrt{A}\sqrt{B} \subseteq \sqrt{AB}$: Consider $f \in \sqrt{A}, g \in \sqrt{B}$. Then there exist $m, \tilde m \in \N$ such that $f^m \in (A), g^{\tilde m} \in (B)$;
  assume without loss of generality that $m > \tilde m$, then $(fg)^m \in (A)(B)$, which implies $fg \in \sqrt{(A)(B)} = \sqrt{AB}$.
@@ -159,8 +214,8 @@ A contradiction.
 \end{proof}
 \end{lem}
 
-\begin{lem}\label{genericprol}
-Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$. Then there exists a prolongation of $\p$. If $\p$ is a kernel, then there exists a prologation that is generic. 
+\begin{prop}\label{genericprol}
+Let $\p \subseteq k\{y\}$ be a (regular weak) difference kernel of length $d$. Then there exists a prolongation of $\p$. If $\p$ is a kernel, then there exists a prologation that is generic. 
 \begin{bew}
 Consider the canonical epimorphism of rings $k[y,\ldots,\s^{d}(y)] \rightarrow k[y,\ldots,\s^{d}(y)]/\p$ and let $a = y + \p$ be the image of $y$ under it. 
 Then the we have a subring $R_1: = k[a,\ldots,\s^{d-1}(a)] \subseteq k[a,\ldots,\s^{d}(a)] = k[y,\ldots,\s^{d}(y)]/\p =: R$. Now, consider the univariate polynomial ring over $R_1$ on the free variable $\s^d(y)$:
@@ -169,19 +224,8 @@ We have a natural morphism of rings \[ R_1[s^d(y)] \rightarrow R = k[a,\ldots,\s
 Let $\p_1$ be the kernel of this morphism. Since $R$ is an integer domain (as $\p$ is prime), so is $\p_1$ also prime. 
 Now we consider the univariate polynomial ring $R[\s^{d+1}(y)] \supset R = k[a,\ldots, \s^d(a)]$. Here we get a natural definition of $\s: R_1[\s^d(y)] \rightarrow R[\s^{d+1}(y)]$ by mapping $\s( \s^d(y))  := \s^{d+1}(y)$.
 By definition of $\p_1$ we have that $\s(\p_1) \cap R = \{0\}$. 
-By Lemma \ref{primeoverp1} there exists a minimal prime ideal $\p_2 \supset \s(\p_1)$ of $R[\s^{d+1}(y)]$ containing $\s(p_1)$ with $\p_2 \cap R = \{0\}$. 
-We thus get a well-defined maping
-\[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2 \]
-We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ was prime. Since $\p_2 \cap R = \{0\}$ we can use this notation unambiguosly:
-this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\p$.
-The kernel $\p'$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
-Further we have $\p \subseteq \p'$ by construction (as $\p = 0 \subset R_2$). In fact, it holds that $\p'[d] = \p$ since: 
-\begin{align*}
-\p'[d] = \{ f \in k[y,\ldots,\s^d(y)] \mid f(a) = 0 \} = \ker( k\{y\}[d] \rightarrow k[a,\ldots,\s^{d}(a)]) = \p
-\end{align*}
-where the first equality uses the fact that $\p_2 \cap R = \{0\}$, as noted by the use of the notation explained above, and last equality holds by definition of $a \in R$. This means, that $\p'$ is a prolongation of $\p$. 
 
-Now, if additionaly, $\p$ is a kernel, then $\s$ from Remark \ref{sigmawelldeffker} is injective and we can go over to the quotient fields:
+We first consider the case where $\p$ is a kernel. In this case, $\s$ from Remark \ref{sigmawelldeffker} is injective and we can go over to the quotient fields:
 We let $\tilde \p_1$ be the prime ideal which is the kernel of the morphism of rings
 \[ \text{Quot}(R_1)[s^d(y)] \rightarrow \text{Quot}(R) = k(a,\ldots,\s^{d}(a)), \s^d(y) \mapsto \s^d(a) \]
 And let $\tilde \p_2$ be a minimal prime ideal in 
@@ -196,8 +240,24 @@ Then the kernel $\q$ of \[ k[y,\ldots,\s^{d+1}(y)] \rightarrow k(\tilde p_2), \s
 \sdim(\p) = \trdeg( k(a,\ldots,\s^d(a)) / k(a,\ldots,\s^{d-1}(a))) = \text{dim}(k(a,\ldots,\s^{d-1}(a))[\s^d(y)]/\tilde \p_1) \\ = \text{dim}(\s(k)(\s(a),\ldots,\s^d(a))[\s^{d+1}(y)]/\s(\tilde \p_1)) 
 = \text{dim}(k(a,\ldots,\s^{d}(a))[\s^{d+1}(y)]/\tilde \p_2) \\ = \trdeg(k(a,\ldots,\s^{d+1}(a))/k(a,\ldots,\s^d(a))) = \sdim(\q)
 \end{align*}
+
+Now back to the general case: If $\p$ is a regular weak kernel, by the proof above, there existis a prolongation of $\p^*$, since by Remark \ref{regular->kernel}, $\p^*$ is a kernel. 
+In particular, since $\p \subseteq \p^*$ we know that \[ (\s(\tilde \p_1)) \subseteq (\s(\tilde \p_1)) \subset \tilde p_2 \],
+and since $\{0\} = \tilde p_2 \cap k(a,\ldots,\s^d(a)) \supseteq k[a,\ldots,\s^d(a)] = R$ it yields that $(\p_1) \cap R = \{0\}$.
+By Lemma \ref{primeoverp1} there exists a minimal prime ideal $\p_2 \supset (\s(\p_1))$ of $R[\s^{d+1}(y)]$ containing $\s(p_1)$ with $\p_2 \cap R = \{0\}$. 
+We thus get a well-defined maping
+\[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2 \]
+We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ was prime. Since $\p_2 \cap R = \{0\}$ we can use this notation unambiguosly:
+this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\p$.
+The kernel $\p'$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
+Further we have $\p \subseteq \p'$ by construction (as $\p = 0 \subset R_2$). In fact, it holds that $\p'[d] = \p$ since: 
+\begin{align*}
+\p'[d] = \{ f \in k[y,\ldots,\s^d(y)] \mid f(a) = 0 \} = \ker( k\{y\}[d] \rightarrow k[a,\ldots,\s^{d}(a)]) = \p
+\end{align*}
+where the first equality uses the fact that $\p_2 \cap R = \{0\}$, as noted by the use of the notation explained above, and last equality holds by definition of $a \in R$. This means, that $\p'$ is a prolongation of $\p$. 
+We only have to show that $\p'$ is regular. FINISH-ME!
 \end{bew}
-\end{lem}
+\end{prop}
 
 \begin{defn}
 Let $k$ be a $\s$-field and  $\a \si k\{y\}$ be a $\s$-ideal. 
@@ -219,6 +279,8 @@ the final assertion follows.
 \end{bew}
 \end{prop}
 
+
+
 %% \begin{lem}
 %% Let $\p \si k\{y\}$ be a prime $\s$-ideal and let $\p' := \p^* \supseteq \p$ be its reflexive closure (which is $\s$-prime). Then there exists an $n \in \N$ such that 
 %% $\p[d_1,d_2] = \p'[d_1,d_2] \fa n \leq d_1 < d_2$.
@@ -228,6 +290,17 @@ the final assertion follows.
 %% Since $\p'[d-n]$ is a kernel of length $d-n$, we know that there exist unique generic prolongations of $\p'[n-d]$
 %% \end{bew}
 %% \end{lem}
+
+
+
+        %% @Misc{M2,
+        %%   author = {Grayson, Daniel R. and Stillman, Michael E.},
+        %%   title = {Macaulay2, a software system for research 
+        %%            in algebraic geometry},
+        %%   howpublished = {Available at 
+        %%       \href{http://www.math.uiuc.edu/Macaulay2/}%
+        %%            {http://www.math.uiuc.edu/Macaulay2/}}
+        %% }
 
 \end{document}
 
