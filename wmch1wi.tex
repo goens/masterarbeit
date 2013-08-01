@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{color}
+\usepackage{enumerate}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
@@ -59,66 +60,72 @@
 %\renewcommand{\P}{\textfrak{P}}
 \newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
 \newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
-\theoremstyle{definition}
+\theoremstyle{plain}
 \newtheorem{Satz}{Satz}[section]
 \newtheorem{theorem}[Satz]{Theorem}
 \newtheorem{ex}[Satz]{Example}
 \newtheorem{cor}[Satz]{Corollary}
 \newtheorem{algorithm}[Satz]{Algorithm}
 \newtheorem{prop}[Satz]{Proposition}
-\newtheorem{rem}[Satz]{Remark}
-\newtheorem{defn}[Satz]{Definition}
 \newtheorem{lem}[Satz]{Lemma}
+\newtheorem{defn}[Satz]{Definition}
+\theoremstyle{definition}
+\newtheorem{rem}[Satz]{Remark}
+
+
 \makeindex
 \title{Mixed Ideals in Difference Algebra}
 \author{Andr\'{e}s Goens}
 \date{\today}
 \begin{document}
-\emph{Conventions on notation for this thesis}
+\section*{Conventions on notation for this thesis} 
 We will use the following conventions throughout the thesis:
 \begin{itemize}
-\item $\N = \{0,1,\cdots \}$
-\item $\NE = \{1,2,\cdots \}$
+\item $\N := \{0,1,\cdots \}$
+\item $\NE := \{1,2,\cdots \}$
 \item $ \n := \{1,2,\ldots, n\}$
 \item $ \n_0 := n \cup \{0\}$
-\item $A \backslash B = \{ a \in A \mid a \notin B \}$
-\item $(a_1,\ldots,a_n), a_1,\ldots,a_n \in R$: The smallest ideal of $R$ containing $a_1,\ldots,a_n$.
-\item $[a_1,\ldots,a_n], a_1,\ldots,a_n \in R$: The smallest difference ideal of $R$ containing $a_1,\ldots,a_n$.
-\item $\A \si R$: A is a difference ideal of $R$.
+\item $A \setminus B = \{ a \in A \mid a \notin B \}$
+\item Let $R$ be a ring, $a_1,\ldots,a_n \in R$. Then $(a_1,\ldots,a_n)$ denotes the smallest ideal of $R$ containing $a_1,\ldots,a_n$.
+\item Let $R$ be a difference ring, $a_1,\ldots,a_n \in R$. Then $[a_1,\ldots,a_n]$ denotes the smallest difference ideal of $R$ containing $a_1,\ldots,a_n$.
+\item Let $R$ be a difference ring. Then $A \si R$ means that A is a difference ideal of $R$.
+\item The variable $y$ in (difference) polynomial rings will, in general, mean $n$ variables $y_1, \ldots, y_n$, i.e., we will write for example $k[y]$ for $k[y_1,\ldots,y_n]$.
 \end{itemize}
 \clearpage
+\section{Basics of Difference Algebra}
 \section{Difference Ideals}
 When studying difference ideals, there are numerous properties in which we are interested. We will start by defining some of them:
 \begin{defn}
 Let  $\a \si R$ be a $\s$-ideal of $R$. 
 \begin{itemize}
-\item Then $\a$ is called a mixed $\s$-ideal if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. 
-\item $\a$ is called perfect, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. 
-\item $\a$ is called reflexive, if $\s(f) \in \a$ implies $f \in \a$. 
-\item $\a$ is called $\s$-prime, if $\a$ is a prime, reflexive $\s$-ideal.
-\item The ring $R$ is called well-mixed, if the zero ideal $[0]$ is mixed, and perfectly $\s$-reduced, if it is perfect.
+\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. \index{mixed $\s$-ideal}
+\item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
+\item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
+\item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
+\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed, and \emph{perfectly $\s$-reduced}, if it is perfect. \index{well-mixed $\s$-ring}\index{perfectly $\s$-reduced $\s$-ring}
 \end{itemize}
 \end{defn}
 
 \begin{rem}
-It is easy to see from the definitions that $\s$-prime ideals are perfect, perfect $\s$-ideals are mixed, radical and reflexive. Prime $\s$-ideals are also mixed, but not necessarily perfect. Note that there is a difference between a prime $\s$-ideal, and a $\s$-prime ideal:
-the former does not necessarily have to be reflexive, as is the case with the latter. The roles of both prime $\s$-ideals and $\s$-prime ideals will be very clearly marked, and that makes this distinction a very important one.
+It is easy to see from the definitions that $\s$-prime ideals are perfect, and that perfect $\s$-ideals are mixed, radical and reflexive. Prime $\s$-ideals are also mixed, but not necessarily perfect. Note that there is a difference between a prime $\s$-ideal, and a $\s$-prime ideal:
+the former does not necessarily have to be reflexive, as is the case with the latter. Both, prime $\s$-ideals and $\s$-prime ideals will be very important throughout this thesis. It is for that reason that the distinction between both is of utmost importance.
 \end{rem}
 
-All these properties also behave well with morphisms of $-s$-rings in the following sense:
+All the above properties behave well with respect to morphisms of $\s$-rings in the following sense:
 \begin{lem}\label{bijmapping}
-Let $\varphi: R \rightarrow S$ be a morphism of $\s$-Rings and $\a \si S$ a $\s$-ideal. Then $\varphi^{-1}(\a) \si R$ is a $\s$-ideal. Similarly, if $\a$ is a mixed $\s$-ideal, then so is $\varphi^{-1}(\a)$. The same is true for perfect and for reflexive $\s$-ideals.
+Let $\varphi: R \rightarrow S$ be a morphism of $\s$-rings and $\a \si S$ a $\s$-ideal of $S$. Then $\varphi^{-1}(\a) \si R$ is a $\s$-ideal of $R$. Similarly, if $\a$ is a mixed $\s$-ideal, then so is $\varphi^{-1}(\a)$. The same is true for perfect and for reflexive $\s$-ideals.
 \begin{bew}
 Since $\a \unlhd S$ is an ideal, so is $\b := \varphi^{-1}(\a) \unlhd R$. Let $b \in \b$. Then $\varphi(b) =: a \in \a$ by definition. Since $\a \si S$ is a $\s$-ideal, $\s(a) \in \a$, and since $\varphi$ is a $\s$-morphism
- it follows that $\sigma(a) = \sigma(\varphi(b)) = \varphi (\s (b)) \in \a$. Hence, $\s(b) \in \b$ which in turn implies that $\b$ is a $\s$-ideal. Now let $\a$ be mixed and $fg \in \b$. This means by definition of $\b$, 
-that $\varphi(fg) = \varphi(f) \varphi(g) \in \a$. Since $\a$ is mixed, this in turn implies, that $\varphi(f) \s \varphi(g) = \varphi(f) \varphi(\s(g)) \in \a$, which yields $f\s(g) \in \b$, so that $\b$ is also mixed. 
-The result for perfect and for reflexive difference ideals is analogous.
+it follows that $\sigma(a) = \sigma(\varphi(b)) = \varphi (\s (b)) \in \a$. Hence, $\s(b) \in \b$ which in turn implies that $\b$ is a $\s$-ideal. \\
+Now let $\a$ be mixed and $fg \in \b$. This means by definition of $\b$, 
+that $\varphi(fg) = \varphi(f) \varphi(g) \in \a$. Since $\a$ is mixed, this in turn implies that $$\varphi(f) \s( \varphi(g)) = \varphi(f) \varphi(\s(g)) = \varphi(f\s(g)) \in \a,$$ which yields $f\s(g) \in \b$, so that $\b$ is also mixed. 
+The proof for perfect and for reflexive difference ideals is analogous.
 \end{bew}
 \end{lem}
 
 \begin{rem}
 Let $R$ be a $\s$-ring and $\a \si R$ a $\s$-ideal. We can define a canonical $\s$-ring structure on the quotient ring $R/\a$ via $\s(r+\a):= \s(r) + \a$. 
-This is well defined and in particular makes the canonical ring-epimorphism $\tau: R \rightarrow R/\a$ a morphism of $\s$-rings.
+This is well defined and in particular makes the canonical ring epimorphism $\tau: R \rightarrow R/\a$ a morphism of $\s$-rings.
 \end{rem}
 
 \begin{prop}\label{bijideals}
@@ -167,12 +174,12 @@ By Lemma \ref{sqrtmixed} we know that $\sqrt{\a}$ is still mixed, which shows in
 \end{lem}
 
 
-%% \begin{ex} %%not *radical*! 
- 
-%% Let $k$ be a $\s$-field, and consider $R = k\{y\}$. Then the $\s$-ideal $[y] \si R$ is mixed and radical, hence $[y] = \{[y]\}_m$. 
-%% Then $\{ [y] \cdot [y] \}_m = [ y \s^i(y) \mid i \in \N ] \not \ni y$.
-%% One could have expected, for example, that in general $\{F_1 \cdot F_2 \}_m = \{F_1\}_m \cap \{F_2\}_m$, but this example shows it is not in general so, since $y \in \{ [y] \}_m \cap \{ [y] \}_m = [y]$.
-%% \end{ex}
+\begin{ex} %%not *radical*! 
+Let $k$ be a $\s$-field, and consider $R = k\{y\}$. Then the $\s$-ideal $[y] \si R$ is mixed, hence equal to its mixed closure.
+The mixed closure of $[y] \cdot [y]$ is $[ y \s^i(y) \mid i \in \N ] \not \ni y$.
+One could have expected, perhaps, to get an analog of the statement in algebraic geometry that $\sqrt{F_1  F_2 } = \sqrt{F_1} \cap \sqrt{F_2}$, but this example shows it is not in general so for mixed ideals.
+It is however very noteworthy that the ideal $[ y \s^i(y) \mid i \in \N ] \si R$ is not radical. For radical, mixed difference ideals we will in fact get such a statement later (Cor. \ref{prod=cap}).
+\end{ex}
 
 One very important result in commutative algebra is the fact that every radical ideal is the intersection of prime ideals. This has an analogous for perfect $\s$-ideals, as well as for mixed $\s$-ideals. 
 We will prove the latter, but for that we need a few additional tools. We will first start with a weaker version of the statement, for which we need a few results from commutative algebra however:
@@ -185,7 +192,7 @@ Let $R$ be a (commutative, unital, associative) ring. Then:
 \item If $R$ is noetherian and $\p \unlhd R$ is a minimal prime ideal of $R$, then there exists an element $a \in R$ such, that $\p$ is the annihilator ideal of $a$, i.e. $\p = \text{Ann}(a) = \{ r \in R \mid ra = 0 \}$.
 \end{itemize}
 \begin{bew}
-see \cite{wiebmer} %%fixme: not good enough
+see \cite{wibmer} %%fixme: not good enough
 \end{bew}
 \end{lem}
 
@@ -215,7 +222,7 @@ Let $U$ be a set, and let $F \subseteq \text{Pot}(U)$, where $\text{Pot}(U)$ den
 \item If $V,W \subseteq U$ with $V \subseteq W \text{ and }V  \in F $ it holds that $W \in F$
 \item For $V_1, \ldots, V_n \in F$ it holds that \[ \bigcap_{i = 1}^n V_i \in F \]
 \end{itemize}
-A filter $F$ is called an \emph{ultrafilter}, if for any $V \subseteq U$ it holds that $V \in F$ or $U \backslash V \in F$. Note that the first and third axioms together imply that it cannot be both.
+A filter $F$ is called an \emph{ultrafilter}, if for any $V \subseteq U$ it holds that $V \in F$ or $U \setminus V \in F$. Note that the first and third axioms together imply that it cannot be both.
 \end{defn}
 
 \begin{rem}
@@ -268,7 +275,7 @@ We define $\p \si P/\mathcal{G}$ as the set of all equivalence classes of elemen
 For $[(g_s)_{S \in M}]_{\sim}, [(h_s)_{S \in M}]_{\sim} \in \p$ it is $ \mathcal{G} \ni \{ S \in M \mid  g_s \in \p_S \} \cap  \{ S \in M \mid  h_s \in \p_S \} \subseteq \{ S \in M \mid  g_s + h_s \in \p_S \} \in \mathcal{G}$,
 since $\mathcal{G}$ is a filter. Similar arguments for $\s(g), gh$ for $h \in P/\mathcal{G}$ show that $\p$ is indeed a $\s$-ideal. $\p$ is also prime since $\mathcal{G}$ is an ultrafilter:
 Let $g,h \in P$ with $\{ S \in M \mid g_Sh_S \in \p_S \} \in \mathcal{G}$. If $[g]_\sim \notin \p$, then $V:= \{ S \in M \mid g_S \in \p_S \} \notin \mathcal{G}$. Since $\mathcal{G}$ is an ultrafilter, 
-this means that $M \backslash V \in \mathcal{G}$. But $\mathcal{G} \ni (M \backslash V) \cap \{ S \in M \mid g_S h_S \in \p_S \} \subseteq \{ S \in M \mid h_S \in \p_S \} \in \mathcal{G}$, which means that $[h]_\sim \in \p$.
+this means that $M \setminus V \in \mathcal{G}$. But $\mathcal{G} \ni (M \setminus V) \cap \{ S \in M \mid g_S h_S \in \p_S \} \subseteq \{ S \in M \mid h_S \in \p_S \} \in \mathcal{G}$, which means that $[h]_\sim \in \p$.
 The preimage of a prime $\s$-ideal, $\varphi^{-1}(\p) \si R$ is also prime. By construction, $[\varphi(f)]_\sim \notin \p$, which means that $f \notin \varphi^{-1}(\p)$, as desired. This concludes the proof.
 
 \end{bew}
@@ -322,7 +329,7 @@ $(F) \subseteq [F] \subseteq \{ F \}_m \subseteq \p$. In particular, this means 
 \begin{defn}\label{deftop}
 Let $R$ be a $\s$-ring. We define a topology on $\sSpec(R)$ by setting $A \subseteq \sSpec(R)$ closed $:\Leftrightarrow A = \Vm(\a)$ for an ideal $\a \unlhd R$, or equivalently,
  by defining a set to be open, if it is a complement of such a $\Vm(\a)$. This is well-defined thanks to Lemma \ref{topologywelldef}.
-We set for $f \in R: \s$-$ D(f):= \sSpec(R) \backslash \Vm(f)$. By Remark \ref{vmsequal}, $\s$-$D(f)$ is the complement of a closed set, and hence, open. 
+We set for $f \in R: \s$-$ D(f):= \sSpec(R) \setminus \Vm(f)$. By Remark \ref{vmsequal}, $\s$-$D(f)$ is the complement of a closed set, and hence, open. 
 We call the sets of the form $\s$-$D(f) \subseteq \sSpec(R)$ basic open subsets of $\sSpec(R)$.
 \end{defn}
 
@@ -370,7 +377,7 @@ By Lemma \ref{topologywelldef} we see that $\bigcap_{i \in I} \Vm( \a_i) = \Vm (
 By Theorem \ref{intersectionprimes} this means that $\{ \sum_{i \in I} \a_i \}_m = R$. In particular, $1 \in \{ \sum_{i \in I} \a_i \}_m$. By the construction in Remark \ref{remshuffling} (and with the notation used there), it means that there has to be an $n \in \NE$,
 so that $1 \in (\sum_{i \in I} \a_i )^{\{n\}}$. In particular, this means that $1$ can be written as a finite $R$-linear combination of elements in $(\sum_{i \in I} \a_i )^{\{n\}}$, which involves only finitely many of the $\a_i$.
 But then there is $J \subseteq I$ finite, such that $1 \in (\sum_{i \in J} \a_i)^{\{n\}}$, meaning that $\Vm(\sum_{i \in J} \a_i) = \emptyset$, a contradiction. 
-\item For an open subset $U \subseteq \sSpec(R)$ there exists by definition an $\a \si R$ such, that $U = \sSpec(R) \backslash \Vm(\a)$. We can then write $U$ as a union of basic open sets as follows: $U = \bigcup_{a \in \a} \s$-D$(a)$.
+\item For an open subset $U \subseteq \sSpec(R)$ there exists by definition an $\a \si R$ such, that $U = \sSpec(R) \setminus \Vm(\a)$. We can then write $U$ as a union of basic open sets as follows: $U = \bigcup_{a \in \a} \s$-D$(a)$.
 \item By \ref{irred=prime}, an irreducible closed subset $A$ of $\sSpec(R)$ has the form $A = \Vm(\p)$, for $\p \si R$ prime. This prime $\s$-ideal $\p$ is the unique generic point of $A$.
 \end{enumerate}
 \end{bew}
@@ -425,8 +432,8 @@ Here, Set denotes the usual category of sets with mappings as morphisms. We also
 
 \begin{rem}
 For a variety $X$ over an integral $\s$-ring $A$, a subvariety of $X$ is a subfunctor of $X$ which is in itself a variety over $A$. Not every subfunctor of $X$ is, however, a subvariety. Consider $A = k$ a $\s$-field,
-and the functor $X = V(0)$, for $\{0\} \subset k\{y_1\}$. This means that for $B \in \s$-int$_k$, $B \mapsto B\backslash \{0\}$ is a subfunctor $Y$ of $X$ (since $B \backslash \{ 0 \} \subset B \fa B \in \s$-int$_k$), but $Y$ is not a variety:
-there exists no $F \subseteq k\{y_1\}$ such, that $\VV_B(F) = B \backslash \{ 0 \} \fa B \in \s$-int$_k$: indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B$ and $\fa B \in \s$-int$_k$. In particular,
+and the functor $X = V(0)$, for $\{0\} \subset k\{y_1\}$. This means that for $B \in \s$-int$_k$, $B \mapsto B\setminus \{0\}$ is a subfunctor $Y$ of $X$ (since $B \setminus \{ 0 \} \subset B \fa B \in \s$-int$_k$), but $Y$ is not a variety:
+there exists no $F \subseteq k\{y_1\}$ such, that $\VV_B(F) = B \setminus \{ 0 \} \fa B \in \s$-int$_k$: indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B$ and $\fa B \in \s$-int$_k$. In particular,
 $k\{y_1\} \in \s$-int$_k$ satisfies that $f(y_1) = f = 0$, a contradiction. 
 \end{rem}
 
@@ -499,6 +506,23 @@ Then, consider $B:= A\{y_1,\ldots,y_n\}/\p$: this is an integral $\s$-ring. Sinc
 in turn means nothing else that $f \in \p$. But by Theorem \ref{intersectionprimes}, $\{F\}_m = \bigcap_{F \subseteq \p \si A\{y_1,\ldots,y_n\} \text{ prime}} \p$, so that this means $f \in \{F\}_m$.
 \end{bew}
 \end{prop}
+
+We immediately get thus a further result on radical, mixed ideals, which is analogous to the case for radical ideals in algebraic geometry.
+\begin{cor}\label{prod=cap}
+Let $\a \neq 0 \neq \b \si k\{y\}$ be two non-trivial, radical, mixed difference ideals. Then it holds that $\a \cap \b = \{ \a \b \}_m$.
+\begin{bew}
+Since $\a, \b$ are radical and mixed, we know from Prop. \ref{I=F_m} that $\a = \I(\VV(\a)), \b = \I(\VV(\b))$, and $\{ \a \b \}_m = \I( \VV( \a \b ))$.
+For any $B \in \s$-int$_k$, it holds that:
+\begin{align*} \VV_B( \a \b) = \VV_B( \a) \cup \VV_B( \b) \end{align*}
+The inclusion ``$\supseteq$'', is obvious. For ``$\subseteq$'', let $p \in \VV_B(\a\b)$ and assume there exisits an $f \in \a$ such, that $f(p) \neq 0$.
+Then, by definition of $\VV_B(\a\b)$, it holds that $f(p)g(p) = 0 \fa g \in \b$. This means, however, that $p \in \VV_B(\b)$ (since $B$ is an integral domain). The other case is completely analogous.
+Since this holds for any $B$, this means that the varieties are also equal: $\VV( \a \b) = \VV( \a) \cup \VV( \b)$. Now,
+\begin{align*} \I(\VV(\a \b)) = \I(\VV(\a) \cup \VV(\b)) \\ = \{ f \in k\{y\} \mid f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), B \in \s\text{-int}_k \} \end{align*}
+And $f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), B \in \s$-int$_k$, is equivalent to \\
+$ \underbrace{f(p) = 0 \fa p \in \VV_B(\a), B \in \s\text{-int}_k}_{\Leftrightarrow f \in \I(\VV(\a))}$ and $ \underbrace{f(p) = 0 \fa p \in \VV_B(\b), B \in \s\text{-int}_k}_{\Leftrightarrow f \in \I(\VV(\b))}$. \\
+Hence, $\{\a\b\}_m = \I(\VV( \a \b)) = \I(\VV(\a)) \cap \I(\VV(\b)) = \{\a\}_m \cap \{\b\}_m = \a \cap \b$.
+\end{bew}
+\end{cor}
 
 \begin{defn}
 Let $A$ be an integral $\s$-ring and let $X$ be a variety over $A$. Further let $F \subseteq A\{y_1, \ldots, y_n\}$ be a system of difference equations over $A$ with $X(B) = \VV_B(F) \fa B \in \s$-int$_A$.
@@ -581,7 +605,7 @@ Since for a $\s$-variety over $X$, $\I(X)$ is radical and mixed, $A\{X\}$ is alw
 and finitely $\s$-generated since varieties are defined only on equations with finite many difference variables. This means that the functor $-^*$ from Remark \ref{dualmor} is also well defined on the category above.
 It suffices to show that it is surjective on the skeleton of the categories and bijective on morphisms. 
 Let $B$ be a finitely $\s$-generated, well-mixed and reduced $\s$-overring of $A$. We can then write $B \cong A\{y_1,\ldots,y_n\}/\a$, for an $\a \si A\{y_1,\ldots,y_n\}$ radical and mixed. The variety $X = \VV(\a) \subseteq \mathbb{A}^n$
-is then a preimage of the isomorphy class of $B$, since $\I(X) = \I(\VV(\a)) = \a$, $\a = \{ a \}_m$ and because of Prop. \ref{I=F_m}. Thus, $B \cong A\{X\}$.
+is then a preimage of the isomorphy class of $B$, since $\I(X) = \I(\VV(\a)) = \a$, and $\a = \{ \a \}_m$ because of Prop. \ref{I=F_m}. Thus, $B \cong A\{X\}$.
 Now, for the morphisms: First, let $X,Y$ be varieties over $A$ and $f,g \in \Hom(X,Y)$ with $f^* = g^*$. Then we know that for every $h \in A\{X\}$, and every $b \in B, B \in \s$-int$_A$ it holds that:
 \[ h(f(b)) = f^*(h(b)) = g^*(h(b)) = h(g(b)) \]
 In particular, $f(b) = g(b) \fa b \in B, B \in \s$-int$_A$, which means that $f = g$, and $-^*$ is injective. 
@@ -612,23 +636,28 @@ The choice for the category $\s$-int$_A$ is better motivated by the following:
 
 \begin{rem}
 Let $k$ be a $\s$-field. The following three categories are equivalent:
-\begin{itemize}
-\item \label{catfields} The category of functors of the form $B \mapsto \V_B(F)$, for $B \in \s$-field$_k$, the category of finitely $\s$-generated $\s$-field extensions of $k$.
-\item \label{catdoms} The category of functors of the form $B \mapsto \V_B(F)$, for $B \in \s$-domain$_k$, the category of finitely $\s$-generated $\s$-domain extensions of $k$.
-\item \label{catrings} The category of functors of the form $B \mapsto \V_B(F)$, for $B \supseteq k$ a perfectly $\s$-reduced, finitely $\s$-generated ring over $k$.
-\end{itemize}
-Where in all three cases $F \subseteq k\{y\}$ is a set of $\s$-polynomials on finitely many difference variables.
+\begin{enumerate}[(a)]
+\item  The category of functors of the form $B \mapsto \V_B(F)$, where $B$ is a finitely $\s$-generated $\s$-field extension of $k$. \label{catfields}
+\item \label{catdoms} The category of functors of the form $B \mapsto \V_B(F)$, where $B$ is a finitely $\s$-generated $\s$-domain extension of $k$.
+\item \label{catrings} The category of functors of the form $B \mapsto \V_B(F)$, where $B \supseteq k$ is a perfectly $\s$-reduced, finitely $\s$-generated ring over $k$.
+\end{enumerate}
+In all three cases $F \subseteq k\{y\}$ denotes a set of $\s$-polynomials on finitely many difference variables $(y)$.
 \begin{bew}
-Similar to \ref{dualisequiv}, the category \ref{catfields} is anti-equivalent to the category of perfectly reduced $\s$-overrings of $k$ which are finitely $\s$-generated over $k$ (see \cite{wibmer}, p. 30).
-It suffices to show that the other two categories are as well. Looking at the proof from \ref{dualisequiv}, it is not hard to convince yourself that it is enough to show that $\I(\V(\a)) = \{\a\}$,
-where $\I$ and $\V$ are defined analogously for the categories \ref{catdoms} and \ref{catrings}, $\a \si k\{y\}$ is a $\s$-ideal and $\{ \a \}$ its perfect closure. We will prove it for category \ref{catrings}, 
-and since \ref{catdoms} is every $\s$-domain is perfectly $\s$-reduced (as $\s$-prime ideals are perfect), it follows directly for \ref{catdoms} as well.
-Let thus $X = \V(F)$ be a variety in the sense of category \ref{catrings}, i.e., a functor from the category of overrings of $k$ which are perfectly $\s$-reduced and finitely $\s$-generated over $k$ to Set, the category of sets,
-which is of the form $B \mapsto \V_B(F), F \subseteq k\{y\}$. We have to show that $\I(X) = \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \V_B(F), B \supseteq k$ perfectly $\s$-reduced and finitely $\s$-generated over $k$,
- is a perfect $\s$-ideal. Similar to prop. \ref{I=F_m}, we know that $\I(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in V_B(F)$,
- $B$ perfectly $\s$-reduced and finitely $\s$-generated over $k$: $\s^{i_1}(f)(b) \cdots \s^{i_r}(f)(b) = 0$. Since $B$ is perfetly $\s$-reduced, this means that $f(b) = 0$ for all such $b$,
- which in turn, by definition, means that $f \in \I(X)$. 
+Similar to \ref{dualisequiv}, the category (\ref{catfields}) is anti-equivalent to the category of perfectly $\s$-reduced $\s$-overrings of $k$ which are finitely $\s$-generated over $k$ (see \cite{wibmer}, p. 30).
+It suffices to show that the other two categories are as well. Looking at the proof from \ref{dualisequiv}, it is not hard to convince ourselves that it is enough to show that $\I(\V(\a)) = \{\a\}$,
+where $\I$ and $\V$ are defined analogously for the categories (\ref{catdoms}) and (\ref{catrings}), $\a \si k\{y\}$ is a $\s$-ideal and $\{ \a \}$ its perfect closure. 
 
+We first consider the case where $\V$ is defined on the category (\ref{catrings}):
+Let $X = \V(F)$ be a variety in this sense, i.e., a functor from the category of overrings of $k$ which are perfectly $\s$-reduced and finitely $\s$-generated over $k$ to Set, the category of sets,
+which is of the form $B \mapsto \V_B(F), F \subseteq k\{y\}$. We first show that $\I(X) = \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \V_B(F), B \supseteq k$ perfectly $\s$-reduced and finitely $\s$-generated over $k$ \},
+ is a perfect $\s$-ideal. Similar to prop. \ref{I=F_m}, we know that $\I(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in V_B(F)$,
+ $B$ perfectly $\s$-reduced and finitely $\s$-generated over $k$: $\s^{i_1}(f)(b) \cdots \s^{i_r}(f)(b) = 0$. Since $B$ is perfectly $\s$-reduced, this means that $f(b) = 0$ for all such $b$,
+ which in turn, by definition, means that $f \in \I(X)$. For the category (\ref{catdoms}) this works as well, since every $\s$-domain is perfectly $\s$-reduced.
+The other inclusion we shall prove first for the category (\ref{catdoms}):
+For $F \subseteq k\{y\}$, it holds that $\{F\} \subseteq \I(\V(F))$: Let $f \in \I(\V(F))$.
+It holds that $\{F\}$ is the intersection of all $\s$-prime ideals of $k\{y\}$ which contain $F$ (see for example 1.2.22 of \cite{wibmer}), so it is enough to show that $f \in \p$ for each $\s$-prime $\p \si k\{y\}$ with $F \subseteq \p$.
+We define the $\s$-domain $B:= k\{y\}/\p =: k\{a\}$, with $a := y + \p \in k\{y\}/\p$. Since $F \subseteq \p$, it holds that $a \in \V_B(F)$, which, by definition of $\I(\V(F))$ means that $f(a) = 0$. Hence, $f \in \p$, for all $\s$ prime $\p$
+with $F \subseteq \p$, which in turn means that $f \in \{F\}$. Since $B$ is perfectly $\s$-reduced, this works for the category (\ref{catrings}) as well.
 \end{bew}
 
 \end{rem}
