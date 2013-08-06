@@ -1,0 +1,122 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\text{Spec}}
+\def\sSpec{\sigma\text{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newcommand{\textsim}{\mathord{\sim}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{plain}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{lem}[Satz]{Lemma}
+\newtheorem{defn}[Satz]{Definition}
+\theoremstyle{definition}
+\newtheorem{rem}[Satz]{Remark}
+
+
+\makeindex
+\title{Mixed Ideals in Difference Algebra}
+\author{Andr\'{e}s Goens}
+\date{\today}
+\begin{document}
+\setlength{\parindent}{1.5em}
+\section{An alternative proof of the theorem about the decomposition of radical, mixed $\s$-ideals in prime $\s$-ideals}
+\begin{defn}
+Let $R$ be a difference ring and $F \subseteq R$ a subset of $F$. We denote by $\{F\}_\text{mixed}$ the mixed closure of $F$, i.e. the smallest, mixed difference ideal, with respect to inclusion, which contains $F$.
+\end{defn}
+
+\begin{lem}\label{maxmixed=prime}
+Let $R$ be a difference ring and let $U \subset R$ be a multiplicatively closed set of $R$. Then a mixed difference ideal $\a \subset R$ maximal in the class of mixed difference
+ideals not meeting $U$, i.e. such that $\a \cap U = \emptyset$, is prime. 
+\begin{bew}
+Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and let $f, g \in R \setminus U$. We will show that assuming $fg \in \a$ yields a contradiction. \\
+\indent Assume thus, that $fg \in \a$. The $\s$-ideals $\{\a \cup \{f\}\}_\text{mixed}$ and $\{\a \cup \{g\}\}_\text{mixed}$ are mixed, so that by maximality of $\a$,
+they have to meet $U$. This implies that there exist $u_1 \in U \cap \{\a \cup \{f\}\}_\text{mixed}$ and $u_2 \in U \cap \{\a \cup \{g\}\}_\text{mixed}$.
+By the construction of $\{\a \cup \{f\}\}_\text{mixed}$ with shuffling, there exists an $n_1 \in \NE$ such that $u_1 \in (\a \cup \{f\})^{\{n_1\}}$, and similarly $n_2 \in \NE$ for $u_2$.
+\\ We will show by induction that an element of $(\a \cup \{f\})^{\{n_1\}}$ is always of the form \begin{align}\label{generalformaf} \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a\text{ with }m \in \N, r_i \in R, k_i \in \N, l_i \in \NE\text{ for }i = 1,\ldots,m\text{ and }a \in \a. \end{align}
+For $n_1 = 0$, an element of $(\a \cup \{f\})^{\{0\}} = [\a \cup \{f\}]$ the assertion is obvious. Now, assume the assertion holds for $n-1 \in \NE$. Then consider the set 
+$$B := ((\a \cup \{f\})^{\{n-1\}})' = \{ h \s(h') \mid hh' \in (\a \cup \{f\})^{\{n-1\}} \}.$$ Any $b \in B$ can be written as 
+$$ b = (\sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a)\s((\sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(f^{\tilde l_i}) + \tilde a))$$
+with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$ (we can always have the same number of summands $m$ by adding $0$ enough times, if necessary).
+ We can thus always write an element $c \in  (\a \cup \{f\})^{\{n\}} = [B]$ as follows:
+\[ c = \sum_{j=1}^s \hat r_j (\sum_{i=1}^{m} r_{i,j} \s^{k_{i,j}}(f^{l_{i,j}}) + a_j)\s((\sum_{i=1}^{m} \tilde r_{i,j} \s^{\tilde k_{i,j}}(f^{l_{i,j}}) + \tilde a_j)) \]
+with $r_j, r_{i,j}, \tilde r_{i,j} \in R, a_j \in \a \fa i = 1,\ldots, m, j = 1, \ldots, s$. Multiplying out and collecting the terms yields the form in (\ref{generalformaf}).
+With this we know thus, that we can write 
+\begin{align}\label{formu1u2} u_1 = \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a, u_2 = \sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(g^{\tilde l_i}) + \tilde a \end{align}
+again with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$. 
+Assume without loss of generality that $k \geq \tilde k$ and consider a product of the form 
+\[ \s^{k}(f^{l}) \s^{\tilde k}(g^{\tilde l}) = \underbrace{\s^{\tilde k}(\s^{k - \tilde k}(f) g)}_{\in \a, \text{ since } \a \text{ is mixed}} \s^{\tilde k}(\s^{k - \tilde k}(f^{l-1}) g^{\tilde l - 1}) \in \a \]
+This implies however, by multiplying out (\ref{formu1u2}), that $u_1 u_2 \in \a$, a contradiction.
+\end{bew}
+\end{lem}
+
+\begin{theorem}
+Let $R$ be a differece ring and $F \subseteq R$ be a subset of $R$. Then
+\[ \{ F \}_m = \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p.\]
+\begin{proof}
+The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are mixed. For the inclusion ``$\supseteq$'', let $g \in R, g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
+$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint with $U$, there exisits a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
+which implies that $g \notin \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p$. By taking the contraposition of this we get the desired inclusion.
+\end{proof}
+\end{theorem}
+\end{document}
