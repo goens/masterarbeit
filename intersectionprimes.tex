@@ -99,10 +99,10 @@ $$B := ((\a \cup \{f\})^{\{n-1\}})' = \{ h \s(h') \mid hh' \in (\a \cup \{f\})^{
 $$ b = (\sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a)\s((\sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(f^{\tilde l_i}) + \tilde a))$$
 with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$ (we can always have the same number of summands $m$ by adding $0$ enough times, if necessary).
  We can thus always write an element $c \in  (\a \cup \{f\})^{\{n\}} = [B]$ as follows:
-\[ c = \sum_{j=1}^s \hat r_j (\sum_{i=1}^{m} r_{i,j} \s^{k_{i,j}}(f^{l_{i,j}}) + a_j)\s((\sum_{i=1}^{m} \tilde r_{i,j} \s^{\tilde k_{i,j}}(f^{l_{i,j}}) + \tilde a_j)) \]
-with $r_j, r_{i,j}, \tilde r_{i,j} \in R, a_j \in \a \fa i = 1,\ldots, m, j = 1, \ldots, s$. Multiplying out and collecting the terms yields the form in (\ref{generalformaf}).
-With this we know thus, that we can write 
-\begin{align}\label{formu1u2} u_1 = \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a, u_2 = \sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(g^{\tilde l_i}) + \tilde a \end{align}
+\[ c = \sum_{j=1}^s \hat r_j \s^{t_j} \left( (\sum_{i=1}^{m} r_{i,j} \s^{k_{i,j}}(f^{l_{i,j}}) + a_j)\s((\sum_{i=1}^{m} \tilde r_{i,j} \s^{\tilde k_{i,j}}(f^{l_{i,j}}) + \tilde a_j)) \right) \]
+with $r_j, r_{i,j}, \tilde r_{i,j} \in R, a_j \in \a \fa i = 1,\ldots, m, j = 1, \ldots, s$. Multiplying out and collecting the terms yields the form in (\ref{generalformaf}). \\
+\indent With this we know thus that we can write 
+\begin{align}\label{formu1u2} u_1 = \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a, ~ u_2 = \sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(g^{\tilde l_i}) + \tilde a \end{align}
 again with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$. 
 Assume without loss of generality that $k \geq \tilde k$ and consider a product of the form 
 \[ \s^{k}(f^{l}) \s^{\tilde k}(g^{\tilde l}) = \underbrace{\s^{\tilde k}(\s^{k - \tilde k}(f) g)}_{\in \a, \text{ since } \a \text{ is mixed}} \s^{\tilde k}(\s^{k - \tilde k}(f^{l-1}) g^{\tilde l - 1}) \in \a \]
@@ -112,10 +112,10 @@ This implies however, by multiplying out (\ref{formu1u2}), that $u_1 u_2 \in \a$
 
 \begin{theorem}
 Let $R$ be a differece ring and $F \subseteq R$ be a subset of $R$. Then
-\[ \{ F \}_m = \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p.\]
+\[ \{ F \}_m = \bigcap_{F \subseteq \p \si R, \p \text{ prime }} \p.\]
 \begin{proof}
 The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are mixed. For the inclusion ``$\supseteq$'', let $g \in R, g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
-$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint with $U$, there exisits a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
+$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, there exisits a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
 which implies that $g \notin \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p$. By taking the contraposition of this we get the desired inclusion.
 \end{proof}
 \end{theorem}
