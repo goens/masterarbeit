@@ -82,31 +82,31 @@
 \setlength{\parindent}{1.5em}
 \section{An alternative proof of the theorem about the decomposition of radical, mixed $\s$-ideals in prime $\s$-ideals}
 \begin{defn}
-Let $R$ be a difference ring and $F \subseteq R$ a subset of $F$. We denote by $\{F\}_\text{mixed}$ the mixed closure of $F$, i.e. the smallest, mixed difference ideal, with respect to inclusion, which contains $F$.
+Let $R$ be a difference ring and $\a \si R$ be a mixed $\s$-ideal of $R$. Further let $f \in R \setminus \a$. We set $$(\a:f):= \{ g \in R \mid gf \in \a \} \subseteq R$$
 \end{defn}
 
+\begin{lem}
+Let $R$ be a $\s$-ring, $\a \si R$ a mixed $\s$-ideal, $f \notin \a$. Then $(\a:f)$ is a mixed difference ideal of $R$ which contains $\a$. If $\a$ is radical/prime, then $(\a:f)$ is radical/prime as well.
+\begin{bew}
+Let $a,b \in (\a:f), r \in R$. Then $af, bf \in \a$ and thus $(a + b)f = af + bf \in \a$, which means that $a + b \in (\a:f)$. Similarly $$(ha)f = h\underbrace{(af)}_{\in \a} \in \a,$$
+which means that $ha \in (\a:f)$. Also, since $\a$ is mixed and $af \in \a$ it follows that $\s(a)f \in \a$, which in turn means that $\s(a) \in (\a:f)$. We have shown that $(\a:f)$ is a difference ideal. 
+That $\a \subseteq (\a:f)$ is an obvious conclusion from the fact that since $\a$ is an ideal, $fa' \in \a \fa a' \in \a$.  Finally, to see that $(\a:f)$ is mixed,
+let $g,h \in R$ with $gh \in (\a:f)$. Then it holds that $(gh)f = (gf)h  \in \a$. Since $\a$ is mixed, this implies that $(gf)\s(h) = (g\s(h))f \in \a$, from which $g\s(h) \in (\a:f)$ follows immediately by definition. \\
+\indent Assume now that $\a$ is radical, and let $g \in R$ such that $g^n \in (\a:f)$ for an $n \in \NE$. Then $g^nf \in \a$. This also means (since $\a$ is an ideal), that $g^nf \cdot f^{n-1} = (gf)^n \in \a$.
+Since $\a$ is radical, this implies that $gf \in \a$, and thus $g \in (a:f)$.\\ 
+\indent Finally, assume that $\a$ is prime, and let $g, h \in R$ with $gh \in (\a:f)$. This means that $(gh)f = g(hf) \in \a$. Since $\a$ is prime, it has to hold that $g \in \a$ or $hf \in \a$. Since $\a \subseteq (\a:f)$, it follows that $g \in (\a:f)$ or $h \in (\a:f)$.
+\end{bew}
+\end{lem}
+
 \begin{lem}\label{maxmixed=prime}
-Let $R$ be a difference ring and let $U \subset R$ be a multiplicatively closed set of $R$. Then a mixed difference ideal $\a \subset R$ maximal in the class of mixed difference
+Let $R$ be a difference ring and let $\emptyset \neq U \subset R$ be a multiplicatively closed set of $R$. Then a mixed difference ideal $\a \subset R$ maximal in the class of mixed difference
 ideals not meeting $U$, i.e. such that $\a \cap U = \emptyset$, is prime. 
 \begin{bew}
-Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and let $f, g \in R \setminus U$. We will show that assuming $fg \in \a$ yields a contradiction. \\
-\indent Assume thus, that $fg \in \a$. The $\s$-ideals $\{\a \cup \{f\}\}_\text{mixed}$ and $\{\a \cup \{g\}\}_\text{mixed}$ are mixed, so that by maximality of $\a$,
-they have to meet $U$. This implies that there exist $u_1 \in U \cap \{\a \cup \{f\}\}_\text{mixed}$ and $u_2 \in U \cap \{\a \cup \{g\}\}_\text{mixed}$.
-By the construction of $\{\a \cup \{f\}\}_\text{mixed}$ with shuffling, there exists an $n_1 \in \NE$ such that $u_1 \in (\a \cup \{f\})^{\{n_1\}}$, and similarly $n_2 \in \NE$ for $u_2$.
-\\ We will show by induction that an element of $(\a \cup \{f\})^{\{n_1\}}$ is always of the form \begin{align}\label{generalformaf} \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a\text{ with }m \in \N, r_i \in R, k_i \in \N, l_i \in \NE\text{ for }i = 1,\ldots,m\text{ and }a \in \a. \end{align}
-For $n_1 = 0$, an element of $(\a \cup \{f\})^{\{0\}} = [\a \cup \{f\}]$ the assertion is obvious. Now, assume the assertion holds for $n-1 \in \NE$. Then consider the set 
-$$B := ((\a \cup \{f\})^{\{n-1\}})' = \{ h \s(h') \mid hh' \in (\a \cup \{f\})^{\{n-1\}} \}.$$ Any $b \in B$ can be written as 
-$$ b = (\sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a)\s((\sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(f^{\tilde l_i}) + \tilde a))$$
-with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$ (we can always have the same number of summands $m$ by adding $0$ enough times, if necessary).
- We can thus always write an element $c \in  (\a \cup \{f\})^{\{n\}} = [B]$ as follows:
-\[ c = \sum_{j=1}^s \hat r_j \s^{t_j} \left( (\sum_{i=1}^{m} r_{i,j} \s^{k_{i,j}}(f^{l_{i,j}}) + a_j)\s((\sum_{i=1}^{m} \tilde r_{i,j} \s^{\tilde k_{i,j}}(f^{l_{i,j}}) + \tilde a_j)) \right) \]
-with $r_j, r_{i,j}, \tilde r_{i,j} \in R, a_j \in \a \fa i = 1,\ldots, m, j = 1, \ldots, s$. Multiplying out and collecting the terms yields the form in (\ref{generalformaf}). \\
-\indent With this we know thus that we can write 
-\begin{align}\label{formu1u2} u_1 = \sum_{i=1}^m r_i \s^{k_i}(f^{l_i}) + a, ~ u_2 = \sum_{i=1}^m \tilde r_i \s^{\tilde k_i}(g^{\tilde l_i}) + \tilde a \end{align}
-again with $a, \tilde a \in \a, r_i, \tilde r_i \in R \fa i = 1,\ldots,m$. 
-Assume without loss of generality that $k \geq \tilde k$ and consider a product of the form 
-\[ \s^{k}(f^{l}) \s^{\tilde k}(g^{\tilde l}) = \underbrace{\s^{\tilde k}(\s^{k - \tilde k}(f) g)}_{\in \a, \text{ since } \a \text{ is mixed}} \s^{\tilde k}(\s^{k - \tilde k}(f^{l-1}) g^{\tilde l - 1}) \in \a \]
-This implies however, by multiplying out (\ref{formu1u2}), that $u_1 u_2 \in \a$, a contradiction.
+Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and assume that $\a$ is not prime. Then there exist $f, g \in R$ such that $f,g \notin \a$ but $fg \in \a$.
+We distinguish two cases: First, assume that there exists an $f \in U$ with $fg \in \a$ and $f, g \notin \a$. Then $\a$ is a proper subset of the $\s$-ideal $(\a:f)$, since $g \in (\a:f)$ by definition, but by assumption $g \notin \a$.
+Since $(\a:f)$ is mixed, by the maximality of $\a$, there exists an $u \in U \cap (\a:f)$. In particular, $uf \in \a$, but by assumption $f \in U$ and $U$ is multiplicatively closed, which implies that $fu \in U \cap \a$, a contradiction. \\
+For the other case, assume thus that for all $f \in R \setminus \a$ for which there exists a $g \in R \setminus \a$ such that $fg \in \a$ it holds that $f \notin U$, and let $h \in R$ be such that this is the case.
+By the same argument as above, $(\a:h) \supsetneqq \a$, which again implies that there exists an $u \in U \cap (\a:h)$. It holds by definition that $uh \in \a$. By assumption $u,h \notin \a$, which is a contradiction to the above assumption (with $f = u, g = h$) since $u \in U$. 
 \end{bew}
 \end{lem}
 
@@ -114,8 +114,9 @@ This implies however, by multiplying out (\ref{formu1u2}), that $u_1 u_2 \in \a$
 Let $R$ be a differece ring and $F \subseteq R$ be a subset of $R$. Then
 \[ \{ F \}_m = \bigcap_{F \subseteq \p \si R, \p \text{ prime }} \p.\]
 \begin{proof}
-The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are mixed. For the inclusion ``$\supseteq$'', let $g \in R, g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
-$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, there exisits a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
+The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are mixed. For the inclusion ``$\supseteq$'', let $g \in R, ~ g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
+$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, we can always find a maximal mixed difference ideal over $\{F\}_m$ by Zorn's Lemma since
+the union of any ascending chain of mixed difference ideals is always a mixed difference ideal. This implies that there exists a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
 which implies that $g \notin \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p$. By taking the contraposition of this we get the desired inclusion.
 \end{proof}
 \end{theorem}
