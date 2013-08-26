@@ -1,0 +1,128 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\text{Spec}}
+\def\dim{\operatorname{dim}}
+\def\sSpec{\sigma\text{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newcommand{\textsim}{\mathord{\sim}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{plain}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{lem}[Satz]{Lemma}
+\newtheorem{defn}[Satz]{Definition}
+\theoremstyle{definition}
+\newtheorem{rem}[Satz]{Remark}
+
+
+\makeindex
+\title{Mixed Ideals in Difference Algebra}
+\author{Andr\'{e}s Goens}
+\date{\today}
+\begin{document}
+\setlength{\parindent}{1.5em}
+\section{A generalization of Theorem 5.2.14}
+\begin{theorem}\label{di=d(i+1)+e}
+Let $k$ be a $\s$-field and let $\p \in k\{y\} = k\{y_1,\ldots,y_n\}$ be a prime $\s$-ideal of $k\{y\}$. For $i \in \N$ set $$d_i := \dim(k\{y\}[i]/\p[i]).$$
+Then there exists integers $d, e \in \N$ such that $d_i = d(i+1) + e$ for $i \gg 0$. Moreover, $d = \s\operatorname{-trdeg}(k\{y\}/\p^*)$.
+\begin{bew}
+See Theorem 5.1 of \cite{wibmer}.
+\end{bew}
+\end{theorem}
+
+\begin{defn}
+Let $k$ be a $\s$-field and $\p \in k\{y_1,\ldots,y_n\}$ be a prime $\s$-ideal. Further let $d, e \in \N$ as in Theorem \ref{di=d(i+1)+e}. We call $d$ the $\s$-dimension of $\p$, 
+or the $\s$-dimension of the irreducible $\s$-variety $X:= \VV(\p)$ and denote it by $\s$-$\dim(\p)$ and $\s$-$\dim(X)$ respectively.
+\end{defn}
+
+\begin{theorem}\label{irredcomp}
+Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial such that $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Then $\VV_{\operatorname{Field}}(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$ and $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
+\begin{bew}
+See Theorem 5.2.14 of \cite{wibmer}.
+\end{bew}
+\end{theorem}
+
+\begin{cor}
+Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial. Then $\VV(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$.
+\begin{bew}
+Write $f = \s^k(f')$ with $k \in \N$ maximal, such that there exists an $f' \in k\{y_1,\ldots,y_n\}$ with $f = \s^k(f')$. Then $\operatorname{Ord}(f') = \operatorname{Eord}(f')$ by definition of the effective order. 
+By Theorem \ref{irredcomp} we know that the $\s$-variety (in the sense of $\s\text{\catname{-VarField}}_k$) $ \VV_{\operatorname{Field}}(f')$ has an irreducbile component (also in the sense of $\s\text{\catname{-VarField}}_k$) $X' = \VV(\p')$ of $\s$-dimension $n-1$.
+This means that there exists a minimal (with respect to inclusion) $\s$-prime $\s$-ideal $\p' \subset k\{y_1,\ldots,y_n\}$ with $f' \in \p'$, such that $\s$-$\dim(\p') = n-1$. 
+Since $f = \s^k(f')$ it holds that $f \in \p'$ as well. Let $\p \subset k\{y_1,\ldots,y_n\}$ be a minimal (again, with respect to inclusion) prime $\s$-ideal with $f \in \p, \p \subseteq \p'$ (such a $\s$-ideal exists due to Zorn's Lemma). 
+
+We will now show that in this case it always holds that $\p^* = \p'$. Since $\p \subseteq \p'$ and $\p'$ is radical, it follows that $\p^* \subseteq \p'$. On the other hand, assume $\p^* \subsetneqq \p'$. Since $f \in \p$, it follows that $f' \in \p^*$,
+and since $\p$ is a prime $\s$-ideal, it follows that $\p^*$ is $\s$-prime. But then $\p^* \subsetneqq \p'$ is a contradiction to the minimality of $\p'$. We know thus, that $\p^* = \p'$. Hence, it follows that $\s$-$\dim(\p) = n -1$ from Theorem \ref{di=d(i+1)+e}.
+
+\end{bew}
+\end{cor}
+
+\begin{lem}
+Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial. 
+Then there exists a prime difference ideal $\q \si k\{y_1,\ldots,y_n\}$, minimal containing $f$, and a $d \in \N$, such that 
+$$\dim(k\{y_1,\ldots,y_n\}[i]/\q[i]) = \left\{ \begin{array}{lr} i, i < \operatorname{Ord}(f) \\ d(i-\operatorname{Ord}(f)) +\ operatorname{Ord}(f),
+ i \geq \operatorname{Ord}(f) \end{array} \right.$$
+\end{lem}
+
+
+\end{document}

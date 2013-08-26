@@ -1,0 +1,105 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\text{Spec}}
+\def\sSpec{\sigma\text{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\ker{\text{ker}}
+\def\H{\mathcal{H}}
+\def\trdeg{\text{trdeg}}
+\def\sdim{\sigma\text{-dim}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{definition}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{rem}[Satz]{Remark}
+\newtheorem{defn}[Satz]{Definition}
+\newtheorem{lem}[Satz]{Lemma}
+
+
+\makeindex
+\title{Difference Kernels}
+\author{Andr\'{e}s Goens}
+\date{\today}
+
+\begin{document}
+
+\begin{defn}
+ Let $R$ be an integral domain and $R \subseteq L$ be a further integer domain, finitely generated over $R$.
+Let $\phi : R \rightarrow L$ be a morphism of rings. We call the morphism $\phi$ extendable, if there exists a generating set ${a_1,\ldots,a_n}$ of $L$ over $R$, i.e. $L = R[a_1,\ldots,a_n]$,
+such that the following is true: $a_1,\ldots,a_{n_1}$ is algebraically independant and maximal as such, and for every $n_1 < i \leq n$ it holds for the minimal polynomial of $a_i$ over $R[a_1,\ldots,a_{i-1}]$, which we denote by 
+$p_i(X) \in R[a_1,\ldots,a_{i_1}][X]$, that the following is true: If we write $p_i(X) = \sum_{k=0}^r f_k x^k$ with $f_k \in R[a_1,\ldots,a_{i-1}]$ then there exists an $f_k, k > 0$ such that $\phi^s(f_k) \neq 0$ for all $s \geq 0$ for which it is defined.
+\end{defn} %% is this enough???
+
+\begin{lem} Let $\phi R \rightarrow L$ be an extendable morphism. Then there exists an overring $L_1 \supseteq L$ and a morphism $\phi': L \rightarrow L_1$ which extends $\phi$, i.e., $\phi'_{|R}=\phi$.
+Is $\phi'$ still extendable???
+\begin{proof}
+We can assume without loss of generality that the algebraically independant set $\{a_1,\ldots,a_{n_1}\}$ is empty: 
+We define $R':= R[a_1,\ldots,a_{n_1}]$ and $L':=L[y_1,\ldots,y_{n_1}]$ and set $\phi'(a_i) := y_i$ for all $1 \leq i \leq n_1$. 
+It is easy to see that this is an extension of $\phi$ and that $\phi':R' \rightarrow L'$ remains extendable.
+We first look at the case where there is only one generator $a$ of $L$ (algebraical over $R$):
+Let $a \in L$ such that $L = R[a]$ and let $p(X)= \sum_{k=0}^t f_k X^k \in R[X]$ be the minimal polynomial of $a$. Consider the polynomial $p'(X) = \sum_{k=0}^t \phi(f_k) X^k \in \phi(R)[X] \subseteq L[X]$.
+Since $\phi$ is extendable, by definition, it holds that the polynomial $p'$ is at least of degree $1$, i.e., $p'(X) \in L[X] \backslash L$. Let $M$ be the splitting field of $p'(X)$ and let $a' \in M$ be a zero of $p'$.
+Then the ring $L_1:= L[a']$ is a subring of the field $M$, and thus also an integral domain. We can thus extend $\phi$ by $\phi': L \rightarrow L_1, a \mapsto a'$, since $p'(X)$ is the minimal polynomial of $a'$. 
+It holds that $p'(X) = \sum_{k=0}^t \phi(f_k) X^k$. For a $k > 0$ assume that $\phi(f_k) \in L \backslash R$. Then it has to be that $\phi(f_k) = \sum_{s=1}^m g_s a^s$ for some $g_s \in R$ and of degree at least $1$ in $a$.
+So we know that $\phi'(\phi(f_k)) = \sum_{s=1}^m \phi(g_s)a'^s$ Why should this never be $0$??
+
+\end{proof}
+\end{lem}
+
+\end{document}
+

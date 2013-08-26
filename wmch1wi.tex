@@ -43,8 +43,8 @@
 \def\supp{\text{Supp}}
 \def\id{\text{id}}
 \def\n{\underline{n}}
-\def\Spec{\text{Spec}}
-\def\sSpec{\sigma\text{-Spec}}
+\def\Spec{\operatorname{Spec}}
+\def\sSpec{\sigma\operatorname{-Spec}}
 \def\diag{\text{diag}}
 \def\End{\text{End}}
 \def\Hom{\text{Hom}}
@@ -63,6 +63,7 @@
 \newcommand{\textsim}{\mathord{\sim}}
 \newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
 \newcommand{\Set}{\catname{Set}}
+\newcommand{\Top}{\catname{Top}}
 \newcommand{\sintk}{\s\text{\catname{-int}}_k}
 \newcommand{\sringk}{\s\text{\catname{-ring}}_k}
 \newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
@@ -196,7 +197,7 @@ This is an infinite properly ascending chain of difference ideals.
 To try to find $\{\a\}_m$ for a $\s$-ideal $\a \si R$ in a difference ring $R$, it might be tempting to consider $\a':= \{ f\s(g) \mid fg \in \a \}$, or to ensure that is a difference ideal rather, $[\a']$. The example above shows that this is not enough,
 as the ideal $[\a']$ does not have to be mixed in general. However, by iteratively repeating this process and taking the union of $\s$-ideals obtained this way, we do get a mixed $\s$-ideal, as we will see in the following Lemma:
 \begin{lem}\label{lemshuffling}
-Let $R$ be a $\s$-ring and $F \subseteq R$. Further let $F' := \{f\s(g) \mid fg \in F \}$, and set $F^{\{1\}}:= [F']$, $F^{\{m\}}:= [F^{\{m-1\}}'] \fa m \in \NE$. Then
+Let $R$ be a $\s$-ring and $F \subseteq R$. Further let $F' := \{f\s(g) \mid fg \in F \}$, and set $F^{\{1\}}:= [F']$, $F^{\{m\}}:= [{F^{\{m-1\}}}'] \fa m \in \NE$. Then
 \begin{align} \{F\}_m = \sqrt{\bigcup_{n=1}^{\infty} F^{\{n\}}}. \end{align}
 This way of obtaining $\{F\}_m$ is called a shuffling processes and has an analog for perfect $\s$-ideals (see for example \cite{levin}, p. 121f.) \index{Shuffling process}
 \begin{proof}
@@ -226,8 +227,8 @@ We will prove the latter, but for this we need a few additional tools. We will f
 Let $R$ be a ring. 
 \begin{enumerate}[(a)]
 \item If $S \geq R$ is an overring of $R$, and $\p$ is a minimal prime ideal of $R$, then there exists a minimal prime ideal $\q$ of $S$ such that $\p = \q \cap R$.
-\item Every radical ideal of $R$ is the intersection of prime ideals. If $R$ is noetherian, then every radical ideal of $R$ is the intersection of finitely many prime ideals.
-\item If $R$ is noetherian and $\p \unlhd R$ is a minimal prime ideal of $R$, then there exists an element $a \in R$ such that $\p$ is the annihilator ideal of $a$, i.e. $\p = \text{Ann}(a) = \{ r \in R \mid ra = 0 \}$.
+\item Every radical ideal of $R$ is the intersection of prime ideals. If $R$ is Noetherian, then every radical ideal of $R$ is the intersection of finitely many prime ideals.
+\item If $R$ is Noetherian and $\p \unlhd R$ is a minimal prime ideal of $R$, then there exists an element $a \in R$ such that $\p$ is the annihilator ideal of $a$, i.e. $\p = \text{Ann}(a) = \{ r \in R \mid ra = 0 \}$.
 \end{enumerate}
 \begin{bew} $~$
 \begin{enumerate}[(a)]
@@ -251,7 +252,7 @@ Let $\a \si R$ be a mixed, radical $\s$-ideal. By Proposition \ref{bijideals} th
  by replacing $R$ with $R/\a$. This means that we only have to show that the zero ideal $[0]$ of a well-mixed, reduced $\s$-ring $R$ is the intersection of all its prime $\s$-ideals. Note that this does not change the fact
 that $R$ is finitely $\s$-generated over $\Z$. \\
 \indent Let thus $f \in R$ be such that $f \in \q \fa \q \si R$ prime. We assert that $f$ then has to be $0$. Assume this is not the case, i.e., $f \neq 0$. Then by assumption on $R$ there is an $n \in \N$ such that $f \in \Z[A,\s(A),\ldots,\s^n(A)]$.
-We now use the special case for (algebraic) ideals: since $\Z[A,\s(A),\ldots,\s^n(A)]$ is noetherian and reduced, $(0) \unlhd \Z[A,\ldots,\s^n(A)]$ is the intersection of all prime ideals of $R$. In particular, there exist prime ideals which do not contain $f$.
+We now use the special case for (algebraic) ideals: since $\Z[A,\s(A),\ldots,\s^n(A)]$ is Noetherian and reduced, $(0) \unlhd \Z[A,\ldots,\s^n(A)]$ is the intersection of all prime ideals of $R$. In particular, there exist prime ideals which do not contain $f$.
 Let $\q_0 \unlhd \Z[A,\ldots,\s^n(A)]$ be a minimal such prime ideal, i.e., with $f \notin \q_0$. Since $f \in \Z[A,\s(A),\ldots,\s^n(A)] \subset \Z[A,\s(A),\ldots,\s^{n+1}(A)]$, again by Lemma \ref{commalg}, we can find a minimal prime ideal $\q_1 \unlhd \Z[A,\s(A),\ldots,\s^{n+1}(A)]$
 such that $\q_1 \cap \Z[A,\s(A),\ldots,\s^{n}(A)] = \q_0$. \\
 \indent Inductively we find a chain of minimal prime ideals $\q_i, i \in \N$, $\q_i \unlhd \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, with $\q_{i+1} \cap \Z[A,\s(A),\ldots,\s^{n+i}(A)] = \q_i$ for all $i \in \N$.
@@ -317,11 +318,11 @@ In particular, every radical, mixed $\s$-ideal of $R$ is the intersection of pri
 It suffices to show that every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals.
 Indeed, since prime $\s$-ideals are radical and mixed, it is clear that $\{F\}_m \subseteq \p$ for every prime $\p \si R$ with $F \subseteq \p$, which together with the fact that every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals gives the representation 
 \begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ prime}}} \p. \end{align*}
-Now, by the same argument as in the beginnig of the proof of Proposition \ref{mixedintersectionprimesfinite}, it is enough to prove in the case that $R$ is well-mixed and reduced, that the intersection of all prime $\s$-ideals of $R$ is $[0]$.
+Now, by the same argument as in the beginning of the proof of Proposition \ref{mixedintersectionprimesfinite}, it is enough to prove in the case that $R$ is well-mixed and reduced, that the intersection of all prime $\s$-ideals of $R$ is $[0]$.
 Let $0 \neq f \in R$. We will construct a prime $\s$-ideal $\q$ of $R$ which does not contain $f$: 
 
 Let $P/\mathcal{G}$ be the difference ring as in Lemma \ref{lemmafilters}. Consider the mapping $\varphi: R \rightarrow P/\mathcal{G}, g \mapsto (g_S)_{S \in M}$ with $(g_S) = g \fa S \in M$ with $g \in S$ and $(g_S) = 0$ for $g \notin S$. 
-It is in fact $\{ S \in M \mid g \in S \} \in M_{\{g\}}$ (with $M_{\{g\}}$ as in Lemma \ref{lemmafilters}). It follows from this that the image of the mapping onto $P/\mathcal{G}$ is in fact independant of the $(g_S)$ for $g \notin S$, as any other choice of these would be in the same $\sim$ class as the image described above.
+It is in fact $\{ S \in M \mid g \in S \} \in M_{\{g\}}$ (with $M_{\{g\}}$ as in Lemma \ref{lemmafilters}). It follows from this that the image of the mapping onto $P/\mathcal{G}$ is in fact independent of the $(g_S)$ for $g \notin S$, as any other choice of these would be in the same $\sim$ class as the image described above.
 It follows that $\varphi$ is a well-defined morphism of $\s$-rings. \\
 \indent From Proposition \ref{mixedintersectionprimesfinite} we know that for every $S \in M$, there exists a prime $\s$-ideal $\p_S \si S$ such that $f \notin \p_S$. 
 We define $\p \subseteq P/\mathcal{G}$ as the set of all equivalence classes of elements $(g_S)_{S \in M}$ such that $\{ S \in M \mid g_S \in \p_S \} \in \mathcal{G}$. 
@@ -337,29 +338,29 @@ which means that $[h]_\sim \in \p$. The preimage of a prime $\s$-ideal, $\q := \
 \subsection{An Analog of the Cohn Topology}
 
 \begin{defn}
-Let $R$ be a $\s$-ring. We denote the set of all prime $\s$-ideals of $R$ by $\s$-$\Spec(R):= \{ \p \si R \mid \p \text{ prime }\}$. Similarly, we denote the set of $\s$-prime ideals by $\Spec^\s(R):= \{ \p \si R \mid \p ~ \s\text{-prime }\} \subseteq \s$-Spec$(R)$.
-\index{$\s$-$\Spec$} \index{$\Spec^\s$}
+Let $R$ be a $\s$-ring. We denote the set of all prime $\s$-ideals of $R$ by $\sSpec(R):= \{ \p \si R \mid \p \text{ prime }\}$. Similarly, we denote the set of $\s$-prime ideals by $\Spec^\s(R):= \{ \p \si R \mid \p ~ \s\text{-prime }\} \subseteq \sSpec(R)$.
+\index{$\sSpec$} \index{$\Spec^\s$}
 \end{defn}
 
 
 \begin{rem}
-As is the case with $\Spec^\s(R)$, it can be the case that $\s$-Spec($R)= \emptyset$. For example, let $R$ be a $\s$-ring, and consider the $\s$-ring $R \oplus R$, with $\s( (r,s)):= (\s(s),\s(r))$. 
+As is the case with $\Spec^\s(R)$, it can be the case that $\sSpec(R)= \emptyset$. For example, let $R$ be a $\s$-ring, and consider the $\s$-ring $R \oplus R$, with $\s( (r,s)):= (\s(s),\s(r))$. 
 We will show that this ring has no prime $\s$-ideals. Let $\p \unlhd R$ prime. Then $0 = (1,0)(0,1) \in \p$, which means that either $(1,0) \in \p$ or $(0,1) \in \p$. But then $R \oplus 0 \subseteq \p$ or $0 \oplus R \subseteq \p$. If we assume that $\p$ is a $\s$-ideal then
  this implies that $R \oplus R \subseteq \p$, which cannot be, by definition.
 \end{rem}
 
 In algebraic geometry, one usually considers $\Spec(R)$ as a topological space with a topology called the Zariski topology. This has an analog for $\Spec^\s(R)$, usually called the Cohn topology. Here we will develop a further analog of both,
- which we will define on $\s$-Spec$(R)$, and will be closely related to radical, mixed $\s$-ideals, as we shall see by its many properties.
+ which we will define on $\sSpec(R)$, and will be closely related to radical, mixed $\s$-ideals, as we shall see by its many properties.
 
 \begin{defn}
-Let $R$ be a $\s$-ring and $F \subseteq R$ be a subset of $R$. We set $\Vm (F):= \{ \p \in \s$-Spec$(R) \mid F \subseteq \p \}$. 
+Let $R$ be a $\s$-ring and $F \subseteq R$ be a subset of $R$. We set $\Vm (F):= \{ \p \in \sSpec(R) \mid F \subseteq \p \}$. 
 If $F$ has only one element $f$, we write $\Vm(f)$ for $\Vm(F)$. \index{$\Vm(F)$}
 \end{defn}
 
 \begin{lem}\label{topologywelldef}
 Let $R$ be a $\s$-ring. Then we have:
 \begin{enumerate}[(a)]
-\item $\Vm((0)) = \s$-Spec$(R)$, and $\Vm(R) = \emptyset$.
+\item $\Vm((0)) = \sSpec(R)$, and $\Vm(R) = \emptyset$.
 \item For any two ideals $\a,\b \unlhd R$ we have $\Vm(\a) \cup \V(\b) = \Vm(\a \cap \b).$
 \item For any family of ideals $(\a_i)_{i \in I}$ for an index set $I$, we have $$\bigcap_{i \in I} \Vm(\a_i) = \Vm(\sum_{i \in I} \a_i).$$ \label{vmintersectionideals}
 \end{enumerate}
@@ -453,8 +454,8 @@ Let $A$ be a $\s$-ring. If $A$ is (algebraically) an integral domain, we call $A
 \end{defn}
 
 \begin{rem}\label{sdomain=field}
-Let $A$ be a $\s$-domain. Then $k:=$Quot$(A)$ is a $\s$-field: For $\frac{r}{s} \in k$ we can define $\s(\frac{r}{s}):= \frac{\s(r)}{\s(s)}$. Since $\s$ is injective, it holds that $\s(s) \neq 0$ for $s \neq 0$, which implies that $\s$ is well defined on $k$.
-By this argument we see that in general for an integral $\s$-ring $A$, Quot$(A)$ is a $\s$-field (in this natural way) if and only if $A$ is a $\s$-domain.
+Let $A$ be a $\s$-domain. Then $k:=\operatorname{Quot}(A)$ is a $\s$-field: For $\frac{r}{s} \in k$ we can define $\s(\frac{r}{s}):= \frac{\s(r)}{\s(s)}$. Since $\s$ is injective, it holds that $\s(s) \neq 0$ for $s \neq 0$, which implies that $\s$ is well defined on $k$.
+By this argument we see that in general for an integral $\s$-ring $A$, $\operatorname{Quot}(A)$ is a $\s$-field (in this natural way) if and only if $A$ is a $\s$-domain.
 \end{rem}
 
 Our main purpose, in a first instance at least, is to investigate the properties of solutions to difference equations. 
@@ -490,9 +491,9 @@ Let $k$ be a $\s$-field and $X: \sintk \rightarrow \Set$ be a $k$-$\s$-variety. 
 
  \begin{rem}
 Let $k$ be a $\s$-field and $X$ be a $k$-$\s$-variety. Not every subfunctor of $X$ is a $\s$-subvariety. Consider the functor $X = \VV(0)$, for $\{0\} \subset k\{y_1\}$.
-For $B \in \sintk$ we denote by $B^* = \{ b \in B \mid b \text{ invertible } \}$ the set of units of $B$. Then for $B \in \sintk$, $B \mapsto B^*$ is a subfunctor $Y$ of $X$ (since $B^* \subset B \fa B \in \sintk$ and morphims of rings always map units to units). $Y$ is not a $\s$-variety, however:
-there exists no $F \subseteq k\{y_1\}$ such that $\VV_B(F) = B^* \fa B \in \sintk$.  Fixme: after here it's wrong! Indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B^*$ and $\fa B \in \sintk$. In particular,
-for $B = k\langle y_1 \rangle = $ Quot$(k\{y_1\}) \in \sintk$ it holds that $f(y_1) = f = 0, ~ y_1 \in k \langle y_1 \rangle^*$, a contradiction.  
+For $B \in \sintk$ we denote by $B^* = \{ b \in B \mid b \text{ invertible } \}$ the set of units of $B$. Then for $B \in \sintk$, $B \mapsto B^*$ is a subfunctor $Y$ of $X$ (since $B^* \subset B \fa B \in \sintk$ and morphisms of rings always map units to units). $Y$ is not a $\s$-variety, however:
+there exists no $F \subseteq k\{y_1\}$ such that $\VV_B(F) = B^* \fa B \in \sintk$.  Indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B^*$ and $\fa B \in \sintk$. In particular,
+for $B = k\langle y_1 \rangle = \operatorname{Quot}(k\{y_1\}) \in \sintk$ it holds that $f(y_1) = f = 0, ~ y_1 \in k \langle y_1 \rangle^*$, a contradiction.  
 \end{rem}
 
 \begin{defn}\label{defnI}
@@ -573,7 +574,7 @@ Let $\a, \b \si k\{y\}$ be two radical, mixed difference ideals. Then it holds t
 We can assume that $\a, \b \neq \{0\}$, as the assertion is obvious otherwise. Since $\a, \b$ are radical and mixed, we know from Proposition \ref{I=F_m} that $\a = \I(\VV(\a)), \b = \I(\VV(\b))$, and $\{ \a \b \}_m = \I( \VV( \a \b ))$.
 For any $B \in \sintk$, it holds that:
 \begin{align*} \VV_B( \a \b) = \VV_B( \a) \cup \VV_B( \b) \end{align*}
-The inclusion ``$\supseteq$'' is obvious. For ``$\subseteq$'', let $p \in \VV_B(\a\b)$ and assume there exisits an $f \in \a$ such that $f(p) \neq 0$.
+The inclusion ``$\supseteq$'' is obvious. For ``$\subseteq$'', let $p \in \VV_B(\a\b)$ and assume there exists an $f \in \a$ such that $f(p) \neq 0$.
 Then, from the definition of $\VV_B(\a\b)$ it follows that $f(p)g(p) = 0 \fa g \in \b$. This means, however, that $p \in \VV_B(\b)$ (since $B$ is an integral domain). The other case is completely analogous.
 Since this holds for any $B$, the $\s$-varieties are also equal: $\VV( \a \b) = \VV( \a) \cup \VV( \b)$. Now,
 \begin{align*} \I(\VV(\a \b)) = \I(\VV(\a) \cup \VV(\b)) \\ = \{ f \in k\{y\} \mid f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), ~ B \in \sintk \} \end{align*}
@@ -691,8 +692,9 @@ This gives us a pretty good idea about the importance of the coordinate ring in 
 Having defined a category for $\s$-varieties, we can now see how this new category-theoretic language helps us better understand the topological aspects of difference varieties.
 
 \begin{lem}\label{inducedcont}
-Let $R,S,T$ be $\s$-rings, and $\varphi: R \rightarrow S, \psi: S \rightarrow T$ morphisms of $\s$-rings. Then the mapping induced by $\varphi$ via $\tilde \varphi: \sSpec(S) \rightarrow \sSpec(R), \p \mapsto \varphi^{-1}(\p)$ is continuous. 
-In fact, it holds that $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi$, and in particular, $R \mapsto \sSpec(R)$ with $\tilde -$ is a contravariant functor from the category of $\s$-rings to Top, the category of topological spaces.
+Let $R,S,T$ be $\s$-rings, and $\varphi: R \rightarrow S, \psi: S \rightarrow T$ morphisms of $\s$-rings. Then the mapping $$\tilde \varphi: \sSpec(S) \rightarrow \sSpec(R), \p \mapsto \varphi^{-1}(\p)$$ 
+induced by $\varphi$ is continuous. 
+In fact, it holds that $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi$, and in particular, $R \mapsto \sSpec(R)$ with $\psi \mapsto\tilde \psi$ is a contravariant functor from the category of $\s$-rings to \Top, the category of topological spaces.
 \begin{bew}
 Let $A = \V(F) \subseteq \sSpec(R)$ be closed. We have to show that $\tilde \varphi^{-1}(A) \subseteq \sSpec(S)$ is closed.
 But 
@@ -703,19 +705,19 @@ That $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi$ is imm
 
 We see thus how radical, mixed $\s$-ideals and the definition of $\s$-varieties as functors from $\sintk$, for an integral $\s$-ring $A$, as well as the topology on $\sSpec(A\{X\})$ all fit together well. 
 These are all in analogous relations to the case for perfect $\s$-ideals, where $\s$-varieties are defined from the category of $\s$-overfields of a $\s$-field $k$, and a topology called the Cohn topology is defined on $\Spec^\s(k\{X\})$ of $\s$-prime ideals (see Ch. 1 \& 2 of \cite{wibmer}).
-The choice for the category $\sintk$ here is better motivated by the following:
+We will try to shed some light on the choice of the category $\sintk$ here:
 
 \begin{defn}
 Let $k$ be a $\s$-field. 
 \begin{enumerate}[(a)]
-\item We denote by $\s\text{\catname{-VarField}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$, where $B$ is a finitely $\s$-generated $\s$-field extension of $k$ as objects,
- and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We define $\I_{\text{Field}}(X)$ for $X \in \s\text{\catname{-VarField}}_k$ and $\VV_{\text{Field}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}.
-\item Similarly, we denote by $\s\text{\catname{-VarDomain}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$, where $B$ is a finitely $\s$-generated $\s$-domain extension of $k$ as objects,
- and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. Again we define $\I_{\text{Domain}}(X)$ for $X \in \s\text{\catname{-VarDomain}}_k$ and $\VV_{\text{Domain}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
-\item Finally,  we denote by $\s\text{\catname{-VarRing}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$, where $B \supseteq k$ is a perfectly $\s$-reduced, finitely $\s$-generated ring over $k$ as objects,
- and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We also define $\I_{\text{Ring}}(X)$ for $X \in \s\text{\catname{-VarRing}}_k$ and $\VV_{\text{Ring}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
+\item We denote by $\s\text{\catname{-VarField}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B$ is a finitely $\s$-generated $\s$-field extension of $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We define $\I_{\operatorname{Field}}(X)$ for $X \in \s\text{\catname{-VarField}}_k$ and $\VV_{\operatorname{Field}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}.
+\item Similarly, we denote by $\s\text{\catname{-VarDomain}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B$ is a finitely $\s$-generated $\s$-domain extension of $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. Again we define $\I_{\operatorname{Domain}}(X)$ for $X \in \s\text{\catname{-VarDomain}}_k$ and $\VV_{\operatorname{Domain}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
+\item Finally,  we denote by $\s\text{\catname{-VarRing}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B \supseteq k$ is a perfectly $\s$-reduced, finitely $\s$-generated ring over $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We also define $\I_{\operatorname{Ring}}(X)$ for $X \in \s\text{\catname{-VarRing}}_k$ and $\VV_{\operatorname{Ring}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
 \end{enumerate}
-In all three cases $F \subseteq k\{y\}$ denotes a set of $\s$-polynomials on finitely many difference variables $(y)$.
+In all three cases $F \subseteq k\{y\}$ denotes a set of $\s$-polynomials on finitely many difference variables $y = y_1, \ldots, y_2$.
 \end{defn}
 
 \begin{prop}
@@ -723,20 +725,20 @@ Let $k$ be a $\s$-field. The three categories $\s\text{\catname{-VarField}}_k$, 
 
 \begin{bew}
 Similar to Proposition \ref{dualisequiv}, the category $\s\text{\catname{-VarField}}_k$ is anti-equivalent to the category of perfectly $\s$-reduced $\s$-overrings of $k$ which are finitely $\s$-generated over $k$ (see \cite{wibmer}, p. 30).
-It suffices to show that the other two categories are also anti-equivalent to it. From the proof of Proposition \ref{dualisequiv} we can see that it is enough to show that $\I_{\text{Domain}}(\VV_{\text{Domain}}(\a)) = \{\a\}$, and $\I_{\text{Ring}}(\VV_{\text{Ring}}(\a)) = \{\a\}$,
+It suffices to show that the other two categories are also anti-equivalent to it. From the proof of Proposition \ref{dualisequiv} we can see that it is enough to show that $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(\a)) = \{\a\}$, and $\I_{\operatorname{Ring}}(\VV_{\operatorname{Ring}}(\a)) = \{\a\}$,
  where $\a \si k\{y\}$ is a $\s$-ideal and $\{ \a \}$ its perfect closure. 
 
-Let first $X  = \VV_{\text{Ring}}(F) \in \s\text{\catname{-VarRing}}_k$ be a $\s$-variety in this sense of perfectly reduced $\s$-fields. 
-We first show that \begin{align*} \I_{\text{Ring}}(X) =  \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \VV_B(F), \\ B \supseteq k\text{ perfectly }\s\text{-reduced and finitely }\s\text{-generated over }k \} \end{align*}
- is a perfect $\s$-ideal. Similar to Proposition \ref{I=F_m}, we know that $\I_{\text{Ring}}(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in V_B(F)$,
+Let first $X  = \VV_{\operatorname{Ring}}(F) \in \s\text{\catname{-VarRing}}_k$ be a $\s$-variety in this sense of perfectly reduced $\s$-fields. 
+We first show that \begin{align*} \I_{\operatorname{Ring}}(X) =  \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \VV_B(F), \\ B \supseteq k\text{ perfectly }\s\text{-reduced and finitely }\s\text{-generated over }k \} \end{align*}
+ is a perfect $\s$-ideal. Similar to Proposition \ref{I=F_m}, we know that $\I_{\operatorname{Ring}}(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in V_B(F)$,
  $B$ perfectly $\s$-reduced and finitely $\s$-generated over $k$: $\s^{i_1}(f)(b) \cdots \s^{i_r}(f)(b) = 0$. Since $B$ is perfectly $\s$-reduced, this means that $f(b) = 0$ for all such $b$,
- which in turn, by definition, means that $f \in \I(X)$. Since every $\s$-domain is perfectly $\s$-reduced, the argument works the same for $X \in \s\text{\catname{-VarDomain}}_k$ with $\I_{\text{Domain}}$ instead of $\I_{\text{Ring}}$.
+ which in turn, by definition, means that $f \in \I_{\operatorname{Ring}}(X)$. Since every $\s$-domain is perfectly $\s$-reduced, the argument works the same for $X \in \s\text{\catname{-VarDomain}}_k$ with $\I_{\operatorname{Domain}}$ instead of $\I_{\operatorname{Ring}}$.
 
 For the other inclusion we shall consider first $X \in \s\text{\catname{-VarDomain}}_k$.
-For $F \subseteq k\{y\}$, it holds that $\{F\} \subseteq \I_{\text{Domain}}(\VV_{\text{Domain}}(F))$. To show this, let $f \in \I_{\text{Domain}}(\VV_{\text{Domain}}(F))$.
+For $F \subseteq k\{y\}$, it holds that $\{F\} \subseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$. To show this, let $f \in \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$.
 It holds that $\{F\}$ is the intersection of all $\s$-prime ideals of $k\{y\}$ which contain $F$ (see for example Proposition 1.2.22 of \cite{wibmer}), so it is enough to show that $f \in \p$ for each $\s$-prime $\p \si k\{y\}$ with $F \subseteq \p$.
-We define the $\s$-domain $B:= k\{y\}/\p =: k\{a\}$, with $a := y + \p \in k\{y\}/\p$. Since $F \subseteq \p$, it holds that $a \in \VV_B(F)$, which, by definition of $\I_{\text{Domain}}(\VV_{\text{Domain}}(F))$ means that $f(a) = 0$. Hence, $f \in \p$, for all $\s$ prime $\p$
-with $F \subseteq \p$, which in turn means that $f \in \{F\}$. Since every $\s$-domain $B$ is perfectly $\s$-reduced, this works for the category $\s\text{\catname{-VarRing}}_k$ as well, with $\I_{\text{Ring}}, \VV_{\text{Ring}}$ instead of $\I_{\text{Domain}}, \VV_{\text{Domain}}$.
+We define the $\s$-domain $B:= k\{y\}/\p =: k\{a\}$, with $a := y + \p \in k\{y\}/\p$. Since $F \subseteq \p$, it holds that $a \in \VV_B(F)$, which, by definition of $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$ means that $f(a) = 0$. Hence, $f \in \p$, for all $\s$ prime $\p$
+with $F \subseteq \p$, which in turn implies that $f \in \{F\}$. Since every $\s$-domain $B$ is perfectly $\s$-reduced, this works for the category $\s\text{\catname{-VarRing}}_k$ as well, with $\I_{\operatorname{Ring}}, \VV_{\operatorname{Ring}}$ instead of $\I_{\operatorname{Domain}}, \VV_{\operatorname{Domain}}$.
 \end{bew}
 
 \end{prop}
@@ -759,7 +761,7 @@ with $F \subseteq \p$, which in turn means that $f \in \{F\}$. Since every $\s$-
 \bibitem{wibmer} Wibmer, Michael \emph{Algebraic Difference Equations (Lecture Notes)}, Available online: \url{http://www.algebra.rwth-aachen.de/de/Mitarbeiter/Wibmer/Algebraic\%20difference\%20equations.pdf}
 \bibitem{lang} Serge Lang, \emph{Algebra}, Revised Third Edition, Springer, 2005
 \bibitem{eisenbud} Eisenbud, David \emph{Commutative Algebra with a View Toward Algebraic Geometry}, Springer, 1995
-\bibitem{hartshorne} Hartshorne, Robin \emph{Algebric Geometry}, Springer, 1977
+\bibitem{hartshorne} Hartshorne, Robin \emph{Algebraic Geometry}, Springer, 1977
 \bibitem{cohn} Cohn,  Richard \emph{Difference Algebra}, Interscience Publishers, 1965
 \bibitem{levin} Levin, Alexander \emph{Difference Algebra}, Springer, 2008
 \bibitem{hrushovski} Hrushovski, Ehud \emph{The Elementary Theory of the Frobenius Automorphism}, arXiv:math/0406514 
