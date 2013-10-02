@@ -1,0 +1,116 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[arrow, matrix, curve]{xy}
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\sD{\s\text{-}\operatorname{D}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\operatorname{Spec}}
+\def\sSpec{\sigma\operatorname{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newcommand{\textsim}{\mathord{\sim}}
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Top}{\catname{Top}}
+\newcommand{\sintk}{\s\text{\catname{-int}}_k}
+\newcommand{\sringk}{\s\text{\catname{-ring}}_k}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{plain}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{lem}[Satz]{Lemma}
+\newtheorem{defn}[Satz]{Definition}
+\theoremstyle{definition}
+\newtheorem{rem}[Satz]{Remark}
+
+
+\begin{document}
+
+\section*{Extensions of kernels}
+\begin{lem}
+Let $\a \subseteq k[y,\ldots,\s^d(y)]$ be a prime difference kernel of length $d$ and let $k[y,\ldots,\s^d(y)]/\a =: k[a,\s(a),\ldots,\s^d(a)]$. Consider the mapping 
+\[ \s: k[a,\ldots,\s^{d-1}(a)] \rightarrow k[a,\ldots,\s^d(a)]. \]
+Assume that for $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$ it holds that $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$. 
+Then there exists a prime difference kernel $\tilde \a \subseteq k[y,\ldots,\s^{d+1}(y)]$ of length $d+1$ with $\tilde \a \cap k[y,\ldots,\s^d(y)] = \a$
+\begin{bew}
+Consider the surjective mapping 
+\[ k[a,\ldots,\s^{d-1}(a)][\s^d(y)] \rightarrow k[a,\ldots,\s^d(a)], s^d(y) \mapsto s^d(a) \]
+Let $\p_1$ be the kernel of this mapping. Since $k[a,\ldots,\s^d(a)]$ is a domain, we know by the fundamental theorem on homomorphisms that $\p_1$ has to be prime. 
+We will show that our assumption on $\operatorname{ker}(\s)$ is equivalent to:
+\[ \s(\p_1) \cap \s(k)[\s(a),\ldots,\s^d(a)] = 0 \]
+To see this consider the following commutative diagram:
+\[
+\begin{xy}
+ \xymatrix{
+      k[a,\ldots,\s^{d-1}(a)][\s^d(y)] \ar[rr]^\s \ar@{->>}[rd]^\s  &     &  k[a,\ldots,\s^d(a)][\s^{d+1}(y)]   \\
+      &  \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)] \ar@^{(->}[ur] &  }
+\end{xy}
+\]
+
+We can factor out $\p_1$ and its image, $\s(\p_1)$. Since $k[a,\ldots,\s^{d-1}(a)][\s^d(y)] / \p_1 \cong k[a,\ldots, \s^d(a)]$,
+we get a surjectve mapping $k[a,\ldots, \s^d(a)] \twoheadrightarrow \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)]/\s(\p_1)$.
+If we factor out the kernel, we get an isomorphism:
+\[ k[a,\ldots, \s^d(a)]/(\operatorname{ker}(\s)) \cong \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)]/\s(\p_1)\]
+On the other hand, we have the canonical embedding $k[a,\ldots,\s^{d-1}(a)] \hookrightarrow k[a,\ldots,\s^{d}(a)]$.
+This mapping stays injective after factoring out the kernel of $\s$ on both sides, 
+i.e. $k[a,\ldots,\s^{d-1}(a)]/\operatorname{ker}(\s) \hookrightarrow k[a,\ldots,\s^{d}(a)]/(\operatorname{ker}(\s))$ is injective, if and only if our assumption on $\ker(\s)$ holds.
+\end{bew}
+\end{lem}
+
+\end{document}
