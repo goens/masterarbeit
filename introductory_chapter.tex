@@ -1,0 +1,201 @@
+%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+\documentclass{article}
+%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{graphicx, float,epsfig}
+\usepackage[nottoc,numbib]{tocbibind}
+
+
+\newcommand{\properideal}{%
+  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+
+\def\P{\mathcal{P}}
+\def\I{\mathbb{I}}
+\def\R{\mathbb{R}} 
+\def\E{\mathcal{E}} 
+\def\NE{\mathbb{N}_{\geq1}} 
+\def\N{\mathbb{N}} 
+\def\Z{\mathbb{Z}} 
+\def\Q{\mathbb{Q}} 
+\def\F{\mathbb{F}}
+\def\Vm{\mathcal{V}_m}
+\def\V{\mathcal{V}}
+\def\VV{\mathbb{V}}
+\def\C{\mathbb{C}}
+\def\U{\mathcal{U}}
+\def\a{\mathfrak{a}}
+\def\b{\mathfrak{b}}
+\def\p{\mathfrak{p}}
+\def\q{\mathfrak{q}}
+\def\s{\sigma}
+\def\si{\unlhd_{\sigma}}
+\def\sD{\s\text{-}\operatorname{D}}
+\def\GL{\text{GL}}
+\def\supp{\text{Supp}}
+\def\id{\text{id}}
+\def\n{\underline{n}}
+\def\Spec{\operatorname{Spec}}
+\def\sSpec{\sigma\operatorname{-Spec}}
+\def\diag{\text{diag}}
+\def\End{\text{End}}
+\def\Hom{\text{Hom}}
+\def\fa{\text{ for all }}
+\def\Tr{\text{Tr}}
+\def\Id{\text{Id}}
+\def\Sym{\text{Sym}}
+\def\H{\mathcal{H}}
+\def\wt{\text{wt}}
+\def\Perf{\text{Perf}}
+
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+%\renewcommand{\P}{\textfrak{P}}
+\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
+\newcommand{\textsim}{\mathord{\sim}}
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Top}{\catname{Top}}
+\newcommand{\sintk}{\s\text{\catname{-int}}_k}
+\newcommand{\sringk}{\s\text{\catname{-ring}}_k}
+\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
+\theoremstyle{plain}
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{theorem}[Satz]{Theorem}
+\newtheorem{ex}[Satz]{Example}
+\newtheorem{cor}[Satz]{Corollary}
+\newtheorem{algorithm}[Satz]{Algorithm}
+\newtheorem{prop}[Satz]{Proposition}
+\newtheorem{lem}[Satz]{Lemma}
+\newtheorem{defn}[Satz]{Definition}
+\theoremstyle{definition}
+\newtheorem{rem}[Satz]{Remark}
+
+\begin{document}
+
+\section{Introduction to Difference Algebra} 
+
+Difference algebra is a small branch of mathematics, whose origin is closely related to that of differential algebra; a larger field with which it bears great similarity. It is also a realitively new field:
+it could be argued that it was born as a branch of mathematics around the 1930s, through a series of articles published by J. Ritt between 1929 and 1939. However, it was not until the 1950s thanks to R. Cohn 
+that difference algebra reached levels of development comparable to those of differential algebra.  Since then it has enjoyed a satisfactory growth thanks to a large number of mathematicians, and although it remains a small field today,
+it still has many important results and a mature structure. A more detailed historical review can be found in the preface of \cite{1}, where this one is based off.
+
+
+To give a first idea of the object of study of difference algebra, we will start off with a few examples of difference equations. Probably one of the best known examples is the Fibonacci sequence, $1,1,2,3,5,8,13,\ldots$, which can be seen as a solution of the folowing recursive equation:
+\begin{align*}
+a_0 = 1,  a_1 = 1 \\ a_n = a_{n-1} + a_{n-2}, n\geq 2
+\end{align*}
+
+Another example that probably any mathematician of physicist will know is the functional equation of the Gamma function:
+
+\begin{align*}
+\Gamma(x+1) = x \Gamma(x)
+\end{align*}
+
+A classical result in complex analysis states that any function which satisfies this equation is a multiple of the $\Gamma$ function,
+which is considered a generalization of the factorial:
+\begin{align*}
+\Gamma(x) = \int_0^\infty{\frac{t^x}{t} e^{-t} dt}
+\end{align*}
+
+These are two notable examples of difference equations, as we will soon see. In difference algebra however, we do not seek to find 'explicit' solutions of these equations,
+ as are the numbers in the Fibonacci sequence, or the integral representation of the $\Gamma$ function. We will seek to study the structure of these equations and tackle problems like the existence of solutions in a more abstract sense.
+
+\section{Basics of Difference Algebra}\label{fundamentos}
+\begin{defn}
+Let  $R$ be a ring (in this thesis all rings will be commutative and unital), and let
+ $\sigma: R \rightarrow R$ be an endomorphism of rings in $R$. Then we call the tuple $(R,\sigma)$ a \emph{difference ring}, or $\sigma$\emph{-ring}. \index{$\s$-ring}
+By abuse of notation we will say that $R$ is a $\sigma$-ring  to refer to the pair, and if $R'$ is a further $\sigma$-ring, we will also use the symbol $\sigma$ for the endomorphism on $R'$; This should not lead to confusion, since it can be infered from the context which endomorphism is meant. 
+\end{defn}
+
+\begin{defn}
+Let $R, R'$ be  $\sigma$-rings and let $\varphi: R \rightarrow R'$ be a morphism of rings. We say that $\varphi$ is a \emph{morphism of $\sigma$-rings}  if \index{moprhism of $\sigma$-rings}
+\begin{align*}
+\sigma(\varphi(r)) = \varphi(\sigma(r)) \fa r \in R
+\end{align*}
+\end{defn}
+
+\begin{ex} A few of the more notable examples of $\s$-rings are the following:
+
+\begin{itemize}
+\item Every ring $R$ is a $\sigma$-ring with $\sigma = \Id_R$. We call this a \emph{constant $\s$-ring}.  \index{constant $\s$-ring}
+\item The field of meromorphic functions $\C \rightarrow \C$, which we will denote by $\mathcal{M}$,
+is a $\sigma$-ring with $\sigma(f)(x) = f(x+1)$ for every $x \in \C$.
+\item The sequences of integers, which we will denote by $\text{Seq}(\Z)$, build a $\sigma$-ring with the operation of shifting its terms to the left:
+\begin{align*} \sigma: (a_n)_{n \in \N} \mapsto (a_{n+1})_{n \in \N}. \end{align*}
+\end{itemize}
+\end{ex}
+
+\begin{defn}
+Let $R$ be a $\sigma$-ring. If $R$ is also a field, we call the pair $(R,\sigma)$ a $\sigma$\emph{-field}. \index{$\s$-field} 
+If $k$ is a $\sigma$-field, $A$ a $k$-algebra which (as a ring) is a $\sigma$-ring and it it holds that 
+$\sigma(ra) = \sigma(r) \sigma(a), r \in k, a \in A$, then we call $A$ a  $k$-$\sigma$\emph{-algebra}. \index{$k$-$\sigma$-algebra}
+\end{defn}
+
+\begin{ex}
+An example of special important is that of $\sigma$\emph{-polynomial-rings}. \index{$\sigma$-polynomial-rings}
+Let $k$ be a field. We consider the polynomial ring in infinitely many variables $R:= k[y,\sigma(y),\sigma^2(y),\ldots]$,
+ where $y,\sigma(y),\sigma^2(y),\ldots$ are, for the moment at least, simply the names of (algebraically independent) variables.
+This ring we can turn into a $k$-$\sigma$-algebra by defining:
+\begin{align*} 
+\sigma:  R \rightarrow R, y \mapsto \sigma(y), \sigma^{n-1}(y) \mapsto \sigma^{n}(y) \fa n > 1 
+\end{align*}
+and extending this mapping $k$-linearly in the obvious way. We denote this $\sigma$-polynomial-ring by $k\{y\}$. In an analogous fashion we can define $\sigma$-polynomial-rings $k\{y_1, \ldots, y_n \}$ in many variables. 
+\end{ex}
+
+\begin{defn} $\phantom{}$
+\begin{itemize}
+\item Given a $\sigma$-ring $S$ and a subring $R \leq S$, we say that $R$ is a $\sigma$\emph{-subring} \index{$\s$-subring} of $S$ if $(R,\sigma|_{R})$ is a $\sigma$-ring,
+i.e. , if the image of $\sigma|_{R}$ is contained in $R$.
+\item A $\sigma$\emph{-ideal} \index{$\s$-ideal} is an ideal $I \unlhd R$ which is also a $\sigma$-subring of $R$; we denote this by $I \si R$. In this case, there exists a canonical $\sigma$-ring structure on the cocient ring $R/I$:
+\begin{align*} \sigma: R/I \rightarrow R/I, a + I \mapsto \sigma(a) + I. \end{align*}
+\end{itemize}
+\end{defn}
+
+\begin{defn}
+Let $R$ be a $\s$-ring and let  $I \si R$ be a $\s$-ideal of $R$. For elements $a_1, \ldots, a_k \in R$ we denote by $[a_1, \ldots, a_k] \si R$ the $\s$-ideal minimal (with respect to inclusion) of $R$ which contains $a_1,\ldots,a_k$. 
+In fact, it holds that \[[a_1,\ldots,a_k] = \{ \sum_{i=1}^n \s^{j_i}(x_i) \mid n \geq 1, j_i \geq 0, x_i \in \{a_1,\ldots,a_k\}, i=1,\ldots,n \} \]. If there exist $b_1,\ldots,b_r \in I$ such that $I = [b_1,\ldots,b_r]$,
+ we say that $I$ is \emph{finitely $\s$-generated} as a $\s$-ideal \index{finitely $\s$-generated $\s$-ideal}
+\end{defn}
+
+\begin{defn}
+A $k$-$\sigma$-algebra  $A$ is \emph{finitely $\sigma$-generada} if there exist elements $f_1, \ldots, f_n$ such that $$A = k[f_1,f_2,\ldots,f_n,\sigma(f_1),\ldots,\sigma(f_n),\sigma^2(f_1),\ldots].$$
+\end{defn}
+
+\begin{rem}\label{epipoli}
+If $A$ is a $k$-$\sigma$-algebra , $\sigma$-generated by $f_1, \ldots, f_n$, then we have a canonical epimorphism of $k$-$\sigma$-algebras from the $\sigma$-polynomial-ring $k\{y_1, \ldots, y_n \}$ to $A$: $y_i \mapsto f_i, i = 1, \ldots, n$. Vemos entonces que los $\sigma$-anillos de polinomios son objetos libres en la categor\'ia de $k$-$\sigma$-\'algebras finitamente generadas. Por ello, denotamos a la $\sigma$-\'algebra  generada por $f_1, \ldots, f_n$ por $k\{f_1, \ldots, f_n\}$.
+\end{rem}
+
+\begin{defn}
+If the kernel $I$ of the epimorphism mentioned on Remark \ref{epipoli} is finitely $\s$-generated as well, say, by $r_1, \ldots, r_m$, then we call the algebra $A$ \emph{finitamentely $\sigma$-presented}. \index{finitamentely $\sigma$-presented}
+\end{defn}
+
+\begin{rem}
+In the conditions of the former definition, by the fundamental theorem on homomorphisms we have $A \cong k\{y_1, \ldots, y_n\}/(r_1,\ldots,r_m)$. Note as well that the concepts ``finitely $\sigma$-generated'' and ``finitamente $\sigma$-presented are truly different, contrary to the case of polynomial rings where we can argue with the Hilbert basis theorem, as shows the next example:
+\end{rem}
+
+\begin{ex}
+Let $k$ be a $\sigma$-field and let $I \si k\{y\} $ the $\sigma$-ideal $\s$-generated by $y\s(y), y\s^2(y), y\s^3(y), \ldots$, i.e., $I = [y \s^i(y) \mid i\geq 1]$. Then the $\sigma$-ring $R := k\{y\}/I$ (where $\s (r + I) := \s(r) + I)$ is 
+finitely $\sigma$-generated, $R = k\{ y + I \}$, but not finitely $\sigma$-presented, since $I$ is not finitely $\sigma$-generated.
+\end{ex}
+
+
+Just as the usual algebraic equations are reduced to finding solutions of a polynomial, difference equations can be expressed as the search for solutions of $\s$-polynomials. This can be understood as a homomorphism as in Remark \ref{epipoli}.
+
+\begin{ex}
+Now we can express both examples from the introduction in the language of difference algebra:
+The Fibonacci sequence is a solution to the $\s$-polynomial $\sigma^2(y) + \sigma(y) - y$ in the $\sigma$-ring  $\text{Seq}(\Z)$; This is precisely the recurrence relation $a_{n+2} + a_{n+1} = a_n$.
+In the same way, the $\Gamma$ function is the solution to the $\s$-polynomial $\sigma(y) - zy$, where $z \in \C(z)$ denotes the identity function $z \mapsto z$.
+\end{ex}
+
+
+
+\end{document}

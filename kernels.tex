@@ -79,7 +79,6 @@
 \begin{document}
 \section{Difference Kernels}
 
-Not corrected.
 %% blah blah de entrada...
 %% \begin{theorem}
 
@@ -87,113 +86,172 @@ Not corrected.
 %% \end{theorem}
 
 \begin{defn}
-Let $\p \unlhd k\{y\}[d], d \geq 1$ be a prime ideal of $k\{y\}[d]$. Then $\p$ is called a weak difference kernel of length $d$, if $\s(\p[d-1]) \subseteq \p$. It is called a difference kernel of length $d$, if $\s^{-1}(\p) = \p[d-1]$.
-\end{defn}\index{(weak) kernels}
+Let $\a \unlhd k\{y\}[d], d \geq 1$ be an ideal of $k\{y\}[d]$. Then $\a$ is called a \emph{difference kernel of length $d$}, if $\s(\a[d-1]) \subseteq \p$. The difference kernel is called \emph{prime}, if additionally $\a$ is a prime ideal of $k\{y\}[d]$.
+Finally, $\a$ is called a \emph{reflexive difference kernel of length $d$} if $\s^{-1}(\a) = \a[d-1]$.
+\end{defn}\index{difference kernels}
+
+It is worth noting that this notation differs from that of the standard literature (in particular \cite{cohn} and \cite{levin}). In the standard literature, what we here defined as a prime, reflexive kernel is called a kernel,
+and the rest of the concepts are not treated. We chose to change the notation here to be able to study other $\s$-ideals with this methodology, and have names that better reflect the properties of the ideals we are trying to study.
 
 \begin{rem}
-It is easy to see that a kernel is always a weak kernel, but the converse is not necesarilly true: a weak kernel only guarantees the inculsion $\p[d-1] \subseteq \s^{-1}(\p)$.
+It is easy to see that a reflexive kernel is always a kernel, but the converse is not necesarilly true: $\a$ being a kernel of length $d$ only guarantees the inclusion $\a[d-1] \subseteq \s^{-1}(\a)$.
 \end{rem}
 
 \begin{ex}
-Let $\p \si k\{y\}$ be a prime $\s$-ideal, $d \geq 1$. Then $\p[d] \unlhd k\{y\}[d]$ is a weak kernel: since $\p$ is a $\s$-ideal we have $\s(\p[d-1]) \subseteq \p$, 
-and since $\p$ is prime we know that $\p[d]$ has to be prime as well. If $\p$ is also reflexive (i.e. a $\s$-prime ideal), then $\p[d]$ is a kernel. 
+Let $\p \si k\{y\}$ be a prime $\s$-ideal, $d \geq 1$. Then $\p[d] \unlhd k\{y\}[d]$ is a prime kernel: since $\p$ is a $\s$-ideal we have $\s(\p[d-1]) \subseteq \p$, 
+and since $\p$ is prime we know that $\p[d]$ has to be prime as well. If $\p$ is also reflexive (i.e. a $\s$-prime ideal), then $\p[d]$ is a reflexive, prime kernel. 
 \end{ex}
 
 Inspired by the former example we define the following:
 \begin{defn}
-Let $\p \unlhd k\{y\}[d]$ be a weak kernel of length $d$, and $\p' \si k\{y\}$ be a prime $\s$-ideal. Then we call $\p'$ a realization of $p$, iff $\p \subseteq \p'$, 
-and we call the realization regular if it also holds that $\p'[d] = \p$. Similarly, if $\p$ is a kernel, then we require a realization to be a $\s$-prime ideal.
+Let $\a \unlhd k\{y\}[d]$ be a kernel of length $d$, and $\a' \si k\{y\}$ be a $\s$-ideal. Then we call $\a'$ a realization of $\a$, if $\a \subseteq \a'$, 
+and we call the realization regular if it also holds that $\a'[d] = \a$. Similarly, if $\a$ is a reflexive/prime kernel, then we define a realization to be a reflexive/prime realization if the $\s$-ideal $\a'$ is reflexive/prime.
 \end{defn}\index{(regular) realization}
 
-The former example and the acompanying definition is actually much more general than it would seem to be at first. 
-It is in fact the case, that weak kernels are exactly of the form $\p[d]$ for prime $\s$ ideals,
-and kernels for $\s$-prime ones, i.e., we can always find a regular realization of (weak) kernels. 
-To prove this, however, we still need to develop more of a framework around difference kernels.
+The former example and the acompanying definition are actually much more general than it would seem to be at first. 
+It is in fact the case that prime,reflexive kernels are always of the form $\p[d]$ for a $\s$-prime ideal $\p$.
+For prime kernels which are not reflexive in general it is not that simple, but we will classify those which are of the form $\p[d]$ for a prime $\s$-ideal $\p$.
+For all of this, however, we need further develop the framework around difference kernels first.
 
 \begin{rem}\label{sigmawelldeffker}
-Let $\p \subseteq k\{y\}$ be a weak difference kernel of length $d$. Then, $\s$ induces a well-defined mapping 
+Let $\p \subseteq k\{y\}$ be a difference kernel of length $d$. Then, $\s$ induces a well-defined mapping 
 \begin{align*}
 \s: k[y,\ldots,\s^{d-1}(y)]/\p[d-1] \rightarrow k[y,\ldots,\s^{d}(y)]/\p
 \end{align*}
-If $\p$ is a difference kernel, then this mapping is injective. 
-If we set $a := \bar y = y + \p \in k(\p) = k\{y\}[d]/\p$, then we can extend $\s$ to the quotient fields:
+If $\p$ is a reflexive kernel, then this mapping is injective. 
+We set $a := \bar y = y + \p \in k\{y\}[d]/\p$. If $\p$ is a prime, reflexive kernel, then we can extend $\s$ to the quotient fields:
 \[ \s: k(a,\ldots,s^{d-1}(a)) \cong \text{Quot}(k[y,\ldots,\s^{d-1}(y)]/\p[d-1]) \rightarrow k(a,\ldots,\s^d(a)) = k(\p) \]
 \end{rem}
 
-Even in the case of weak difference kernels we can work with the properties of field extensions, though we cannot properly extend $\s$ to the fields.
- In particular, we get a nice way of defining some sort of ``difference degree'' of (weak) kernels:
+Even in the case of prime difference kernels we can work with the properties of field extensions, though we cannot properly extend $\s$ to the fields.
+ In particular, we get a nice way of defining some sort of ``difference degree'' of prime kernels:
 \begin{defn}
-Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $a:= y + \p \in k(p)$; we define the difference dimension of $\p$ as follows:
-\begin{align*} \sdim(\p) := \text{trdeg}(k(\p)/k(p[d-1]) = \text{trdeg}((k\{y\}[d]/\p)/(k\{y\}[d-1]/p[d-1])) \\  = \text{trdeg}(k(a,\ldots,\s^{d}(a))/k(a,\ldots,\s^{d-1}(a))) \end{align*}
+Let $\p \subseteq k\{y\}$ be a prime difference kernel of length $d$, and let $a:= y + \p \in k(p)$; we define the difference dimension of $\p$ as follows:
+\begin{align*} \sdim(\p) := \text{trdeg}(k(\p)/k(\p[d-1]) = \text{trdeg}((k\{y\}[d]/\p)/(k\{y\}[d-1]/\p[d-1])) \\  = \text{trdeg}(k(a,\ldots,\s^{d}(a))/k(a,\ldots,\s^{d-1}(a))) \end{align*}
 \end{defn}\index{$\s$-dimension of a $\s$-kernel}
 
-If we want to show that (weak) difference kernels are the intersection of (prime $\s$-ideals) $\s$-prime ideals with $k\{y\}[d]$,
-it is reasonable to consider some sort of extension, or \emph{prolongation} of a (weak) kernel, which would be the intesrection with $k\{y\}[d+1]$. 
+If we want to show that prime,reflexive difference kernels are the intersection of $\s$-prime ideals with $k\{y\}[d]$, and similar cases for other types of kernels,
+it is reasonable to consider some sort of extension, or \emph{prolongation} of a kernel, which would be the intesrection with $k\{y\}[d+1]$. 
 This motivates the following definition:
 
 \begin{defn}
-Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and $\p' \supset \p$ be a further (weak) difference kernel, of length $d+1$.
-Then we call $\p'$ a \emph{prolongation} of $\p$, iff $\p'[d] = \p$. If it holds further that $\sdim(\p) = \sdim(p')$, then we call the prolongation \emph{generic}.
+Let $\a \subseteq k\{y\}$ be a difference kernel of length $d$, and $\a' \supset \a$ be a further difference kernel, of length $d+1$.
+Then we call $\a'$ a \emph{prolongation} of $\a$, iff $\a'[d] = \a$. Similarly, for a prime/reflexive kernel we say the prolongation is prime/reflexive if, $\a'$ is also prime/reflexive.
+For a prime prolongation, if it holds further that $\sdim(\a) = \sdim(a')$, then we call the prolongation \emph{generic}.
 \end{defn}\index{prolongation, generic}
 
 \begin{defn}
-Let $\p \subseteq k\{y\}$ be a (weak) difference kernel of length $d$, and let $\p'$ be a realization of $\p$. We call $\p'$ a principal realization of $\p$, iff $\p'[i+1]$ is a generic prolongation of $\p'[i]$ for all $i \geq d$.
+Let $\p \subseteq k\{y\}$ be a prime difference kernel of length $d$, and let $\p'$ be a realization of $\p$. We call $\p'$ a principal realization of $\p$, iff $\p'[i+1]$ is a generic prolongation of $\p'[i]$ for all $i \geq d$.
 \end{defn}
 
 \begin{ex}
 Consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
 A calculation with \cite{M2} quickly identifies that the ideal $(f_1,f_2) \unlhd R$ is prime, and in fact, $f_1,f_2$ is a Gr\"{o}bner Basis of $(f_1,f_2)$ with respect to the
-term ordering $y_1 < y_2 < \s(y_1) < \s(y_2)$. This means in particular, that $(f_1,f_2)[0] = \{0\}$, and thus $(f_1,f_2)$ is a weak kernel of length $1$ of $k\{y_1,y_2\}$. However,
+term ordering $y_1 < y_2 < \s(y_1) < \s(y_2)$. This means in particular, that $(f_1,f_2)[0] = \{0\}$, and thus $(f_1,f_2)$ is a prime kernel of length $1$ of $k\{y_1,y_2\}$. However,
 \[ f_1 \cdot (\s^2(y_1) + \s(y_1) + 1 ) - \s(f_2) = 1 \]
 Which means that any $\s$-ideal of $k\{y_1,y_2\}$ containing $f_1, f_2$ is already the whole ring, and is not prime, by definition.
 \end{ex}
 
-We see thus, that we need a stronger concept for weak kernels. 
+We see thus, that we need a stronger concept for prime kernels, if we are to classify those prime kernels which are intersections of prime $\s$-ideals with $k\{y\}[d]$ for a $d \in \N$. 
 
 \begin{defn}
-Let $\p \unlhd k\{y\}[d]$ be a weak kernel of length $d$. We define 
-\[\p^* := ([\p]^*)[d] = \{ f \in k\{y\} \mid \text{ there exists an } n \in \N: \s^n(f) \in [\p] \} \cap k\{y\}[d] \]
-Then $\p^*$ is an ideal in $k\{y\}[d]$. We say that $\p$ is \emph{regular} if $\p^* \unlhd k\{y\}[d]$ is prime. \index{regular weak kernel}
+Let $\a \unlhd k\{y\}[d]$ be a difference kernel of length $d$. We define 
+\[\a^* := ([\a]^*)[d] = \{ f \in k\{y\} \mid \text{ there exists an } n \in \N: \s^n(f) \in [\a] \} \cap k\{y\}[d] \]
+Then $\a^*$ is an ideal in $k\{y\}[d]$. If $\a$ is a prime kernel, we say that $\a$ is \emph{regular} if $\a^* \unlhd k\{y\}[d]$ is also prime. \index{regular weak kernel}
 \end{defn}
 
 \begin{rem}\label{regular->kernel}
-From the definitions it is easily clear that for a weak kernel $\p \unlhd k\{y\}[d]$, $\p^*$ is a kernel if and only if $\p$ is regular. 
+From the definitions it is easily clear that for a prime kernel $\p \unlhd k\{y\}[d]$, $\p^*$ is a prime, reflexive kernel if and only if $\p$ is regular. 
 \end{rem}
 
-The definition of $\p^*$ for a weak kernel $\p$ of length $d$, while clear from the theoretical standpoint, makes use of the whole difference polynomial ring $k\{y\}$. 
-We would want a way of locally obtaining $\p^*$, i.e., only in $k\{y\}[d]$. Luckily, there is a nice algorithmical way of doing this using Gröbner bases.
-To do this, we fix a lexicographical ordering on the variables $y = y_1, \ldots, y_n$, and from this we define a lexicographical ordering on $k\{y\}$, namely:
+The definition of $\a^*$ for a kernel $\a$ of length $d$, while clear from the theoretical standpoint, makes use of the whole difference polynomial ring $k\{y\}$. 
+We would want a way of locally obtaining $\a^*$, i.e., only in $k\{y\}[d]$. Luckily, there is a nice algorithmical way of doing this using Gröbner bases.
+To do this, we fix a lexicographical ordering on the variables $y = y_1, \ldots, y_n$, and from this we define a lexicographical ordering on $k\{y\}$ as follows:
 \[ \s^{m_1}(y_{i_1}) < \s^{m_2}(y_{i_2})\text{ if and only if }m_1 > m_2\text{ or }m_1 = m_2\text{ and }y_{i_1} < y_{i_2} \]
- By a lexicograhpical order we mean that for two variables $a, b$:
-\[ a^{k_1} < b^{k_2}\text{ if and only if }a < b\text{ or }a = b\text{ and }k_1 < k_2 \]
+ By a lexicograhpical order we mean that if we order the variables as $x = (x_1,\ldots,x_{dn})$, then for two monomials $x^A, x^B$ with multi-index vectors $A,B$ we define
+\[ x^A > x^B \text{ if and only if the first non-zero entry of } A-B \text{ is positive} \]
 We will use this term ordering for the remainder of this section.
+%% We will also use the concept of Gröbner bases used in \cite{cox}, which is slightly weaker than usual: A Gröbner basis for the ideal $I \unlhd R$ is a finite set $G$
+%% for which it holds that $(LT(G)) = (LT(I))$. For example, a (not auto-reduced) set like $\{ x^2, -x^2 \}$ would, by this definition be a Gröbner basis for the ideal $(x^2)$.
 \begin{rem}\label{remorder}
-A polynomial $f \in k\{y\}$ and its leading term $LT(f)$ have the same order. Further, if $k$ is inversive it holds that if $f$ is a power of $\s$, i.e. $f = \s^m(f')$ for an $f \in k\{y\}$,
-if and only if it is the case with $LT(f)$, and then it holds that $LT(f) = s^k(LT(f')) = LT(\s^k(f'))$.
+Let $k$ be an inversive $\s$-field. Then it holds for an $f \in k\{y\}$ that $f$ is a power of $\s$, i.e. $f = \s^m(f')$ for an $f' \in k\{y\}$,
+if and only if this is the case for $LT(f)$, in which case it also holds that $LT(f) = s^k(LT(f')) = LT(\s^k(f'))$.
 \begin{bew}
-That Ord$(f) \leq $Ord($LT(f)$) is obvious. Assume then that Ord$(f) < $Ord($LT(f)$). Then there exists a monomial $m$ of $f$
-with Ord($f$) = Ord($m) <$ Ord($LT(f)$). But then $m > LT(f)$, a contradiction. If $f =  \s^k(f')$, then every monomial of $f$ is as well an $k$-th power of $\s$, in particular, $LT(f)$ as well.
-On the other hand let $LT(f) = \s^k(g)$ for a monomial $g \in k\{y\}$, and assume $f$ cannot be written as $\s^k(f')$ for an $f' \in k\{y\}$. 
-Then there must be a monomial $m$ of $f$ which cannot be written as $\s^k(m')$ for a monomial $m' \in k\{y\}$. In particular, since $k$ is inversive, $m'$ has a variable $\s^j(y_i)$ with $j < k$, which is not the case
-for $LT(f)$ by assumption. This means, however, that $m' > LT(f)$, again a contradiction. 
+If $f =  \s^m(f')$, then every monomial of $f$ is as well an $m$-th power of $\s$, in particular, $LT(f)$ as well.
+On the other hand let $LT(f) = \s^m(g)$ for a monomial $g \in k\{y\}$, and assume that $f$ cannot be written as $\s^m(f')$ for an $f' \in k\{y\}$. 
+Then there must be a monomial $a$ of $f$ which cannot be written as $\s^k(a')$ for a monomial $a' \in k\{y\}$. In particular, since $k$ is inversive, $a'$ has a variable $\s^j(y_i)$ with $j < k$,
+which is not the case for $LT(f)$ by assumption. This means, however, that $a' > LT(f)$, a contradiction. 
 The last equalities all hold by the definition of the term ordering.
 \end{bew}
 \end{rem}
 
-\begin{lem}
-Let $k$ be a $\s$-field, and $k^*$ its inversive closure. Further let $\p \subset k\{y\}[d]$ be a weak kernel of length $d$, and $f_1, \ldots, f_k$ be a Gröbner basis for $\p$. 
-Then the ideal $\p^*$ is given by 
-\[ \p^* = \underbrace{(\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq k)}_{\unlhd k^*\{y\}[d]} \cap k\{y\}[d] \]
-where we by this notation ignore the $\s^{-i}(f_j)$ which do not exist. 
+\begin{lem}\label{lemgroebner}
+Let $k$ be a $\s$-field, and $k^*$ its inversive closure. Further let $\a \subset k\{y\}[d]$ be a kernel of length $d$, and $f_1, \ldots, f_r$ be a Gröbner basis for $\a$. 
+Then the ideal $\a^*$ is given by 
+\[ \a^* = \underbrace{(\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq r)}_{\unlhd k^*\{y\}[d]} \cap k\{y\}[d] \]
+where we by this notation ignore the $\s^{-i}(f_j)$ which do not exist. This is even a Gröbner basis for $\a^*$. %% in the sense of \cite{cox}.
 In particual, if $k$ is inversive, it holds that
-\[ \p^* = (\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq k) \unlhd k\{y\}[d] \]
+\[ \a^* = (\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq r) \unlhd k\{y\}[d] \]
 \begin{bew}
-We consider first the special case where $k$ is inversive. One inclusion is obvious, as the elements $\s^{-i}(f_j)$, if they exist, have to be in $\p^*$. For the other inclusion let $f \in \p^*$.
+We consider first the special case where $k$ is inversive. One inclusion is obvious, as the elements $\s^{-i}(f_j)$, if they exist, have to be in $\a^*$. For the other inclusion let $f \in \a^*$.
 It is enough to show that there exists a $\s^{-i}(f_j)$ such that $LT(\s^{-i}(f_j))$ divides $LT(f)$ (see for example \cite{cox}, p.75). 
-By definition of $\p^*$ there exists an $n \in \N$ such that $\s^n(f) \in [\p]$. This means that $\s^n(LT(f)) \in LT([\p][d+n])$. 
-Since $f_j, 0 \leq j \leq k$ is a Gröbner basis of $\p$, it is clear that $LT([\p][d+n])$ is generated by $LT(\s^i(f_j)), 0 \leq i \leq n, 0 \leq j \leq k$ as an ideal in $k\{y}[d+n]$.
-Hence, there exists a $\s^i(f_j)$ and a monomial $m \in k\{y\}[d+n]$ such that $\s^n(LT(f)) = LT(\s^i(f_j)) h$. Since these are monomials and $k$ is inversive, it follows that $LT(\s^i(f_j
-By Remark \ref{remorder}
+By definition of $\a^*$ there exists an $n \in \N$ such that $\s^n(f) \in [\a]$. This means that $\s^n(LT(f)) = LT(\s^n(f)) \in LT([\a][d+n])$. 
+Since $f_j, 0 \leq j \leq r$ is a Gröbner basis of $\a$, it is clear that $(LT([\a][d+n]))$ is generated by $LT(\s^i(f_j)), 0 \leq i \leq n, 0 \leq j \leq r$ as a monomial ideal in $k\{y\}[d+n]$.
+Note: I'm not sure this is true, why couldn't it cancel out farther up? It really looks to be non-trivial to calculate $\a[d]$ from $\s$-generators of $\a$...
+Hence, there exists a $\s^i(f_j)$ and a monomial $m \in k\{y\}[d+n]$ such that $\s^n(LT(f)) = LT(\s^i(f_j)) h$. Since these are monomials and $k$ is inversive it follows that both $LT(\s^i(f_j))$
+and $h$ have to be images of the $\n$-th power of $\s$, i.e. $\s^{i-n}(LT(f_j))$ and $\s^{-n}(h)$ exist and it holds that $LT(f) = \s^{i-n}(LT(f_j)) \cdot \s^{-n}(h)$ since $\s$ is injective on $k\{y\}$.
+Since $\s^{i-n}(LT(f_j))$ exists and Ord$(LT(f_j)) \leq d$, it holds that $n \leq d$.
+Now, for the general case: we know that $\a^*_{k^*} := ((\a)_{k^*\{y\}[d]})^* \unlhd k^*\{y\}[d]$ is given as
+\[ \a^*_{k^*} = (\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq r) \unlhd k^*\{y\}[d] \]
+and since $\a \subseteq (\a)_{k^*\{y\}[d]}$, it is obvious that $\a^* \subseteq \a^*_{k^*}$.
+We further know that $\a^* \subseteq k\{y\}[d]$, so that we get 
+\[ \a^* \subseteq \underbrace{(\s^{-i}(f_j) \mid 0 \leq i \leq d, 1 \leq j \leq k) \cap k\{y\}[d]}_{=:\b} \]
+For the other inclusion: For $f \in \b$ we know there exist $r_{i,j} \in k\{y\}[d]$ such,
+that $f = \sum_{i,j} \s^{-i}(f_j)r_{i,j}$. Then, $\s^d(f) = \s^d(\sum_{i,j} \s^{-i}(f_j)r_{i,j}) = \sum_{i,j}\s^{d-i}(f_j)\s^d(r_{i,j}) \in [\a]$,
+which means that $f \in \a^*$, by definition.
+\end{bew}
+\end{lem}
+
+This is a very helpful description of $\a^*$, as it is contained in the polynomial ring $k\{y\}[d]$ which has finitely many variables.
+As a result of this we can get a way of knowing when prolongations of regular prime kernels are regular, as we will soon see.
+
+\begin{defn}
+Let $k$ be a $\s$-field and  $\a \si k\{y\}$ be a $\s$-ideal. 
+Further let $d_1, d_2 \in \Z$ with $-1 \leq d_1 < d_2$ We define $\a[d_1, d_2]:= \a[d_2] \backslash \a[d_1] = \{ r \in a[d_2] \mid r \notin a[d_1] \}$.
+Note that this is not an ideal, as, for example, $0 \notin \a[d_1,d_2]$, but every element in $r \in a[d_1,d_2]$ has the property that $d_1 < $Ord$(r) \leq d_2$.
+\end{defn}
+
+\begin{lem}\label{extrags}
+Let $\a \subset k\{y\}[d]$ be a difference kernel of length $d$, and let $\b \subseteq k\{y\}[d+1]$ be a prolongation of $\a$. 
+Further let $f_1,\ldots,f_r$ be a Gröbner basis of $\a$. Then there exist $g_1,\ldots,g_s \in k\{y\}[d,d+1]$ such that each $g_j, 1 \leq j \leq s$ has only monomials in
+$k\{y\}[d,d+1]$, and $f_1, \dots, f_r, g_1, \ldots, g_s$ is a Gröbner basis for $\b$. 
+\begin{bew}
+Because $k\{y}[d+1] = k\{y\}[d] \cup k\{y}[d,d+1]$, the union is disjoint, we can write any Gröbner basis of $\b$ as 
+$\tilde f_1, \ldots \tilde f_{\tilde r}, g_1, \ldots,  g_{ s}$,
+with $LT(\tilde f_1), \ldots, LT(\tilde f_{\tilde r}) \in k\{y\}[d]$, and $LT(g_1), \ldots, LT(g_{ s}) \in k\{y\}[d,d+1]$.
+For each pair of monomials $a \in (LT(f_1, \ldots, f_r)), b \in k\{y\}[d,d+1]$ it holds that $a > b$,
+Since $LT(g_j), 1 \leq j \leq s$ is a monomial, it has to be of order $d+1$, and since any $m$ monomial of lower order 
+would satisfy that $m > LT(f)$, it has to be that every monomial of $f$ is of order $d+1$. 
+On the other hand, as $\b[d] = \a$, it has to be that $LT((\tilde f_1, \ldots, \tilde f_{\tilde r})) = LT((f_1,\ldots,f_r)) = LT(\a)$.
+So that we can replace the first half of the basis with the Gröbner basis of $\a$. NOT QUITE YET! What if the f_i have terms of order d+1??
+\end{bew}
+\end{lem}
+
+\begin{lem}
+Let $\p \subset k\{y\}[d]$ be a regular weak kernel of length $d$ with Gröbner basis $h_1,\ldots,h_t$, 
+and let $f_1,\ldots,f_r$ be a Gröbner basis of the kernel $\p^*$. Further let $\q$ be a prolongation of $\p^*$  and $g_1,\ldots,g_s$ as in Rem. \ref{extrags},
+ so that $f_1,\ldots,f_r,g_1,\ldots,g_s$ is a Gröbner basis of $\q$. Then $\q':= (h_1,\ldots,h_t,g_1,\ldots,g_s)$ is a prolongation of $\p$, and is a regular weak kernel. 
+%%If $\q$ is a generic prolongation, so is $\q'$ as well.
+ \begin{bew}
+By Rem. \ref{extrags} each $g_j$ has only coefficients in $k\{y\}[d,d+1]$, so that any $k\{y\}[d+1]$-linear combination $\sum_{i=1}^r d_i f_i + \sum_{j=1}^s d_{r+j}g_j$,
+such that $\sum_{j=1}^s d_{r+j}g_j \neq 0$ has to lie in $\q'[d,d+1]$. In particular, $\q'[d] = (f_1,\ldots,f_r) = \p$.
+Since $\p \subseteq \p^*$, it is clear as well that $\s(\p) \subseteq \s(\p^*)$. This means that $\s(\p) \subseteq \q'$:
+Let $f = \sum_{i=1}^td_i h_i \in \p$. Then $\s(g) = \s(\sum_{i=1}^td_i h_i) \in \q[d,d+1]$.
+For those $h_i$ with $LT(h_i) \in k\{y\}[d-1]$, $\s(h_i) \in \p$ since $\p$ is a kernel, so it is enough to show that $\s(h_i) \in \q'$ for $LT(h_i) \in \p[d-1,d]$.
+If $LT(h_i) \in \p[d-1,d]$, then every monomial of $\s(h_i)$ has to have order $d+1$. But by the choice of the $g_j$, in $\q$ we can write $\s(h_i)$ as a $k{y}[d+1]$-linear combination of 
+the $g_j, 0 \leq j \leq s$, which means that $\s(h_i) \in \q'$, and thus $f \in \q'$. 
+Further, by Lemma \ref{lemgroebner} we know that $(\q')^* = \q$, which means that the $\q'$ is also regular.
+%%Now let $\q$ be a regular prolongation of $\p^*$. FINISHME!
 \end{bew}
 \end{lem}
 
@@ -213,6 +271,7 @@ $t_1 \in \sqrt{P \cup \{f\}}$, $t_2 \in \sqrt{P \cup \{g\}}$. But in particular,
 A contradiction.
 \end{proof}
 \end{lem}
+
 
 \begin{prop}\label{genericprol}
 Let $\p \subseteq k\{y\}$ be a (regular weak) difference kernel of length $d$. Then there exists a prolongation of $\p$. If $\p$ is a kernel, then there exists a prologation that is generic. 
@@ -259,11 +318,6 @@ We only have to show that $\p'$ is regular. FINISH-ME!
 \end{bew}
 \end{prop}
 
-\begin{defn}
-Let $k$ be a $\s$-field and  $\a \si k\{y\}$ be a $\s$-ideal. 
-Further let $d_1, d_2 \in \Z$ with $-1 \leq d_1 < d_2$ We define $\a[d_1, d_2]:= \a[d_2] \backslash \a[d_1] = \{ r \in a[d_2] \mid r \notin a[d_1]$.
-Note that this is not an ideal, as, for example, $0 \notin \a[d_1,d_2]$, but every element in $r \in a[d_1,d_2]$ has the property that $d_1 < $Ord$(r) \leq d_2$.
-\end{defn}
 
 \begin{prop}
 Let $\p \subseteq k\{y\}$ be a (weak) kernel of length $d$. Then there exists a realization of $\p$. If $\p$ is a kernel, then this realization is principal.
