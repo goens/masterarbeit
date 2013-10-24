@@ -1,0 +1,309 @@
+In this section we will introduce difference varieties. We will do so in a way that they correspond with the topology on $\sSpec(R)$, which we defined in the previous section. It will be again based on M. Wibmer's lecture notes \cite{wibmer}, 
+where it is worked out for the analogous case of perfect $\s$-ideals.
+
+\begin{defn}
+Let $A$ be a $\s$-ring. If $A$ is (algebraically) an integral domain, we call $A$ an \emph{integral $\s$-ring}. If additionally the endomorphism $\s$ on $A$ is injective, then we call $A$ a \emph{$\s$-domain}. \index{integral $\s$-ring} \index{$\s$-domain}
+\end{defn}
+
+\begin{rem}\label{sdomain=field}
+Let $A$ be a $\s$-domain. Then $k:=\operatorname{Quot}(A)$ is a $\s$-field: For $\frac{r}{s} \in k$ we can define $\s(\frac{r}{s}):= \frac{\s(r)}{\s(s)}$. Since $\s$ is injective, it holds that $\s(s) \neq 0$ for $s \neq 0$, which implies that $\s$ is well defined on $k$.
+By this argument we see that in general for an integral $\s$-ring $A$, $\operatorname{Quot}(A)$ is a $\s$-field (in this natural way) if and only if $A$ is a $\s$-domain.
+\end{rem}
+
+Our main purpose, in a first instance at least, is to investigate the properties of solutions to difference equations. 
+We will start with an integral $\s$-field $k$ and look for solutions (zeros) of some $\s$-polynomial $p$ over $k$, i.e. $p \in k\{y_1, \ldots, y_n \}$. In general, rather, it will be a set of $\s$-polynomials $F \subseteq k\{y_1, \ldots, y_n \}$ that we will study. 
+For this we want to define $\s$-varieties; we cannot mimic the usual approach from algebraic geometry, where we would take the algebraic closure of $k$. The next remark shows why.
+
+\begin{rem}\label{incompatibleextensions}
+ Consider the constant $\s$-field $\Q$ and $K = \Q(\sqrt{2})$, with $\s (\sqrt{2}) = \sqrt{2}$; $L = \Q(\sqrt{2}), \s(\sqrt{2}) = - \sqrt{2}$. 
+Both $K$ and $L$ are $\s$-field extensions of $\Q$, but there cannot be a further extension $\Q \leq M$ of $\s$-fields, such that $K,L \leq M$ are both (isomorphic to) $\s$-subfields of $M$. 
+To see this, assume there was such an $M$. Then the set $\{ a \in M \mid a^2 - 2 = 0 \}$ has exactly two elements, which we will call $\sqrt{2}, -\sqrt{2}$ (since $\sqrt{2} + (- \sqrt{2}) = 0$).
+But $\sqrt{2} \in K$ has to be mapped to one of these two in any embedding, and the same for $\sqrt{2} \in L$, which already yields the contradiction,
+ since in $M$ either $\s(\sqrt{2}) = \sqrt{2}$ or $\s(\sqrt{2}) = -\sqrt{2}$.
+\end{rem}
+
+To avoid this problem, we will define $\s$-varieties as functors. For this we will need a few category-theoretic definitions:
+
+\begin{defn}
+Let $k$ be a $\s$-field. The category of all $\s$-ring extensions $A$ of $k$ we denote by $\sringk$, where the morphisms are defined as follows: For $B,C \in \sringk$ we say that a morphism of $\s$-rings $\varphi: B \rightarrow C$ is a morphism of $\s$-ring extensions of $k$, if and only if, $\varphi_{|k} = \id_k$.
+The subcategory which arises from restricting the object class to integral $\s$-rings, the category of integral $\s$-ring extensions of $A$, we denote by $\sintk$. \index{$\sintk$} \index{$\sringk$}
+\end{defn}
+
+Now we are ready to define $\s$-varieties of $\s$-rings, with mixed $\s$-ideals in mind:
+
+\begin{defn}\label{defnVV}
+Let $k$ be a $\s$-field and $B \in \sintk$ an integral $\s$-overring of $k$. Further let $F \subseteq k\{y_1, \ldots, y_n\}$ be a set of $\s$-polynomials over $k$. 
+Then we define $\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \fa f \in F \}$. A functor $X: \sintk \rightarrow \Set$, for which there exists a set $F \subseteq k\{y_1, \ldots, y_n \}$ such that $X(B) = \VV_B(F)$ for all $B \in \sintk$ we denote as a \emph{$\s$-variety over $k$}, or a \emph{$k$-$\s$-variety}.
+Here, $\Set$ denotes the usual category of sets with mappings as morphisms. We also write $X := \VV(F)$ as a short notation for this functor. \index{$\s$-variety} \index{$\s$-variety over $k$} \index{$k$-$\s$-variety}
+\end{defn}
+
+\begin{defn}
+Let $k$ be a $\s$-field and $X: \sintk \rightarrow \Set$ be a $k$-$\s$-variety. We say a subfunctor $Y \subseteq X$ is a \emph{$\s$-subvariety} of $X$, if $Y$ is a $k$-$\s$-variety itself. \index{$\s$-subvariety}
+\end{defn}
+
+ \begin{rem}
+Let $k$ be a $\s$-field and $X$ be a $k$-$\s$-variety. Not every subfunctor of $X$ is a $\s$-subvariety. Consider the functor $X = \VV(0)$, for $\{0\} \subset k\{y_1\}$.
+For $B \in \sintk$ we denote by $B^* = \{ b \in B \mid b \text{ invertible } \}$ the set of units of $B$. Then for $B \in \sintk$, $B \mapsto B^*$ is a subfunctor $Y$ of $X$ (since $B^* \subset B \fa B \in \sintk$ and morphisms of rings always map units to units). $Y$ is not a $\s$-variety, however:
+there exists no $F \subseteq k\{y_1\}$ such that $\VV_B(F) = B^* \fa B \in \sintk$.  Indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B^*$ and $\fa B \in \sintk$. In particular,
+for $B = k\langle y_1 \rangle = \operatorname{Quot}(k\{y_1\}) \in \sintk$ it holds that $f(y_1) = f = 0, ~ y_1 \in k \langle y_1 \rangle^*$, a contradiction.  
+\end{rem}
+
+\begin{defn}\label{defnI}
+Let $X = \VV(F)$ be a $\s$-variety over the $\s$-field $k$, $F \subseteq k\{y_1,\ldots,y_n\}$. Then we set $$\I(X):= \{ f \in k\{y_1,\ldots,y_n\} \mid f(b) = 0 \fa b \in \VV_B(F), ~ B \in \sintk \}.$$ \index{ $\I(X)$}
+\end{defn}
+
+\begin{ex}\label{A^n}
+Let $k$ be a $\s$-field and consider the set $\{ 0 \} = F \subseteq k\{y_1,\ldots,y_n\}$. Then the $\s$-variety $X$ defined by $F$, $X(B) := \VV_B(F) \fa B \in \sintk$ is called the affine $n$-space, and is denoted by $\mathbb{A}^n_k$, 
+or simply $\mathbb{A}^n$, whenever $k$ is clear from the context. Then for every $G \subseteq A\{y_1,\ldots,y_n\}$ the $\s$-variety given by $Y: B \mapsto \VV_B(G)$ is a $\s$-subvariety of $\mathbb{A}^n$, 
+and we write $Y \subseteq \mathbb{A}^n$.
+\end{ex}
+
+We note that $0$ is in any (radical, mixed, difference) ideal, so it is not surprising that every $\s$-variety is a $\s$-subvariety of $\VV(0)$. This ``intuition'' will be made more concrete later on.
+
+Since we have this functorial definition, we have in principle a whole proper class of solutions for most systems of difference equations. 
+It is obvious we want to have some sort of equivalence relation between solutions to group them up in a reasonable manner.
+
+\begin{defn}\label{equivsols}
+Let $k$ be a $\s$-field, $B,C \in \sintk$. Further let $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations and $b \in B^n, c \in C^n$ be solutions of $F$, i.e. $b \in \VV_B(F), c \in \VV_C(F)$.
+We say that $b$ and $c$ are equivalent if the mapping $b \mapsto c$ is a well-defined isomorphism between the integral $\s$-rings $k\{b\}$ and $k\{c\}$  (as elements of $\sintk$). \index{equivalent solutions}
+\end{defn}
+
+%% \begin{lem}
+%% Let $k$ be a $\s$-field, $B,B' \in \sintk$, and let $b \in B^n; b' \in B'^n$ be equivalent solutions for a system of difference equations $F \subseteq A\{y_1,\ldots,y_n\}$
+%% \end{lem}
+
+\begin{rem}
+The usual approach, for example in \cite{cohn}, Chapter 4 or \cite{levin}, Section 2.6, is to restrict the definition of $\s$-varieties to $\s$-fields instead of allowing any integral $\s$-rings. With this concept,
+two solutions $a,b$ of a system of difference equation over a difference field $k$ are said to be equivalent if the $\s$-field extensions $k\langle a \rangle$ and $k\langle b \rangle$ are isomorphic as $\s$-field extensions of $k$ via $a \mapsto b$.
+This is in accordance with Definition \ref{equivsols}, i.e., solutions in difference field extensions are equivalent if and only if they are equivalent as solutions in integral $\s$-overrings in the sense of Definition \ref{equivsols}.
+\begin{bew}
+Assume there exist $\s$-field extensions $k \leq A,B$, and elements $a \in A^n$, $b \in B^n$ such that $a$ and $b$ are equivalent as solutions in the sense of Definition \ref{equivsols}. Since $A,B$ are $\s$-fields, it means that $k\{a\}$ and $k\{b\}$ are $\s$-domains, 
+and $k\langle a \rangle, k\langle b \rangle$ have the ``canonical'' difference structure induced by $k\{a\}, k\{b\}$ (see Remark \ref{sdomain=field}). Let $\varphi: k\{a\} \rightarrow k\{b\}, a \mapsto b$ be an isomorphism of integral $\s$-ring extensions of $k$.
+Then we can define $\tilde \varphi: k \langle a \rangle \rightarrow k\langle b \rangle, \frac{x}{y} \mapsto \frac{\varphi(x)}{\varphi{(y)}}$. This is a well-defined isomorphism of $\s$-field extensions of $k$, since:
+\begin{align*}
+\tilde \varphi \left(\s \left(\frac{x}{y}\right)\right) = \tilde \varphi \left( \frac{\s \left(x\right)}{\s \left(y\right)}\right) = \frac{ \varphi \left(\s \left(x\right)\right)}{ \varphi \left(\s \left(y\right)\right)} =  \frac{\s \left(\varphi \left(x\right)\right)}{\s \left(\varphi \left(y\right)\right)} = \s \left( \tilde \varphi \left(\frac{x}{y}\right)\right)
+\end{align*}
+The inverse implication is obvious.
+\end{bew}
+\end{rem}
+
+\begin{ex}
+In the two $\s$-field extensions of $\Q$ in Remark \ref{incompatibleextensions} we have two solutions of the (algebraic) polynomial $y^2-2$, which represent two different solutions in the difference algebraic sense,
+since the $\s$-fields $\Q(\sqrt{2}), \s(\sqrt{2}) = \sqrt{2}$ and $\Q(\sqrt{2}), \s(\sqrt{2}) = -\sqrt{2}$ are not isomorphic. 
+\end{ex}
+
+\begin{ex}
+Let $k$ be a $\s$-field. The $\s$-variety $X$ given by $\s(y) \in k\{y\}$, i.e. $X(B) = \VV_B(\s(y)) \fa B \in \sintk$ has a single point in any $\s$-field extension of $k$, namely $0$. However, in general integral $\s$-rings,
+this is not necessarily the case: Take, for example, $B:= k\{y\}/[\s(y)] \in \sintk$. In $B$ we have $0 \neq $ ker$(\s) = [y] \si B$, which means that in particular, $[y + [\s(y)]] \subseteq \VV_B(\s(y))$.
+\end{ex}
+
+It is not a coincidence that in the previous example we found more solutions on the $\s$-ring $B = k\{y\}/[\s(y)]$. The $\s$-ideal $[\s(y)]$ is radical and mixed, i.e., $[\s(y)] = \{ [\s(y)] \}_m$.
+In fact, the ring $B$ as we chose it plays an analogous role to that of the coordinate ring of an affine variety in the usual (algebraic) case.
+
+The next proposition shows why our definition of $\s$-variety is ``the right one'' for mixed ideals:
+
+\begin{prop}\label{I=F_m}
+Let $k$ be a $\s$-field and $X = \VV(F) \subseteq \mathbb{A}^n$ be a difference variety over $k$. Then $\I(X) = \{F\}_m \si k\{y_1,\ldots,y_n\}$. 
+\begin{bew}
+We will first show that $\I(X)$ is a radical, mixed $\s$-ideal.
+Let $f, g \in \I(X)$, $h \in k\{y_1,\ldots,y_n\}$. Then, for every $B \in \sintk$, $b \in \VV_B(F)$, we have $f(b) = g(b) = 0$.
+It follows that $(f + g)(b) = f(b) + g(b) = 0$ as well as $(fh)(b) = f(b)h(b) = 0 \cdot h(b) = 0$ and $\s(f)(b) = \s(f(b)) = \s(0) = 0$, so that $\I(X)$ is a $\s$-ideal.
+It further follows that $h(b)^n = 0$ implies $h(b) = 0$, since $B$ is an integral domain, and this means that $h^n \in \I(X)$ implies that $ h \in \I(X)$. \\
+\indent It only remains to show that $\I(X)$ is mixed. Let now $f,g \in k\{y_1,\ldots,y_n\}$ be such that $fg \in \I(X)$. This means that for all  $B \in \sintk$, $b \in \VV_B(F)$ it holds
+ $(fg)(b) = f(b) g(b) = 0$. Since $B$ is an integral domain,
+this implies that $f(b) = 0$ or $g(b) = 0$. But that also implies that $\s(f(b)) = \s(0) = 0$, or $\s(g(b)) = 0$, so that in any case $(f\s(g))(b) = 0$, from which it follows that $f\s(g) \in \I(X)$.
+Note that it does not always have to be the same case, $f(b) = 0$ or $g(b) = 0$, as it depends on $B$. In particular, $\I(X)$ does not have to be prime in general. We thus see that $\I(X)$ is radical and mixed, hence $\{F\}_m \subseteq k\{y_1,\ldots,y_n\}$. \\
+\indent For the other inclusion, let $f \in \I(X)$. We will show that $f \in \{F\}_m$. Let $F \subseteq \p \si k\{y_1,\ldots,y_n\}$ be a prime $\s$-ideal.
+Then, consider $B:= k\{y_1,\ldots,y_n\}/\p$: this is an integral $\s$-ring. Since $F \subseteq \p$, we know that $y + \p \in \VV_B(F)$. By assumption we have $f \in \I(\VV(F))$, which means by definition that $f(y + \p) = 0$, which
+in turn means that $f \in \p$. But since this holds for any prime $\p \si R$, Theorem \ref{intersectionprimes} implies that $f \in \{F\}_m$.
+\end{bew}
+\end{prop}
+
+From this we immediately get a further result on radical, mixed ideals, which is analogous to the case for radical ideals in algebraic geometry.
+\begin{cor}\label{prod=cap}
+Let $\a, \b \si k\{y\}$ be two radical, mixed difference ideals. Then it holds that $\a \cap \b = \{ \a \b \}_m$.
+\begin{bew}
+We can assume that $\a, \b \neq \{0\}$, as the assertion is obvious otherwise. Since $\a, \b$ are radical and mixed, we know from Proposition \ref{I=F_m} that $\a = \I(\VV(\a)), \b = \I(\VV(\b))$, and $\{ \a \b \}_m = \I( \VV( \a \b ))$.
+For any $B \in \sintk$, it holds that:
+\begin{align*} \VV_B( \a \b) = \VV_B( \a) \cup \VV_B( \b) \end{align*}
+The inclusion ``$\supseteq$'' is obvious. For ``$\subseteq$'', let $p \in \VV_B(\a\b)$ and assume there exists an $f \in \a$ such that $f(p) \neq 0$.
+Then, from the definition of $\VV_B(\a\b)$ it follows that $f(p)g(p) = 0 \fa g \in \b$. This means, however, that $p \in \VV_B(\b)$ (since $B$ is an integral domain). The other case is completely analogous.
+Since this holds for any $B$, the $\s$-varieties are also equal: $\VV( \a \b) = \VV( \a) \cup \VV( \b)$. Now,
+\begin{align*} \I(\VV(\a \b)) = \I(\VV(\a) \cup \VV(\b)) \\ = \{ f \in k\{y\} \mid f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), ~ B \in \sintk \} \end{align*}
+And $f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), ~ B \in \sintk$, is equivalent to \\
+$ \underbrace{f(p) = 0 \fa p \in \VV_B(\a), ~ B \in \sintk}_{\Leftrightarrow f \in \I(\VV(\a))}$ and $ \underbrace{f(p) = 0 \fa p \in \VV_B(\b), ~ B \in \sintk}_{\Leftrightarrow f \in \I(\VV(\b))}$. \\
+Hence, $\{\a\b\}_m = \I(\VV( \a \b)) = \I(\VV(\a)) \cap \I(\VV(\b)) = \{\a\}_m \cap \{\b\}_m = \a \cap \b$.
+\end{bew}
+\end{cor}
+
+\begin{defn}
+Let $k$ be a $\s$-field and let $X$ be a $\s$-variety over $k$. Further let $F \subseteq k\{y_1, \ldots, y_n\}$ be a system of difference equations over $k$ with $X(B) = \VV_B(F) \fa B \in \sintk$.
+Then we consider the $\s$-ring $k\{y_1, \ldots, y_n\}/\{F\}_m = k\{y_1, \ldots, y_n\}/\I(X) =: k\{X\}$ and call it the \emph{coordinate ring} of $X$. Since $\{F\}_m$ is a radical, mixed $\s$-ideal, $k\{X\}$ is reduced and well-mixed. \index{coordinate ring}
+\end{defn}
+
+\begin{rem}
+Let $k$ be a $\s$-field and $X$ a $k$-$\s$-variety. Further let $b \in X(B), ~ B \in \sintk, f + \I(X) \in k\{X\}$. Then the value of $f(b) \in k$ is independent of the representative $f$,
+since for $f' + \I(X) = f + \I(X)$, we know that $f - f' \in \I(X)$, and thus by definition, $(f - f')(b) = 0$. By abuse of notation,
+we will sometimes use the representative $f$ to refer to its equivalence class $f + \I(X)$ and we will simply write $f(b)$ to mean the well-defined value of evaluating $b$ on any representative of the class.
+\end{rem}
+
+We can now clarify what we meant after Example \ref{A^n}.
+
+ \begin{lem}\label{bijsubvarsideals}
+Let $k$ be a $\s$-field. Then the maps $X \mapsto \I(X)$ and $\a \mapsto \VV(\a)$ define inclusion-reversing bijections between the set of all $\s$-subvarieties of $\mathbb{A}^n$ and the radical, mixed ideals of $k\{y_1,\ldots,y_n\}$.
+\begin{bew}
+From Proposition \ref{I=F_m} we know that $\I(\VV(\a)) = \a$ for all $\a \si k\{y_1,\ldots,y_n\}$ radial, mixed. Conversely, for a $\s$-variety $X = \VV(F) \subseteq \mathbb{A}^n$ we know  $\VV(\I(X)) = \VV(\I(\VV(F))) \subseteq \VV(F) = X$,
+ since $F \subseteq \I(X)$. On the other hand it is clear from the definitions of $\VV$ and $ \I$, that $X \subseteq \VV(\I(X))$, so that $X = \VV(\I(X))$. This proves the bijectivity of both mappings. That both mappings are inclusion-reversing follows directly from the definitions.
+\end{bew}
+\end{lem}
+
+Note that since every $\s$-variety (as defined in this thesis) is a $\s$-subvariety of $\mathbb{A}^n$ for an $n \in \NE$, it is no restriction to consider $\mathbb{A}^n$ instead of an arbitrary $\s$-variety, as we can see in the following corollary:
+\begin{cor}
+  Let $X$ be a $\s$-variety over the $\s$-field $k$. Then there is a bijection between the radical, mixed $\s$-ideals of $k\{X\}$ and the $\s$-subvarieties of $X$ via
+ $$X \supseteq Y \mapsto \{f \in k\{X\} \mid f(b) = 0 \fa b \in Y(B), \fa B \in \sintk \} =: \I_{k\{X\}}(Y)$$
+\begin{bew}
+If we identify the radical, mixed ideals of $k\{X\}$ with the radical, mixed ideals of $k\{y\}$ which contain $\I(X)$ (see Proposition \ref{bijideals}), then this is just the restriction of the mapping described in Lemma \ref{bijsubvarsideals}.
+\end{bew}
+\end{cor}
+
+A further very interesting bijection can also help us better understand equivalence classes of solutions: 
+\begin{prop}\label{bijsols}
+Let $X = \VV(F)$ be a $\s$-variety over the $\s$-field $k$. The equivalence classes of solutions of $F$ are in bijection with the $\s$-spectrum of the coordinate ring $\sSpec(k\{X\})$
+\begin{bew}
+Let $B \in \sintk$, $b \in B^n$ be a solution of $F \subseteq k\{y_1,\ldots,y_n\}$, i.e. $f(b) = 0 \fa f \in F$. Consider the mapping $$\varphi: k\{y_1,\ldots,y_n\} \rightarrow B, y \mapsto b.$$
+Then $F \subseteq $ ker$( \varphi) \si R$.
+Since (forgetting the difference structure for a moment), $B$ is an integral domain, the ideal ker$(\varphi)$ has to be prime. It follows from this that $\{F\}_m = \I(X) \subseteq $ker$(\varphi)$. 
+In particular, this implies that the mapping $\varphi$ factors over $\I(X)$, and it induces a morphism of $\s$-rings $\tilde \varphi: k\{X\} \rightarrow B$. By the same argument as above, the kernel of this induced
+morphism, $\p_b := $ker$(\tilde \varphi) \si k\{X\}$ is a prime $\s$-ideal of $k\{X\}$. The kernel of the mapping constructed this way is always the same for equivalent solutions. To see this, let $b' \in B^n$ such that $k\{b\} \cong k\{b'\}$ via $\iota: b \mapsto b'$.
+then it holds for the mapping $\varphi': k\{y_1, \ldots, y_n\} \rightarrow B', y \mapsto b$ that $\varphi' = \iota \circ \varphi$ (which is well-defined since Im$(\varphi)\subseteq k\{b\}$). In particular, since $\iota$ is an isomorphism, ker$(\varphi) = $ker$(\varphi')$. 
+We define the mapping $\Psi$ from the equivalence classes of solutions of $F$ to $\sSpec(k\{X\})$ via $b \mapsto \p_b$.\\ 
+
+\indent On the other hand, for $\p \in \sSpec(k\{X\})$, which we identify with $\I(X) \subseteq \tilde \p \in \sSpec(k\{y_1,\ldots,y_n\})$ (see Proposition \ref{bijideals}), consider the integral $\s$-ring $B(\p):= k\{y_1,\ldots,y_n\}/ \tilde \p$.
+Since $\tilde \p$ is a prime $\s$-ideal, $B(\p)$ is an integral $\s$-ring. Set $b(\p) := \bar y \in B(\p)$, as the image of $y$ in $B(\p)$. Then, because $F \subseteq \I(X) \subseteq \tilde \p$ we know that $b(\p)$ is a solution of $F$. 
+We define $\Psi^{-1}(\p)$ as the equivalence class of $b(\p)$. Then $\Psi$ and $\Psi^{-1}$ are inverses of each other, and hence, are both bijections.
+\end{bew}
+\end{prop}
+
+From Proposition \ref{bijsols} we see that it is a good idea to concentrate on $\sSpec(k\{X\})$ for a $\s$-variety $X$ over a $\s$-field $k$.
+ From here on, we will speak of the ``topology on/of X'' to refer to the topology on $\sSpec(k\{X\})$, as in Definition \ref{deftop}. 
+We will also use the convention $x \in X$ to mean $x \in \sSpec(k\{X\})$, or $T \subseteq X$ closed to speak of a closed subset of $\sSpec(k\{X\})$, and so forth.
+
+\subsection{Morphisms of Difference Varieties}
+
+So far we have only studied difference varieties themselves, but not really a way to relate them with each other; we have yet to properly define the category of difference varieties over a fixed $\s$-field $k$: 
+we still have to define what the morphisms in this category shall be.
+
+\begin{defn}\label{spolynomialmaps}
+Let $k$ be a $\s$-field, $X \subseteq \mathbb{A}^n,Y \subseteq \mathbb{A}^m$ $\s$-varieties over $k$. Then, a morphism of functors $f: X \rightarrow Y$ is called a \emph{morphism of $\s$-varieties over $k$} or \emph{$\s$-polynomial map} if 
+there exist $\s$-polynomials $f_1,\ldots,f_m \in k\{y_1,\ldots,y_n\}$ such that $f(b) = (f_1(b),\ldots,f_m(b))$ for all $b \in X(B), B \in \sintk$. \index{morphism of $\s$-varieties} \index{$\s$-polynomial map}
+\index{morphism of $\s$-varieties} \index{$\s$-polynomial map}
+\end{defn}
+
+\begin{ex}
+For two $\s$-varieties $X \subseteq Y = \mathbb{A}^n_k$, over the $\s$-field $k$, the inclusion mapping $\iota: X \hookrightarrow Y$ is a morphism of $\s$-varieties over $k$, since we can choose $f_1 = y_1, f_2 = y_2, \ldots, f_n = y_n$.
+Similarly, for $m \geq n$ and $X \subseteq \mathbb{A}^m_k, Y \subseteq \mathbb{A}^n_k$ the ``projection onto $\mathbb{A}^n$'' is also a morphism of $\s$-varieties over $k$ (with the same choice of $f_i$ as the example above).
+\end{ex}
+
+\begin{rem}\label{dualmor}
+Let $f: X \rightarrow Y$ be a morphism of $\s$-varieties over the $\s$-field $k$, $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$. Then by definition there exist $f_1, \ldots, f_m \in k\{y_1,\ldots,y_n\}$ such 
+that $f(b) = (f_1(b),\ldots,f_m(b))$ for all $b \in B, ~ B \in \sintk$. Modulo $\I(X)$, these $f_i$ are unique:
+ If there is $f_1', \ldots, f_m' \in k\{y_1,\ldots,y_n\}$ such that $f_i(b) = f'_i(b) \fa b \in B, ~ B \in \sintk,$ and for all $i \in \underline{m}$,
+then it follows that $(f_i - f_i')(b) = 0 \fa b \in B, ~ B \in \sintk$, which implies that $f_i - f_i' \in \I(X)$ by definition, for all $i \in \underline{m}$. \\
+\indent Now, consider the mapping \[ \phi: k\{z_1,\ldots,z_m \} \rightarrow k\{X\}, ~ z_i \mapsto f_i + \I(X) =: \overline{f_i} \]
+This mapping factors over $\I(Y)$, since for $h \in \I(Y) \subseteq k\{z_1,\ldots,z_m\}$, $b \in X(B), ~ B \in \sintk$, we have that 
+\[ (\phi(h))(b) = h(\overline f_1(b), \ldots, \overline f_m(b)) = h(f(b)) \]
+But since $\phi$ is a morphism of $\s$-varieties over $k$, it follows that $f(b) \in Y(B)$, which implies that $h(f(b)) = 0$, by choice of $h$, hence $h \in $ ker$(\phi)$.
+Altogether, this yields a mapping 
+\[ f^* : k\{Y\} \rightarrow k\{X\}, ~ z_i + \I(Y) \mapsto y_i + \I(X) \]
+This mapping is a morphism of integral $\s$-rings over $k$, and is called the \emph{dual mapping} or \emph{dual morphism} to $f$ \index{dual morphism}. It holds that
+\[ f^*(h)(b) = h(f(b)) \fa h \in k\{Y\}, b \in X(B), ~ B \in \sintk. \]
+From the definition it follows that for morphisms $X \xrightarrow{f} Y \xrightarrow{g} Z$ of $\s$-varieties over $k$, it holds that $ (f \circ g)^* = g^* \circ f^*$. 
+We thus get a contravariant functor $-^*$ from the category of difference varieties over $k$ to $\sringk$.
+\end{rem}
+
+\begin{prop}\label{dualisequiv}
+Let $k$ be a $\s$-field. Then $-^*$ as defined in Remark \ref{dualmor} is an anti-equivalence between the category of $\s$-varieties over $k$ and the subcategory of $\sringk$ which arises by restricting the object class to reduced, well-mixed, finitely $\s$-generated $\s$-overrings of $k$. 
+In particular, a morphism $f: X \rightarrow Y$ of $\s$-varieties over $k$ is an isomorphism if and only $f^*: k\{Y\} \rightarrow k\{X\}$ is an isomorphism.
+\begin{bew}
+Since for a $\s$-variety $X$ over $k$, $\I(X)$ is radical and mixed, $k\{X\}$ is always a reduced and well-mixed $\s$-overring of $k$, 
+and finitely $\s$-generated since $\s$-varieties are defined only for equations with finitely many difference variables. From this it follows that the functor $-^*$ from Remark \ref{dualmor} is well defined. \\
+It suffices to show that it is surjective on the skeleton of the categories and bijective on morphisms. 
+Let $B$ be a finitely $\s$-generated, well-mixed and reduced $\s$-overring of $k$. We can then write $B \cong k\{y_1,\ldots,y_n\}/\a$, for an $\a \si k\{y_1,\ldots,y_n\}$ radical and mixed. The $\s$-variety $X = \VV(\a) \subseteq \mathbb{A}^n$
+is then a preimage of the isomorphism class of $B$, since $\I(X) = \I(\VV(\a)) = \a$, because of Proposition \ref{I=F_m}. Thus, $B \cong k\{X\}$. \\
+\indent Now, for the morphisms: First, let $X,Y$ be $\s$-varieties over $k$ and $f,g \in \Hom(X,Y)$ with $f^* = g^*$. Then we know that for every $h \in k\{X\}$, and every $b \in B, ~ B \in \sintk$ it holds that:
+\[ h(f(b)) = f^*(h(b)) = g^*(h(b)) = h(g(b)). \]
+In particular, $f(b) = g(b) \fa b \in B, ~ B \in \sintk$, which implies that $f = g$, and $-^*$ is injective. 
+On the other hand, consider $\varphi: k\{Y\} \rightarrow k\{X\}$ a morphism of $\s$-overrings of $k$. There exist $n,m \in \NE$ such that $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$,
+ which means that $k\{X\} = k\{z_1,\ldots,z_n\}/\I(X), k\{Y\} = k\{y_1,\ldots,y_m\}/\I(Y)$. We will construct a preimage of $\varphi$: Choose $f_1,\ldots,f_m \in k\{z_1,\ldots,z_n\}$ such that $\varphi(y_i + \I(Y)) = f_i + \I(X) \fa i \in \underline{m}$.
+Then we define a morphism $f: X \rightarrow Y$ of $\s$-varieties over $k$ as follows: $f(b) := (f_1(b),\ldots,f_m(b)) \fa b \in B, ~ B \in \sintk$. This is well-defined: Let $h \in \I(Y)$. Then, by definition, $h(y_1 + \I(Y),\ldots,y_n + I(Y)) = 0 + \I(Y)$.
+This implies that $h(f_1 + \I(X),\ldots,f_m + \I(X)) = 0 + \I(X)$, since $\varphi$ is a morphism of $\s$-overrings of $k$. But this in turn implies that $h(f(b)) = 0 \fa b \in X(B), ~ B \in \sintk$, which means that $f$ maps indeed onto $Y$ and $f^* = \varphi$ by construction.
+\end{bew}
+\end{prop}
+
+This gives us a pretty good idea about the importance of the coordinate ring in difference algebra.
+Having defined a category for $\s$-varieties, we can now see how this new category-theoretic language helps us better understand the topological aspects of difference varieties.
+
+\begin{lem}\label{inducedcont}
+Let $R,S,T$ be $\s$-rings, and $\varphi: R \rightarrow S, \psi: S \rightarrow T$ morphisms of $\s$-rings. Then the mapping $$\tilde \varphi: \sSpec(S) \rightarrow \sSpec(R), \p \mapsto \varphi^{-1}(\p)$$ 
+induced by $\varphi$ is continuous. 
+In fact, it holds that $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi$, and in particular, $R \mapsto \sSpec(R)$ with $\psi \mapsto\tilde \psi$ is a contravariant functor from the category of $\s$-rings to \Top, the category of topological spaces.
+\begin{bew}
+Let $A = \V(F) \subseteq \sSpec(R)$ be closed. We have to show that $\tilde \varphi^{-1}(A) \subseteq \sSpec(S)$ is closed.
+But 
+\begin{align*} \tilde \varphi^{-1}(A) = \tilde \varphi^{-1}(\V(F)) = \{ \p \in \sSpec(S) \mid F \subseteq \varphi^{-1}(\p) \} \\ = \{\p \in \sSpec(S) \mid \varphi(F) \subseteq \p \} = \V(\varphi(F)). \end{align*}
+That $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi$ is immediately clear from definition.
+\end{bew}
+\end{lem}
+
+We see thus how radical, mixed $\s$-ideals and the definition of $\s$-varieties as functors from $\sintk$, for an integral $\s$-ring $A$, as well as the topology on $\sSpec(A\{X\})$ all fit together well. 
+These are all in analogous relations to the case for perfect $\s$-ideals, where $\s$-varieties are defined from the category of $\s$-overfields of a $\s$-field $k$, and a topology called the Cohn topology is defined on $\Spec^\s(k\{X\})$ of $\s$-prime ideals (see Ch. 1 \& 2 of \cite{wibmer}).
+We will try to shed some light on the choice of the category $\sintk$ here:
+
+\begin{defn}
+Let $k$ be a $\s$-field. 
+\begin{enumerate}[(a)]
+\item We denote by $\s\text{\catname{-VarField}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B$ is a finitely $\s$-generated $\s$-field extension of $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We define $\I_{\operatorname{Field}}(X)$ for $X \in \s\text{\catname{-VarField}}_k$ and $\VV_{\operatorname{Field}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}.
+\item Similarly, we denote by $\s\text{\catname{-VarDomain}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B$ is a finitely $\s$-generated $\s$-domain extension of $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. Again we define $\I_{\operatorname{Domain}}(X)$ for $X \in \s\text{\catname{-VarDomain}}_k$ and $\VV_{\operatorname{Domain}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
+\item Finally,  we denote by $\s\text{\catname{-VarRing}}_k$ the category which has functors of the form $B \mapsto \VV_B(F)$ as objects, where $B \supseteq k$ is a perfectly $\s$-reduced, finitely $\s$-generated ring over $k$,
+ and as morphisms $\s$-polynomial maps defined in a fashion analogous to Definition \ref{spolynomialmaps}. We also define $\I_{\operatorname{Ring}}(X)$ for $X \in \s\text{\catname{-VarRing}}_k$ and $\VV_{\operatorname{Ring}}(F)$ analogous to Definitions \ref{defnVV} and \ref{defnI}
+\end{enumerate}
+In all three cases $F \subseteq k\{y\}$ denotes a set of $\s$-polynomials on finitely many difference variables $y = y_1, \ldots, y_2$.
+\end{defn}
+
+\begin{prop}
+Let $k$ be a $\s$-field. The three categories $\s\text{\catname{-VarField}}_k$, $\s\text{\catname{-VarDomain}}_k$ and $\s\text{\catname{-VarRing}}_k$ are equivalent.
+
+\begin{bew}
+Similar to Proposition \ref{dualisequiv}, the category $\s\text{\catname{-VarField}}_k$ is anti-equivalent to the category of perfectly $\s$-reduced $\s$-overrings of $k$ which are finitely $\s$-generated over $k$ (see \cite{wibmer}, p. 30).
+It suffices to show that the other two categories are also anti-equivalent to it. From the proof of Proposition \ref{dualisequiv} we can see that it is enough to show that $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(\a)) = \{\a\}$, and $\I_{\operatorname{Ring}}(\VV_{\operatorname{Ring}}(\a)) = \{\a\}$,
+ where $\a \si k\{y\}$ is a $\s$-ideal and $\{ \a \}$ its perfect closure. 
+
+Let first $X  = \VV_{\operatorname{Ring}}(F) \in \s\text{\catname{-VarRing}}_k$ be a $\s$-variety in this sense of perfectly reduced $\s$-fields. 
+We first show that \begin{align*} \I_{\operatorname{Ring}}(X) =  \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \VV_B(F), \\ B \supseteq k\text{ perfectly }\s\text{-reduced and finitely }\s\text{-generated over }k \} \end{align*}
+ is a perfect $\s$-ideal. Similar to Proposition \ref{I=F_m}, we know that $\I_{\operatorname{Ring}}(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in V_B(F)$,
+ $B$ perfectly $\s$-reduced and finitely $\s$-generated over $k$: $\s^{i_1}(f)(b) \cdots \s^{i_r}(f)(b) = 0$. Since $B$ is perfectly $\s$-reduced, this means that $f(b) = 0$ for all such $b$,
+ which in turn, by definition, means that $f \in \I_{\operatorname{Ring}}(X)$. Since every $\s$-domain is perfectly $\s$-reduced, the argument works the same for $X \in \s\text{\catname{-VarDomain}}_k$ with $\I_{\operatorname{Domain}}$ instead of $\I_{\operatorname{Ring}}$.
+
+For the other inclusion we shall consider first $X \in \s\text{\catname{-VarDomain}}_k$.
+For $F \subseteq k\{y\}$, it holds that $\{F\} \subseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$. To show this, let $f \in \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$.
+It holds that $\{F\}$ is the intersection of all $\s$-prime ideals of $k\{y\}$ which contain $F$ (see for example Proposition 1.2.22 of \cite{wibmer}), so it is enough to show that $f \in \p$ for each $\s$-prime $\p \si k\{y\}$ with $F \subseteq \p$.
+We define the $\s$-domain $B:= k\{y\}/\p =: k\{a\}$, with $a := y + \p \in k\{y\}/\p$. Since $F \subseteq \p$, it holds that $a \in \VV_B(F)$, which, by definition of $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$ means that $f(a) = 0$. Hence, $f \in \p$, for all $\s$ prime $\p$
+with $F \subseteq \p$, which in turn implies that $f \in \{F\}$. Since every $\s$-domain $B$ is perfectly $\s$-reduced, this works for the category $\s\text{\catname{-VarRing}}_k$ as well, with $\I_{\operatorname{Ring}}, \VV_{\operatorname{Ring}}$ instead of $\I_{\operatorname{Domain}}, \VV_{\operatorname{Domain}}$.
+\end{bew}
+
+\end{prop}
+%% \begin{rem}
+%% Let $f: X \rightarrow Y$ be a morphism of $\s$-varieties over the integral $\s$-ring $A$. Then the morphism $f^*: A\{y\} \rightarrow A\{x\}$ of $-s$-overrings of $A$ induces a continuous function
+%% \[ \tilde{(f^*)}: \sSpec(A\{X\}) \rightarrow \sSpec(A\{Y\}), M \mapsto (f^*)^{-1}(M) \]
+%% On the other hand FIXME: finish!
+%% as in Lemma \ref{inducedcont}
+%% \end{rem}
+
+%% \begin{ex}
+%% 2.4, here:more points? + 2.2.5
+
+%% \end{ex}
+
+%% section 2.3 not necesarry!

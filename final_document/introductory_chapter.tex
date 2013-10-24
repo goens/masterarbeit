@@ -1,92 +1,10 @@
-%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
-\documentclass{article}
-%\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{color}
-\usepackage{enumerate}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{hyperref}
-\usepackage{makeidx}
-\usepackage{graphicx, float,epsfig}
-\usepackage[nottoc,numbib]{tocbibind}
 
-
-\newcommand{\properideal}{%
-  \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
-
-\def\P{\mathcal{P}}
-\def\I{\mathbb{I}}
-\def\R{\mathbb{R}} 
-\def\E{\mathcal{E}} 
-\def\NE{\mathbb{N}_{\geq1}} 
-\def\N{\mathbb{N}} 
-\def\Z{\mathbb{Z}} 
-\def\Q{\mathbb{Q}} 
-\def\F{\mathbb{F}}
-\def\Vm{\mathcal{V}_m}
-\def\V{\mathcal{V}}
-\def\VV{\mathbb{V}}
-\def\C{\mathbb{C}}
-\def\U{\mathcal{U}}
-\def\a{\mathfrak{a}}
-\def\b{\mathfrak{b}}
-\def\p{\mathfrak{p}}
-\def\q{\mathfrak{q}}
-\def\s{\sigma}
-\def\si{\unlhd_{\sigma}}
-\def\sD{\s\text{-}\operatorname{D}}
-\def\GL{\text{GL}}
-\def\supp{\text{Supp}}
-\def\id{\text{id}}
-\def\n{\underline{n}}
-\def\Spec{\operatorname{Spec}}
-\def\sSpec{\sigma\operatorname{-Spec}}
-\def\diag{\text{diag}}
-\def\End{\text{End}}
-\def\Hom{\text{Hom}}
-\def\fa{\text{ for all }}
-\def\Tr{\text{Tr}}
-\def\Id{\text{Id}}
-\def\Sym{\text{Sym}}
-\def\H{\mathcal{H}}
-\def\wt{\text{wt}}
-\def\Perf{\text{Perf}}
-
-
-\renewcommand{\labelenumi}{\alph{enumi})}
-%\renewcommand{\P}{\textfrak{P}}
-\newcommand{\cupdot}{\mathop{\mathaccent\cdot\cup}}
-\newcommand{\textsim}{\mathord{\sim}}
-\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
-\newcommand{\Set}{\catname{Set}}
-\newcommand{\Top}{\catname{Top}}
-\newcommand{\sintk}{\s\text{\catname{-int}}_k}
-\newcommand{\sringk}{\s\text{\catname{-ring}}_k}
-\newenvironment{bew}{\begin{proof}[Proof]}{\end{proof}}
-\theoremstyle{plain}
-\newtheorem{Satz}{Satz}[section]
-\newtheorem{theorem}[Satz]{Theorem}
-\newtheorem{ex}[Satz]{Example}
-\newtheorem{cor}[Satz]{Corollary}
-\newtheorem{algorithm}[Satz]{Algorithm}
-\newtheorem{prop}[Satz]{Proposition}
-\newtheorem{lem}[Satz]{Lemma}
-\newtheorem{defn}[Satz]{Definition}
-\theoremstyle{definition}
-\newtheorem{rem}[Satz]{Remark}
-
-\begin{document}
-
-\section{Introduction to Difference Algebra} 
+\subsection{Introduction to Difference Algebra} 
 
 Difference algebra is a small branch of mathematics, whose origin is closely related to that of differential algebra; a larger field with which it bears great similarity. It is also a realitively new field:
 it could be argued that it was born as a branch of mathematics around the 1930s, through a series of articles published by J. Ritt between 1929 and 1939. However, it was not until the 1950s thanks to R. Cohn 
 that difference algebra reached levels of development comparable to those of differential algebra.  Since then it has enjoyed a satisfactory growth thanks to a large number of mathematicians, and although it remains a small field today,
-it still has many important results and a mature structure. A more detailed historical review can be found in the preface of \cite{1}, where this one is based off.
+it still has many important results and a mature structure. A more detailed historical review can be found in the preface of \cite{levin}, where this one is based off.
 
 
 To give a first idea of the object of study of difference algebra, we will start off with a few examples of difference equations. Probably one of the best known examples is the Fibonacci sequence, $1,1,2,3,5,8,13,\ldots$, which can be seen as a solution of the folowing recursive equation:
@@ -109,7 +27,7 @@ which is considered a generalization of the factorial:
 These are two notable examples of difference equations, as we will soon see. In difference algebra however, we do not seek to find 'explicit' solutions of these equations,
  as are the numbers in the Fibonacci sequence, or the integral representation of the $\Gamma$ function. We will seek to study the structure of these equations and tackle problems like the existence of solutions in a more abstract sense.
 
-\section{Basics of Difference Algebra}\label{fundamentos}
+\subsection{Basics of Difference Algebra}\label{fundamentos}
 \begin{defn}
 Let  $R$ be a ring (in this thesis all rings will be commutative and unital), and let
  $\sigma: R \rightarrow R$ be an endomorphism of rings in $R$. Then we call the tuple $(R,\sigma)$ a \emph{difference ring}, or $\sigma$\emph{-ring}. \index{$\s$-ring}
@@ -195,7 +113,3 @@ Now we can express both examples from the introduction in the language of differ
 The Fibonacci sequence is a solution to the $\s$-polynomial $\sigma^2(y) + \sigma(y) - y$ in the $\sigma$-ring  $\text{Seq}(\Z)$; This is precisely the recurrence relation $a_{n+2} + a_{n+1} = a_n$.
 In the same way, the $\Gamma$ function is the solution to the $\s$-polynomial $\sigma(y) - zy$, where $z \in \C(z)$ denotes the identity function $z \mapsto z$.
 \end{ex}
-
-
-
-\end{document}

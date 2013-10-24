@@ -1,0 +1,339 @@
+In this section we will study difference ideals more closely. A special emphasis will be given to certain difference ideals which mimic in many ways the properties of and relationship between radical and prime ideals on (general) rings.
+Much of the following is based on Section 1.2 of the lecture notes of M. Wibmer \cite{wibmer}, where most of it is worked out for an analogous case. \\
+\indent There are numerous properties in which we are interested for studying difference ideals. We will start by defining some of them:
+\begin{defn}
+Let  $\a \si R$ be a $\s$-ideal of $R$. 
+\begin{itemize}
+\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. \index{mixed $\s$-ideal}
+\item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
+\item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
+\item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
+\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed, and \emph{perfectly $\s$-reduced}, if it is perfect. \index{well-mixed $\s$-ring}\index{perfectly $\s$-reduced $\s$-ring}
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+It is easy to see from the definitions that $\s$-prime ideals are perfect, and that perfect $\s$-ideals are mixed, radical and reflexive. Prime $\s$-ideals are also mixed, but not necessarily perfect. Note that there is a difference between a prime $\s$-ideal, and a $\s$-prime ideal:
+the former does not necessarily have to be reflexive, as is the case with the latter. Both, prime $\s$-ideals and $\s$-prime ideals will be very important throughout this thesis. It is for that reason that the distinction between both is of utmost importance.
+\end{rem}
+
+All the above properties behave well with respect to morphisms of $\s$-rings in the following sense:
+\begin{lem}\label{bijmapping}
+Let $\varphi: R \rightarrow S$ be a morphism of $\s$-rings and $\a \si S$ a $\s$-ideal of $S$. Then $\varphi^{-1}(\a) \si R$ is a $\s$-ideal of $R$. Similarly, if $\a$ is a mixed $\s$-ideal, then so is $\varphi^{-1}(\a)$. The same is true for perfect and for reflexive $\s$-ideals.
+\begin{bew}
+Since $\a \unlhd S$ is an ideal, so is $\b := \varphi^{-1}(\a) \unlhd R$. Let $b \in \b$. Then $\varphi(b) =: a \in \a$ by definition. Since $\a \si S$ is a $\s$-ideal, $\s(a) \in \a$, and since $\varphi$ is a morphism of $\s$-rings
+it follows that $\sigma(a) = \sigma(\varphi(b)) = \varphi (\s (b)) \in \a$. Hence, $\s(b) \in \b$ which implies that $\b$ is a $\s$-ideal. \\
+\indent Now let $\a$ be mixed and $fg \in \b$. This means by definition of $\b$, 
+that $\varphi(fg) = \varphi(f) \varphi(g) \in \a$. Since $\a$ is mixed, this in turn implies that $$\varphi(f) \s( \varphi(g)) = \varphi(f) \varphi(\s(g)) = \varphi(f\s(g)) \in \a,$$ which yields $f\s(g) \in \b$, so that $\b$ is also mixed. 
+The proof for perfect and for reflexive difference ideals is analogous.
+\end{bew}
+\end{lem}
+
+\begin{rem}
+Let $R$ be a $\s$-ring and $\a \si R$ a $\s$-ideal. We can define a canonical $\s$-ring structure on the quotient ring $R/\a$ via $\s(r+\a):= \s(r) + \a$. 
+This is well defined and in particular makes the canonical epimorphism $\tau: R \twoheadrightarrow R/\a$ a morphism of $\s$-rings.
+\end{rem}
+
+\begin{prop}\label{bijideals}
+Let $R$ be a $\s$-ring and $\a \si R$ a $\s$-ideal. The canonical epimorphism $\tau: R \twoheadrightarrow R/\a$ induces, in the sense of Lemma \ref{bijmapping}, a bijection between the sets $\{ \b \si R/\a \}$ and $\{ \a \si \b \si R \}$. The same holds true if we restrict both sets to prime, radical and mixed, $\s$-prime or perfect $\s$-ideals.
+\begin{bew}
+See Proposition 1.2.8 of \cite{wibmer}.
+\end{bew}
+\end{prop}
+
+\begin{rem}\label{wmwelldef}
+Let $R$ be a $\s$-ring, and $F \subseteq R$ be a subset of $R$. Any intersection of mixed, radical $\s$-ideals containing $F$ is also a mixed, radical $\s$-ideal, which of course contains $F$. 
+This means that there is a smallest (with respect to inclusion) mixed, radical $\s$-ideal $\a$ containing $F$; namely, the intersection of all such $\s$-ideals:
+\begin{align*} \a = \bigcap_{\substack{ \b \si R, \\ \b \text{ radical and mixed}}} \b. \end{align*}
+\begin{proof}
+Let $I$ be an index set and $\a_i \si R \fa i \in I$ be mixed, radical $\s$-ideals. Further let $\b := \bigcap_{i \in I} \a_i$ be the intersection of these. Obviously, $\b$ is (algebraically) an ideal of $R$. We will show that it is also a $\s$-ideal, radical and mixed.
+If $a \in \a_i \fa i \in I$, then $\s(a) \in \a_i \fa i \in I$, since each $\a_i$ is a $\s$-ideal.
+It follows that $\s(a) \in \b$. \\
+\indent Similarly, if $aa' \in \a_i \fa i \in I$, then $a \s(a') \in \a_i \fa i \in I$, since each $\a_i$ is mixed, which implies that $a \s(a') \in \b$.  \\
+\indent Finally, if $a \in \sqrt(\b)$ there exists an $n \in \N$ such that $a^n \in \b$. This means that $a^n \in \a_i \fa i \in I$, which implies that $a \in \sqrt(\a_i) \fa i \in I$. Since every $\a_i, i \in I$ is radical, this means that $a \in \a_i \fa i \in I$,
+and thus $a \in \b$.
+\end{proof}
+\end{rem}
+
+\begin{defn}
+The $\s$-ideal $\a$ from Remark \ref{wmwelldef} is called the radical, mixed closure of $F$, and we will denote it by $\{F\}_{m}$.
+\end{defn}
+
+
+\begin{lem}\label{sqrtmixed}
+Let $R$ be a $\s$-ring and $\a \si R$ be a mixed $\s$-ideal. Then the radical of $\a$, $\sqrt{\a}$, is also mixed.
+\begin{bew}
+Let $f,g \in R$ be such that $fg \in \sqrt \a$. By definition there exists an $n \in \NE$ such that $f^n g^n = (fg)^n \in \a$. Since $\a$ is mixed, this implies that $f^n \s(g^n) = f^n \s(g)^n = (f\s(g))^n \in \a$. 
+But this in turn implies that $f\s(g) \in \sqrt \a$, which is what we wanted to show.
+\end{bew}
+\end{lem}
+
+
+\begin{ex}\label{nombasisex}
+Let $k$ be a constant $\s$-field and let $R:= k\{y_1,y_2\}$. Consider the difference ideal $\a:= [y_1y_2] \si R$. We can inductively define a chain \begin{align*}\a^{\{0\}}:= \a,~ \a^{\{m+1\}}:= [\{ f \s(g) \mid f,g \in \a^{\{m\}}\}] \\ = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m+1], \fa m \in \NE.\end{align*}
+This is an infinite properly ascending chain of difference ideals. 
+%% \begin{bew}
+%% We will show that $\a^{\{m\}} = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m]$ by induction. The assertion that the $\a^{\{m\}}$ form an infinite chain of properly ascending $\s$-ideals is obvious from this.\\
+%% \indent The inclusion $ [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m] \subseteq \a^{\{m\}}$ follows from an induction on $m$ directly from the definition of $\a^{\{m\}}$. \\ 
+%% \indent  To show the other inclusion, ``$\supseteq$'', we do it also inductively. For $m=0$ it holds that $\a^{\{0\}} = \a = [y_1y_2]$. Let thus $m \in \N$ and $a \in \a^{\{m+1\}}$.
+%% By definition, there exist $k \in \NE, f_i, g_i, r_i \in R$ with $f_ig_i \in \a^{\{m\}}, i = 1,\ldots,k$ such that $a = \sum_{i=1}^k r_i f_i \s(g_i)$. 
+
+%% FIXME: FINISH THIS!!!!!!!
+
+%%  To prove that the chain is properly ascending, it is enough to show that $y_1\s^m(y_2) \in \a^{\{m\}}$, but $y_1\s^{m+1}(y_2) \notin \a^{\{m\}}$, since $\a^{\{m\}} \subseteq \a^{\{m+1\}}$ is obvious by definition.
+%% This can be shown by induction: For $m = 0$, it is clear that $y_1y_2 \in [y_1y_2]$, but $y_1 \s(y_2) \notin [y_1y_2]$. Now, if $y_1 \s^m(y_2) \in \a^{\{m\}}$, then by definition, $y_1 \s^{m+1}(y_2) \in \a^{\{m+1\}}$.
+%% On the other hand, if $\y_1 \s^{m+1}(y_2) \notin \a^{\{m\}}$, then it is clear that $\y_1 \s^{m+2}(y_2) \notin \{ f\s(g) \mid f,g \in \a^{\{m\}}\} =: M$. We only need to show that $y_1\s^{m+2}(y_2) \notin [M]$.
+
+%% \end{bew}
+\end{ex}
+
+
+To try to find $\{\a\}_m$ for a $\s$-ideal $\a \si R$ in a difference ring $R$, it might be tempting to consider $\a':= \{ f\s(g) \mid fg \in \a \}$, or to ensure that is a difference ideal rather, $[\a']$. The example above shows that this is not enough,
+as the ideal $[\a']$ does not have to be mixed in general. However, by iteratively repeating this process and taking the union of $\s$-ideals obtained this way, we do get a mixed $\s$-ideal, as we will see in the following Lemma:
+\begin{lem}\label{lemshuffling}
+Let $R$ be a $\s$-ring and $F \subseteq R$. Further let $F' := \{f\s(g) \mid fg \in F \}$, and set $F^{\{1\}}:= [F']$, $F^{\{m\}}:= [{F^{\{m-1\}}}'] \fa m \in \NE$. Then
+\begin{align} \{F\}_m = \sqrt{\bigcup_{n=1}^{\infty} F^{\{n\}}}. \end{align}
+This way of obtaining $\{F\}_m$ is called a shuffling processes and has an analog for perfect $\s$-ideals (see for example \cite{levin}, p. 121f.) \index{Shuffling process}
+\begin{proof}
+Let $\a:= \bigcup_{n=1}^{\infty} F^{\{n\}}$. It is obvious from the construction that $F \subseteq \a$. It also holds that $\a$ is a mixed $\s$-ideal, since for any $f,g \in \a$ there exists an $m \in \NE$ such that $f,g \in F^{\{m\}}$.
+And hence $f + g, \s(f) \in F^{\{m\}} \subseteq \a$, as well as $fh \in F^{\{m\}} \subseteq \a$ for any $h \in R$. Furthermore, for $f, g \in R$ with $fg \in \a$ there also exists an $m \in \NE$ such that $fg \in F^{\{m\}}$. 
+Then we have $f\s(g) \in F^{\{m+1\}} \subseteq \a$. \\
+\indent On the other hand, by induction on the iterative steps $F^{\{n\}}$ it follows that for every mixed $\s$-ideal $\b$ which contains $F$, $F^{\{n\}} \subseteq \b$. Hence, $\a$ is the smallest mixed $\s$-ideal containing $F$. \\
+\indent By Lemma \ref{sqrtmixed} we know that $\sqrt{\a}$ is mixed. This actually shows that $\sqrt a$ is indeed the smallest mixed, radical $\s$-ideal of $R$ containing $F$, since every such ideal has to contain $\a$, and thus $\sqrt{\a}$ as well.
+
+% To see this, assume there exists a radical, mixed $\s$-ideal $\b \supseteq F$
+%such that $\b \subsetneqq \sqrt{\a}$. Then we have $F \subseteq \a \cap \b \subsetneqq \a$, a contradiction to the minimality of $\a$ (since the intersection of mixed $\s$-ideals is mixed). 
+\end{proof}
+\end{lem}
+
+
+\begin{ex} %%not *radical*! 
+Let $k$ be a $\s$-field, and consider $R = k\{y_1\}$. Then the $\s$-ideal $[y_1] \si R$ is mixed, hence equal to its mixed closure.
+The mixed closure of $[y_1] \cdot [y_1]$ is $[ y_1 \s^i(y_1) \mid i \in \N ] \not \ni y_1$.
+One could have expected, perhaps, to get an analog of the statement in algebraic geometry that $\sqrt{F_1  F_2 } = \sqrt{F_1} \cap \sqrt{F_2}$, but this example shows it is not in general so for mixed ideals.
+It is however very noteworthy that the ideal $[ y_1 \s^i(y_1) \mid i \in \N ] \si R$ is not radical. For radical, mixed difference ideals we will in fact get such a statement later (Corollary \ref{prod=cap}).
+\end{ex}
+
+A very important result in commutative algebra is the fact that every radical ideal is the intersection of prime ideals. This has an analogue for perfect $\s$-ideals, as well as for mixed $\s$-ideals. 
+We will prove the latter, but for this we need a few additional tools. We will first prove a weaker version of the statement, for which we need a few results from commutative algebra:
+
+\begin{lem}\label{commalg}
+Let $R$ be a ring. 
+\begin{enumerate}[(a)]
+\item If $S \geq R$ is an overring of $R$, and $\p$ is a minimal prime ideal of $R$, then there exists a minimal prime ideal $\q$ of $S$ such that $\p = \q \cap R$.
+\item Every radical ideal of $R$ is the intersection of prime ideals. If $R$ is Noetherian, then every radical ideal of $R$ is the intersection of finitely many prime ideals.
+\item If $R$ is Noetherian and $\p \unlhd R$ is a minimal prime ideal of $R$, then there exists an element $a \in R$ such that $\p$ is the annihilator ideal of $a$, i.e. $\p = \text{Ann}(a) = \{ r \in R \mid ra = 0 \}$.
+\end{enumerate}
+\begin{bew} $~$
+\begin{enumerate}[(a)]
+\item See Remark 2.9 of \cite{hrushovski}
+\item See \cite{bourbaki} Ch. 2, \S 2.6, Corollary 2 to Proposition 13 and Ch. 2, \S 4.3, Corollary 3 to Proposition 14.
+\item This is a special case of Theorem 3.1 of \cite{eisenbud} for $R$ as an $R$-module.
+\end{enumerate}
+\end{bew}
+\end{lem}
+
+\begin{defn}
+Let $R$ be a difference ring. We say $R$ is \emph{finitely $\s$-generated over $\Z$} if there exists a finite set $A \subseteq R$ so that every $f \in R$ can be written as a finite $\Z$-linear combination of $\s$-powers of elements in $A$. In other words,
+for every $f \in R$ there exists an $n \in \NE$ so that $f \in \Z[A,\sigma(A),\ldots,\s^n(A)]$. \\ 
+\indent For any subset $F \subseteq R$ we denote by $$\Z\{F\} = \{ f \in R \mid \text{ there exists an } n \in \N: f \in \Z[F, \s(F), \ldots, \s^n(F)] \}$$ the set of all elements $\s$-generated by $F$ over $\Z$.
+\end{defn}\index{finitely $\s$-generated over $\Z$}
+
+\begin{prop}\label{mixedintersectionprimesfinite}
+Let $R$ be a $\s$-ring finitely $\s$-generated over $\Z$. Then, every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals.
+\begin{bew}
+Let $\a \si R$ be a mixed, radical $\s$-ideal. By Proposition \ref{bijideals} there is a bijection between the prime $\s$-ideals of $R$ containing $\a$ and those of $R/\a$. Hence, we can assume without loss of generality that $\a = [0] \si R$,
+ by replacing $R$ with $R/\a$. This means that we only have to show that the zero ideal $[0]$ of a well-mixed, reduced $\s$-ring $R$ is the intersection of all its prime $\s$-ideals. Note that this does not change the fact
+that $R$ is finitely $\s$-generated over $\Z$. \\
+\indent Let thus $f \in R$ be such that $f \in \q \fa \q \si R$ prime. We assert that $f$ then has to be $0$. Assume this is not the case, i.e., $f \neq 0$. Then by assumption on $R$ there is an $n \in \N$ such that $f \in \Z[A,\s(A),\ldots,\s^n(A)]$.
+We now use the special case for (algebraic) ideals: since $\Z[A,\s(A),\ldots,\s^n(A)]$ is Noetherian and reduced, $(0) \unlhd \Z[A,\ldots,\s^n(A)]$ is the intersection of all prime ideals of $R$. In particular, there exist prime ideals which do not contain $f$.
+Let $\q_0 \unlhd \Z[A,\ldots,\s^n(A)]$ be a minimal such prime ideal, i.e., with $f \notin \q_0$. Since $f \in \Z[A,\s(A),\ldots,\s^n(A)] \subset \Z[A,\s(A),\ldots,\s^{n+1}(A)]$, again by Lemma \ref{commalg}, we can find a minimal prime ideal $\q_1 \unlhd \Z[A,\s(A),\ldots,\s^{n+1}(A)]$
+such that $\q_1 \cap \Z[A,\s(A),\ldots,\s^{n}(A)] = \q_0$. \\
+\indent Inductively we find a chain of minimal prime ideals $\q_i, i \in \N$, $\q_i \unlhd \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, with $\q_{i+1} \cap \Z[A,\s(A),\ldots,\s^{n+i}(A)] = \q_i$ for all $i \in \N$.
+Then $\q := \bigcup_{i=0}^{\infty} \q_i$ is a prime ideal of $R$, with $f \notin \q$. In fact, $\q$ is a $\s$-ideal of $R$: Let $a \in \q$. We want to show that $\s(a) \in \q$. By construction of $\q$ there exists an $i \in \N$ such,
+that $a \in \q_{i-1} \subseteq \Z[A,\s(A),\ldots,\s^{n+i-1}(A)]$, which implies that $\s(a) \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$. Lemma \ref{commalg} states then, that there is an $h \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$ such that $ \q_i = \text{Ann}(h)$.
+It follows that $ah = 0$, and since $R$ is well-mixed, this implies that $\s(a)h = 0$, hence, $\s(a) \in \q_i \subseteq \q$. This means that $\q$ is a prime $\s$-ideal of $R$ not containing $f$, which contradicts the assumption on $f$, so that $f = 0$ has to follow.
+\end{bew}
+\end{prop}
+
+For the general case we need yet another tool, the concept of filters:
+
+\begin{defn}\index{filter}\index{ultrafilter}
+Let $U$ be a set, and let $F \subseteq \text{Pot}(U)$, where $\text{Pot}(U)$ denotes the power set on $U$. Then $F$ is called a \emph{filter} if it satisfies the following axioms: 
+\begin{itemize}
+\item  $U \in F$ and $\emptyset \notin F$.
+\item If $V,W \subseteq U$ with $V \subseteq W \text{ and }V  \in F $ it holds that $W \in F$.
+\item For $V_1, \ldots, V_n \in F$ it holds that \[ \bigcap_{i = 1}^n V_i \in F. \]
+\end{itemize}
+A filter $F$ is called an \emph{ultrafilter}, if for any $V \subseteq U$ it holds that $V \in F$ or $U \setminus V \in F$. Note that the first and third axioms together imply that at most one of $V$ and $U \setminus V$ can be in $F$.
+\end{defn}
+
+
+
+\begin{rem}
+Let $U$ be a set. Then, the set of filters on $U$ is inductively ordered by inclusion. By Zorn's lemma, for every filter $F$ on $U$ there must exist a maximal filter $G$ with respect to inclusion such that $F \subseteq G$.
+The maximality of the filter implies that $G$ will be an ultrafilter, since we could otherwise find a new filter $G'$ where $G$ is properly included by adding one of the sets which contradict the ultrafilter property and considering the smallest filter containing this set.
+\end{rem}
+
+The reason why this concept is useful in our context is the following:
+
+\begin{lem}\label{lemmafilters}
+Let $R$ be a $\s$-ring, and let $M$ be the set of all $\s$-subrings of $R$ which are finitely $\s$-generated over $\Z$. For any fixed subset $F \subseteq R$, consider the set $M_F:= \{ T \subseteq M \mid \{S \in M \mid F \subseteq S \} \subseteq T \} \subseteq \text{Pot}(M)$. 
+Then, \[ \mathcal{F}:= \bigcup_{ F \subseteq R \text{ finite} } M_F \]
+ defines a filter on $M$. If $\mathcal{G}$ is an ultrafilter containing $\mathcal{F}$, and $P:= \prod_{S \in M} S$ with component-wise operations,
+ then the ultrafilter $\mathcal{G}$ defines an equivalence relation on $P$ via $(g_S)_{S \in M} \sim (h_S)_{S \in M} : \Leftrightarrow \{ S \in M \mid g_S = h_S \} \in \mathcal{G}$. 
+The set of equivalence classes $P/\mathcal{G}:= P/\textsim$ has a natural $\s$-ring structure and is called an \emph{ultraproduct}. \index{ultraproduct} %%fixme: of what?
+\begin{proof}
+Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we have $\Z\{F\} \in \{ S \in M \mid F \subseteq S \} \neq \emptyset$, and since $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, $\emptyset \notin M_F$ (Note that $\Z\{\emptyset\} = (0)$, so it also holds for $F = \emptyset$).
+  That $M \in M_F$ for any $F \subseteq R$ is obvious, as well as that for $T \subseteq U, T \in M_F$ it holds that $U \in M_F$. \\ 
+\indent We only need to show that $U,T \in \mathcal{F}$ implies that $U \cap T \in \mathcal{F}$.
+  Let $\hat U, \hat T \subseteq R$ be finite, such that $U \in M_{\hat U}, T \in M_{\hat T}$. $\hat U \cup \hat T \subseteq R$ is also finite and it holds that  $\{ S \in M \mid \hat U \cup \hat T \subseteq S \} \subseteq \{ S \in M \mid \hat U \subseteq S \} \subseteq U$,
+ and similarly for $T$. This means that $U \cap T \in M_{\hat U \cup \hat T} \subseteq \mathcal{F}$, which finishes the proof that $\mathcal{F}$ is a filter. \\
+
+ Now, consider an ultrafilter $\mathcal{G} \supseteq \mathcal{F}$ and define $\sim$ on $P$ as above. This is an equivalence relation: Let $f \sim g, g \sim h$ for $f,g,h \in P$. 
+ This means that $\{ S \in M \mid f_S = g_S \} \in \mathcal{G}, \{ S \in M \mid g_S = h_S \} \in \mathcal{G}$. But then $$\{ S \in M \mid f_S = g_S \} \cap \{ S \in M \mid g_S = h_S \} \subseteq \{ S \in M \mid f_S = h_S \} \in \mathcal{G},$$
+ since $\mathcal{G}$ is a filter.
+ Reflexivity follows from the fact that $M \in \mathcal{G}$, and symmetry is obvious. \\
+\indent  We now only need to show that we have a well-defined $\s$-ring structure on $P/\textsim$.
+ Consider $f,f' \in P$ with $f \sim f'$. We have that for all $S \in M$ with $f_S = f'_S$ it holds that $\sigma(f)_S = \sigma(f')_S$. 
+ But then $\{ S \in M \mid \s(f)_S = \s(f')_S \} \supseteq \{ S \in M \mid f_S = f'_S \} \in \mathcal{G}$ by assumption, and since $\mathcal{G}$ is a filter, this means that $\{ S \in M \mid \s(f)_S = \s(f')_S \} \in \mathcal{G}$,
+ hence $\s(f) \sim \s(f')$. That $+$ and $\cdot$ are also well-defined can be proven in an analogous fashion.
+\end{proof}
+\end{lem}
+
+We can now turn our attention to the generalization of Proposition \ref{mixedintersectionprimesfinite}. 
+
+
+\begin{theorem}\label{intersectionprimes}
+Let $R$ be a $\s$-ring and $F \subseteq R$ be a subset of $R$. Then, 
+\begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ prime}}} \p \end{align*}
+In particular, every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals.
+\begin{bew}
+It suffices to show that every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals.
+Indeed, since prime $\s$-ideals are radical and mixed, it is clear that $\{F\}_m \subseteq \p$ for every prime $\p \si R$ with $F \subseteq \p$, which together with the fact that every radical, mixed $\s$-ideal of $R$ is the intersection of prime $\s$-ideals gives the representation 
+\begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ prime}}} \p. \end{align*}
+Now, by the same argument as in the beginning of the proof of Proposition \ref{mixedintersectionprimesfinite}, it is enough to prove in the case that $R$ is well-mixed and reduced, that the intersection of all prime $\s$-ideals of $R$ is $[0]$.
+Let $0 \neq f \in R$. We will construct a prime $\s$-ideal $\q$ of $R$ which does not contain $f$: 
+
+Let $P/\mathcal{G}$ be the difference ring as in Lemma \ref{lemmafilters}. Consider the mapping $\varphi: R \rightarrow P/\mathcal{G}, g \mapsto (g_S)_{S \in M}$ with $(g_S) = g \fa S \in M$ with $g \in S$ and $(g_S) = 0$ for $g \notin S$. 
+It is in fact $\{ S \in M \mid g \in S \} \in M_{\{g\}}$ (with $M_{\{g\}}$ as in Lemma \ref{lemmafilters}). It follows from this that the image of the mapping onto $P/\mathcal{G}$ is in fact independent of the $(g_S)$ for $g \notin S$, as any other choice of these would be in the same $\sim$ class as the image described above.
+It follows that $\varphi$ is a well-defined morphism of $\s$-rings. \\
+\indent From Proposition \ref{mixedintersectionprimesfinite} we know that for every $S \in M$, there exists a prime $\s$-ideal $\p_S \si S$ such that $f \notin \p_S$. 
+We define $\p \subseteq P/\mathcal{G}$ as the set of all equivalence classes of elements $(g_S)_{S \in M}$ such that $\{ S \in M \mid g_S \in \p_S \} \in \mathcal{G}$. 
+For $[(g_S)_{S \in M}]_{\sim}, [(h_s)_{S \in M}]_{\sim} \in \p$ we have $$ \mathcal{G} \ni \{ S \in M \mid  g_S \in \p_S \} \cap  \{ S \in M \mid  h_S \in \p_S \} \subseteq \{ S \in M \mid  g_S + h_S \in \p_S \} \in \mathcal{G},$$
+since $\mathcal{G}$ is a filter. Similar arguments for $\s(g), gh$ for $h \in P/\mathcal{G}$ show that $\p$ is indeed a $\s$-ideal. $\p$ is also prime since $\mathcal{G}$ is an ultrafilter:
+Let $g,h \in P$ with $\{ S \in M \mid g_Sh_S \in \p_S \} \in \mathcal{G}$. If $[g]_\sim \notin \p$, then $V:= \{ S \in M \mid g_S \in \p_S \} \notin \mathcal{G}$. Since $\mathcal{G}$ is an ultrafilter, 
+this means that $M \setminus V \in \mathcal{G}$. But $$\mathcal{G} \ni (M \setminus V) \cap \{ S \in M \mid g_S h_S \in \p_S \} \subseteq \{ S \in M \mid h_S \in \p_S \} \in \mathcal{G},$$
+which means that $[h]_\sim \in \p$. The preimage of a prime $\s$-ideal, $\q := \varphi^{-1}(\p) \si R$ is also prime. By construction, $[\varphi(f)]_\sim \notin \p$, which means that $f \notin \varphi^{-1}(\p)$, as desired. 
+
+\end{bew}
+\end{theorem}
+
+\subsection{An Analog of the Cohn Topology}
+
+\begin{defn}
+Let $R$ be a $\s$-ring. We denote the set of all prime $\s$-ideals of $R$ by $\sSpec(R):= \{ \p \si R \mid \p \text{ prime }\}$. Similarly, we denote the set of $\s$-prime ideals by $\Spec^\s(R):= \{ \p \si R \mid \p ~ \s\text{-prime }\} \subseteq \sSpec(R)$.
+\index{$\sSpec$} \index{$\Spec^\s$}
+\end{defn}
+
+
+\begin{rem}
+As is the case with $\Spec^\s(R)$, it can be the case that $\sSpec(R)= \emptyset$. For example, let $R$ be a $\s$-ring, and consider the $\s$-ring $R \oplus R$, with $\s( (r,s)):= (\s(s),\s(r))$. 
+We will show that this ring has no prime $\s$-ideals. Let $\p \unlhd R$ prime. Then $0 = (1,0)(0,1) \in \p$, which means that either $(1,0) \in \p$ or $(0,1) \in \p$. But then $R \oplus 0 \subseteq \p$ or $0 \oplus R \subseteq \p$. If we assume that $\p$ is a $\s$-ideal then
+ this implies that $R \oplus R \subseteq \p$, which cannot be, by definition.
+\end{rem}
+
+In algebraic geometry, one usually considers $\Spec(R)$ as a topological space with a topology called the Zariski topology. This has an analog for $\Spec^\s(R)$, usually called the Cohn topology. Here we will develop a further analog of both,
+ which we will define on $\sSpec(R)$, and will be closely related to radical, mixed $\s$-ideals, as we shall see by its many properties.
+
+\begin{defn}
+Let $R$ be a $\s$-ring and $F \subseteq R$ be a subset of $R$. We set $\Vm (F):= \{ \p \in \sSpec(R) \mid F \subseteq \p \}$. 
+If $F$ has only one element $f$, we write $\Vm(f)$ for $\Vm(F)$. \index{$\Vm(F)$}
+\end{defn}
+
+\begin{lem}\label{topologywelldef}
+Let $R$ be a $\s$-ring. Then we have:
+\begin{enumerate}[(a)]
+\item $\Vm((0)) = \sSpec(R)$, and $\Vm(R) = \emptyset$.
+\item For any two ideals $\a,\b \unlhd R$ we have $\Vm(\a) \cup \V(\b) = \Vm(\a \cap \b).$
+\item For any family of ideals $(\a_i)_{i \in I}$ for an index set $I$, we have $$\bigcap_{i \in I} \Vm(\a_i) = \Vm(\sum_{i \in I} \a_i).$$ \label{vmintersectionideals}
+\end{enumerate}
+\begin{bew} $~$
+\begin{enumerate}[(a)]
+\item We have $(0) \subseteq \p \fa \p \in \sSpec(R)$, as well as $R \not\subseteq \p \fa \p \in \sSpec(R)$.
+\item Let $\a, \b \unlhd R$ be two ideals in $R$. Then $\Vm(\a) \cup \Vm(\b) \subseteq \Vm(\a \cap \b)$, since for $\p \si R$ prime, $\a \subseteq \p$ it follows that $\a \cap \b \subseteq \p$, and similarly for $\b$.
+On the other hand, let $\p \si R$ prime with $\a \cap \b \subseteq \p$, and $\a \not\subseteq \p$ (otherwise $\p \in \Vm(\a)$ and we are done). Then there exists an $f \in \a$, $f \notin \p$. 
+For any $g \in \b$, it follows that $fg \in \a \cap \b \subseteq \p$. Since $\p$ is prime, this implies that $g \in \p$. Hence, $\b \subseteq \p$, which concludes the proof.
+\item Let $(\a_i)_{i \in I}$ be a family  of ideals of $R$. Then $$\p \in \bigcap_{i \in I} \Vm(\a_i) \Leftrightarrow \a_i \subseteq \p \fa i \in I \Leftrightarrow \p \in \Vm(\sum_{i \in I} \a_i).$$
+\end{enumerate}
+\end{bew}
+\end{lem}
+
+
+\begin{rem}\label{vmsequal}
+Since for a $\s$-ring $R$ any prime $\s$-ideal of $R$ is radical and mixed, it holds that for any $F \subseteq R$, and any prime $\s$-ideal $\p \si R$ with $F \subseteq \p$ we have
+$(F) \subseteq [F] \subseteq \{ F \}_m \subseteq \p$. In particular, this means that $\Vm(F) = \Vm((F)) = \Vm([F]) = \Vm(\{F\}_m)$. 
+\end{rem}
+
+\begin{defn}\label{deftop}
+Let $R$ be a $\s$-ring. We define a topology on $\sSpec(R)$ by setting $A \subseteq \sSpec(R)$ closed if $A = \Vm(\a)$ for an ideal $\a \unlhd R$, or equivalently,
+ by defining a set to be open, if it is a complement of such a $\Vm(\a)$. This is a well-defined topology thanks to Lemma \ref{topologywelldef}.
+For $f \in R$ we set $$\sD(f):= \sSpec(R) \setminus \Vm(f).$$ $\sD(f)$ is the complement of a closed set, and hence, open. 
+We call the sets of the form $\sD(f) \subseteq \sSpec(R)$ \emph{basic open subsets} of $\sSpec(R)$. \index{basic open subsets}
+\end{defn}
+
+From here on, if not explicitly stated otherwise, when referring to topological concepts on $\sSpec(R)$ we will be referring to the topology just defined.
+
+\begin{rem}
+From its definition it is clear that $\sSpec(R) \subseteq \Spec(R):= \{ I \unlhd R \mid I \text{ prime} \}$. Since Lemma \ref{topologywelldef} does not require the ideals to be $\s$-ideals, 
+it is easy to conclude that in fact the topology on $\sSpec(R)$ is just the topology induced by restriction of the Zariski topology to $\sSpec(R)$. The same argument can be made to see that the Cohn topology in turn,
+defined on $\Spec^\s(R) = \{ \p \si R \mid $ $\p$ $ \s$-prime $\} \subseteq \sSpec(R)$, is also the restriction of the topology defined on $\sSpec(R)$. 
+\end{rem}
+
+\begin{defn}
+Let $X$ be a topological space.
+\begin{enumerate}[(a)]
+\item  We say that $X$ is \emph{irreducible} if $X = X_1 \cup X_2$ with $X_1, X_2$ closed implies that $X = X_1$ or $X = X_2$. 
+$X_1 \subseteq X$ is called \emph{irreducible} if it is an irreducible topological space with the topology induced by the restriction to $X_1$.\index{irreducible topological space}
+\item Let $Y \subseteq X$ be closed. We say that a point $f \in Y$ is a \emph{generic point} of $Y$, if $\overline{\{  f \} } = Y$, where for $A \subseteq X$, $\overline{A}$ denotes the closure of $A$. \index{generic point}
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+Let $R$ be a $\s$-ring. We have:
+\begin{enumerate}[(a)]
+\item \label{vmbijection} The mapping 
+$$\{ \a \si R \mid \a\text{ mixed and radical }\} \rightarrow \{ A \subseteq \sSpec(R) \mid A \text{ closed }\}, \a \mapsto \Vm(\a)$$
+ is bijective and order-reversing.
+\item \label{irred=prime} For $F \subseteq R$ it holds that $\Vm(F)$ is irreducible if and only if $\{F\}_m$ is prime.
+\item $\sSpec(R)$ is quasi-compact.
+\item The basic open sets $\{ \sD(f) \mid f \in R \}$ form a basis for the topology on $\sSpec(R)$.
+\item Every irreducible closed subset $Y$ of $\sSpec(R)$ has a unique generic point $y$.
+\end{enumerate}
+\clearpage %%FIXME: remove, just so a page is not left basically completely blank
+\begin{bew} $~$
+\begin{enumerate}[(a)]
+\item \label{orderreversingbij} That the mapping is order-reversing is obvious. The injectivity follows from the fact that by Theorem \ref{intersectionprimes} $\a = \bigcap_{\a \subseteq \p \in \sSpec(R)} \p$. By Remark \ref{vmsequal} we obtain the surjectivity,
+ since $\Vm(\a) = \Vm(\{\a\}_m)$.
+\item Since $\Vm(F) = \Vm(\{F\}_m)$, we can assume without loss of generality, that $F \si R$ is a radical, mixed $\s$-ideal.
+For the first implication, ``$\Leftarrow$'', let $F \si R$ be prime, and $\Vm(F) = \Vm(\a) \cup \Vm(\b)$ with radical, mixed $\s$-ideals $\a, \b$. Assume that $\Vm(F) \not\subseteq \Vm(\a)$. Then by (\ref{orderreversingbij}), $\a \not \subseteq F$, so there exists an $a \in \a$, with $a \notin F$.
+For any $b \in \b$ we then have $ab \in \p \fa \p \in \V(F) = \Vm(\a) \cup \Vm(\b)$, and with Theorem \ref{intersectionprimes} we get $ab \in F = \bigcap_{\p \in \Vm(F)}\p$. By assumption, $F$ is prime and $a \notin F$, which implies
+ that  $b \in F$. But this means that $\b \subseteq F$, and thus $\Vm(F) \subseteq \Vm(\b)$, which shows the irreducibility. \\
+\indent Now, for the other implication, ``$\Rightarrow$'', assume that $\Vm(F)$ is irreducible, and let $a,b \in R$ with $ab \in F$. Consider $F \subseteq \p \in \Vm(F)$. Then $ab \in \p$, 
+which means that $a \in \p$ or $b \in \p$, since $\p$ is prime. This implies that $\p \in \Vm(\{a\}_m) \cup \Vm(\{b\}_m)$, which in turn implies that $\Vm(F) \subseteq \Vm(\{a\}_{m}) \cup \Vm(\{b\}_{m})$.
+Now, by assumption, $\Vm(F)$ is irreducible, and thus it has to be that $\Vm(F) \subseteq \Vm(\{a\}_{m})$ or $\Vm(F) \subseteq \Vm(\{b\}_m)$. By the bijectivity of the mapping in (\ref{orderreversingbij}) this means that $a \in F$ or $b \in F$.
+\item Let $\Vm(\a_i)_{i \in I}$ be a family of closed sets, $\a_i \si R$ mixed, radical for all $i \in I$, satisfying that 
+$\bigcap_{i \in J} \Vm( a_i) \neq \emptyset$ for every finite $J \subseteq I$. By  going to the complement of open sets, quasi-compactness is equivalent to the implication that $\bigcap_{i \in I} \Vm(a_i) \neq \emptyset$.
+By Lemma \ref{topologywelldef} we see that $\bigcap_{i \in I} \Vm( \a_i) = \Vm ( \sum_{i \in I} \a_i)$. Assume that $ \Vm ( \sum_{i \in I} \a_i) = \emptyset$. 
+By Theorem \ref{intersectionprimes} this means that $\{ \sum_{i \in I} \a_i \}_m = R$. In particular, $1 \in \{ \sum_{i \in I} \a_i \}_m$. By the construction in Lemma \ref{lemshuffling} (and with the notation used there), this means that there has to be an $n \in \NE$,
+so that $1 \in (\sum_{i \in I} \a_i )^{\{n\}}$. In particular, this means that $1$ can be written as a finite $R$-linear combination $\sum_{k=1}^l r_k a_k$ with $a_k \in (\sum_{i \in I} \a_i )^{\{n\}}, r_k \in R, k = 1,\ldots,l$. In particular, there exists a $J \subseteq I$ finite,
+such that $a_k \in (\sum_{i \in J} \a_i )^{\{n\}}$ for all $k \in \{1, \ldots, l \}$. But this implies that $1 \in (\sum_{i \in J} \a_i)^{\{n\}}$, meaning that $\Vm(\sum_{i \in J} \a_i) = \cap_{i \in J} \Vm(\a_i) = \emptyset$, a contradiction. 
+\item For an open subset $U \subseteq \sSpec(R)$ there exists by definition an $\a \si R$ such that $U = \sSpec(R) \setminus \Vm(\a)$. We can then write $U$ as a union of basic open sets as follows: $$U = \bigcup_{a \in \a} \sD(a).$$
+\item By (\ref{irred=prime}), an irreducible closed subset $A$ of $\sSpec(R)$ has the form $A = \Vm(\p)$, for $\p \si R$ prime. This prime $\s$-ideal $\p$ is the unique generic point of $A$.
+To see this, consider the closure of $\p$: $$\overline{\{\p\}} = \bigcap_{\{\p\} \subseteq \Vm(F)}\Vm(F).$$ From the definition of $\Vm(F)$ it holds that $\{\p\} \subseteq \V_m(F)$ if and only if $F \subseteq \p$. By Lemma \ref{topologywelldef} (\ref{vmintersectionideals}), and the obvious fact that we can restrict the intersection to $\s$-ideals, we get thus
+\[ \overline{\{\p\}} = \bigcap_{F \subseteq \p}\Vm(F) = \Vm(\sum_{F \subseteq \p, F \si R} F) = \Vm(\p) = A \]
+\end{enumerate}
+\end{bew}
+\end{prop}
+
+\clearpage
