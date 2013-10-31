@@ -83,17 +83,52 @@
 \begin{document}
 
 \section*{Extensions of kernels}
-\begin{lem}
+
+\begin{lem}\label{primeoverp1}
+Let R be an integral domain and $I \unlhd R[y]$ be an ideal of $R[y] = R[y_1,\ldots,y_n]$ which satisfies that $I \cap R = \{ 0 \}$.
+Then there exists a prime ideal $P, I \subseteq P \subseteq R[y] $ with $P \cap R = \{0\}$.
+\begin{proof}
+We can assume without loss of generality that I is radical:
+Namely, if $f \in \sqrt{I} \cap R$, then there exists an $m \in \N$ such that $f^m \in I \cap R = \{0\}$, and since $R$ is an integral domain this already means that $f = 0$.
+We then note that for two sets $A,B \subseteq R[y]$ it holds that $\sqrt{A}\sqrt{B} \subseteq \sqrt{AB}$: Consider $f \in \sqrt{A}, g \in \sqrt{B}$. Then there exist $m, \tilde m \in \N$ such that $f^m \in (A), g^{\tilde m} \in (B)$;
+ assume without loss of generality that $m > \tilde m$, then $(fg)^m \in (A)(B)$, which implies $fg \in \sqrt{(A)(B)} = \sqrt{AB}$.
+Now, for the proof, consider the set of all radical ideals $J$ contaning $I$ which satisify $J \cap R = \{0\}$. This set is not empty and is inductively ordered by inclusion.
+By Zorn's lemma this means that there is a maximal element $P$ of this set. This ideal $P$ is prime, then: assume there exist $f,g \notin P$ with $fg \in P$. 
+Then the radical ideals $\sqrt{P \cup \{f\}}$, $\sqrt{P \cup \{f\}}$ strictly include $P$, and by the maximality of $P$ it means there exist $t_1, t_2 \in R\backslash\{0\}$ such that
+$t_1 \in \sqrt{P \cup \{f\}}$, $t_2 \in \sqrt{P \cup \{g\}}$. But in particular, because $R$ is free of zero divisors, this implies that
+ \[0 \neq t_1t_2 \in \sqrt{P \cup \{f\}}\sqrt{P \cup \{g\}} \subseteq \sqrt{ \underbrace{(P \cup \{f\})(P \cup \{g\})}_{=P\text{, since }fg \in P}} = P\]
+A contradiction.
+\end{proof}
+\end{lem}
+
+
+\begin{lem}\label{idealstill0}
+Let $R \subseteq S$ be two rings, and let $I \unlhd R[y]$ be an ideal in the polynomial ring $R[y]$ with $I \cap R = 0$. 
+Then it holds for the ideal $(I) \unlhd S[y]$, that $(I) \cap S = 0$.
+\begin{proof}
+Since $S$ is an $R$ module, we know that $S \cong R \otimes_R S$, from which it easily follows that $S[y] \cong R[y] \otimes_R S$, and similarly, that $I \otimes_R S \cong (I) \unlhd S[y]$.
+Together, these two imply that as well $R[y]/I \otimes_R S \cong S[y]/(I)$. FIXME: check this!
+The condition $R \cap I = 0$ is equivalent to the mapping $R \rightarrow R[y]/I, r \mapsto r + I$ being injective. We can express this as the exactness of the following sequence:
+\[ 0 \rightarrow R \rightarrow R[y]/I \]
+Since the tensor product functor is exact, we know that tensoring over $R$ with $S$ yields an exact sequence:
+\[ 0 \rightarrow R \otimes_R S \cong S \rightarrow R[y]/I \otimes_R S \cong S[y]/(I) \]
+This, in turn, is equivalent to $S \cap (I) = 0$ by going the arguments above backwards.
+
+\end{proof}
+\end{lem}
+
+
+\begin{prop}
 Let $\a \subseteq k[y,\ldots,\s^d(y)]$ be a prime difference kernel of length $d$ and let $k[y,\ldots,\s^d(y)]/\a =: k[a,\s(a),\ldots,\s^d(a)]$. Consider the mapping 
 \[ \s: k[a,\ldots,\s^{d-1}(a)] \rightarrow k[a,\ldots,\s^d(a)]. \]
 Assume that for $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$ it holds that $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$. 
 Then there exists a prime difference kernel $\tilde \a \subseteq k[y,\ldots,\s^{d+1}(y)]$ of length $d+1$ with $\tilde \a \cap k[y,\ldots,\s^d(y)] = \a$
 \begin{bew}
 Consider the surjective mapping 
-\[ k[a,\ldots,\s^{d-1}(a)][\s^d(y)] \rightarrow k[a,\ldots,\s^d(a)], s^d(y) \mapsto s^d(a) \]
+\[ k[a,\ldots,\s^{d-1}(a)][\s^d(y)] \rightarrow k[a,\ldots,\s^d(a)], \s^d(y) \mapsto \s^d(a) \]
 Let $\p_1$ be the kernel of this mapping. Since $k[a,\ldots,\s^d(a)]$ is a domain, we know by the fundamental theorem on homomorphisms that $\p_1$ has to be prime. 
-We will show that our assumption on $\operatorname{ker}(\s)$ is equivalent to:
-\[ \s(\p_1) \cap \s(k)[\s(a),\ldots,\s^d(a)] = 0 \]
+First, we will show that our assumption on $\operatorname{ker}(\s)$ is equivalent to:
+\begin{equation}\label{skercapsk} \s(\p_1) \cap \s(k)[\s(a),\ldots,\s^d(a)] = 0 \end{equation}
 To see this consider the following commutative diagram:
 \[
 \begin{xy}
@@ -110,7 +145,27 @@ If we factor out the kernel, we get an isomorphism:
 On the other hand, we have the canonical embedding $k[a,\ldots,\s^{d-1}(a)] \hookrightarrow k[a,\ldots,\s^{d}(a)]$.
 This mapping stays injective after factoring out the kernel of $\s$ on both sides, 
 i.e. $k[a,\ldots,\s^{d-1}(a)]/\operatorname{ker}(\s) \hookrightarrow k[a,\ldots,\s^{d}(a)]/(\operatorname{ker}(\s))$ is injective, if and only if our assumption on $\ker(\s)$ holds.
+In this case, by composition with the isomorphism above, we get an embedding:
+\[ k[a,\ldots,\s^{d-1}(a)]/\operatorname{ker}(\s) \hookrightarrow \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)]/\s(\p_1) \]
+This is injective if and only if Equation \ref{skercapsk} holds.
+Now, by Lemma \ref{idealstill0} Equation \ref{skercapsk} implies that
+\begin{equation}\label{skercapk}
+(\s(\p_1)) \cap k[a,\s(a),\ldots,\s^d(a)][\s^{d+1}(y)] = 0
+\end{equation}
+We will now construct a prime difference kernel $\tilde \a$ using Equation \ref{skercapsk}:
+
+By Lemma \ref{primeoverp1} there exists a minimal prime ideal $\p_2 \supset (\s(\p_1))$ of $k[a,\ldots,\s^d(a)][\s^{d+1}(y)]$ containing $\s(p_1)$ with $\p_2 \cap k[a,\ldots,\s^d(a)] = \{0\}$. 
+We thus get a well-defined maping
+\[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2 \]
+We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integer domain since $\p_2$ is prime. Since $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$ we can use this notation unambiguosly:
+this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\a$.
+The kernel $\tilde \a$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
+Further we have $\a \subseteq \tilde \a$ by construction (as $\a = 0 \subset R_2$). In fact, it holds that $\tilde \a[d] = \p$ since: 
+\begin{align*}
+\tilde \a[d] = \{ f \in k[y,\ldots,\s^d(y)] \mid f(a) = 0 \} = \ker( k\{y\}[d] \rightarrow k[a,\ldots,\s^{d}(a)]) = \a
+\end{align*}
+where the first equality uses the fact that $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$, as noted by the use of the notation explained above, and last equality holds by definition of $a \in k[a,\ldots,\s^d(a)]$. This means, that $\tilde \a$ is a prolongation of $\a$. 
 \end{bew}
-\end{lem}
+\end{prop}
 
 \end{document}
