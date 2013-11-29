@@ -1,0 +1,523 @@
+S = QQ[s3y_1,s3y_2,s3y_3,s3y_4,s2y_1,s2y_2,s2y_3, s2y_4, sy_1,sy_2,sy_3, sy_4, y_1,y_2,y_3, y_4]
+S = QQ[s4y_1,s4y_2,s3y_1,s3y_2,s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+I = ideal(sy_2+y_3*y_4, sy_1*y_2 + y_1*y_2 + sy_1 + y_1 + y_2)
+I = ideal(s2y_3 + sy_1 + 1, s2y_4 + sy_2 - y_1, s2y_4 + sy_3 + sy_2)
+isPrime(I)
+
+------------------------------------------------------------
+problem only after \s^2:
+i9 : S = QQ[s4y_1,s4y_2,s3y_1,s3y_2,s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+o9 = S
+o9 : PolynomialRing
+i10 : (s2y_2+1)*(s4y_1+s3y_1+1)
+o10 = s4y s2y  + s3y s2y  + s4y  + s3y  + s2y  + 1
+         1   2      1   2      1      1      2
+o10 : S
+i11 : I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+o11 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+                1         1 2     1 2      1     1    2
+o11 : Ideal of S
+i12 : isPrime I
+o12 = true
+i13 : groebnerBasis I
+o13 = | s2y_1+1 sy_1y_2+sy_1-1 |
+              1       2
+o13 : Matrix S  <--- S
+i14 : I = ideal(s2y_1+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2, s2y_1*sy_2 + s2y_1 -1 )
+o14 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y , s2y sy  + s2y  - 1)
+                1         1 2     1 2      1     1    2     1  2      1
+
+o14 : Ideal of S
+i15 : groebnerBasis I
+o15 = | sy_2+2 s2y_1+1 sy_1y_2+sy_1-1 |
+              1       3
+o15 : Matrix S  <--- S
+i16 : isPrime I
+o16 = true
+i17 : J = ideal(sy_2+2, s2y_1+1, sy_1*y_2+sy_1-1, s2y_2+2, s3y_1+1, s2y_1*sy_2+s2y_1-1)
+o17 = ideal (sy  + 2, s2y  + 1, sy y  + sy  - 1, s2y  + 2, s3y  + 1, s2y sy  + s2y  - 1)
+               2         1        1 2     1         2         1         1  2      1
+o17 : Ideal of S
+i18 : 
+      isPrime J
+o18 = true
+i19 : groebnerBasis 
+o19 = groebnerBasis
+o19 : FunctionClosure
+i20 : groebnerBasis J
+o20 = | sy_2+2 s2y_2+2 s2y_1+1 s3y_1+1 sy_1y_2+sy_1-1 |
+              1       5
+o20 : Matrix S  <--- S
+------------------------------------------------------------
+ kernel from extension
+------------------------------------------------------------
+i1 : D = QQ[s3y_1,s3y_2,s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+
+o1 = D
+
+o1 : PolynomialRing
+
+i3 : (DM1,i) = selectVariables(new List from 2..7,D)
+
+o3 = (DM1, map(D,DM1,{s2y , s2y , sy , sy , y , y }))
+                         1     2    1    2   1   2
+
+o3 : Sequence
+
+i4 : use DM1
+
+o4 = DM1
+
+o4 : PolynomialRing
+
+i5 :  I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+
+o5 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         1 2     1 2      1     1    2
+
+o5 : Ideal of DM1
+
+i6 : F1 = DM1/I
+
+o6 = F1
+
+o6 : QuotientRing
+
+i8 : use D
+
+o8 = D
+
+o8 : PolynomialRing
+
+i9 :  I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+
+o9 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         1 2     1 2      1     1    2
+
+o9 : Ideal of D
+
+i10 : F2 = D/I
+
+i23 : use F1
+
+o23 = F1
+
+o23 : QuotientRing
+
+i24 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2), s2y_1 => F2_(symbol s3y_1), s2y_2 => F2_(symbol s3y_2)})
+
+o24 = map(F2,F1,{s3y , s3y , s2y , -1, sy , sy })
+                    1     2     1        1    2
+
+o24 : RingMap F2 <--- F1
+
+i25 : kernel(sigma)
+
+o25 = ideal(sy  + 1)
+              2
+
+o25 : Ideal of F1
+
+i26 : K = kernel(sigma)
+
+o26 = ideal(sy  + 1)
+              2
+
+o26 : Ideal of F1
+
+i27 : groebnerBasis(K)
+
+o27 = | sy_2+1 |
+
+               1        1
+o27 : Matrix F1  <--- F1
+
+i28 : use F2
+
+o28 = F2
+
+o28 : QuotientRing
+
+i29 : KU = ideal(sy_2+1 )
+
+o29 = ideal(sy  + 1)
+              2
+
+o29 : Ideal of F2
+
+i30 : groebnerBasis (K)
+
+o30 = | sy_2+1 |
+
+               1        1
+o30 : Matrix F1  <--- F1
+------------------------------------------------------------
+kernel cut back down counter-example
+------------------------------------------------------------
+acaulay2, version 1.6
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases, PrimaryDecomposition, ReesAlgebra, TangentCone
+
+
+i2 :  D = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+
+o2 = D
+
+o2 : PolynomialRing
+
+i3 : (DM1,i) = selectVariables(new List from 2..5,D)
+
+o3 = (DM1, map(D,DM1,{sy , sy , y , y }))
+                        1    2   1   2
+
+o3 : Sequence
+
+i4 : use DM1
+
+o4 = DM1
+
+o4 : PolynomialRing
+
+i5 :  I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+stdio:5:25:(3): error: expected pair to have a method for '*'
+
+i6 : use DM2
+
+o6 = DM2
+
+o6 : Symbol
+
+i7 : I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+stdio:7:24:(3): error: expected pair to have a method for '*'
+
+i8 : use D
+
+o8 = D
+
+o8 : PolynomialRing
+
+i9 : I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+
+o9 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         1 2     1 2      1     1    2
+
+o9 : Ideal of D
+
+i10 : F2 = D/I
+
+o10 = F2
+
+o10 : QuotientRing
+
+i11 : groebnerBasis I
+
+o11 = | s2y_2+1 s2y_1y_2+sy_1y_2+s2y_1+sy_1+y_2 |
+
+              1       2
+o11 : Matrix D  <--- D
+
+i12 : F1 = DM1
+
+o12 = DM1
+
+o12 : PolynomialRing
+
+i13 : use F2
+
+o13 = F2
+
+o13 : QuotientRing
+
+i14 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2), s2y_1 => F2_(symbol s3y_1), s2y_2 => F2_(symbol s3y_2)})
+stdio:14:134:(3):[1]: error: key not found in hash table
+
+i15 : use F1
+
+o15 = DM1
+
+o15 : PolynomialRing
+
+i16 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2), s2y_1 => F2_(symbol s3y_1), s2y_2 => F2_(symbol s3y_2)})
+stdio:16:134:(3):[1]: error: key not found in hash table
+
+i17 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2)})
+
+o17 = map(F2,DM1,{s2y , -1, sy , sy })
+                     1        1    2
+
+o17 : RingMap F2 <--- DM1
+
+i18 : groebnerBasis kernel(sigma)
+
+o18 = | sy_2+1 |
+
+                1         1
+o18 : Matrix DM1  <--- DM1
+
+------------------------------------------------------------
+now for the one in the script
+------------------------------------------------------------
+i24 :  D = QQ[sy_1,sy_2,y_1,y_2]
+
+o24 = D
+
+o24 : PolynomialRing
+
+i25 : (DM1,i) = selectVariables(new List from 2..5,D)
+stdio:27:11:(3): error: selectVariables: expected an increasing list of numbers in the range 0..3
+
+i26 : (DM1,i) = selectVariables(new List from 2..3,D)
+
+o26 = (DM1, map(D,DM1,{y , y }))
+                        1   2
+
+o26 : Sequence
+
+i27 : use D
+
+o27 = D
+
+o27 : PolynomialRing
+
+i28 :  I = ideal(sy_2+1,sy_1*y_2 + y_1*y_2 + sy_1 + y_1 + y_2)
+
+o28 = ideal (sy  + 1, sy y  + y y  + sy  + y  + y )
+               2        1 2    1 2     1    1    2
+
+o28 : Ideal of D
+
+i29 :  F2 = D/I
+
+o29 = F2
+
+o29 : QuotientRing
+
+i30 : groebnerBasis I
+
+o30 = | sy_2+1 sy_1y_2+y_1y_2+sy_1+y_1+y_2 |
+
+              1       2
+o30 : Matrix D  <--- D
+
+i31 :  F1 = DM1
+
+o31 = DM1
+
+o31 : PolynomialRing
+
+i32 : use F2
+
+o32 = F2
+
+o32 : QuotientRing
+
+i33 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2))
+stdio:35:67:(3): error: expected "}"
+stdio:35:19:(3): error:  ... to match this
+
+i33 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2)})
+stdio:35:76:(3): error: expected y_1 to be a generator of DM1
+
+i34 : use F1
+
+o34 = DM1
+
+o34 : PolynomialRing
+
+i35 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2)})
+
+o35 = map(F2,DM1,{sy , -1})
+                    1
+
+o35 : RingMap F2 <--- DM1
+
+i36 : kernel( sigma )
+
+o36 = ideal(y  + 1)
+             2
+
+o36 : Ideal of DM1
+
+i37 : groebnerBasis (kernel( sigma ))
+
+o37 = | y_2+1 |
+
+                1         1
+o37 : Matrix DM1  <--- DM1
+
+------------------------------------------------------------
+clean:
+Macaulay2, version 1.6
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases, PrimaryDecomposition, ReesAlgebra, TangentCone
+
+Macaulay2, version 1.6
+with packages: ConwayPolynomials, Elimination, IntegralClosure, LLLBases, PrimaryDecomposition, ReesAlgebra, TangentCone
+
+i1 : D = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+
+o1 = D
+
+o1 : PolynomialRing
+
+i2 :  (DM1,i) = selectVariables(new List from 2..5,D)
+
+o2 = (DM1, map(D,DM1,{sy , sy , y , y }))
+                        1    2   1   2
+
+o2 : Sequence
+
+i3 : use DM1
+
+o3 = DM1
+
+o3 : PolynomialRing
+
+i4 : I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+stdio:4:24:(3): error: expected pair to have a method for '*'
+
+i5 : use D
+
+o5 = D
+
+o5 : PolynomialRing
+
+i6 : I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+
+o6 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         1 2     1 2      1     1    2
+
+o6 : Ideal of D
+
+i7 :  F2 = D/I
+
+o7 = F2
+
+o7 : QuotientRing
+
+i8 : groebnerBasis I
+
+o8 = | s2y_2+1 s2y_1y_2+sy_1y_2+s2y_1+sy_1+y_2 |
+
+             1       2
+o8 : Matrix D  <--- D
+
+i9 : F1 = DM1
+
+o9 = DM1
+
+o9 : PolynomialRing
+
+i10 :  sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2), s2y_1 => F2_(symbol s3y_1), s2y_2 => F2_(symbol s3y_2)})
+stdio:10:135:(3):[1]: error: key not found in hash table
+
+i11 :  sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2)})
+
+o11 = map(F2,DM1,{s2y , -1, sy , sy })
+                     1        1    2
+
+o11 : RingMap F2 <--- DM1
+
+i12 : K = kernel(sigma)
+
+o12 = ideal(sy  + 1)
+              2
+
+o12 : Ideal of DM1
+
+i13 : use F2
+
+o13 = F2
+
+o13 : QuotientRing
+
+i14 : J = ideal(sy_2 + 1)
+
+o14 = ideal(sy  + 1)
+              2
+
+o14 : Ideal of F2
+
+i15 : groebnerBasis J
+
+o15 = | sy_2+1 |
+
+               1        1
+o15 : Matrix F2  <--- F2
+
+i16 :  D = QQ[sy_1,sy_2,y_1,y_2]
+
+o16 = D
+
+o16 : PolynomialRing
+
+i17 :  (DM1,i) = selectVariables(new List from 2..3,D)
+
+o17 = (DM1, map(D,DM1,{y , y }))
+                        1   2
+
+o17 : Sequence
+
+i18 : use D
+
+o18 = D
+
+o18 : PolynomialRing
+
+i19 : I = ideal(sy_2+1,sy_1*y_2 + y_1*y_2 + sy_1 + y_1 + y_2)
+
+o19 = ideal (sy  + 1, sy y  + y y  + sy  + y  + y )
+               2        1 2    1 2     1    1    2
+
+o19 : Ideal of D
+
+i20 :  F2 = D/I
+
+o20 = F2
+
+o20 : QuotientRing
+
+i21 :  groebnerBasis I
+
+o21 = | sy_2+1 sy_1y_2+y_1y_2+sy_1+y_1+y_2 |
+
+              1       2
+o21 : Matrix D  <--- D
+
+i22 : F1 = DM1
+
+o22 = DM1
+
+o22 : PolynomialRing
+
+i23 : sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2)})
+
+o23 = map(F2,DM1,{sy , -1})
+                    1
+
+o23 : RingMap F2 <--- DM1
+
+i24 :  kernel( sigma )
+
+o24 = ideal(y  + 1)
+             2
+
+o24 : Ideal of DM1
+
+i25 : use F2
+
+o25 = F2
+
+o25 : QuotientRing
+
+i26 : I = ideal(y_2 + 1)
+
+o26 = ideal(y  + 1)
+             2
+
+o26 : Ideal of F2
+
+i27 : groebnerBasis I
+
+o27 = | 1 |
+
+               1        1
+o27 : Matrix F2  <--- F2
