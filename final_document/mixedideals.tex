@@ -1,5 +1,5 @@
-%\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
-\documentclass{article}
+\documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
+%\documentclass{article}
 %\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -55,7 +55,8 @@
 \def\H{\mathcal{H}}
 \def\wt{\text{wt}}
 \def\Perf{\text{Perf}}
-
+\def\sdim{\sigma\operatorname{-dim}}
+\def\trdeg{\operatorname{trdeg}}
 
 \renewcommand{\labelenumi}{\alph{enumi})}
 %\renewcommand{\P}{\textfrak{P}}
@@ -81,7 +82,7 @@
 
 
 \makeindex
-\title{Geometrix Apsects of Mixed Difference Ideals}
+\title{Geometric Apsects of Mixed Difference Ideals}
 \author{Andr\'{e}s Goens}
 \date{\today}
 \begin{document}
@@ -94,19 +95,27 @@
 \tableofcontents
 
 \clearpage 
-evin
-\section*{Conventions on notation for this thesis} 
-\input{notation}
+
 
 \section{Basics of Difference Algebra}
 \input{introductory_chapter}
-\input{intersectionprimes}
+\clearpage 
 \section{Difference Ideals}
 \input{difference_ideals}
+\input{intersectionprimes}
+\clearpage 
 \section{Difference Varieties}
 \input{difference_varieties}
 \clearpage 
+\section{Difference Kernels}
+\input{kernels}
+
+\clearpage 
 \input{bibliography}
+
+\clearpage
+\section*{Conventions on notation for this thesis} 
+\input{notation}
 
 \clearpage
 \printindex
