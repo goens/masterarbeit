@@ -80,7 +80,7 @@
 \newtheorem{defn}[Satz]{Definition}
 \theoremstyle{definition}
 \newtheorem{rem}[Satz]{Remark}
-
+\usepackage[arrow, matrix, curve]{xy}
 
 \makeindex
 \title{Geometric Apsects of Mixed Difference Ideals}
@@ -92,13 +92,16 @@
 \maketitle
 
 \clearpage
+\section*{Abstract}
+\input{abstract}
+\clearpage
 
 \tableofcontents
 
 \clearpage 
 
 
-\section{Basics of Difference Algebra}
+\section{Difference Algebra}
 \input{introductory_chapter}
 \clearpage 
 \section{Difference Ideals}
@@ -110,6 +113,11 @@
 \clearpage 
 \section{Difference Kernels}
 \input{kernels}
+\input{irreducible_component.tex}
+\clearpage
+
+\section{Final Remarks}
+\input{final}
 
 \clearpage 
 \input{bibliography}
