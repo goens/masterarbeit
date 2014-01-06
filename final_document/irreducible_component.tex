@@ -1,3 +1,8 @@
+\subsection{A Geometric Application of Difference Kernels}
+
+There is an application of Difference Kernels that is of geometric nature. We will just quote a result for the case of reflexive prime kernels here,
+and do a partial generalization for the case that arises for some non-necesarilly-reflexive prime $\s$-ideals.
+
 \begin{theorem}\label{di=d(i+1)+e}
 Let $k$ be a $\s$-field and let $\p \in k\{y\} = k\{y_1,\ldots,y_n\}$ be a prime $\s$-ideal of $k\{y\}$. For $i \in \N$ set $$d_i := \dim(k\{y\}[i]/\p[i]).$$
 Then there exists integers $d, e \in \N$ such that $d_i = d(i+1) + e$ for $i \gg 0$. Moreover, $d = \s\operatorname{-trdeg}(k\{y\}/\p^*)$.
@@ -19,12 +24,12 @@ See Theorem 5.2.14 of \cite{wibmer}.
 \end{theorem}
 
 \begin{cor}
-Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial. Then $\VV(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$.
+Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial. Assume that $f$ can be written as $f = \s^r(f')$ with $f' \in k\{y_1,\ldots,y_n\}$, such that $\operatorname{Ord}(f') = \operatorname{Eord}(f')$  with $f = \s^k(f')$. 
+Then $\VV(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$.
 \begin{bew}
-Write $f = \s^k(f')$ with $k \in \N$ maximal, such that there exists an $f' \in k\{y_1,\ldots,y_n\}$ with $f = \s^k(f')$. Then $\operatorname{Ord}(f') = \operatorname{Eord}(f')$ by definition of the effective order. 
 By Theorem \ref{irredcomp} we know that the $\s$-variety (in the sense of $\s\text{\catname{-VarField}}_k$) $ \VV_{\operatorname{Field}}(f')$ has an irreducbile component (also in the sense of $\s\text{\catname{-VarField}}_k$) $X' = \VV(\p')$ of $\s$-dimension $n-1$.
 This means that there exists a minimal (with respect to inclusion) $\s$-prime $\s$-ideal $\p' \subset k\{y_1,\ldots,y_n\}$ with $f' \in \p'$, such that $\s$-$\dim(\p') = n-1$. 
-Since $f = \s^k(f')$ it holds that $f \in \p'$ as well. Let $\p \subset k\{y_1,\ldots,y_n\}$ be a minimal (again, with respect to inclusion) prime $\s$-ideal with $f \in \p, \p \subseteq \p'$ (such a $\s$-ideal exists due to Zorn's Lemma). 
+Since $f = \s^r(f')$ it holds that $f \in \p'$ as well. Let $\p \subset k\{y_1,\ldots,y_n\}$ be a minimal (again, with respect to inclusion) prime $\s$-ideal with $f \in \p, \p \subseteq \p'$ (such a $\s$-ideal exists due to Zorn's Lemma). 
 
 We will now show that in this case it always holds that $\p^* = \p'$. Since $\p \subseteq \p'$ and $\p'$ is radical, it follows that $\p^* \subseteq \p'$. On the other hand, assume $\p^* \subsetneqq \p'$. Since $f \in \p$, it follows that $f' \in \p^*$,
 and since $\p$ is a prime $\s$-ideal, it follows that $\p^*$ is $\s$-prime. But then $\p^* \subsetneqq \p'$ is a contradiction to the minimality of $\p'$. We know thus, that $\p^* = \p'$. Hence, it follows that $\s$-$\dim(\p) = n -1$ from Theorem \ref{di=d(i+1)+e}.
@@ -32,10 +37,10 @@ and since $\p$ is a prime $\s$-ideal, it follows that $\p^*$ is $\s$-prime. But 
 \end{bew}
 \end{cor}
 
-\begin{lem}
-Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial. 
-Then there exists a prime difference ideal $\q \si k\{y_1,\ldots,y_n\}$, minimal containing $f$, and a $d \in \N$, such that 
-$$\dim(k\{y_1,\ldots,y_n\}[i]/\q[i]) = \left\{ \begin{array}{lr} i, i < \operatorname{Ord}(f) \\ d(i-\operatorname{Ord}(f)) +\ operatorname{Ord}(f),
- i \geq \operatorname{Ord}(f) \end{array} \right.$$
-\end{lem}
+%% \begin{lem}
+%% Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial.  
+%% Then there exists a prime difference ideal $\q \si k\{y_1,\ldots,y_n\}$, minimal containing $f$, and a $d \in \N$, such that 
+%% $$\dim(k\{y_1,\ldots,y_n\}[i]/\q[i]) = \left\{ \begin{array}{lr} i, i < \operatorname{Ord}(f) \\ d(i-\operatorname{Ord}(f)) +\ operatorname{Ord}(f),
+%%  i \geq \operatorname{Ord}(f) \end{array} \right.$$
+%% \end{lem}
 

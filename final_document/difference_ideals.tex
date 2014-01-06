@@ -1,5 +1,7 @@
 In this section we will study difference ideals more closely. A special emphasis will be given to certain difference ideals which mimic in many ways the properties of and relationship between radical and prime ideals on (general) rings.
 Much of the following is based on Section 1.2 of the lecture notes of M. Wibmer \cite{wibmer}, where most of it is worked out for an analogous case. \\
+
+\subsection{Difference Ideals}
 \indent There are numerous properties in which we are interested for studying difference ideals. We will start by defining some of them:
 \begin{defn}
 Let  $\a \si R$ be a $\s$-ideal of $R$. 
@@ -17,7 +19,7 @@ It is easy to see from the definitions that $\s$-prime ideals are perfect, and t
 the former does not necessarily have to be reflexive, as is the case with the latter. Both, prime $\s$-ideals and $\s$-prime ideals will be very important throughout this thesis. It is for that reason that the distinction between both is of utmost importance.
 \end{rem}
 
-All the above properties behave well with respect to morphisms of $\s$-rings in the following sense:
+The above properties behave well with respect to morphisms of $\s$-rings in the sense of the following Lemma (see Exercise 1.2.7 of \cite{wibmer}):
 \begin{lem}\label{bijmapping}
 Let $\varphi: R \rightarrow S$ be a morphism of $\s$-rings and $\a \si S$ a $\s$-ideal of $S$. Then $\varphi^{-1}(\a) \si R$ is a $\s$-ideal of $R$. Similarly, if $\a$ is a mixed $\s$-ideal, then so is $\varphi^{-1}(\a)$. The same is true for perfect and for reflexive $\s$-ideals.
 \begin{bew}
@@ -132,6 +134,9 @@ Let $R$ be a ring.
 \end{enumerate}
 \end{bew}
 \end{lem}
+
+
+The following is adapted from the proof given in \cite{wibmer} of Proposition 1.2.28 (here the upcoming Theorem \ref{intersectionprimes}). It has been worked out in more detail and divided further in a way to try and make this more detailed version of the proof easier to read.
 
 \begin{defn}
 Let $R$ be a difference ring. We say $R$ is \emph{finitely $\s$-generated over $\Z$} if there exists a finite set $A \subseteq R$ so that every $f \in R$ can be written as a finite $\Z$-linear combination of $\s$-powers of elements in $A$. In other words,
