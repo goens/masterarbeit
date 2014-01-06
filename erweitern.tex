@@ -102,22 +102,22 @@ A contradiction.
 \end{lem}
 
 
-\begin{lem}\label{idealstill0}
-Let $R \subseteq S$ be two rings, and let $I \unlhd R[y]$ be an ideal in the polynomial ring $R[y]$ with $I \cap R = 0$. 
-Then it holds for the ideal $(I) \unlhd S[y]$, that $(I) \cap S = 0$.
-\begin{proof}
-Since $S$ is an $R$ module, we know that $S \cong R \otimes_R S$, from which it easily follows that $S[y] \cong R[y] \otimes_R S$, and similarly, that $I \otimes_R S \cong (I) \unlhd S[y]$.
-Together, these two imply that as well $R[y]/I \otimes_R S \cong S[y]/(I)$. FIXME: check this!
-The condition $R \cap I = 0$ is equivalent to the mapping $R \rightarrow R[y]/I, r \mapsto r + I$ being injective. We can express this as the exactness of the following sequence:
-\[ 0 \rightarrow R \rightarrow R[y]/I \]
-Since the tensor product functor is exact, we know that tensoring over $R$ with $S$ yields an exact sequence:
-\[ 0 \rightarrow R \otimes_R S \cong S \rightarrow R[y]/I \otimes_R S \cong S[y]/(I) \]
-This, in turn, is equivalent to $S \cap (I) = 0$ by going the arguments above backwards.
+%% \begin{lem}\label{idealstill0}
+%% Let $R \subseteq S$ be two rings, and let $I \unlhd R[y]$ be an ideal in the polynomial ring $R[y]$ with $I \cap R = 0$. 
+%% Then it holds for the ideal $(I) \unlhd S[y]$, that $(I) \cap S = 0$.
+%% \begin{proof}
+%% Since $S$ is an $R$ module, we know that $S \cong R \otimes_R S$, from which it easily follows that $S[y] \cong R[y] \otimes_R S$, and similarly, that $I \otimes_R S \cong (I) \unlhd S[y]$.
+%% Together, these two imply that as well $R[y]/I \otimes_R S \cong S[y]/(I)$. FIXME: check this!
+%% The condition $R \cap I = 0$ is equivalent to the mapping $R \rightarrow R[y]/I, r \mapsto r + I$ being injective. We can express this as the exactness of the following sequence:
+%% \[ 0 \rightarrow R \rightarrow R[y]/I \]
+%% Since the tensor product functor is exact, we know that tensoring over $R$ with $S$ yields an exact sequence:
+%% \[ 0 \rightarrow R \otimes_R S \cong S \rightarrow R[y]/I \otimes_R S \cong S[y]/(I) \]
+%% This, in turn, is equivalent to $S \cap (I) = 0$ by going the arguments above backwards.
 
-\end{proof}
-\end{lem}
+%% \end{proof}
+%% \end{lem}
 
-
+ 
 \begin{prop}
 Let $\a \subseteq k[y,\ldots,\s^d(y)]$ be a prime difference kernel of length $d$ and let $k[y,\ldots,\s^d(y)]/\a =: k[a,\s(a),\ldots,\s^d(a)]$. Consider the mapping 
 \[ \s: k[a,\ldots,\s^{d-1}(a)] \rightarrow k[a,\ldots,\s^d(a)]. \]
