@@ -1,6 +1,5 @@
 
 
-
 Difference algebra is a small branch of mathematics, whose origin is closely related to that of differential algebra: a larger field with which it bears great similarity. It is also a relatively new field.
 It could be argued that difference algebra was born as a branch of mathematics around the 1930s through a series of articles published by J. Ritt between 1929 and 1939. However, it was not until the 1950s thanks to R. Cohn 
 that difference algebra reached levels of development comparable to those of differential algebra.  Since then it has enjoyed a satisfactory growth thanks to a large number of mathematicians, and although it remains a small field today,
@@ -75,10 +74,23 @@ We will use the shorthand notation $y = y_1,\ldots,y_n$ throughout the thesis.
 \begin{itemize}
 \item Given a $\sigma$-ring $S$ and a subring $R \leq S$, we say that $R$ is a $\sigma$\emph{-subring} \index{$\s$-subring} of $S$ if $(R,\sigma|_{R})$ is a $\sigma$-ring,
 i.e. , if the image of $\sigma|_{R}$ is contained in $R$.
-\item Let $R$ be a $\s$-ring. A $\sigma$\emph{-ideal} \index{$\s$-ideal} is an ideal $I \unlhd R$ which is also a $\sigma$-subring of $R$; we denote this by $I \si R$. In this case, there exists a canonical $\sigma$-ring structure on the quotient ring $R/I$:
+\item Let $R$ be a $\s$-ring. A $\sigma$\emph{-ideal} \index{$\s$-ideal} is an ideal $I \unlhd R$ which is closed under $\sigma$. This means that $\sigma(I) \subseteq I$. We will use the notation $I \si R$ for this. In this case, there exists a canonical $\sigma$-ring structure on the quotient ring $R/I$:
 \begin{align*} \sigma: R/I \rightarrow R/I, a + I \mapsto \sigma(a) + I. \end{align*}
 \end{itemize}
 \end{defn}
+
+\indent There are numerous properties in which we are interested for studying difference ideals. For the scope of this thesis, the most important ones are the following:
+\begin{defn}
+Let  $\a \si R$ be a $\s$-ideal of $R$. 
+\begin{itemize}
+\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. \index{mixed $\s$-ideal}
+\item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
+\item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
+\item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
+\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed, and \emph{perfectly $\s$-reduced}, if it is perfect. \index{well-mixed $\s$-ring}\index{perfectly $\s$-reduced $\s$-ring}
+\end{itemize}
+\end{defn}
+
 
 \begin{defn}
 Let $R$ be a $\s$-ring and let  $I \si R$ be a $\s$-ideal of $R$. For elements $a_1, \ldots, a_k \in R$ we denote by $[a_1, \ldots, a_k] \si R$ the $\s$-ideal minimal (with respect to inclusion) of $R$ which contains $a_1,\ldots,a_k$. 
@@ -113,5 +125,114 @@ Just as the usual approach with algebraic equations is to consider them as solut
 
 \begin{ex}
 The Fibonacci sequence is a solution to the $\s$-polynomial $\sigma^2(y) + \sigma(y) - y$ in the $\sigma$-ring  $\text{Seq}(\Z)$; This is precisely the recurrence relation $a_{n+2} + a_{n+1} = a_n$.
-In the same way, the $\Gamma$ function is the solution to the $\s$-polynomial $\sigma(y) - zy$, where $z \in \C(z)$ denotes the identity function $z \mapsto z$ in the $\s$-ring $\mathcal{M} \supset \C(z).
+In the same way, the $\Gamma$ function is the solution to the $\s$-polynomial $\sigma(y) - zy$, where $z \in \C(z)$ denotes the identity function $z \mapsto z$ in the $\s$-ring $\mathcal{M} \supset \C(z).$
 \end{ex}
+
+\subsection{Perfect Difference Ideals And Difference Varieties}
+
+The purpose of this section is to present in a compact fashion some well-known results of difference algebra, mainly about the geometric aspects of perfect difference ideals. 
+The rest of the thesis will then go on and generalize many of these results to the case of mixed ideals. For the sake of compactness, the results will be stated without proof.
+Similarly, many of the examples or remarks that give a more in-depth understanding of said results will be deferred to the later sections of the thesis where the generalized results are treated.
+
+\begin{defn}
+Let $R$ be a $\s$-ring and $F \subset R$ be a $\s$-ideal of $R$. The smallest (with respect to inclusion) prefect $\s$-ideal containing $F$ shall be called the \emph{perfect closure of $F$}\index{perfect closure} and we will write $\{F\}$ to denote it. 
+\end{defn}
+
+Perfect difference ideals shall play a role similar to that of radical ideals in algebraic geometry. In fact, in the case of a constant $\s$-ring the definition of perfect difference ideals corresponds to radical ideals, and most of the following results can be easily recognized as generalizations of standard results in algebraic geometry. 
+
+\begin{theorem}
+Let $R$ be a $\s$-ring and $F \subseteq R$ be a subset of $R$. Then we can write the perfect closure of $F$ as follows:
+\begin{equation}\label{perfectintersection} \{F\} = \bigcap_{F \subseteq \p, \p \s\text{-prime}} \p \end{equation}
+\begin{proof} See Proposition 2.3.4 of \cite{levin} \end{proof}
+\end{theorem}
+
+A much stronger version of this fact can actually be proven for a particular class of difference Rings, so-called Ritt difference rings. If a difference ring $R$ satisfies the ascending chain condition for perfect difference ideals, we say that $R$ is a \emph{Ritt difference ring}\index{Ritt difference ring}. Consider a Ritt difference Ring $R$ and a perfect difference ideal $\a \si R$. 
+For a decomposition of $\a$ as in Equation \ref{perfectintersection}, let $$\a = \bigcap_{i \in I} \p_i,$$ where $I$ is an index set and $\p_i$ a $\s$-prime difference ideal of $R$ for all $i \in I$.
+For a subset $J \subseteq I$ such that $$ \a = \bigcap{i \in J} \p_i$$ we say that $J$ is an \emph{irredundant decomposition of $\a$}\index{irredundant decomposition of a perfect $\s$-ideal}
+if $p_i \not \subseteq p_j$ for all $i \neq j; i,j \in J$. 
+
+It can be shown that in a Ritt difference ring there is a unique finite irredundant decomposition in $\s$-prime ideals for every perfect difference ideal, see for example Theorem 2.5.7 of \cite{levin}. 
+
+Ritt difference ideals are of particular interest as, in a way, they fulfill some of the roles played by noetherian rings in standard results of algebraic geometry/commutative algebra.
+In particular, a result analogous of the hilbert basis theorem can be proven for Ritt difference rings:
+
+\begin{theorem}
+Let $R$ be a Ritt difference ideal, and consider the difference polynomial ring $R\{y_1, \ldots, y_n\}$ in $n$ difference variables. Then $R\{y_1, \ldots, y_n\}$ is a Ritt difference ring.
+\begin{proof} See Theorem 2.5.11 of \cite{levin} \end{proof}
+\end{theorem}
+
+A further important analogy of a more geometric nature can be made by generalizing the zariski topology on the spectrum of a ring. 
+We call the set of all $\s$-prime ideals of a difference ring $R$ the \emph{$\s$-spectrum} or \emph{difference spectrum} \index{$\s$-spectrum} of $R$, and use the symbol $\Spec^\sigma(R)$ for it.
+
+\begin{defn}
+Let $R$ be a difference ring, $F \subseteq R$ a subset. We set $\mathcal{V}(F) := \{ \p \in \Spec^\s(R) \mid F \subseteq \p \}$
+\end{defn}
+
+It can be shown that the sets of the form $\mathcal{V}(F)$ for $F \subseteq R$ define a topology in $\Spec^\s(R)$. In fact, this topology is just the restriction of the usual zariski topology on $\Spec(R)$ to $\Spec^\s(R)$.
+We call this topology on $\Spec^\s(R)$ the \emph{Cohn topology}\index{Cohn topology}. A few interesting properties of the Cohn topology on $\Spec^\s(R)$ are presented in the folowing Theorem:
+
+\begin{prop}
+\begin{itemize}
+Let $R$ be a difference ring. Then: 
+\item The mapping $$\{ \a \si R \mid \a\text{ perfect }\} \rightarrow \{ A \subseteq \Spec^\s(R) \mid A \text{ closed }\}, \a \mapsto \mathcal{V}(\a)$$
+ is bijective and order-reversing.
+\item \label{irred=prime} For $F \subseteq R$ it holds that $\mathcal{V}(F)$ is irreducible if and only if $\{F\}$ is prime.
+\item $\Spec^\s(R)$ is a quasi-compact, noetherian topological space
+\end{itemize}
+\end{prop}
+
+In what follows we continue to explore the more geometric aspects of the basic theory of perfect difference ideals.
+For this, we will address the analogous concept to affine varieties next. To define these, we will first introduce the following notation:
+Let $k$ be a $\s$-field and $k\{y_1,\ldots,y_n\}$ a difference polynomial ring in $n$ variables. Further let $K \supseteq k$ be a $\s$-field extension of $k$ and $F \subseteq k\{y_1,\ldots,y_n\}$.
+Then we set $$\VV_K(F) := \{ x \in K^n \mid f(x) = 0 \text{ for all } f \in F \}.$$
+With this notation we can define (affine) difference varieties.
+
+\begin{defn}
+Let k be a $\s$-field. A functor X from the category of $\s$-field extensions of $k$ to the category of sets is called \emph{$\s$-variety} or \emph{difference variety} \index{$\s$-variety}
+ if there exists a subset $F \subseteq k\{y_1,\ldots,y_n\}$ of a $\s$-polynomial ring over $k$ such that $X(K) = \VV_K(F)$
+\end{defn}
+
+To establish a connection between difference varieties and perfect difference ideals we will introduce a further symbol, which bears much resemblance to the standard definition in algebraic geometry.
+For a difference variety $X = \VV(F), F \subseteq k\{y_1,\ldots,y_n\}$ we set 
+$$\I(X) := \{ f \in k\{y_1,\ldots,y_n \} \mid f(a) = 0 \text{ for all } a \in \VV_K(F) \text{ for all } K \supseteq k ~ \s \text{-field extension} \} $$
+
+With these concepts and definitions, the analogy can further unfold. As stated before, it can be shown that - in a way - perfect difference ideals are a difference-algebraic generalization of radical ideals, as seen in the following result.
+
+\begin{prop}
+Let $k$ be a $\s$-field and $F \subseteq k\{y_1,\ldots,y_n\}$. Then 
+$$ \I(\VV(F)) = \{F\}$$
+\begin{proof}
+See Proposition 2.1.11 of \cite{wibmer}
+\end{proof}
+\end{prop}
+
+A very useful tool in algebraic geometry for studying affine varieties are coordinate rings. The same principle can be applied for difference varieties. Let $X = \VV(F), F \subseteq k\{y_1,\ldots,y_n\}$  be a difference variety.
+Then we can associate a \emph{difference coordinate ring} \index{difference coordinate ring} to $X$ by 
+defining $$ k\{X\} := k\{y_1,\ldots,y_n\}/\I(X).$$
+
+
+It can be shown, for example, that the perfect $\s$ ideals of the coordinate ring of a difference variety $X$
+are in inclusion-reversing bijection to the subvarieties of $X$. We exclude a formal definition of subvarities at this point, as it will be treated in the case of mixed ideals later, and the details are basically the same.
+
+
+Another noteworthy bijection that can be found deals with solutions of difference equations.
+Let $k$ be a $\s$-field and $K,L \supseteq k$ be $\s$-field extensions of $k$. Further let $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations. We say that two solutions of $F$, $a \in K, a' \in L$ (this means that $f(a) = 0 = f(a')$ for all $f \in F$) are equivalent if the mapping $k\left<a\right> k\left<a'\right$ is an isomorphism of $\s$-fields. Here, $k\left< a \right> \subseteq K$ denotes the smallest $\s$-subfield of $K$ containing $a$, and similarly for $a'$ and $L$.
+
+\begin{prop}
+Let $k$ be a $\s$-field and $X = \VV(F)$ a difference variety over $k$. Then the equivalence classes of solutions of $F$
+are in bijection to the $\s$-spectrum of the coordinate ring, $\Spec^\s(k\{X\})$.
+\begin{proof} See Theorem 2.2.1 of \cite{wibmer}
+\end{proof}
+\end{prop}
+
+The relationship between $\s$-varieties over a field $k$ and their coordinate ring can in fact be indentified well with a category-theoretical result.
+It can be shown that for a $\s$-field $k$, the category of $\s$-varieties over $k$ is anti-equivalent to the cateogry of $k$-$\s$-algebras which are perfectly $\s$-reduced and finitely $\s$-generated.
+
+To conclude this brief survey of some of the standard geometric aspects of difference algebra, we will present a final interessting result.
+
+\begin{theorem}\label{irredcomp}
+Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial such that $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Then $\VV_{\operatorname{Field}}(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$ and $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
+\begin{bew}
+See Theorem 5.2.14 of \cite{wibmer}.
+\end{bew}
+\end{theorem}

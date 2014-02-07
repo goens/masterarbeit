@@ -80,10 +80,20 @@
 \newtheorem{defn}[Satz]{Definition}
 \theoremstyle{definition}
 \newtheorem{rem}[Satz]{Remark}
+\newtheorem*{restatedtheorem*}{}
+\newenvironment{restatement}[2][]{%
+ \ifempty{#1}
+  \begin{restatedtheorem*}[\autoref*{#2}]%
+ \else%
+  \begin{restatedtheorem*}[\autoref*{#2} (#1)]%
+ \fi%
+}%
+{\end{restatedtheorem*}}
+\makeatother
 \usepackage[arrow, matrix, curve]{xy}
 
 \makeindex
-\title{Geometric Apsects of Mixed Difference Ideals}
+\title{Geometric Aspects of Mixed Difference Ideals}
 \author{Andr\'{e}s Goens}
 \date{\today}
 \begin{document}
@@ -92,7 +102,7 @@
 \maketitle
 
 \clearpage
-\section*{Abstract}
+\section*{Introduction}
 \input{abstract}
 \clearpage
 \section*{Acknowledgments}
@@ -111,13 +121,13 @@
 \input{difference_ideals}
 \input{intersectionprimes}
 \clearpage 
-\section{Difference Varieties}
+
 
 \input{difference_varieties}
 \clearpage 
 \section{Difference Kernels}
-%% \input{kernels}
-%% \input{irreducible_component.tex}
+\input{kernels}
+\input{irreducible_component.tex}
 \clearpage
 
 \section{Final Remarks}
