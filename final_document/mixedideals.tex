@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{enumerate}
+\usepackage[titletoc]{appendix}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
@@ -13,7 +14,7 @@
 \usepackage{makeidx}
 \usepackage{graphicx, float,epsfig}
 \usepackage[nottoc,numbib]{tocbibind}
-
+\usepackage{listings}
 
 \newcommand{\properideal}{%
   \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
@@ -80,16 +81,21 @@
 \newtheorem{defn}[Satz]{Definition}
 \theoremstyle{definition}
 \newtheorem{rem}[Satz]{Remark}
-\newtheorem*{restatedtheorem*}{}
-\newenvironment{restatement}[2][]{%
- \ifempty{#1}
-  \begin{restatedtheorem*}[\autoref*{#2}]%
- \else%
-  \begin{restatedtheorem*}[\autoref*{#2} (#1)]%
- \fi%
-}%
-{\end{restatedtheorem*}}
+
+%%begin restatement stuff
+\makeatletter
+\newtheorem*{rep@theorem}{\rep@title}
+\newcommand{\newreptheorem}[2]{%
+\newenvironment{rep#1}[1]{%
+ \def\rep@title{#2 \ref{##1}}%
+ \begin{rep@theorem}}%
+ {\end{rep@theorem}}}
 \makeatother
+
+
+\newreptheorem{theorem}{Theorem}
+%%end restatement stuff
+
 \usepackage[arrow, matrix, curve]{xy}
 
 \makeindex
@@ -122,7 +128,7 @@
 \input{intersectionprimes}
 \clearpage 
 
-
+\section{Difference Varities}
 \input{difference_varieties}
 \clearpage 
 \section{Difference Kernels}
@@ -132,6 +138,11 @@
 
 \section{Final Remarks}
 \input{final}
+\clearpage
+
+\begin{appendices}
+\input{macaulay2}
+\end{appendices}
 
 \clearpage 
 \input{bibliography}

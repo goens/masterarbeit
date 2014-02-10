@@ -1,0 +1,243 @@
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+}
+
+
+
+
+\section{Code for the Examples in Macaulay2}
+
+In this appendix we give the code used for calculating two examples in the thesis with its corresponding output. We do this with brief commentary inbetween to make it easier to understand.
+
+\subsection{Example \ref{counterexker}}
+We consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
+
+For the calculations we considered the rational numbers $\Q$ as a constant $\s$-field. Since these calculations do not really depend on the field, this should not be of much difference. We begin by defining the ring $R$:
+
+\begin{lstlisting}
+i1 : R = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+
+o1 = R
+
+o1 : PolynomialRing
+
+\end{lstlisting}
+
+The definition is that of a simple polynomial ring, and we just take the names of the variables in a way we can easily interpret them as powers of $\s$ applied on a variable. We add one more power of $\s$ as in the example, so that we can calculate the relation satted later, which includes $\s^2$.
+The output, which can be recognized from the lines begining with an ``o'', indicates that a polynomial ring has been succesfully constructed. We continue and define the ideal.
+
+\begin{lstlisting}
+i2 : I = ideal(sy_2+1,sy_1*y_2 + y_1*y_2 + sy_1 + y_1 + y_2)
+
+o2 = ideal (sy  + 1, sy y  + y y  + sy  + y  + y )
+              2        1 2    1 2     1    1    2
+
+o2 : Ideal of R
+
+\end{lstlisting}
+
+Macaulay conveniently has a function to test if the ideal is prime: 
+
+\begin{lstlisting}
+
+i3 : isPrime(I)
+
+o3 = true
+
+\end{lstlisting}
+
+This, however, does not necesarilly mean that the ideal is a prime kernel. To see this, we use Gr\"{o}bner bases.
+
+\begin{lstlisting}
+
+i4 : groebnerBasis(I)
+
+o4 = | sy_2+1 sy_1y_2+y_1y_2+sy_1+y_1+y_2 |
+
+             1       2
+o4 : Matrix R  <--- R
+
+i5 : y_1 < sy_1
+
+o5 = true
+
+\end{lstlisting}
+
+It tells us that $f_1, f_2$ is a Gr\"{o}bner basis of $I$.
+The variable ordering is per default reverse lexicographical with respect to the input, 
+we tested it here to as an example to make sure it was as intended.
+Using elimination theory (see for example Theorem 2 in Chapter 3 of \cite{cox}),
+we see thus that $(f_1,f_2)[0] = \{0\}$.
+
+Finally, we use macaulay to test the relation given in the example.
+
+\begin{lstlisting}
+
+i6 : (sy_2+1)*(s2y_1+ sy_1 + 1)- (s2y_1*sy_2 + sy_1*sy_2 + s2y_1 + sy_1 + sy_2)
+
+o6 = 1
+
+o6 : R
+
+
+\end{lstlisting}
+
+\subsection{Example \ref{secondexamplem2}}
+
+This second example is a bit more complex, since we have to check the condition that
+$$(ker(\s)) \cap k\{a,\s(a)\} = ker(\s).$$
+
+We begin again by defining the ring we will work with
+
+\begin{lstlisting}
+
+i1 :  D = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
+
+o1 = D
+
+o1 : PolynomialRing
+
+
+\end{lstlisting}
+
+This time we want to consider a quotient ring, so we begin by defining the subring $DM1 = k[y_1,y_2,\s(y_1),\s(y_2)]$
+
+\begin{lstlisting}
+
+i2 :  (DM1,i) = selectVariables(new List from 2..5,D)
+
+o2 = (DM1, map(D,DM1,{sy , sy , y , y }))
+                        1    2   1   2
+
+o2 : Sequence
+
+\end{lstlisting}
+
+We return to use our original ring and define the ideal we want to factor out there.
+
+\begin{lstlisting}
+
+i3 : use D
+
+o3 = D
+
+o3 : PolynomialRing
+
+i4 :  I = ideal(s2y_2+1,s2y_1*y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
+
+o4 = ideal (s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         1 2     1 2      1     1    2
+
+o4 : Ideal of D
+
+i5 :  groebnerBasis I
+
+o5 = | s2y_2+1 s2y_1y_2+sy_1y_2+s2y_1+sy_1+y_2 |
+
+             1       2
+o5 : Matrix D  <--- D
+
+
+\end{lstlisting}
+
+From the Gr\"{o}bner basis we see again that $I$ is indeed a prime kernel.
+Now we can define the quotient ring $D/I$.
+
+\begin{lstlisting}
+
+i6 : F2 = D/I
+
+o6 = F2
+
+o6 : QuotientRing
+
+\end{lstlisting}
+
+Now we proceed to define the mapping $\s$. Since $I \cap k\{y\}[1] = \{ 0 \}$ 
+we know that $k[a,\s(a)] \cong k[y,\s(y)]$ and can use the latter for defining $\s$.
+
+\begin{lstlisting}
+
+
+i7 : F1 = DM1
+
+o7 = DM1
+
+o7 : PolynomialRing
+
+i8 : use F1
+
+o8 = DM1
+
+o8 : PolynomialRing
+
+i9 :  sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2)})
+
+o9 = map(F2,DM1,{s2y , -1, sy , sy })
+                    1        1    2
+
+o9 : RingMap F2 <--- DM1
+
+\end{lstlisting}
+
+Macaulay2 tells us with this output that it successfully defined the mapping. We can look at its kernel now.
+
+\begin{lstlisting}
+
+i10 :  groebnerBasis kernel(sigma)
+
+o10 = | sy_2+1 |
+
+                1         1
+o10 : Matrix DM1  <--- DM1
+
+
+\end{lstlisting}
+
+
+We see that $\ker(\s) = (\s(y_2) + 1) \unlhd k[y_1,y_2, \s(y_1), \s(y_2)]$. 
+From this we should be able to deduce already that the condition holds, but we can ask Macaulay to explicitly
+calculate it too
+
+\begin{lstlisting}
+
+i11 : use F2
+
+o11 = F2
+
+o11 : QuotientRing
+
+i12 : J = ideal(sy_2 + 1)
+
+o12 = ideal(sy  + 1)
+              2
+
+o12 : Ideal of F2
+
+i13 : groebnerBasis(J)
+
+o13 = | sy_2+1 |
+
+               1        1
+o13 : Matrix F2  <--- F2
+
+\end{lstlisting}
+ 
+Which, using elimination theory again, gives the desired result, namely
+
+$$ (\ker(\s)) \cap k[y_1,y_2,\s(y_1),\s(y_2)] = (\s(y_2) +1) = \ker(\s) $$
