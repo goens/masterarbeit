@@ -1,44 +1,54 @@
-\subsection{An alternative proof of the Theorem \ref{intersectionprimes}}
+\subsection{An alternative proof of Theorem \ref{intersectionprimes}}
 
-There is an alternative proof of Theorem \ref{intersectionprimes} without model theory, just difference algebraic arguments. We will develop it here additionally, because it can be in a sense more accessible.
+There is an alternative proof of Theorem \ref{intersectionprimes} without ultrafilters, just using difference algebraic arguments. We will develop it here additionally.
 
 \begin{defn}
 Let $R$ be a difference ring and $\a \si R$ be a mixed $\s$-ideal of $R$. Further let $f \in R \setminus \a$. We set $$(\a:f):= \{ g \in R \mid gf \in \a \} \subseteq R$$
 \end{defn}
 
-\begin{lem}
-Let $R$ be a $\s$-ring, $\a \si R$ a mixed $\s$-ideal, $f \notin \a$. Then $(\a:f)$ is a mixed $\s$-ideal of $R$ which contains $\a$. If $\a$ is radical/prime, then $(\a:f)$ is radical/prime as well.
+\begin{lem}\label{a:f}
+Let $R$ be a $\s$-ring, $\a \si R$ a mixed $\s$-ideal, $f \notin \a$. Then $(\a:f)$ is a mixed $\s$-ideal of $R$ which contains $\a$. If $\a$ is radical(prime), then $(\a:f)$ is radical(prime) as well.
 \begin{bew}
-Let $a,b \in (\a:f), r \in R$. Then $af, bf \in \a$ and thus $(a + b)f = af + bf \in \a$, which means that $a + b \in (\a:f)$. Similarly $$(ra)f = r\underbrace{(af)}_{\in \a} \in \a,$$
-which means that $ra \in (\a:f)$. Also, since $\a$ is mixed and $af \in \a$ it follows that $\s(a)f \in \a$, which in turn means that $\s(a) \in (\a:f)$. We have shown that $(\a:f)$ is a difference ideal. 
-That $\a \subseteq (\a:f)$ is an obvious conclusion from the fact that since $\a$ is an ideal, $fa' \in \a \fa a' \in \a$.  Finally, to see that $(\a:f)$ is mixed,
-let $g,h \in R$ with $gh \in (\a:f)$. Then it holds that $(gh)f = (gf)h  \in \a$. Since $\a$ is mixed, this implies that $(gf)\s(h) = (g\s(h))f \in \a$, from which $g\s(h) \in (\a:f)$ follows immediately by definition. \\
-\indent Assume now that $\a$ is radical, and let $g \in R$ such that $g^n \in (\a:f)$ for an $n \in \NE$. Then $g^nf \in \a$. This also implies (since $\a$ is an ideal), that $g^nf \cdot f^{n-1} = (gf)^n \in \a$.
-Since $\a$ is radical, it follows from this that $gf \in \a$, and thus $g \in (a:f)$.\\ 
-\indent Finally, assume that $\a$ is prime and let $g, h \in R$ with $gh \in (\a:f)$. This means that $(gh)f = g(hf) \in \a$. Since $\a$ is prime, it has to hold that $g \in \a$ or $hf \in \a$. Since $\a \subseteq (\a:f)$, it follows that $g \in (\a:f)$ or $h \in (\a:f)$.
+We will only prove the difference-algebraic statements, since the rest of the assertion is standard in commutative algebra.
+Let $a \in (\a:f), r \in R$. 
+
+Since $\a$ is mixed and $af \in \a$ it follows that $\s(a)f \in \a$, which in turn means that $\s(a) \in (\a:f)$. This shows that $(\a:f)$ is a difference ideal. 
+To see that $(\a:f)$ is mixed, let $g,h \in R$ with $gh \in (\a:f)$. Then we know that $(gh)f = (gf)h  \in \a$. Since $\a$ is mixed, this implies that $(gf)\s(h) = (g\s(h))f \in \a$, from which $g\s(h) \in (\a:f)$ follows immediately by definition. \\
+
+%% Let $a,b \in (\a:f), r \in R$. Then $af, bf \in \a$ and thus $(a + b)f = af + bf \in \a$, which means that $a + b \in (\a:f)$. Similarly $$(ra)f = r\underbrace{(af)}_{\in \a} \in \a,$$
+%% which means that $ra \in (\a:f)$. Also, since $\a$ is mixed and $af \in \a$ it follows that $\s(a)f \in \a$, which in turn means that $\s(a) \in (\a:f)$. We have shown that $(\a:f)$ is a difference ideal. 
+%% That $\a \subseteq (\a:f)$ is an obvious conclusion from the fact that since $\a$ is an ideal, $fa' \in \a \fa a' \in \a$.  Finally, to see that $(\a:f)$ is mixed,
+%% let $g,h \in R$ with $gh \in (\a:f)$. Then it holds that $(gh)f = (gf)h  \in \a$. Since $\a$ is mixed, this implies that $(gf)\s(h) = (g\s(h))f \in \a$, from which $g\s(h) \in (\a:f)$ follows immediately by definition. \\
+%% \indent Assume now that $\a$ is radical, and let $g \in R$ such that $g^n \in (\a:f)$ for an $n \in \NE$. Then $g^nf \in \a$. This also implies (since $\a$ is an ideal), that $g^nf \cdot f^{n-1} = (gf)^n \in \a$.
+%% Since $\a$ is radical, it follows from this that $gf \in \a$, and thus $g \in (a:f)$.\\ 
+%% \indent Finally, assume that $\a$ is prime and let $g, h \in R$ with $gh \in (\a:f)$. This means that $(gh)f = g(hf) \in \a$. Since $\a$ is prime, it has to hold that $g \in \a$ or $hf \in \a$. Since $\a \subseteq (\a:f)$, it follows that $g \in (\a:f)$ or $h \in (\a:f)$.
+
 \end{bew}
 \end{lem}
 
 \begin{lem}\label{maxmixed=prime}
-Let $R$ be a difference ring and let $\emptyset \neq U \subset R$ be a multiplicatively closed set of $R$. Then a mixed difference ideal $\a \subset R$ maximal (with respect to inclusion) in the class of mixed difference
+Let $R$ be a difference ring and let $\emptyset \neq U \subset R$ be a multiplicatively closed subset of $R$. Then a mixed difference ideal $\a \subset R$ which is maximal (with respect to inclusion) in the class of mixed difference
 ideals not meeting $U$, i.e. such that $\a \cap U = \emptyset$, is prime. 
 \begin{bew}
 Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and assume that $\a$ is not prime. Then there exist $f, g \in R$ such that $f,g \notin \a$ but $fg \in \a$.
-We distinguish two cases: First, assume that there exists an $f \in U, g \in R$ with $fg \in \a$ and $f, g \notin \a$. Then $\a$ is a proper subset of the $\s$-ideal $(\a:f)$, since $g \in (\a:f)$ by definition, but by assumption $g \notin \a$.
-Since $(\a:f)$ is mixed, by the maximality of $\a$, there exists an $u \in U \cap (\a:f)$. In particular, $uf \in \a$, but by assumption $f \in U$ and $U$ is multiplicatively closed, which implies that $fu \in U \cap \a$, a contradiction. \\
-For the other case, assume that for all $f \in R \setminus \a$ for which there exists a $g \in R \setminus \a$ such that $fg \in \a$ it holds that $f \notin U$. Let $h \in R$ be such that this is the case, i.e., $h \in R \setminus \a$ and there exists a $g' \in R \setminus \a$ such that $g'h \in \a$.
-By the same argument as above, $(\a:h) \supsetneqq \a$, which again implies that there exists an $u \in U \cap (\a:h)$. It holds by definition that $uh \in \a$. Nevertheless,  it holds that $u,h \notin \a$, which is a contradiction to the above assumption for this second case (with $f = u, g = h$) since $u \in U$. 
+$\a$ is a proper subset of the $\s$-ideal $(\a:f)$, since $g \in (\a:f)$ by definition, but by assumption $g \notin \a$. Then, since by Lemma \ref{a:f} $(\a:f)$ is mixed, by the maximality of $\a$, there exists an $u \in U \cap (\a:f)$. \\
+
+We distinguish two cases: First, assume that $f \in U$.  We know that $uf \in \a$, but by assumption $f \in U$ and $U$ is multiplicatively closed, which implies that $fu \in U \cap \a$, a contradiction.
+
+Now consider the case that $f \notin U$. Since $(\a:f)~\supsetneqq~\a$, this again implies that there exists an $u \in U \cap (\a:f)$. By definition of $(\a:f)$ we know that that $uf \in \a$, as well as $u,f \notin \a$. We can now apply the arguments as in the first case by considering $f' = u, g' = f$.
 \end{bew}
 \end{lem}
 
-\noindent \textbf{Alternative Proof of Theorem \ref{intersectionprimes}} 
+We are now ready to give an alternative proof of Theorem \ref{intersectionprimes}.
+
+\begin{reptheorem}{intersectionprimes}
 Let $R$ be a difference ring and $F \subseteq R$ be a subset of $R$. Then
 \[ \{ F \}_m = \bigcap_{F \subseteq \p \si R, \p \text{ prime }} \p.\]
 \begin{proof}
-The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are radical and mixed. For the inclusion ``$\supseteq$'', let $g \in R, ~ g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
+The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are radical and mixed (see Remark \ref{rempropideals}). For the inclusion ``$\supseteq$'', let $g \in R, ~ g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
 $\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. We can always find a maximal mixed difference ideal over $\{F\}_m$ by Zorn's Lemma since
 the union of any ascending chain of mixed difference ideals is always a mixed difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, this implies that there exists a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
 which in turn implies that $g \notin \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p$. By taking the contraposition of this we get the desired inclusion.
 \end{proof}
-
+\end{reptheorem}
 
