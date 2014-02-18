@@ -1,3 +1,6 @@
+
+
+
 \documentclass[12pt,a4paper,BCOR15mm,twoside,DIV12]{article}
 %\documentclass{article}
 %\usepackage[paper=a4paper,left=20mm,right=20mm,top=25mm,bottom=25mm]{geometry}
@@ -6,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{enumerate}
+\usepackage[titletoc]{appendix}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
@@ -13,7 +17,7 @@
 \usepackage{makeidx}
 \usepackage{graphicx, float,epsfig}
 \usepackage[nottoc,numbib]{tocbibind}
-
+\usepackage{listings}
 
 \newcommand{\properideal}{%
   \mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
@@ -80,10 +84,25 @@
 \newtheorem{defn}[Satz]{Definition}
 \theoremstyle{definition}
 \newtheorem{rem}[Satz]{Remark}
+
+%%begin restatement stuff
+\makeatletter
+\newtheorem*{rep@theorem}{\rep@title}
+\newcommand{\newreptheorem}[2]{%
+\newenvironment{rep#1}[1]{%
+ \def\rep@title{#2 \ref{##1}}%
+ \begin{rep@theorem}}%
+ {\end{rep@theorem}}}
+\makeatother
+
+
+\newreptheorem{theorem}{Theorem}
+%%end restatement stuff
+
 \usepackage[arrow, matrix, curve]{xy}
 
 \makeindex
-\title{Geometric Apsects of Mixed Difference Ideals}
+\title{Geometric Aspects of Mixed Difference Ideals}
 \author{Andr\'{e}s Goens}
 \date{December 29, 2013}
 \begin{document}
@@ -92,10 +111,11 @@
  \maketitle
 
 \clearpage
-\section*{Abstract}
+\section*{Introduction}
 \input{abstract}
 \clearpage
 \section*{Acknowledgments}
+\input{acknowledgments}
 \clearpage
 
 \tableofcontents
@@ -112,8 +132,8 @@
 \input{difference_ideals}
 \input{intersectionprimes}
 \clearpage 
-\section{Difference Varieties}
 
+\section{Difference Varities}
 \input{difference_varieties}
 \clearpage 
 \section{Difference Kernels}
@@ -124,6 +144,11 @@
 
 \section{Final Remarks}
 \input{final}
+\clearpage
+
+\begin{appendices}
+\input{macaulay2}
+\end{appendices}
 
 \clearpage 
 \input{bibliography}
