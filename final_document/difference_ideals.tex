@@ -8,7 +8,7 @@ We recall Definition \ref{idealprops}, where some important classes of differenc
 \begin{repdefn}{idealprops}
 Let  $\a \si R$ be a $\s$-ideal of $R$. 
 \begin{itemize}
-\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. \index{mixed $\s$-ideal}
+\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. 
 \item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
 \item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
 \item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
@@ -100,7 +100,8 @@ Similarly, $\s^m(y_1)\s^l(y_2) = \s^l(y_2)\s^m(y_1) \in \a^{\{m\}}$ implies that
 
 
 To try to find $\{\a\}_m$ for a $\s$-ideal $\a \si R$ in a difference ring $R$, it might be tempting to consider $\a':= \{ f\s(g) \mid fg \in \a \}$, or to ensure that is a difference ideal rather, $[\a']$. The example above shows that this is not enough,
-as the ideal $[\a']$ does not have to be mixed in general. However, by iteratively repeating this process and taking the union of $\s$-ideals obtained this way, we do get a mixed $\s$-ideal, as we will see in the following lemma:
+as the ideal $[\a']$ does not have to be mixed in general. However, by iteratively repeating this process and taking the union of $\s$-ideals obtained this way, we do get a mixed $\s$-ideal. We will see this in the following lemma, 
+which is very similar to Lemma 3.1 of \ref{levinmixed}, where the mixed closue is obtained this way.
 \begin{lem}\label{lemshuffling}
 Let $R$ be a $\s$-ring and $F \subseteq R$. Further let $F'~:=~{f\s(g)~\mid~fg~\in~F~\}$, and set $F^{\{1\}}:= [F']$, $F^{\{n\}}:= [{F^{\{n-1\}}}'] \fa n \in \NE$. Then
 \begin{align} \{F\}_m = \sqrt{\bigcup_{n=1}^{\infty} F^{\{n\}}}. \end{align}
@@ -137,7 +138,7 @@ Let $R$ be a ring.
 \end{enumerate}
 \begin{bew} $~$
 \begin{enumerate}[(a)]
-\item See Remark 2.9 of \cite{hrushovski}
+\item See \cite{bourbaki} Ch. 2, \S 2.6, Proposition 16.
 \item See \cite{bourbaki} Ch. 2, \S 2.6, Corollary 2 to Proposition 13 and Ch. 2, \S 4.3, Corollary 3 to Proposition 14.
 \item This is a special case of Theorem 3.1 of \cite{eisenbud} for $R$ as an $R$-module.
 \end{enumerate}
@@ -200,7 +201,7 @@ Then, \[ \mathcal{F}:= \bigcup_{ F \subseteq R \text{ finite} } M_F. \]
  then the ultrafilter $\mathcal{G}$ defines an equivalence relation on $P$ via $(g_S)_{S \in M} \sim (h_S)_{S \in M} : \Leftrightarrow \{ S \in M \mid g_S = h_S \} \in \mathcal{G}$. 
 The set of equivalence classes $P/\mathcal{G}:= P/\textsim$ has a natural $\s$-ring structure. %% and is called an \emph{ultraproduct}. \index{ultraproduct} %%fixme: of what?
 \begin{proof}
-Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we have $\Z\{F\} \in \{ S \in M \mid F \subseteq S \} \neq \emptyset$, and since $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, $\emptyset \notin M_F$ (Note that $\Z\{\emptyset\} = \Z$, so it also holds for $F = \emptyset$).
+Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we have $\Z\{F\} \in \{ S \in M \mid F \subseteq S \} \neq \emptyset$, and since $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, $\emptyset \notin M_F$ (For $F = \emptyset$ this works as well, since $\emptyset \subset S \fa S \in M$).
   That $M \in M_F$ for any $F \subseteq R$ is obvious, as well as that for $T \subseteq U, T \in M_F$ we have $U \in M_F$. \\ 
 \indent We only need to show that $U,T \in \mathcal{F}$ implies that $U \cap T \in \mathcal{F}$.
   Let $\hat U, \hat T \subseteq R$ be finite, such that $U \in M_{\hat U}, T \in M_{\hat T}$. $\hat U \cup \hat T \subseteq R$ is also finite and $$\{ S \in M \mid \hat U \cup \hat T \subseteq S \} \subseteq \{ S \in M \mid \hat U \subseteq S \} \subseteq U,$$
