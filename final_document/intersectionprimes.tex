@@ -3,11 +3,11 @@
 There is an alternative proof of Theorem \ref{intersectionprimes} without ultrafilters, just using difference algebraic arguments. We will develop it here additionally.
 
 \begin{defn}
-Let $R$ be a difference ring and $\a \si R$ be a mixed $\s$-ideal of $R$. Further let $f \in R \setminus \a$. We set $$(\a:f):= \{ g \in R \mid gf \in \a \} \subseteq R$$
+Let $R$ be a difference ring and $\a \si R$ be a mixed $\s$-ideal of $R$. Further, let $f \in R \setminus \a$. We set $$(\a:f):= \{ g \in R \mid gf \in \a \} \subseteq R$$
 \end{defn}
 
 \begin{lem}\label{a:f}
-Let $R$ be a $\s$-ring, $\a \si R$ a mixed $\s$-ideal, $f \notin \a$. Then $(\a:f)$ is a mixed $\s$-ideal of $R$ which contains $\a$. If $\a$ is radical(prime), then $(\a:f)$ is radical(prime) as well.
+Let $R$ be a $\s$-ring, $\a \si R$ a mixed $\s$-ideal, $f \notin \a$. Then $(\a:f)$ is a mixed $\s$-ideal of $R$, which contains $\a$. If $\a$ is radical(prime), then $(\a:f)$ is radical(prime) as well.
 \begin{bew}
 We will only prove the difference-algebraic statements, since the rest of the assertion is standard in commutative algebra.
 Let $a \in (\a:f), r \in R$. 
@@ -30,12 +30,12 @@ To see that $(\a:f)$ is mixed, let $g,h \in R$ with $gh \in (\a:f)$. Then we kno
 Let $R$ be a difference ring and let $\emptyset \neq U \subset R$ be a multiplicatively closed subset of $R$. Then a mixed difference ideal $\a \subset R$ which is maximal (with respect to inclusion) in the class of mixed difference
 ideals not meeting $U$, i.e. such that $\a \cap U = \emptyset$, is prime. 
 \begin{bew}
-Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and assume that $\a$ is not prime. Then there exist $f, g \in R$ such that $f,g \notin \a$ but $fg \in \a$.
-$\a$ is a proper subset of the $\s$-ideal $(\a:f)$, since $g \in (\a:f)$ by definition, but by assumption $g \notin \a$. Then, since by Lemma \ref{a:f} $(\a:f)$ is mixed, by the maximality of $\a$, there exists an $u \in U \cap (\a:f)$. \\
+Let $\a \subset R$ be a maximal mixed difference ideal not meeting $U$, and assume that $\a$ is not prime. Then there exist $f, g \in R$, such that $f,g \notin \a$, but $fg \in \a$.
+$\a$ is a proper subset of the $\s$-ideal $(\a:f)$, since $g \in (\a:f)$ by definition, but $g \notin \a$ by assumption. By Lemma \ref{a:f} $(\a:f)$ is mixed, and due to the maximality of $\a$, there exists an $u \in U \cap (\a:f)$. \\
 
 We distinguish two cases: First, assume that $f \in U$.  We know that $uf \in \a$, but by assumption $f \in U$ and $U$ is multiplicatively closed, which implies that $fu \in U \cap \a$, a contradiction.
 
-Now consider the case that $f \notin U$. Since $(\a:f)~\supsetneqq~\a$, this again implies that there exists an $u \in U \cap (\a:f)$. By definition of $(\a:f)$ we know that that $uf \in \a$, as well as $u,f \notin \a$. We can now apply the arguments as in the first case by considering $f' = u, g' = f$.
+Now consider the case that $f \notin U$. Since $(\a:f)~\supsetneqq~\a$, this again implies that there exists an $u \in U \cap (\a:f)$. By definition of $(\a:f)$, we know that $uf \in \a$, as well as $u,f \notin \a$. We can now apply the arguments as in the first case by considering $f' = u, g' = f$.
 \end{bew}
 \end{lem}
 
@@ -46,8 +46,8 @@ Let $R$ be a difference ring and $F \subseteq R$ be a subset of $R$. Then
 \[ \{ F \}_m = \bigcap_{F \subseteq \p \si R, \p \text{ prime }} \p.\]
 \begin{proof}
 The inclusion ``$\subseteq$'' is obvious, since prime difference ideals are radical and mixed (see Remark \ref{rempropideals}). For the inclusion ``$\supseteq$'', let $g \in R, ~ g \notin \{ F \}_m$, and consider the multiplicatively closed set $U = \{ g^k \mid k \in \NE \} \subset R$. 
-$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. We can always find a maximal mixed difference ideal over $\{F\}_m$ by Zorn's Lemma since
-the union of any ascending chain of mixed difference ideals is always a mixed difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, this implies that there exists a prime difference ideal $\p \supseteq \{F\}_m$ such that $g \notin \p$,
+$\{ F \}_m \cap U = \emptyset$ since $\{ F \}_m$ is radical. By Lemma \ref{maxmixed=prime}, any maximal mixed difference ideal $\p$ that is disjoint with $U$ is a prime difference ideal. We can always find a maximal mixed difference ideal over $\{F\}_m$ by Zorn's Lemma, since
+the union of any ascending chain of mixed difference ideals is always a mixed difference ideal. In particular, since $\{F\}_m$ is a mixed difference ideal disjoint from $U$, this implies that there exists a prime difference ideal $\p \supseteq \{F\}_m$, such that $g \notin \p$,
 which in turn implies that $g \notin \bigcap_{\a \subseteq \p \si R, \p \text{ prime }} \p$. By taking the contraposition of this we get the desired inclusion.
 \end{proof}
 \end{reptheorem}

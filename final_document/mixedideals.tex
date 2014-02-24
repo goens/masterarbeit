@@ -72,6 +72,7 @@
 \theoremstyle{plain}
 \newtheorem{Satz}{Satz}[section]
 \newtheorem{theorem}[Satz]{Theorem}
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{ex}[Satz]{Example}
 \newtheorem{cor}[Satz]{Corollary}
 \newtheorem{algorithm}[Satz]{Algorithm}
@@ -106,20 +107,38 @@
 \begin{document}
 \setlength{\parindent}{1.5em}
 
- \maketitle
-
+\input{cover}
 \clearpage
-\section*{Introduction}
-\input{abstract}
+\thispagestyle{empty}
+\mbox{}
 \clearpage
+\thispagestyle{empty}
 \section*{Acknowledgments}
 \input{acknowledgments}
 \clearpage
-
+\thispagestyle{empty}
+\mbox{}
+\clearpage
 \tableofcontents
+
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
+\section*{Conventions On Notation For This Thesis} 
+\addcontentsline{toc}{section}{\protect\numberline{} Conventions on Notation}
+\input{notation}
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+
 
 \clearpage 
 
+\section*{Introduction}
+\addcontentsline{toc}{section}{\protect\numberline{} Introduction}
+\input{abstract}
+\clearpage
 
 
 \section{Difference Algebra}
@@ -151,9 +170,6 @@
 \clearpage 
 \input{bibliography}
 
-\clearpage
-\section*{Conventions on notation for this thesis} 
-%\input{notation}
 
 \clearpage
 \printindex

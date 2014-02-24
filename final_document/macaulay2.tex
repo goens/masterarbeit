@@ -27,7 +27,7 @@ In this appendix we give the code used for calculating two examples in the thesi
 \subsection{Example \ref{counterexker}}
 We consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
 
-For the calculations we considered the rational numbers $\Q$ as a constant $\s$-field. Since these calculations do not really depend on the field, this should not be of much difference. We begin by defining the ring $R$:
+For the calculations we considered the rational numbers $\Q$ as a constant $\s$-field. Since these calculations do not depend on the field, there should not much be of a difference. We begin by defining the ring $R$:
 
 \begin{lstlisting}
 i1 : R = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
@@ -38,7 +38,7 @@ o1 : PolynomialRing
 
 \end{lstlisting}
 
-The definition is that of a simple polynomial ring, and we just take the names of the variables in a way we can easily interpret them as powers of $\s$ applied on a variable. We add one more power of $\s$ as in the example, so that we can calculate the relation satted later, which includes $\s^2$.
+The definition is that of a simple polynomial ring, and we just take the names of the variables in a way we can easily interpret them as powers of $\s$ applied on a variable. We add one more power of $\s$ as in the example, so that we can calculate the relation stated later, which includes $\s^2$.
 The output, which can be recognized from the lines begining with an ``o'', indicates that a polynomial ring has been succesfully constructed. We continue and define the ideal.
 
 \begin{lstlisting}
@@ -79,10 +79,10 @@ o5 = true
 \end{lstlisting}
 
 It tells us that $f_1, f_2$ is a Gr\"{o}bner basis of $I$.
-The variable ordering is per default reverse lexicographical with respect to the input, 
-we tested it here to as an example to make sure it was as intended.
+The variable ordering is per default reverse lexicographical with respect to the input.  
+We tested it here as an example to make sure it was as intended.
 Using elimination theory (see for example Theorem 2 in Chapter 3 of \cite{cox}),
-we see thus that $(f_1,f_2)[0] = \{0\}$.
+we thus see that $(f_1,f_2)[0] = \{0\}$.
 
 Finally, we use macaulay to test the relation given in the example.
 
@@ -115,7 +115,7 @@ o1 : PolynomialRing
 
 \end{lstlisting}
 
-This time we want to consider a quotient ring, so we begin by defining the subring $DM1 = k[y_1,y_2,\s(y_1),\s(y_2)]$
+This time, we want to consider a quotient ring, so we begin by defining the subring $DM1 = k[y_1,y_2,\s(y_1),\s(y_2)]$.
 
 \begin{lstlisting}
 
@@ -128,7 +128,7 @@ o2 : Sequence
 
 \end{lstlisting}
 
-We return to use our original ring and define the ideal we want to factor out there.
+We return to use our original ring and define the ideal we want to factor out.
 
 \begin{lstlisting}
 
@@ -155,7 +155,7 @@ o5 : Matrix D  <--- D
 
 \end{lstlisting}
 
-From the Gr\"{o}bner basis we see again that $I$ is indeed a prime kernel.
+From the Gr\"{o}bner basis we again see that $I$ is indeed a prime kernel.
 Now we can define the quotient ring $D/I$.
 
 \begin{lstlisting}
@@ -195,7 +195,7 @@ o9 : RingMap F2 <--- DM1
 
 \end{lstlisting}
 
-Macaulay2 tells us with this output that it successfully defined the mapping. We can look at its kernel now.
+With this output Macaulay2 tells us that it successfully defined the mapping. We can look at its kernel now.
 
 \begin{lstlisting}
 
@@ -211,7 +211,7 @@ o10 : Matrix DM1  <--- DM1
 
 
 We see that $\ker(\s) = (\s(y_2) + 1) \unlhd k[y_1,y_2, \s(y_1), \s(y_2)]$. 
-From this we should be able to deduce already that the condition holds, but we can ask Macaulay to explicitly
+From this we should be able to already deduce that the condition holds, but we can ask Macaulay to explicitly
 calculate it too
 
 \begin{lstlisting}
@@ -240,4 +240,4 @@ o13 : Matrix F2  <--- F2
  
 Which, using elimination theory again, gives the desired result, namely
 
-$$ (\ker(\s)) \cap k[y_1,y_2,\s(y_1),\s(y_2)] = (\s(y_2) +1) = \ker(\s) $$
+$$ (\ker(\s)) \cap k[y_1,y_2,\s(y_1),\s(y_2)] = (\s(y_2) +1) = \ker(\s) .$$
