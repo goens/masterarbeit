@@ -36,7 +36,7 @@ Because $k$ is a field, any non-trivial morphism of $\s$ rings of $k$ to a $k$-$
 
 \begin{defn}\label{defnVV}
 Let $k$ be a $\s$-field and $B \in \sintk$ an integral $\s$-overring of $k$. Further let $F \subseteq k\{y_1, \ldots, y_n\}$ be a set of $\s$-polynomials over $k$. 
-Then we define $\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \fa f \in F \}$. A functor $X: \sintk \rightarrow \Set$, for which there exists a set $F \subseteq k\{y_1, \ldots, y_n \}$, such that $X(B) = \VV_B(F)$ for all $B \in \sintk$, we denote as a \emph{$\s$-variety over $k$}, or a \emph{$k$-$\s$-m-variety}.
+Then we define $\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \fa f \in F \}$. A functor \\ $X: \sintk \rightarrow \Set$, for which there exists a set $F \subseteq k\{y_1, \ldots, y_n \}$, such that $X(B) = \VV_B(F)$ for all $B \in \sintk$, we denote as a \emph{$\s$-variety over $k$}, or a \emph{$k$-$\s$-m-variety}.
 Here, $\Set$ denotes the usual category of sets with mappings as morphisms. We also write $X := \VV(F)$ as a short notation for this functor. \index{$\s$-variety} \index{$\s$-variety over $k$} \index{$k$-$\s$-m-variety}
 \end{defn}
 
@@ -52,11 +52,11 @@ Let $k$ be a $\s$-field and $X: \sintk \rightarrow \Set$ be a $k$-$\s$-m-variety
 Let $k$ be a $\s$-field and $X$ be a $k$-$\s$-m-variety. Not every subfunctor of $X$ is a $\s$-m-subvariety. Consider the functor $X = \VV(0)$, for $\{0\} \subset k\{y_1\}$.
 For $B \in \sintk$ we denote by $B^* = \{ b \in B \mid b \text{ invertible } \}$ the set of units of $B$. Then for $B \in \sintk$, $B \mapsto B^*$ is a subfunctor $Y$ of $X$ (since $B^* \subset B \fa B \in \sintk$ and morphisms of rings always map units to units). However, $Y$ is not a $\s$-m-variety:
 there exists no $F \subseteq k\{y_1\}$, such that $\VV_B(F) = B^* \fa B \in \sintk$.  Indeed, assume there was such an $F$, and let $0 \neq f \in F$. Then $f(b) = 0 \fa b \in B^*$ and $\fa B \in \sintk$. In particular,
-for $B = k\langle y_1 \rangle = \operatorname{Quot}(k\{y_1\}) \in \sintk$ we have $f(y_1) = f = 0, ~ y_1 \in k \langle y_1 \rangle^*$, a contradiction.  
+for $B = k\langle y_1 \rangle = \operatorname{Quot}(k\{y_1\}) \in \sintk$ we get the that \\$f(y_1) = f = 0, ~ y_1 \in k \langle y_1 \rangle^*$, a contradiction.  
 \end{rem}
 
 \begin{defn}\label{defnI}
-Let $X = \VV(F)$ be a $\s$-m-variety over the $\s$-field $k$, $F \subseteq k\{y_1,\ldots,y_n\}$. Then we set $$\I_m(X):= \{ f \in k\{y_1,\ldots,y_n\} \mid f(b) = 0 \fa b \in \VV_B(F), ~ B \in \sintk \}.$$ \index{ $\I_m(X)$}
+Let $X = \VV(F)$ be a $\s$-m-variety over the $\s$-field $k$, \\$F \subseteq k\{y_1,\ldots,y_n\}$. Then we set $$\I_m(X):= \{ f \in k\{y_1,\ldots,y_n\} \mid f(b) = 0 \fa b \in \VV_B(F), ~ B \in \sintk \}.$$ \index{ $\I_m(X)$}
 \end{defn}
 
 \begin{ex}\label{A^n}
@@ -77,7 +77,7 @@ Since we have this functorial definition, we have, in principle, a whole proper 
 We want to have some sort of equivalence relation between solutions to group them up in a reasonable manner.
 
 \begin{defn}\label{equivsols}
-Let $k$ be a $\s$-field, $B,C \in \sintk$. Further let $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations and $b \in B^n, c \in C^n$ be solutions of $F$, i.e. $b \in \VV_B(F), c \in \VV_C(F)$.
+Let $k$ be a $\s$-field, $B,C \in \sintk$. Further let \\ $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations and $b \in B^n, c \in C^n$ be solutions of $F$, i.e. $b \in \VV_B(F), c \in \VV_C(F)$.
 We say that $b$ and $c$ are \emph{equivalent}\index{equivalent solutions} if the mapping $b \mapsto c$ is a well-defined isomorphism between the integral $\s$-rings $k\{b\}$ and $k\{c\}$  (as elements of $\sintk$). \index{equivalent solutions}
 \end{defn}
 
@@ -105,7 +105,7 @@ since the $\s$-fields $\Q(\sqrt{2}),$ \\ $\s(\sqrt{2}) = \sqrt{2}$ and $\Q(\sqrt
 \end{ex}
 
 \begin{ex}
-Let $k$ be a $\s$-field. The $\s$-m-variety $X$ given by $\s(y) \in k\{y\}$, i.e. $X(B) = \VV_B(\s(y)) = \{ b \in B^n \mid \s(b) = 0 \} \fa B \in \sintk$, has a single point in any $\s$-field extension of $k$, namely $0$. However, in general integral $\s$-rings,
+Let $k$ be a $\s$-field. The $\s$-m-variety $X$ given by $\s(y)~\in~k\{y\}$, i.e. $X(B) = \VV_B(\s(y)) = \{ b \in B^n \mid \s(b) = 0 \} \fa B \in \sintk$, has a single point in any $\s$-field extension of $k$, namely $0$. However, in general integral $\s$-rings,
 this is not necessarily the case: Take, for example, $B:= k\{y\}/[\s(y)] \in \sintk$. In $B$ we have $0 \neq $ ker$(\s) = [y+ [\s(y)]] \si B$, which means that in particular, $[y + [\s(y)]] \subseteq \VV_B(\s(y))$.
 \end{ex}
 
@@ -118,7 +118,7 @@ The next proposition shows why our definition of $\s$-m-variety is ``the right o
 Let $k$ be a $\s$-field and $X = \VV(F) \subseteq \mathbb{A}^n$ be a mixed difference variety over $k$. Then $\I_m(X) = \{F\}_m \si k\{y_1,\ldots,y_n\}$. 
 \begin{bew}
 We will first show that $\I_m(X)$ is a radical, mixed $\s$-ideal.
-Let $f, g \in \I_m(X)$, $h \in k\{y_1,\ldots,y_n\}$. Then, for every $B \in \sintk$, $b \in \VV_B(F)$, we have $f(b) = g(b) = 0$.
+Let \\ $f,~g~\in~\I_m(X)$, $h \in k\{y_1,\ldots,y_n\}$. Then, for every $B \in \sintk$, $b \in \VV_B(F)$, we have $f(b) = g(b) = 0$.
 It follows that $(f + g)(b) = f(b) + g(b) = 0$ as well as $(fh)(b) = f(b)h(b) = 0 \cdot h(b) = 0$ and $\s(f)(b) = \s(f(b)) = \s(0) = 0$, so that $\I_m(X)$ is a $\s$-ideal.
 It further follows that $h(b)^n = 0$ implies $h(b) = 0$, since $B$ is an integral domain, and this means that $h^n \in \I_m(X)$ implies that $ h \in \I_m(X)$. \\
 \indent It only remains to show that $\I_m(X)$ is mixed. Let now $f,g \in k\{y_1,\ldots,y_n\}$ be such that $fg \in \I_m(X)$. This means that for all  $B \in \sintk$, $b \in \VV_B(F)$ we have
@@ -140,7 +140,7 @@ For any $B \in \sintk$, we have:
 \begin{align*} \VV_B( \a \b) = \VV_B( \a) \cup \VV_B( \b). \end{align*}
 The inclusion ``$\supseteq$'' is obvious. For ``$\subseteq$'', let $p \in \VV_B(\a\b)$ and assume there exists an $f \in \a$, such that $f(p) \neq 0$.
 Then, from the definition of $\VV_B(\a\b)$ it follows that $f(p)g(p) = 0 \fa g \in \b$. This means, however, that $p \in \VV_B(\b)$ (since $B$ is an integral domain). The other case is completely analogous.
-Since this is true for any $B$, the $\s$-m-varieties are also equal: $\VV( \a \b) = \VV( \a) \cup \VV( \b)$. Now,
+Since this is true for any $B$, the $\s$-m-varieties are also equal: $\VV( \a \b) = \\ \VV( \a) \cup \VV( \b)$. Now,
 \begin{flalign*} & \phantom{ = \{ f \in k\{y\} \mid f(p) =}\I_m(\VV(\a \b)) = \I_m(\VV(\a) \cup \VV(\b)) \\ & = \{ f \in k\{y\} \mid f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), ~ B \in \sintk \}, & \end{flalign*} 
 and $f(p) = 0 \fa p \in \VV_B(\a) \cup \VV_B(\b), ~ B \in \sintk$, is equivalent to \\
 \begin{align*}  \underbrace{f(p) = 0 \fa p \in \VV_B(\a), ~ B \in \sintk}_{\Leftrightarrow f \in \I_m(\VV(\a))} \text{ and }\\  \underbrace{f(p) = 0 \fa p \in \VV_B(\b), ~ B \in \sintk}_{\Leftrightarrow f \in \I_m(\VV(\b))}. \end{align*} \\
@@ -154,7 +154,7 @@ Then we consider the $\s$-ring $$k\{y_1, \ldots, y_n\}/\{F\}_m = k\{y_1, \ldots,
 \end{defn}
 
 \begin{rem}
-Let $k$ be a $\s$-field and $X$ a $k$-$\s$-m-variety. Further let $b \in X(B), ~ B \in \sintk, f + \I_m(X) \in k\{X\}$. Then the value of $f(b) \in k$ is independent of the representative $f$,
+Let $k$ be a $\s$-field and $X$ a $k$-$\s$-m-variety. Further let $b~\in~X(B), ~ B \in \sintk, f + \I_m(X) \in k\{X\}$. Then the value of $f(b) \in k$ is independent of the representative $f$,
 since for $f' + \I_m(X) = f + \I_m(X)$, we know that $f - f' \in \I_m(X)$, and thus by definition, $(f - f')(b) = 0$. By abuse of notation,
 we will sometimes use the representative $f$ to refer to its equivalence class $f + \I_m(X)$ and we will simply write $f(b)$ to mean the well-defined value of evaluating $b$ on any representative of the class.
 \end{rem}
@@ -164,12 +164,12 @@ We can now clarify what we meant after Definition \ref{defA^n}.
  \begin{lem}\label{bijsubvarsideals}
 Let $k$ be a $\s$-field. Then the maps $X \mapsto \I_m(X)$ and $\a \mapsto \VV(\a)$ define inclusion-reversing bijections between the set of all $\s$-m-subvarieties of $\mathbb{A}^n$ and the radical, mixed $\s$-ideals of $k\{y_1,\ldots,y_n\}$.
 \begin{bew}
-From Proposition \ref{I=F_m} we know that $\I_m(\VV(\a)) = \a$ for all $\a \si k\{y_1,\ldots,y_n\}$ radial, mixed. Conversely, for a $\s$-m-variety $X = \VV(F) \subseteq \mathbb{A}^n$ we know  $\VV(\I_m(X)) = \VV(\I_m(\VV(F))) \subseteq \VV(F) = X$,
+From Proposition \ref{I=F_m} we know that $\I_m(\VV(\a)) = \a$ is true for all $\a~\si~k\{y_1,\ldots,y_n\}$ radical, mixed. Conversely, let $X~=~\VV(F)~\subseteq~\mathbb{A}^n$ be a $\s$-m-variety. Then we know  $\VV(\I_m(X)) = \VV(\I_m(\VV(F))) \subseteq \VV(F) = X$,
  since $F \subseteq \I_m(X)$. On the other hand, it is clear from the definitions of $\VV$ and $ \I_m$ that $X \subseteq \VV(\I_m(X))$, so that $X = \VV(\I_m(X))$. This proves the bijectivity of both mappings. That both mappings are inclusion-reversing follows directly from the definitions.
 \end{bew}
 \end{lem}
 
-Note that since every $\s$-m-variety is a $\s$-m-subvariety of $\mathbb{A}^n$ for an $n \in \NE$, it is no restriction to consider $\mathbb{A}^n$ instead of an arbitrary $\s$-m-variety, as we can see in the following corollary:
+Note that since every $\s$-m-variety is a $\s$-m-subvariety of $\mathbb{A}^n$ for an $n~\in~\NE$, it is no restriction to consider $\mathbb{A}^n$ instead of an arbitrary $\s$-m-variety, as we can see in the following corollary:
 \begin{cor}
   Let $X$ be a $\s$-m-variety over the $\s$-field $k$. Then there is a bijection between the radical, mixed $\s$-ideals of $k\{X\}$ and the $\s$-m-subvarieties of $X$ via
  \begin{align*} X \supseteq Y \mapsto \{f \in k\{X\} \mid f(b) = 0 \fa b \in Y(B), \fa B \in \sintk \} \\ =: \I_{k\{X\}}(Y). \end{align*}
@@ -198,7 +198,7 @@ We define $\Psi^{-1}(\p)$ as the equivalence class of $b(\p)$. Then $\Psi$ and $
 
 From Proposition \ref{bijsols} we see that it is a good idea to concentrate on $\sSpec(k\{X\})$ for a $\s$-m-variety $X$ over a $\s$-field $k$.
  From here on, we will speak of the ``topology on/of X'' to refer to the topology on $\sSpec(k\{X\})$, as in Definition \ref{deftop}. 
-We will also use the notation $x \in X$ to mean $x \in \sSpec(k\{X\})$, or $T \subseteq X$ closed to speak of a closed subset of $\sSpec(k\{X\})$, and so forth.
+We will also use the notation $x \in X$ to mean \\ $x~\in~\sSpec(k\{X\})$, or $T \subseteq X$ closed to speak of a closed subset of $\sSpec(k\{X\})$, and so forth.
 
 \subsection{Morphisms of Mixed Difference Varieties}
 
@@ -207,7 +207,7 @@ We still have to define what the morphisms in this category shall be.
 
 \begin{defn}\label{spolynomialmaps}
 Let $k$ be a $\s$-field, $X \subseteq \mathbb{A}^n,Y \subseteq \mathbb{A}^m$ $\s$-m-varieties over $k$. Then, a morphism of functors $f: X \rightarrow Y$ is called a \emph{morphism of $\s$-m-varieties over $k$} or a \emph{$\s$-polynomial map},
-if there exist $\s$-polynomials $f_1,\ldots,f_m \in k\{y_1,\ldots,y_n\}$, such that $f(b) = (f_1(b),\ldots,f_m(b))$ for all $b \in X(B), B \in \sintk$. \index{morphism of $\s$-m-varieties} \index{$\s$-polynomial map}
+if there exist $\s$-polynomials $f_1,\ldots,f_m \in k\{y_1,\ldots,y_n\}$, such that $f(b) = (f_1(b),\ldots,f_m(b))$ for all \\ $b~\in~X(B), B~\in~\sintk$. \index{morphism of $\s$-m-varieties} \index{$\s$-polynomial map}
 \index{morphism of $\s$-m-varieties} \index{$\s$-polynomial map}
 \end{defn}
 
@@ -217,10 +217,10 @@ Similarly, for $m \geq n$ and $X \subseteq \mathbb{A}^m_k, Y \subseteq \mathbb{A
 \end{ex}
 
 \begin{rem}\label{dualmor}
-Let $f: X \rightarrow Y$ be a morphism of $\s$-m-varieties over the \\ $\s$-field $k$, $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$. Then, by definition, there exist $f_1, \ldots, f_m \in k\{y_1,\ldots,y_n\}$, such 
+Let $f: X \rightarrow Y$ be a morphism of $\s$-m-varieties over the \\ $\s$-field $k$, $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$. Then, by definition, there exist difference polynomials $f_1, \ldots, f_m \in k\{y_1,\ldots,y_n\}$, such 
 that $f(b) = (f_1(b),\ldots,f_m(b))$ for all $b \in B, ~ B \in \sintk$. Modulo $\I_m(X)$, these $f_i$ are unique:
- If there is $f_1', \ldots, f_m' \in k\{y_1,\ldots,y_n\}$ such that $f_i(b) = f'_i(b) \fa b \in B, ~ B \in \sintk,$ and for all $i \in \underline{m}$,
-then it follows that $(f_i - f_i')(b) = 0 \fa b \in B, ~ B \in \sintk$, which implies that $f_i - f_i' \in \I_m(X)$ by definition, for all $i \in \underline{m}$. \\
+ If there is $f_1', \ldots, f_m' \in k\{y_1,\ldots,y_n\}$ such that $f_i(b) = f'_i(b) \fa b \in B$, $B~\in~\sintk,$ and for all $i \in \underline{m}$,
+then it follows that $(f_i - f_i')(b) = 0 \fa b \in B,$ $B~\in~\sintk$, which implies that $f_i - f_i' \in \I_m(X)$ by definition, for all $i \in \underline{m}$. \\
 \indent Now, consider the mapping \[ \phi: k\{z_1,\ldots,z_m \} \rightarrow k\{X\}, ~ z_i \mapsto f_i + \I_m(X) =: \overline{f_i}. \]
 This mapping factors over $\I_m(Y)$, since for $h \in \I_m(Y) \subseteq k\{z_1,\ldots,z_m\}$, $b \in X(B), ~ B \in \sintk$, we have that 
 \[ (\phi(h))(b) = h(\overline f_1(b), \ldots, \overline f_m(b)) = h(f(b)). \]
@@ -246,7 +246,7 @@ is then a preimage of the isomorphism class of $B$, since $\I_m(X) = \I_m(\VV(\a
 \indent Now, for the morphisms: First, let $X,Y$ be $\s$-m-varieties over $k$ and $f,g \in \Hom(X,Y)$ with $f^* = g^*$. Then we know that for every $h \in k\{X\}$, and every $b \in B, ~ B \in \sintk$:
 \[ h(f(b)) = (f^*(h))(b) = (g^*(h))(b) = h(g(b)). \]
 In particular, $f(b) = g(b) \fa b \in B, ~ B \in \sintk$, which implies that $f = g$, and $-^*$ is injective. 
-On the other hand, consider $\varphi: k\{Y\} \rightarrow k\{X\}$ a morphism of $\s$-overrings of $k$. There exist $n,m \in \NE$ such that $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$,
+On the other hand, let $\varphi: k\{Y\} \rightarrow k\{X\}$ be a morphism of $\s$-overrings of $k$. There exist $n,m \in \NE$ such that $X \subseteq \mathbb{A}^n, Y \subseteq \mathbb{A}^m$,
  which means that $k\{X\} = k\{z_1,\ldots,z_n\}/\I_m(X)$ and $k\{Y\} = k\{y_1,\ldots,y_m\}/\I_m(Y)$. We will construct a preimage of $\varphi$: Choose $f_1,\ldots,f_m \in k\{z_1,\ldots,z_n\}$ such that $\varphi(y_i + \I_m(Y)) = f_i + \I_m(X) \fa i \in \underline{m}$.
 Then we define a morphism $f: X \rightarrow Y$ of $\s$-m-varieties over $k$ as follows: $f(b) := (f_1(b),\ldots,f_m(b)) \fa b \in B, ~ B \in \sintk$. This is well-defined: Let $h \in \I_m(Y)$. Then, by definition, $h(y_1 + \I_m(Y),\ldots,y_n + \I_m(Y)) = 0 + \I_m(Y)$.
 This implies that $h(f_1 + \I_m(X),\ldots,f_m + \I_m(X)) = 0 + \I_m(X)$, since $\varphi$ is a morphism of $\s$-overrings of $k$. This in turn implies that $h(f(b)) = 0 \fa b \in X(B), ~ B \in \sintk$, which means that $f$ indeed maps onto $Y$ and $f^* = \varphi$, by construction.
@@ -299,7 +299,7 @@ We first show that \begin{align*} \I_{\operatorname{Ring}}(X) =  \{ f \in k\{y\}
  which in turn, by definition, means that $f \in \I_{\operatorname{Ring}}(X)$. Since every $\s$-domain is perfectly $\s$-reduced, the argument also works for $X \in \s\text{\catname{-VarDomain}}_k$, with $\I_{\operatorname{Domain}}$ instead of $\I_{\operatorname{Ring}}$.
 This implies that $$ \{ F \} \subseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))\text{, as well as } \{ F \} \subseteq \I_{\operatorname{Ring}}(\VV_{\operatorname{Ring}}(F)).$$
 For the other inclusion ``$\supseteq$'', we shall first consider $X \in \s\text{\catname{-VarDomain}}_k$.
-For $F \subseteq k\{y\}$, we have $\{F\} \supseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$. To show this, let $f \in \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$.
+For $F \subseteq k\{y\}$, we have $\{F\} \supseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$. To show this, let \\ $f \in \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$.
 We know that $\{F\}$ is the intersection of all $\s$-prime ideals of $k\{y\}$ which contain $F$ (see Theorem \ref{intersectionperfect}), so it is enough to show that $f \in \p$ for each $\s$-prime $\p \si k\{y\}$ with $F \subseteq \p$.
 We define the $\s$-domain $B:= k\{y\}/\p =: k\{a\}$, with $a := y + \p \in k\{y\}/\p$. Since $F \subseteq \p$, we get $a \in \VV_B(F)$, which, by definition of $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))$, means that $f(a) = 0$. Hence, $f \in \p$ for all $\s$-prime $\p$
 with $F \subseteq \p$, which in turn implies that $f \in \{F\}$. Since every $\s$-domain $B$ is perfectly $\s$-reduced, this works for the category $\s\text{\catname{-VarRing}}_k$ as well, with $\I_{\operatorname{Ring}}, \VV_{\operatorname{Ring}}$ instead of $\I_{\operatorname{Domain}}, \VV_{\operatorname{Domain}}$.

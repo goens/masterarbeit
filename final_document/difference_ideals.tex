@@ -166,7 +166,7 @@ We can now argue with the usal case of commutative algebra (Lemma \ref{commalg})
 Let $\q_0 \unlhd \Z[A,\ldots,\s^n(A)]$ be a minimal prime ideal with $f \notin \q_0$. Since $f \in \Z[A,\s(A),\ldots,\s^n(A)] \subset \Z[A,\s(A),\ldots,\s^{n+1}(A)]$, by Lemma \ref{commalg}, we can find a minimal prime ideal $\q_1 \unlhd \Z[A,\s(A),\ldots,\s^{n+1}(A)]$
 such that $\q_1 \cap \Z[A,\s(A),\ldots,\s^{n}(A)] = \q_0$. \\
 
-\indent Inductively we find a chain of minimal prime ideals $\q_i, i \in \N$, $\q_i \unlhd \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, with $\q_{i+1} \cap \Z[A,\s(A),\ldots,\s^{n+i}(A)] = \q_i$ for all $i \in \N$.
+\indent Inductively we find a chain of minimal prime ideals $\q_i, i \in \N$, $\q_i \unlhd \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, with $\q_{i+1} \cap \Z[A,\s(A),\ldots,\s^{n+i}(A)] = \q_i$ for all \\ $i \in \N$.
 Then $\q := \bigcup_{i=0}^{\infty} \q_i$ is a prime ideal of $R$, with $f \notin \q$. In fact, $\q$ is a $\s$-ideal of $R$: Let $a \in \q$. We want to show that $\s(a) \in \q$. By construction of $\q$ there exists an $i \in \N$, such
 that $a \in \q_{i-1} \subseteq \Z[A,\s(A),\ldots,\s^{n+i-1}(A)]$, which implies that $\s(a) \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$. Lemma \ref{commalg} then states that there is an $h \in \Z[A,\s(A),\ldots,\s^{n+i}(A)]$, such that $ \q_i = \text{Ann}(h)$.
 It follows that $ah = 0$, and since $R$ is well-mixed, this implies that $\s(a)h = 0$. Hence, $\s(a) \in \q_i \subseteq \q$. This means that $\q$ is a prime $\s$-ideal of $R$ not containing $f$, which contradicts the assumption on $f$, so that $f = 0$ has to follow.
@@ -201,7 +201,7 @@ Then, \[ \mathcal{F}:= \bigcup_{ F \subseteq R \text{ finite} } M_F \]
  then the ultrafilter $\mathcal{G}$ defines an equivalence relation on $P$ via $(g_S)_{S \in M} \sim (h_S)_{S \in M} : \Leftrightarrow \{ S \in M \mid g_S = h_S \} \in \mathcal{G}$. 
 The set of equivalence classes $P/\mathcal{G}:= P/\textsim$ has a natural $\s$-ring structure. %% and is called an \emph{ultraproduct}. \index{ultraproduct} %%fixme: of what?
 \begin{proof}
-Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we have $\Z\{F\} \in \{ S \in M \mid F \subseteq S \} \neq \emptyset$. Since $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, $\emptyset \notin M_F$ (For $F = \emptyset$ this works as well).
+Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we have $$\Z\{F\} \in \{ S \in M \mid F \subseteq S \} \neq \emptyset.$$ Since $T \supseteq \{ S \in M \mid F \subseteq S \} \fa T \in M_F$, $\emptyset \notin M_F$ (For $F = \emptyset$ this works as well).
   That $M \in M_F$ for any $F \subseteq R$ is obvious, as well as that for $T \subseteq U, T \in M_F$ we have $U \in M_F$. \\ 
 \indent We only need to show that $U,T \in \mathcal{F}$ implies that $U \cap T \in \mathcal{F}$.
   Let $\hat U, \hat T \subseteq R$ be finite, such that $U \in M_{\hat U}, T \in M_{\hat T}$. $\hat U \cup \hat T \subseteq R$ is also finite and $$\{ S \in M \mid \hat U \cup \hat T \subseteq S \} \subseteq \{ S \in M \mid \hat U \subseteq S \} \subseteq U,$$
@@ -213,7 +213,7 @@ Let us first show that $\mathcal{F}$ is a filter. For $F \subseteq R$ finite we 
  Reflexivity follows from the fact that $M \in \mathcal{G}$, and symmetry is obvious. \\
 \indent  We now only need to show that we have a well-defined $\s$-ring structure on $P/\textsim$.
  Consider $f,f' \in P$ with $f \sim f'$. For all $S \in M$ with $f_S = f'_S$  we have $\sigma(f)_S = \sigma(f')_S$. 
- Then $\{ S \in M \mid \s(f)_S = \s(f')_S \} \supseteq \{ S \in M \mid f_S = f'_S \} \in \mathcal{G}$, by assumption, and since $\mathcal{G}$ is a filter, this means that $\{ S \in M \mid \s(f)_S = \s(f')_S \} \in \mathcal{G}$.
+ Then $\{ S \in M \mid \s(f)_S = \s(f')_S \} \supseteq \{ S \in M \mid f_S = f'_S \} \in \mathcal{G}$, by assumption, and since $\mathcal{G}$ is a filter, this means that $$\{ S \in M \mid \s(f)_S = \s(f')_S \} \in \mathcal{G}.$$
  Hence $\s(f) \sim \s(f')$. That $+$ and $\cdot$ are also well-defined can be proven in an analogous fashion.
 \end{proof}
 \end{lem}
@@ -289,7 +289,7 @@ For any $g \in \b$, it follows that $fg \in \a \cap \b \subseteq \p$. Since $\p$
 
 \begin{rem}\label{vmsequal}
 Since for a $\s$-ring $R$ any prime $\s$-ideal of $R$ is radical and mixed, then for any $F \subseteq R$, and any prime $\s$-ideal $\p \si R$ with $F \subseteq \p$ we have
-$(F) \subseteq [F] \subseteq \{ F \}_m \subseteq \p$. In particular, this means that $\Vm(F) = \Vm((F)) = \Vm([F]) = \Vm(\{F\}_m)$. 
+$(F) \subseteq [F] \subseteq \{ F \}_m \subseteq \p$. In particular, this means that $$\Vm(F) = \Vm((F)) = \Vm([F]) = \Vm(\{F\}_m).$$ 
 \end{rem}
 
 \begin{defn}\label{deftop}
