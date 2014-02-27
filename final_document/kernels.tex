@@ -4,7 +4,7 @@ In this section we will see a further approach to investigating difference ideal
 
 
 \begin{defn}
-Let $k$ be a difference field and $d \in \N$. Then we define $k\{y\}[d]:= k[y,\s(y),\ldots,\s^d(y) \subseteq k\{y\}]$ and we set $k\{y\}[-1] := k$. Let $\a~\si~k\{y\}$ be a difference ideal in the $\s$-polynomial ring $k\{y\}$. 
+Let $k$ be a difference field and $d \in \N$. Then we define $k\{y\}[d]:= k[y,\s(y),\ldots,\s^d(y)] \subseteq k\{y\}$ and we set $k\{y\}[-1] := k$. Let $\a~\si~k\{y\}$ be a difference ideal in the $\s$-polynomial ring $k\{y\}$. 
 We set $\a[d] := \a \cap k\{y\}[d]$.
 \end{defn}
 
@@ -18,7 +18,7 @@ It is worth noting that this notation differs from that of the standard literatu
 what was defined here as a prime, reflexive kernel is called a kernel. The rest of the concepts are not treated. We chose to change the notation to be able to study other $\s$-ideals with this methodology.
 
 \begin{rem}
-Clearly, a reflexive kernel is always a kernel, but the converse is not necesarily true. That $\a$ is a kernel of length $d$ only guarantees the inclusion $\a[d-1] \subseteq \s^{-1}(\a)$.
+Clearly, a reflexive kernel is always a kernel, but the converse is not necessarily true. That $\a$ is a kernel of length $d$ only guarantees the inclusion $\a[d-1] \subseteq \s^{-1}(\a)$.
 \end{rem}
 
 \begin{ex}
@@ -29,10 +29,10 @@ and since $\p$ is prime, we know that $\p[d]$ has to be prime as well. If $\p$ i
 Inspired by the previous example we define the following:
 \begin{defn}
 Let $\a \unlhd k\{y\}[d]$ be a kernel of length $d$, and $\a' \si k\{y\}$ be a $\s$-ideal. Then we call $\a'$ a \emph{realization} of $\a$, if $\a \subseteq \a'$, \index{realization of a difference kernel}
-and we call the realization \emph{regular}\index{regular realization}, if in addition $\a'[d] = \a$. Similarly, if $\a$ is a reflexive/prime kernel, then we define a realization to be a \emph{reflexive(prime) realization}, if the $\s$-ideal $\a'$ is reflexive/prime.\index{reflexive realization}\index{prime realization}
+and we call the realization \emph{regular}\index{regular realization}, if in addition $\a'[d] = \a$. Similarly, if $\a$ is a reflexive(prime) kernel, then we define a realization to be a \emph{reflexive(prime) realization}, if the $\s$-ideal $\a'$ is reflexive/prime.\index{reflexive realization}\index{prime realization}
 \end{defn}
 
-The former example and the acompanying definition are actually much more general than it would seem at first sight. 
+The former example and the accompanying definition are actually much more general than it would seem at first sight. 
 It is in fact the case that prime, reflexive kernels are always of the form $\p[d]$ for a $\s$-prime ideal $\p$ (this is the content of the upcoming Theorem \ref{reflexiverealization}).
 For prime kernels which are not necessarily reflexive this is not as simple, as we will later see.
 
@@ -50,7 +50,7 @@ Even in the general case of prime difference kernels we can work with the proper
  In particular, we get a nice way of defining some sort of ``difference degree'' of prime kernels:
 \begin{defn}
 Let $\p \subseteq k\{y\}[d]$ be a prime difference kernel of length $d$, and let $a:= y + \p \in k(\p)$. We define the difference dimension of $\p$ as follows:
-\begin{align*}  \sdim(\p) := \trdeg(k(\p)/k(\p[d-1])  \\ = \trdeg(\operatorname{Quot}((k\{y\}[d]/\p))/\operatorname{Quot}(k\{y\}[d-1]/\p[d-1])) \\  = \trdeg(k(a,\ldots,\s^{d}(a))/k(a,\ldots,\s^{d-1}(a))). \end{align*}
+\begin{align*}  \sdim(\p) &:= \trdeg(k(\p)/k(\p[d-1])  \\ &\phantom{:}= \trdeg(\operatorname{Quot}((k\{y\}[d]/\p))/\operatorname{Quot}(k\{y\}[d-1]/\p[d-1])) \\  &\phantom{:}= \trdeg(k(a,\ldots,\s^{d}(a))/k(a,\ldots,\s^{d-1}(a))). \end{align*}
 \end{defn}\index{$\s$-dimension of a $\s$-kernel}
 
 If we want to study prime, reflexive difference kernels as the intersection of $\s$-prime ideals with $k\{y\}[d]$,
@@ -60,7 +60,7 @@ This motivates the following definition:
 \begin{defn}
 Let $\a \subseteq k\{y\}[d]$ be a difference kernel of length $d$, and $\a' \supset \a$ be a further difference kernel, of length $d+1$.
 Then we call $\a'$ a \emph{prolongation} of $\a$, if $\a'[d] = \a$. Similarly, for a prime(reflexive) kernel we say the prolongation is prime(reflexive), if $\a'$ is also prime(reflexive).
-For a prime prolongation, if additionaly $\sdim(\a) = \sdim(\a')$, we call the prolongation \emph{generic}.
+For a prime prolongation, if additionally $\sdim(\a) = \sdim(\a')$, we call the prolongation \emph{generic}.
 \end{defn}\index{generic prolongation}
 
 \begin{defn}
@@ -75,11 +75,11 @@ Let $\q \subseteq k\{y\}$ be a prime, reflexive kernel of length $d$. Then there
 The situation is not as simple for prime kernels that are not necessarily reflexive, as shown by the following example.
 
 \begin{ex}\label{counterexker}
-Consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
-A calculation with \cite{M2} quickly identifies that the ideal $(f_1,f_2) \unlhd R$ is prime, and in fact, $f_1,f_2$ is a Gr\"{o}bner Basis of $(f_1,f_2)$ with respect to the
-term ordering $y_1~<~y_2~<~\s(y_1)~<~\s(y_2)$. This means that $(f_1,f_2)[0] = \{0\}$, and thus $(f_1,f_2)$ is a prime kernel of length $1$ of $k\{y_1,y_2\}$. However,
+Consider the difference polynomials $f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in \Q[y_1,y_2,\s(y_1),\s(y_2)] =: R$.
+A calculation with \cite{M2} quickly identifies that the ideal $(f_1,f_2) \unlhd R$ is prime, and in fact, $f_1,f_2$ is a Gr\"{o}bner Basis of $(f_1,f_2)$ with respect to the graded reverse-lexicographical
+term ordering $y_2~<~y_1~<~\s(y_2)~<~\s(y_1)$. This means that $(f_1,f_2)[0] = \{0\}$, and thus $(f_1,f_2)$ is a prime kernel of length $1$ of $\Q\{y_1,y_2\}$. However,
 \[ f_1 \cdot (\s^2(y_1) + \s(y_1) + 1 ) - \s(f_2) = 1, \]
-which means that any $\s$-ideal of $k\{y_1,y_2\}$ containing $f_1, f_2$ is already the whole ring, and is not prime, by definition.
+which means that any $\s$-ideal of $\Q\{y_1,y_2\}$ containing $f_1, f_2$ is already the whole ring, and is not prime, by definition.
 The commented code for this example can be found in Appendix \ref{appendixcode}.
 \end{ex}
 
@@ -89,7 +89,7 @@ We will develop a condition that is necessary, but not sufficient. First, howeve
 
 \begin{lem}\label{lemtensor}
 Let $R \subseteq S$ be integral domains. Let $I \unlhd R[y]$ be an ideal in the polynomial ring over $R$ in the (not necessarily finite) tuple of variables $y=(y_1,y_2,\ldots)$. Consider the ideal generated by $I$ in $S[y]$, which we will denote by $(I)$.
-Then $$S[y]/(I) \cong R[y]/I \otimes_R S.$$
+Then $$S[y]/(I) \cong (R[y]/I) \otimes_R S.$$
 
 \begin{bew}
 We consider the following short exact sequence:
@@ -104,9 +104,9 @@ Since the tensor product is right exact, if we tensor the Sequence (\ref{sec1}) 
 I \otimes_R S \ar[r]^{\operatorname{Id}_I \otimes \operatorname{Id}_S} & \underbrace{ R[y] \otimes_R S}_{\cong S[y]} \ar[r]^\varphi & (R[y]/I) \otimes_R S  \ar[r] &  0 }
 \end{xy}.
 \]
-Where $S \otimes_R R[y] \cong S[y]$ follows from the fact that the tuple of variables $y = (y_1,y_2,\ldots)$ is algebraically independent.  By the fundamental theorem on homomorphisms we thus get that $$(R[y]/I) \otimes_R S \cong \underbrace{ S \otimes_R R[y]}_{\cong S[y]}/\operatorname{Ker}(\varphi).$$
+Where $S \otimes_R R[y] \cong S[y]$ follows from the fact that the tuple of variables $y = (y_1,y_2,\ldots)$ is algebraically independent.  By the fundamental theorem on homomorphisms we thus get that $$(R[y]/I) \otimes_R S \cong \underbrace{ S \otimes_R R[y]}_{\cong S[y]}/\ker(\varphi).$$
 However, since the sequence is exact, we have
-\begin{align*} \operatorname{Ker}(\varphi) = \operatorname{Im}(\operatorname{Id}_I \otimes \operatorname{Id}_S) \cong \left\{ \sum_{i = 1}^k s_i f_i \mid s_i \in S, f_i \in I, k \geq 0 \right\} \\ =  \left\{ \sum_{i = 1}^k g_i f_i \mid g_i \in S[y], f_i \in I, k \geq 0 \right\} = (I) \unlhd S[y], \end{align*}
+\begin{align*} \ker(\varphi) = \operatorname{Im}(\operatorname{Id}_I \otimes \operatorname{Id}_S) \cong \left\{ \sum_{i = 1}^k s_i f_i \mid s_i \in S, f_i \in I, k \geq 0 \right\} \\ =  \left\{ \sum_{i = 1}^k g_i f_i \mid g_i \in S[y], f_i \in I, k \geq 0 \right\} = (I) \unlhd S[y], \end{align*}
 from which the statement follows.
 \end{bew}
 
@@ -132,7 +132,7 @@ $$ S' = S[y]/(I) \cong R' \otimes_R S.$$
 
 Let $E := \operatorname{Quot}(S)$ and $F :=  \operatorname{Quot}(R)$ be the fraction fields of the integral domains $S$ and $R$ respectively.
 Since $E$ is a field, $E$ is a flat $F$ module. Similarly, since $F$ as the fraction field of $R$ is a localization of the former, $F$ is a flat $R$ module (see Theorem 1 in  Ch. II § 2.4 of \cite{bourbaki}).
-Together these two facts imply that $E$ is a flat $R$ module as well. To see this, let $J \unlhd R$ be finitely generated (it sufficies to consider finitely generated ideals of $R$, see for example Proposition 6.1 of \cite{eisenbud}). Since $F$ is a flat $R$ module, the mapping $J \otimes_R F \hookrightarrow R \otimes_R F \cong F$ is injective.
+Together these two facts imply that $E$ is a flat $R$ module as well. To see this, let $J \unlhd R$ be finitely generated (it suffices to consider finitely generated ideals of $R$, see for example Proposition 6.1 of \cite{eisenbud}). Since $F$ is a flat $R$ module, the mapping $J \otimes_R F \hookrightarrow R \otimes_R F \cong F$ is injective.
 Further, since $E$ is a flat $F$ module, we can tensor this mapping with $E$ over $F$ and get the injective mapping 
 $$J \otimes_R F \otimes _F E \cong J \otimes_R E \hookrightarrow (R \otimes_R F) \otimes_F E\cong F \otimes_F E \cong E. $$
 This is exactly the flatness of $E$ as an $R$ module. We can then conclude that if we take the tensor product over $R$ with $E$ from the mapping  $ R \rightarrow R'$
@@ -169,7 +169,7 @@ Namely, if $f \in \sqrt{I} \cap R$, then there exists an $m \in \N$, such that $
 
 We then note that for two sets $A,B \subseteq R[y]$ we have the inclusion \\ $\sqrt{(A)}\sqrt{(B)}~\subseteq~\sqrt{(AB)}$: Consider $f \in \sqrt{(A)}, g \in \sqrt{(B)}$. Then there exist $m, \tilde m \in \N$, such that $f^m \in (A), g^{\tilde m} \in (B)$;
  assume without loss of generality that $m > \tilde m$, then $(fg)^m \in (A)(B)$, which implies $fg \in \sqrt{(A)(B)} = \sqrt{(AB)}$.
-Now, for the proof, consider the set of all radical ideals $J$ contaning $I$, such that $J \cap R = \{0\}$. This set is not empty and is inductively ordered by inclusion.
+Now, for the proof, consider the set of all radical ideals $J$ containing $I$, such that $J \cap R = \{0\}$. This set is not empty and is inductively ordered by inclusion.
 By Zorn's lemma this means that there exists a maximal element $P$ of this set. This ideal $P$ is prime. To see this, assume there exist $f,g \notin P$ with $fg \in P$. 
 Then the radical ideals $\sqrt{P \cup \{f\}}$, $\sqrt{P \cup \{f\}}$ strictly include $P$, and by the maximality of $P$ it means there exist $t_1, t_2 \in R\backslash\{0\}$, such that
 $t_1 \in \sqrt{P \cup \{f\}}$, $t_2 \in \sqrt{P \cup \{g\}}$. In particular, because $R$ is free of zero divisors, this implies that
@@ -185,7 +185,7 @@ See Lemma 5.2.6 of \cite{wibmer}.
 \end{proof}
 \end{prop}
 
-The statement of Proposition \ref{reflexiveprol} is an example of where the simple generalization fails in our case, namely when the kernel is not necessarily reflexive (as shown by Example \ref{counterexker}). We can find a condition equivalent to the existence of a prime prolongoation for a prime kernel:
+The statement of Proposition \ref{reflexiveprol} is an example where the simple generalization fails in our case, namely when the kernel is not necessarily reflexive (as shown by Example \ref{counterexker}). We can find a condition equivalent to the existence of a prime prolongation for a prime kernel:
 %% \begin{lem}\label{idealstill0}
 %% Let $R \subseteq S$ be two rings, and let $I \unlhd R[y]$ be an ideal in the polynomial ring $R[y]$ with $I \cap R = 0$. 
 %% Then it holds for the ideal $(I) \unlhd S[y]$, that $(I) \cap S = 0$.
@@ -205,15 +205,14 @@ The statement of Proposition \ref{reflexiveprol} is an example of where the simp
 \begin{prop}
 Let $\a \subseteq k[y,\ldots,\s^d(y)]$ be a prime difference kernel of length $d$ and let $k[y,\ldots,\s^d(y)]/\a =: k[a,\s(a),\ldots,\s^d(a)]$. Consider the mapping 
 \[ \s: k[a,\ldots,\s^{d-1}(a)] \rightarrow k[a,\ldots,\s^d(a)]. \]
-Then $\a$ has a prime prolongation, if and only if for the ideal generated by $\operatorname{ker}(\s)$, which we will denote by $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$, we have \\ $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$. 
+Then $\a$ has a prime prolongation, if and only if for the ideal generated by $\operatorname{ker}(\s)$, which we will denote by $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$, we have \begin{equation}\label{conditionker} (\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s).\end{equation} 
 \begin{bew}
-If $\a$ has a prime prolongation, then by definition there exists a prime difference kernel $\tilde \a \subseteq k[y,\ldots,\s^{d+1}(y)]$ of length $d+1$ with $\tilde \a \cap k[y,\ldots,\s^d(y)] = \a$.
-We will now show the converse implication. We assume that $$(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s),$$ and will construct a prime prolongation $\a$.
+First, we assume that Equation (\ref{conditionker}) holds and will construct a prime prolongation $\a$.
 
 Consider the surjective mapping 
 \[ k[a,\ldots,\s^{d-1}(a)][\s^d(y)] \rightarrow k[a,\ldots,\s^d(a)], \s^d(y) \mapsto \s^d(a). \]
 Let $\p_1$ be the kernel of this mapping. Since $k[a,\ldots,\s^d(a)]$ is a domain, we know by the fundamental theorem on homomorphisms that $\p_1$ has to be prime. 
-First, we will show that our assumption on $\operatorname{ker}(\s)$ implies that:
+First, we will show that our assumption on $\operatorname{ker}(\s)$ holds, if and only if:
 \begin{equation}\label{skercapsk} \underbrace{\s(\p_1)}_{\subseteq \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)]} \cap \s(k)[\s(a),\ldots,\s^d(a)] = 0. \end{equation}
 To see this consider the following commutative diagram:
 \[
@@ -235,40 +234,45 @@ i.e. $k[a,\ldots,\s^{d-1}(a)]/\operatorname{ker}(\s) \hookrightarrow k[a,\ldots,
 In this case, by composition with the isomorphism above, we get an embedding:
 \[ k[a,\ldots,\s^{d-1}(a)]/\operatorname{ker}(\s) \hookrightarrow \s(k)[\s(a),\ldots,\s^d(a)][\s^{d+1}(y)]/\s(\p_1). \]
 This proves Equation (\ref{skercapsk}), since the mapping is injective, if and only if Equation (\ref{skercapsk}) holds.
-By Proposition \ref{idealzeroabove}, Equation \ref{skercapsk} then implies that
+By Proposition \ref{idealzeroabove}, Equation (\ref{skercapsk}) then implies that
 \begin{equation}\label{skercapk}
 (\s(\p_1)) \cap k[a,\s(a),\ldots,\s^d(a)]
  = 0.
 \end{equation}
-We will now construct a prime difference kernel $\tilde \a$ using Equation \ref{skercapk}:
+We will now construct a prime difference kernel $\tilde \a$ using Equation (\ref{skercapk}):
 
-By Lemma \ref{primeoverp1} there exists a prime ideal $\tilde \p_2 \supset (\s(\p_1))$ of the ring $k[a,\ldots,\s^d(a)][\s^{d+1}(y)]$ containing $\s(p_1)$ with $\tilde \p_2 \cap k[a,\ldots,\s^d(a)] = 0$. 
+By Lemma \ref{primeoverp1} there exists a prime ideal $\tilde \p_2 \supset (\s(\p_1))$ of the ring $k[a,\ldots,\s^d(a)][\s^{d+1}(y)]$ containing $\s(\p_1)$ with $\tilde \p_2 \cap k[a,\ldots,\s^d(a)] = 0$. 
 Let $\p_2 \subseteq \tilde \p_2$ be a minimal prime ideal over $(\s(\p_1))$. Since $\p_2 \subseteq \tilde \p_2$, we have $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$.
 We thus get a well-defined mapping
 \[ \s: k[a,\ldots,\s^{d-1}(a)][\s^d(y)]/\p_1 \rightarrow k[a,\ldots, \s^d(a)][\s^{d+1}(y)]/\p_2. \]
-We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integral domain since $\p_2$ is prime. Since $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$ we can use this notation unambiguosly:
+We define $R_2:= k[a,\ldots,\s^d(a)][\s^{d+1}(y)]/\p_2 =: k[a,\ldots,\s^d(a),\s^{d+1}(a)]$, which is an integral domain since $\p_2$ is prime. Since $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$ we can use this notation unambiguously:
 this guarantees namely that for $a, \ldots, \s^d(a)$ we have the same residue classes modulo $\p_2$ as we had modulo $\a$.
 The kernel $\tilde \a$ of the natural epimorphism $k[y,\ldots,\s^{d+1}(y)] \rightarrow R_2$ is thus a prime ideal.
 Further we have $\a \subseteq \tilde \a$ by construction (as $\a = 0 \subset R_2$). In fact, we have $\tilde \a[d] = \a$ since: 
 \begin{align*}
 \tilde \a[d] = \{ f \in k[y,\ldots,\s^d(y)] \mid f(a) = 0 \} = \ker( k\{y\}[d] \rightarrow k[a,\ldots,\s^{d}(a)]) = \a,
 \end{align*}
-where the first equality uses the fact that $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$, as noted by the use of the notation explained above, and the last equality holds by definition of $a \in k[a,\ldots,\s^d(a)]$. This means that $\tilde \a$ is a prime prolongation of $\a$. 
+where the first equality uses the fact that $\p_2 \cap k[a,\ldots,\s^d(a)] = 0$, as noted by the use of the notation explained above, and the last equality holds by definition of $a \in k[a,\ldots,\s^d(a)]$. This means that $\tilde \a$ is a prime prolongation of $\a$. \\
+
+This proves the direction ``$\Leftarrow$''. We will now show the other implication.
+If $\a$ has a prime prolongation, then by definition there exists a prime difference kernel $\tilde \a \subseteq k[y,\ldots,\s^{d+1}(y)]$ of length $d+1$ with $\tilde \a \cap k[y,\ldots,\s^d(y)] = \a$.
+This means that we have a mapping $$\tilde \s : k[a,\ldots\s^{d}(a)] \mapsto k[a,\ldots,\s^{d+1}(a)],$$
+such that $\tilde \s_{|k[a,\ldots,\s^{d-1}(a)]} = \s$. Then $(\ker(\s)) \subseteq \ker(\tilde \sigma)$, which immediately yields Equation (\ref{conditionker}) if we take the intersection with $k[a,\ldots,\s^{d-1}(a)]$.
 \end{bew}
 \end{prop}
 
 %%The condition $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$ obviously holds for intersections of prime difference ideals with $k\{y\}[d]$. 
 The condition $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$ thus suffices to find a prime prolongation of a prime kernel. 
-The next example, however, shows that this condition does not suffice to ensure the existence of a realization. This is another aspect which is different from the known case of reflexive kernels.
+The next example, however, shows that this condition does not suffice to ensure the existence of a realization. This is another aspect which is different from the known case of reflexive prime kernels.
 
 
 \begin{ex}\label{secondexamplem2}
-Let $k$ be a $\s$-field and consider the difference polynomial ring $k\{y_1,y_2\}$. 
-The ideal $$\a = (\s^2(y_2)+1,\s^2(y_1)y_2 + \s(y_1)y_2 + \s^2(y_1) + \s(y_1) + y_2) \unlhd k\{y_1,y_2\}[2]$$ is a prime kernel,
+Let $\Q$ be a $\s$-field and consider the difference polynomial ring $\Q\{y_1,y_2\}$. 
+The ideal $$\a = (\s^2(y_2)+1,\s^2(y_1)y_2 + \s(y_1)y_2 + \s^2(y_1) + \s(y_1) + y_2) \unlhd \Q\{y_1,y_2\}[2]$$ is a prime kernel,
 as can be verified by a calculation using \cite{M2}. For $\a$, if we consider the factor ring 
-$k\{y\}[2]/\a =: k[a,\s(a),\s^2(a)]$, the kernel of \\ $\s: k[a,\s(a)] \rightarrow k[a,\s(a),\s^2(a)]$
-satisfies that $$(\operatorname{ker}(\s)) \cap k[a,\s(a)] = \operatorname{ker}(\s).$$ However, similarly to the case in Example \ref{counterexker}, any difference ideal of $k\{y\}$ containing 
-$\a$ has to contain $1$ and thus be already the whole ring $k\{y\}$. The commented code for this example can be found in Appendix \ref{appendixcode}.
+$\Q\{y\}[2]/\a =: \Q[a,\s(a),\s^2(a)]$, the kernel of \\ $\s: \Q[a,\s(a)] \rightarrow \Q[a,\s(a),\s^2(a)]$
+satisfies that $$(\operatorname{ker}(\s)) \cap \Q[a,\s(a)] = \operatorname{ker}(\s).$$ However, similarly to the case in Example \ref{counterexker}, any difference ideal of $\Q\{y\}$ containing 
+$\a$ has to contain $1$ and thus be already the whole ring $\Q\{y\}$. The commented code for this example can be found in Appendix \ref{appendixcode}.
 \end{ex}
 
 We see then, that the condition $(\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s)$, while sufficient for finding a single prime prolongation,
@@ -276,14 +280,17 @@ is not sufficient for finding a realization; the problem occurs when trying to f
 
 \begin{conj}
 Let $k$ be a $\s$-field and $\a \subseteq k\{y\}[d]$ a prime $\s$-kernel of length $d$.
-Let $a_1 = y_1 + \a ,\ldots,a_n = y_n + \a$ (so that $k\{y\}[d]/\a \cong k\{a\}$).
+Let $a_1 = y_1 + \a ,\ldots,a_n = y_n + \a$.
 For $r \geq 1$ consider the mapping 
-\[ \s^r : k[a,\s(a),\ldots,\s^{d-r}(a)] \rightarrow k[a,\ldots,\s^{d}], f \mapsto \s^r(f). \]
-Then there existis a principal realization of $\a$, if and only if 
+\[ \s^r : k[a,\s(a),\ldots,\s^{d-r}(a)] \rightarrow k[a,\ldots,\s^{d}(a)], f \mapsto \s^r(f). \]
+Then there exists a principal realization of $\a$, if and only if 
 \begin{equation*} (\operatorname{ker}(\s),\ldots,\operatorname{ker}(\s^r)) \cap k[a,\ldots,\s^{d-r}(a)] = \operatorname{ker}(\s^r). \end{equation*}
 \end{conj}
 
-Since in $k\{y\}$ we have $\operatorname{ker}(\s^r) \subseteq \operatorname{ker}(\s^{r+1})$, we get the implication ``$\Rightarrow$''. 
+Since in the difference polynomial ring $k\{y\}$, $\s$ is an endomorphism of the ring, the powers of $\s$ are well-defined on all $k\{y\}$ and are difference operators as well.
+These powers thus remain endomorphisms if we factor out a prime difference ideal $\p$.
+For $r \in \N$ it is obvious that $\operatorname{ker}(\s^r)~\subseteq~\operatorname{ker}(\s^{r+1})$. This means that in the factor ring $k\{a\}[d] := (k\{y\}/\p)[d]$ we
+have $$(\operatorname{ker}(\s),\ldots,\operatorname{ker}(\s^r)) = \operatorname{ker}(\s^r).$$ This means we can show the implication ``$\Rightarrow$''. The question if the other direction is true remains open.
 
 
 

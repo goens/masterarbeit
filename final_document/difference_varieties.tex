@@ -32,17 +32,19 @@ Let $k$ be a $\s$-field. The category of all $\s$-ring extensions $A$ of $k$ (i.
 The subcategory which arises from restricting the object class to integral $\s$-rings, the category of \emph{integral $\s$-ring extensions of $k$}, we denote by $\sintk$. \index{$\sintk$} \index{$\sringk$} \index{integral $\s$-ring extensions}
 \end{defn}
 
-Because $k$ is a field, any non-trivial morphism of $\s$ rings of $k$ to a $k$-$\s$-algebra is injective. This means that the category $\sringk$ is equivalent to that of $k$-$\s$-algebras, the only difference is if $k$ is a subset or just isomorphic to one. Now we are ready to define the new concept of $\s$-varieties of $\s$-rings, with mixed $\s$-ideals in mind:
+Because $k$ is a field, any non-trivial morphism of $\s$-rings from $k$ to a $k$-$\s$-algebra is injective. This means that the category $\sringk$ is equivalent to that of $k$-$\s$-algebras, the only difference is if $k$ is a subset or just isomorphic to one. Now we are ready to define the new concept of $\s$-varieties of $\s$-rings, with mixed $\s$-ideals in mind:
 
 \begin{defn}\label{defnVV}
 Let $k$ be a $\s$-field and $B \in \sintk$ an integral $\s$-overring of $k$. Further let $F \subseteq k\{y_1, \ldots, y_n\}$ be a set of $\s$-polynomials over $k$. 
-Then we define $\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \fa f \in F \}$. A functor \\ $X: \sintk \rightarrow \Set$, for which there exists a set $F \subseteq k\{y_1, \ldots, y_n \}$, such that $X(B) = \VV_B(F)$ for all $B \in \sintk$, we denote as a \emph{$\s$-variety over $k$}, or a \emph{$k$-$\s$-m-variety}.
+Then we define $\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \fa f \in F \}$. A functor \\ $X: \sintk \rightarrow \Set$, for which there exists a set $F \subseteq k\{y_1, \ldots, y_n \}$, such that $X(B) = \VV_B(F)$ for all $B \in \sintk$, we denote as a \emph{mixed $\s$-variety over $k$}, or a \emph{$k$-$\s$-m-variety}.
 Here, $\Set$ denotes the usual category of sets with mappings as morphisms. We also write $X := \VV(F)$ as a short notation for this functor. \index{$\s$-variety} \index{$\s$-variety over $k$} \index{$k$-$\s$-m-variety}
 \end{defn}
 
-We can compare this definition to the definition of difference varieties in Section 1. The differencie lies in the category considered for the codomain of the functor, where instead of $\s$-fields over $k$ we take $\sintk$.
+If $A,B \in \sintk$ are two integral $\s$-overrings of $k$, and $\varphi: A \rightarrow B$ is a morphism in $\sintk$, then $\varphi$ induces a map from $\VV_A(F) \rightarrow \VV_B(F), a \mapsto \varphi(a)$, which is why $X$ above is indeed a functor.
+
+We can compare this definition to the definition of difference varieties in Section 1. The difference lies in the category considered for the codomain of the functor, where instead of $\s$-fields over $k$ we take $\sintk$.
 This begs the question what would happen if we considered yet another category instead, for example only allowing the ring to be perfectly $\s$-reduced, or a $\s$-domain. It can be shown that the category of difference varieties
-yielded by those definitions is equivalent to the standard definition of difference varities. We will prove this at the end of this Section when we have the necessary tools to do it.
+yielded by those definitions is equivalent to the standard definition of difference varieties. We will prove this at the end of this section when we have the necessary tools to do it.
 
 \begin{defn}
 Let $k$ be a $\s$-field and $X: \sintk \rightarrow \Set$ be a $k$-$\s$-m-variety. We say a subfunctor $Y \subseteq X$ is a \emph{$\s$-m-subvariety} of $X$, if $Y$ is a $k$-$\s$-m-variety itself. \index{$\s$-m-subvariety}
@@ -61,7 +63,7 @@ Let $X = \VV(F)$ be a $\s$-m-variety over the $\s$-field $k$, \\$F \subseteq k\{
 
 \begin{ex}\label{A^n}
 Let $k$ be a $\s$-field and let $\{ 0 \} =: F \subseteq k\{y_1,\ldots,y_n\}$. Then a $\s$-m-variety $X$ is defined by $F$, $X(B) := \VV_B(F) \fa B \in \sintk$ with the property that $X(B) = B^n \fa B \in \sintk$.
-For every $G \subseteq A\{y_1,\ldots,y_n\}$ the $\s$-m-variety given by $Y: B \mapsto \VV_B(G)$ is a $\s$-m-subvariety of $X$. 
+For every $G \subseteq k\{y_1,\ldots,y_n\}$ the $\s$-m-variety given by $Y: B \mapsto \VV_B(G)$ is a $\s$-m-subvariety of $X$. 
 \end{ex}
 
 \begin{defn}\label{defA^n}
@@ -105,7 +107,7 @@ since the $\s$-fields $\Q(\sqrt{2}),$ \\ $\s(\sqrt{2}) = \sqrt{2}$ and $\Q(\sqrt
 \end{ex}
 
 \begin{ex}
-Let $k$ be a $\s$-field. The $\s$-m-variety $X$ given by $\s(y)~\in~k\{y\}$, i.e. $X(B) = \VV_B(\s(y)) = \{ b \in B^n \mid \s(b) = 0 \} \fa B \in \sintk$, has a single point in any $\s$-field extension of $k$, namely $0$. However, in general integral $\s$-rings,
+Let $k$ be a $\s$-field. The $\s$-m-variety $X$ given by $\s(y)~\in~k\{y\}$, i.e. $X(B) = \VV_B(\s(y)) = \{ b \in B \mid \s(b) = 0 \} \fa B \in \sintk$, has a single point in any $\s$-field extension of $k$, namely $0$. However, in general integral $\s$-rings,
 this is not necessarily the case: Take, for example, $B:= k\{y\}/[\s(y)] \in \sintk$. In $B$ we have $0 \neq $ ker$(\s) = [y+ [\s(y)]] \si B$, which means that in particular, $[y + [\s(y)]] \subseteq \VV_B(\s(y))$.
 \end{ex}
 
@@ -123,7 +125,7 @@ It follows that $(f + g)(b) = f(b) + g(b) = 0$ as well as $(fh)(b) = f(b)h(b) = 
 It further follows that $h(b)^n = 0$ implies $h(b) = 0$, since $B$ is an integral domain, and this means that $h^n \in \I_m(X)$ implies that $ h \in \I_m(X)$. \\
 \indent It only remains to show that $\I_m(X)$ is mixed. Let now $f,g \in k\{y_1,\ldots,y_n\}$ be such that $fg \in \I_m(X)$. This means that for all  $B \in \sintk$, $b \in \VV_B(F)$ we have
  $(fg)(b) = f(b) g(b) = 0$. Since $B$ is an integral domain,
-this implies that $f(b) = 0$ or $g(b) = 0$. This also implies that $\s(f(b)) = \s(0) = 0$, or $\s(g(b)) = 0$, so that in any case $(f\s(g))(b) = 0$, from which it follows that $f\s(g) \in \I_m(X)$. We thus see that $\I_m(X)$ is radical and mixed, hence $\{F\}_m \subseteq k\{y_1,\ldots,y_n\}$. \\
+this implies that $f(b) = 0$ or $g(b) = 0$. This also implies that $\s(f(b)) = \s(0) = 0$, or $\s(g(b)) = 0$, so that in any case $(f\s(g))(b) = 0$, from which it follows that $f\s(g) \in \I_m(X)$. We thus see that $\I_m(X)$ is radical and mixed, hence $\{F\}_m \subseteq \I_m(X)$. \\
 \indent For the other inclusion, let $f \in \I_m(X)$. We will show that $f \in \{F\}_m$. Let $F \subseteq \p \si k\{y_1,\ldots,y_n\}$ be a prime $\s$-ideal.
 Then, consider $B:= k\{y_1,\ldots,y_n\}/\p$. This is an integral $\s$-ring. Since $F \subseteq \p$, we know that $y + \p \in \VV_B(F)$. By assumption, we have $f \in \I_m(\VV(F))$, which means by definition that $f(y + \p) = 0$, which
 in turn means that $f \in \p$. Since this holds for any prime $\p \si R$, Theorem \ref{intersectionprimes} implies that $f \in \{F\}_m$.
@@ -180,7 +182,7 @@ If we identify the radical, mixed $\s$-ideals of $k\{X\}$ with the radical, mixe
 
 A further very interesting bijection can also help us to better understand equivalence classes of solutions: 
 \begin{prop}\label{bijsols}
-Let $X = \VV(F)$ be a $\s$-m-variety over the $\s$-field $k$. The equivalence classes of solutions of $F$ are in bijection with the $\s$-spectrum of the coordinate ring $\sSpec(k\{X\})$.
+Let $X = \VV(F)$ be a $\s$-m-variety over the $\s$-field $k$. The equivalence classes of solutions of $F$ are in bijection with the $\s$-m-spectrum of the coordinate ring $\sSpec(k\{X\})$.
 \begin{bew}
 Let $B \in \sintk$, $b \in B^n$ be a solution of $F \subseteq k\{y_1,\ldots,y_n\}$, i.e. $f(b) = 0 \fa f \in F$. Consider the mapping $$\varphi: k\{y_1,\ldots,y_n\} \rightarrow B, y \mapsto b.$$
 Then $F \subseteq $ ker$( \varphi) \si R$.
@@ -268,7 +270,7 @@ The equality $\widetilde{ \psi \circ \varphi} = \tilde \varphi \circ \tilde \psi
 \end{bew}
 \end{lem}
 
-We thus see how radical, mixed $\s$-ideals and the definition of $\s$-m-varieties as functors from $\sintk$, for a $\s$-field $k$, as well as the topology defined on $\sSpec(A\{X\})$ all fit together. 
+We thus see how radical, mixed $\s$-ideals and the definition of $\s$-m-varieties as functors from $\sintk$, for a $\s$-field $k$, as well as the topology defined on $\sSpec(k\{X\})$ all fit together. 
 These are all in analogous relations to the case for perfect $\s$-ideals and the Cohn topology outlined in Section 1. We will try to shed some light on the choice of the category $\sintk$ here:
 
 \begin{defn}
@@ -292,9 +294,9 @@ Similar to Proposition \ref{dualisequiv}, the category of $\s$-varieties $\s\tex
 It suffices to show that the other two categories are also anti-equivalent to it. From the proof of Proposition \ref{dualisequiv} we can see that it is enough to show that $\I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(\a)) = \{\a\}$, and $\I_{\operatorname{Ring}}(\VV_{\operatorname{Ring}}(\a)) = \{\a\}$,
  where $\a \si k\{y\}$ is a $\s$-ideal and $\{ \a \}$ its perfect closure. 
 
-Let first $X  = \VV_{\operatorname{Ring}}(F) \in \s\text{\catname{-VarRing}}_k$ be a $\s$-m-variety in this sense of perfectly reduced $\s$-rings. 
+Let first $X  = \VV_{\operatorname{Ring}}(F) \in \s\text{\catname{-VarRing}}_k$ be a $\s$-variety in this sense of perfectly reduced $\s$-rings. 
 We first show that \begin{align*} \I_{\operatorname{Ring}}(X) =  \{ f \in k\{y\} \mid f(b) = 0 \fa b \in \VV_B(F), \\ B \supseteq k\text{ perfectly }\s\text{-reduced} \} \end{align*}
- is a perfect $\s$-ideal. Similar to Proposition \ref{I=F_m}, we know that $\I_{\operatorname{Ring}}(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I(X)$. This means that for all $b \in \VV_B(F)$,
+ is a perfect $\s$-ideal. Similar to Proposition \ref{I=F_m}, we know that $\I_{\operatorname{Ring}}(X)$ is a difference ideal. Let $f \in k\{y\}$ with $\s^{i_1}(f) \cdots \s^{i_r}(f) \in \I_{\operatorname{Ring}}(X)$. This means that for all $b \in \VV_B(F)$,
  $B$ perfectly $\s$-reduced: $\s^{i_1}(f)(b) \cdots \s^{i_r}(f)(b) = 0$. Since $B$ is perfectly $\s$-reduced, this means that $f(b) = 0$ for all such $b$,
  which in turn, by definition, means that $f \in \I_{\operatorname{Ring}}(X)$. Since every $\s$-domain is perfectly $\s$-reduced, the argument also works for $X \in \s\text{\catname{-VarDomain}}_k$, with $\I_{\operatorname{Domain}}$ instead of $\I_{\operatorname{Ring}}$.
 This implies that $$ \{ F \} \subseteq \I_{\operatorname{Domain}}(\VV_{\operatorname{Domain}}(F))\text{, as well as } \{ F \} \subseteq \I_{\operatorname{Ring}}(\VV_{\operatorname{Ring}}(F)).$$

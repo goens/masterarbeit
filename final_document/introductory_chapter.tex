@@ -1,7 +1,7 @@
 In this chapter, we will introduce the basic notions of difference algebra. These basic concepts and definitions are indispensable for the rest of this thesis. 
-The aim of this chapter is to suuply al the information necessary for reader who has no knowledge of difference algebra, but is familiar with algebra and algebraic geometry. 
-The two standard textbooks in the field thot proved most useful for this thesis are the works of Cohn \cite{cohn} and Levin \cite{levin}. 
-A reader who has interest in a more thorough treatment of the subject should look into any of the two. While Cohn is perhaps more accessible and easier to read, 
+The aim of this chapter is to supply all the information necessary for the reader who has no knowledge of difference algebra, but is familiar with algebra and algebraic geometry. 
+The two standard textbooks in the field that proved most useful for this thesis are the works of Cohn \cite{cohn} and Levin \cite{levin}. 
+A reader who has interest in a more thorough treatment of the subject should look into any of the two. While the book by Cohn is perhaps more accessible and easier to read, 
 it has a notation that might be considered cumbersome by some modern standards. The textbook by Levin considers a more general setting by working with partial difference equations that are not treated in this thesis.
 Additionally, a reader might find M.Wibmer's lecture notes on difference algebra \cite{wibmer} useful for reading this thesis, since they resemble this thesis in the way the subjects are structured.
 
@@ -35,8 +35,9 @@ These are two notable examples of difference equations, as we will soon see. In 
 \begin{defn}
 Let  $R$ be a ring (in this thesis all rings will be commutative and unital), and let
  $\sigma: R \rightarrow R$ be an endomorphism of rings in $R$. Then we call the tuple $(R,\sigma)$ a \emph{difference ring}, or $\sigma$\emph{-ring}. \index{$\s$-ring} \\
-By abuse of notation we will say that $R$ is a $\sigma$-ring  to refer to the pair, and if $R'$ is a further $\sigma$-ring, we will also use the symbol $\sigma$ for the endomorphism on $R'$. This should not lead to confusion, since it can be inferred from the context which of the endomorphisms is meant. 
 \end{defn}
+By abuse of notation we will say that $R$ is a $\sigma$-ring  to refer to the pair, and if $R'$ is a further $\sigma$-ring, we will also use the symbol $\sigma$ for the endomorphism on $R'$. This should not lead to confusion, since it can be inferred from the context which of the endomorphisms is meant. 
+
 
 \begin{defn}
 Let $R, R'$ be  $\sigma$-rings and let $\varphi: R \rightarrow R'$ be a morphism of rings. We say that $\varphi$ is a \emph{morphism of $\sigma$-rings}  if \index{moprhism of $\sigma$-rings}
@@ -79,11 +80,11 @@ We denote this $\sigma$-polynomial ring by $k\{y_1\}$. In an analogous fashion w
 We will use the shorthand notation $y = (y_1,\ldots,y_n)$ throughout this thesis.
 \end{defn}
 
-At this point we can express (polynomial) difference equations as difference polynomials. We would like to have a conpect of the order of an equation.
+At this point we can express (polynomial) difference equations as difference polynomials. We would like to have a concept of the order of an equation.
 \begin{defn}
 Let $k$ be a $\s$-field and consider the polynomial ring $k\{y\}$ on $n$ difference variables. For a monomial $m = a \s^{r_1}(y_1) \cdots \s^{r_n}(y_n)$ with $0 \neq a \in k$ we define the \emph{order} \index{order of a difference polynomial} of $m$ to be
-$$\operatorname{Ord}(m) = \max_{r = 1, \ldots, k} r_k $$. For a polynomial $f \in k\{y\}$ we define the \emph{order} of $f$, $\operatorname{Ord}(f)$ to be the maximal order of a monomial effectively appearing in $f$ (with a non-zero coefficient in a representation with unique monomials)
- We define the \emph{effective order}\index{effective order} of $f$, $operatorname{Eord}(f)$ to be the difference between the maximal and minimal orders of monomials effectively appearing in $f$.
+$$\operatorname{Ord}(m) = \max_{i = 1, \ldots, n} r_i. $$ For a polynomial $f \in k\{y\}$ we define the \emph{order} of $f$, $\operatorname{Ord}(f)$ to be the maximal order of a monomial effectively appearing in $f$ (with a non-zero coefficient in a representation with unique monomials)
+ We define the \emph{effective order}\index{effective order} of $f$, $\operatorname{Eord}(f)$ to be the difference between the maximal and minimal orders of monomials effectively appearing in $f$.
 \end{defn}
 
 \begin{defn} $\phantom{}$
@@ -98,24 +99,24 @@ i.e.  if the image of $\sigma|_{R}$ is contained in $R$.
 A useful way of working with difference ideals is to consider a difference-algebraic concept of generating sets.
 
 \begin{defn}
-Let $R$ be a $\s$-ring and let  $\a \si R$ be a $\s$-ideal of $R$. Let $a_j \in R$ for all $ j \in J$, where $J$ is an index set. We use $[a_j \mid j \in J]$ to denote the $\s$-ideal minimal (with respect to inclusion) of $R$ which contains all $a_j$ for $j \in J$. In fact,  \[[a_j \mid j \in J] = \left\{ \sum_{i=1}^n \s^{r_i}(x_i) \mid n \geq 0, r_i \geq 0, x_i \in \{a_j, \mid j \in J \}, i=1,\ldots,n \right\}. \] 
+Let $R$ be a $\s$-ring and let  $\a \si R$ be a $\s$-ideal of $R$. Let $a_j \in R$ for all $ j \in J$, where $J$ is an index set. We use $[a_j \mid j \in J]$ to denote the $\s$-ideal minimal (with respect to inclusion) of $R$ which contains all $a_j$ for $j \in J$. In fact, $[a_j \mid j \in J]$ is equal to the set
+ \begin{flalign*}  \left\{ \sum_{i=1}^n b_i \s^{r_i}(x_i) \mid n \geq 0, r_i \geq 0, b_i \in R, x_i \in \{a_j, \mid j \in J \}, i=1,\ldots,n \right\}.  \end{flalign*}
 If there exist $b_1,\ldots,b_r \in \a$, such that $\a = [b_j \mid j \in \{1,\ldots r \}] =: [b_1,\ldots,b_r]$,
- we say that $\a$ is \emph{finitely $\s$-generated} as a $\s$-ideal \index{finitely $\s$-generated $\s$-ideal}
+ we say that $\a$ is \emph{finitely $\s$-generated} as a $\s$-ideal. \index{finitely $\s$-generated $\s$-ideal}
 \end{defn}
 
 \indent There are numerous properties in which we are interested for studying difference ideals. For the scope of this thesis, the most important ones are the following:
 \begin{defn}\label{idealprops}
 Let  $\a \si R$ be a $\s$-ideal of $R$. 
 \begin{itemize}
-\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. \index{mixed $\s$-ideal}
 \item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
 \item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
 \item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
-\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed, and \emph{perfectly $\s$-reduced}, if it is perfect. \index{well-mixed $\s$-ring}\index{perfectly $\s$-reduced $\s$-ring}
+\item The ring $R$ is called \emph{perfectly $\s$-reduced}, if the zero $\s$-ideal (the intersection of all $\s$-ideals) is perfect. \index{perfectly $\s$-reduced $\s$-ring}
 \end{itemize}
 \end{defn}
 
-Similar to $\s$-generators of ideals, we can define generators as a $k$-$\s$-algebra.
+Similar to $\s$-generators of ideals, we can define generators of a $k$-$\s$-algebra.
 
 \begin{defn}
 A $k$-$\sigma$-algebra  $A$ is \emph{finitely $\sigma$-generated} if there exist elements $f_1, \ldots, f_n$ such that $$A = k[f_1,f_2,\ldots,f_n,\sigma(f_1),\ldots,\sigma(f_n),\sigma^2(f_1),\ldots].$$
@@ -140,10 +141,10 @@ finitely $\sigma$-generated, $R = k\{ y + I \}$, but not finitely $\sigma$-prese
 \end{ex}
 
 
-We can now return to the examples from the begining of this chapter, as we now have the necessary concepts to formulate these in the language of difference algebra. 
+We can now return to the examples from the beginning of this chapter, as we now have the necessary concepts to formulate these in the language of difference algebra. 
 
 \begin{ex}
-The Fibonacci sequence is a solution to the $\s$-polynomial $\sigma^2(y) + \sigma(y) - y$ in the $\sigma$-ring  $\text{Seq}(\Z)$. This is precisely the recurrence relation $a_{n+2} + a_{n+1} = a_n$.
+The Fibonacci sequence is a solution to the $\s$-polynomial $\sigma^2(y) - \sigma(y) - y$ in the $\sigma$-ring  $\text{Seq}(\Z)$. This is precisely the recurrence relation $a_{n+2} = a_{n+1} + a_n$.
 In the same way, the $\Gamma$-function is the solution to the $\s$-polynomial $\sigma(y) - zy$, where $z \in \C(z)$ denotes the identity function $z \mapsto z$ in the $\s$-ring $\mathcal{M} \supset \C(z).$
 \end{ex}
 
@@ -152,10 +153,10 @@ In the same way, the $\Gamma$-function is the solution to the $\s$-polynomial $\
 The purpose of this section is to present in a compact fashion some well-known results of difference algebra, mainly about the geometric aspects of perfect difference ideals. 
 The rest of this thesis will then try to generalize many of these results to the case of mixed ideals. For the sake of compactness, the results shall be stated without proof.
 Similarly, many of the examples and remarks that offer a more in-depth understanding of said results will be deferred to the later sections of the thesis. 
-These will be presented algonside the corresponding generalizations of the results.
+These will be presented alongside the corresponding generalizations of the results.
 
 \begin{defn}
-Let $R$ be a $\s$-ring and $F \subset R$ be a $\s$-ideal of $R$. The smallest (with respect to inclusion) perfect $\s$-ideal containing $F$ is called the \emph{perfect closure of $F$}\index{perfect closure} and we will write $\{F\}$ to denote it. 
+Let $R$ be a $\s$-ring and $F \subset R$ be a subset of $R$. The smallest (with respect to inclusion) perfect $\s$-ideal containing $F$ is called the \emph{perfect closure of $F$}\index{perfect closure} and we will write $\{F\}$ to denote it. 
 \end{defn}
 
 Perfect difference ideals will play a role similar to that of radical ideals in algebraic geometry. In fact, in the case of a constant $\s$-ring the definition of perfect difference ideals corresponds to that of radical ideals. Most of the following results can easily be recognized as generalizations of standard results in algebraic geometry. 
@@ -170,11 +171,11 @@ If a difference ring $R$ satisfies the ascending chain condition for perfect dif
 A much stronger version of the previous fact can actually be proven for this  particular class of difference Rings.  Consider a Ritt difference Ring $R$ and a perfect difference ideal $\a \si R$. 
 For a decomposition of $\a$ as in Equation \ref{perfectintersection}, let $$\a = \{ \a \} = \bigcap_{i \in I} \p_i,$$ where $I$ is an index set and $\p_i$ a $\s$-prime difference ideal of $R$ for all $i \in I$.
 For a subset $J \subseteq I$, such that $$ \a = \bigcap_{i \in J} \p_i,$$ we say that $J$ is an \emph{irredundant decomposition of $\a$}\index{irredundant decomposition of a perfect $\s$-ideal},
-if $p_i \not \subseteq p_j$ for all $i \neq j.$
+if $\p_i \not \subseteq \p_j$ for all $i \neq j.$
 
 It can be shown that in a Ritt difference ring there is a unique finite irredundant decomposition in $\s$-prime ideals for every perfect difference ideal. See, for example, Theorem 2.5.7 of \cite{levin}. 
 
-Ritt difference ideals are of particular interest as, in a way, they fulfill some of the roles played by noetherian rings in the standard results of algebraic geometry/commutative algebra.
+Ritt difference rings are of particular interest as, in a way, they fulfill some of the roles played by Noetherian rings in the standard results of algebraic geometry/commutative algebra.
 In particular, a result analogous to the Hilbert basis theorem can be proven for Ritt difference rings:
 
 \begin{theorem}
@@ -191,7 +192,7 @@ Let $R$ be a difference ring, $F \subseteq R$ a subset. We set $\mathcal{V}(F) :
 
 It can be shown that we can define a topology in $\Spec^\s(R)$ by letting a set be closed if and only if it is of the form $\mathcal{V}(F)$ for $F \subseteq R$. 
 In fact, this topology is just the restriction of the usual Zariski topology on $\Spec(R)$ to $\Spec^\s(R)$.
-We call this topology on $\Spec^\s(R)$ the \emph{Cohn topology}\index{Cohn topology}. A few interesting properties of the Cohn topology on $\Spec^\s(R)$ are presented in the folowing Proposition:
+We call this topology on $\Spec^\s(R)$ the \emph{Cohn topology}\index{Cohn topology}. A few interesting properties of the Cohn topology on $\Spec^\s(R)$ are presented in the following Proposition:
 
 \begin{prop}
 \begin{itemize}
@@ -237,11 +238,11 @@ defining $$ k\{X\} := k\{y_1,\ldots,y_n\}/\I(X).$$
 
 
 It can be shown, for example, that the perfect $\s$-ideals of the coordinate ring of a difference variety $X$
-are in inclusion-reversing bijection to the $\s$-subvarieties of $X$. We exclude a formal definition of $\s$-subvarities at this point, as it will be treated in the case of mixed ideals later, and as the details are basically the same.
+are in inclusion-reversing bijection to the $\s$-subvarieties of $X$. We exclude a formal definition of $\s$-subvarieties at this point, as it will be treated in the case of mixed ideals later, and as the details are basically the same.
 
 
 Another noteworthy bijection deals with solutions of difference equations.
-Let $k$ be a $\s$-field and $K,L \supseteq k$ be $\s$-field extensions of $k$. Further, let $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations. We say that two solutions of $F$, $a \in K, a' \in L$ (this means that $f(a) = 0 = f(a')$ for all $f \in F$) are \emph{equivalent} if the mapping $$k\left<a\right> \rightarrow k\left<a'\right>, a \mapsto a'$$ is an isomorphism of $\s$-fields. Here, $k\left< a \right> \subseteq K$ denotes the smallest (with respect to inclusion) $\s$-subfield of $K$ containing $a$, and similarly for $a'$ and $L$.
+Let $k$ be a $\s$-field and $K,L \supseteq k$ be $\s$-field extensions of $k$. Further, let $F \subseteq k\{y_1,\ldots,y_n\}$ be a system of difference equations. We say that two solutions of $F$, $a \in K, a' \in L$ (this means that $f(a) = 0 = f(a')$ for all $f \in F$) are \emph{equivalent} if the mapping $$k\left<a\right> \rightarrow k\left<a'\right>, a \mapsto a'$$ is an isomorphism of $\s$-fields. Here, $k\left< a \right> \subseteq K$ denotes the smallest (with respect to inclusion) $\s$-subfield of $K$ containing $a$ and $k$, and similarly for $a'$ and $L$.
 
 \begin{prop}
 Let $k$ be a $\s$-field and $X = \VV(F)$ a difference variety over $k$. Then the equivalence classes of solutions of $F$
@@ -253,8 +254,9 @@ are in bijection to the $\s$-spectrum of the coordinate ring, $\Spec^\s(k\{X\})$
 The relationship between $\s$-varieties over a $\s$-field $k$ and their coordinate ring can be identified with a category-theoretical result.
 It can be shown that for a $\s$-field $k$, the category of $\s$-varieties over $k$ is anti-equivalent to the cateogry of $k$-$\s$-algebras which are perfectly $\s$-reduced and finitely $\s$-generated.
 
-To conclude this brief survey of some of the standard geometric aspects of difference algebra, we will present a final interesting result.
 
+To conclude this brief survey of some of the standard geometric aspects of difference algebra, we will present a final interesting result.
+There are concepts of \emph{$\s$-degree}, $\s$-deg and \emph{$\s$-dimension}, $\s$-dim, that can be associated with a difference variety. They will be formally defined later on.
 \begin{theorem}\label{irredcomp}
 Let $k$ be a $\s$-field and $f \in k\{y_1,\ldots,y_n\}, f \notin k$ an irreducible $\s$-polynomial such that $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Then $\VV(f) \subset \mathbb{A}_k^n$ has an irreducible component $X$ such that $\s$-$\dim(X) = n-1$ and $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
 \begin{bew}

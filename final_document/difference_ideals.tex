@@ -3,18 +3,15 @@ Much of the following is based on Section 1.2 of the lecture notes of M. Wibmer 
 
 \subsection{Difference Ideals}
 
-We recall Definition \ref{idealprops}, where some important classes of difference ideals are defined.
+We recall Definition \ref{idealprops}, and consider an additional type of difference ideal here.
 
-\begin{repdefn}{idealprops}
+\begin{defn}
 Let  $\a \si R$ be a $\s$-ideal of $R$. 
 \begin{itemize}
-\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$. 
-\item $\a$ is called \emph{perfect}, if $\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \a$ implies that $f \in \a$, where $n \in \NE, i_j \in \N \fa j \in \n$. \index{perfect $\s$-ideal}
-\item $\a$ is called \emph{reflexive}, if $\s(f) \in \a$ implies $f \in \a$. \index{reflexive $\s$-ideal}
-\item $\a$ is called \emph{$\s$-prime}, if $\a$ is a prime, reflexive $\s$-ideal. \index{$\s$-prime}
-\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed, and \emph{perfectly $\s$-reduced}; if it is perfect. \index{well-mixed $\s$-ring}\index{perfectly $\s$-reduced $\s$-ring}
+\item Then $\a$ is called a \emph{mixed $\s$-ideal} if for any $f,g \in R$ with $fg \in \a$ it follows that $f \sigma(g) \in \a$.  \index{mixed $\s$-ideal}
+\item The ring $R$ is called \emph{well-mixed}, if the zero ideal $[0]$ is mixed. \index{well-mixed $\s$-ring}
 \end{itemize}
-\end{repdefn}
+\end{defn}
 
 \begin{rem}\label{rempropideals}
 It is easy to see from the definitions that $\s$-prime $\s$-ideals are perfect, and that perfect $\s$-ideals are mixed, radical and reflexive. Prime $\s$-ideals are also mixed, but not necessarily perfect. Note that there is a difference between a prime $\s$-ideal and a $\s$-prime $\s$-ideal:
@@ -74,7 +71,7 @@ However, this in turn implies that $f\s(g)~\in~\sqrt \a$, which is what we wante
 
 
 \begin{ex}\label{nombasisex}
-Let $\Q$ be the field of rational numbers as a constant $\s$-field and let $R:= \Q\{y_1,y_2\}$. Consider the difference ideal $\a:= [y_1y_2] \si R$. We can inductively define a chain \begin{align*}\a^{\{0\}}:= \a,~ \a^{\{m+1\}}:= [\{ f \s(g) \mid f,g \in \a^{\{m\}}\}] \\ = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m+1], \fa m \in \NE.\end{align*}
+Let $\Q$ be the field of rational numbers considered as a constant $\s$-field and let $R:= \Q\{y_1,y_2\}$. Consider the difference ideal $\a:= [y_1y_2] \si R$. We can inductively define a chain \begin{align*}\a^{\{0\}}:= \a,~ \a^{\{m+1\}}:= [\{ f \s(g) \mid f,g \in \a^{\{m\}}\}] \\ = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m+1], \fa m \in \NE.\end{align*}
 This is an infinite properly ascending chain of difference ideals. 
 
 \begin{bew}
@@ -82,6 +79,7 @@ It is enough to only consider the $\s$-generators of the ideal. We can show the 
 Assume then that $$\a^{\{m\}} = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m].$$
 For $k = 0,\ldots,m$, we know that $\s^k(y_1)\s^m(y_2) \in \a^{\{m\}}$. This implies that $\s^k(y_1)\s^{m+1}(y_2) \in \a^{\{m+1\}}$.
 Similarly, $\s^m(y_1)\s^l(y_2) = \s^l(y_2)\s^m(y_1) \in \a^{\{m\}}$ implies that $ \s^l(y_2)\s^{m+1}(y_1) = \s^{m+1}(y_1)\s^l(y_2) \in \a^{\{m\}}$, for $l = 0,\ldots,m$.
+Since these are the only new generators we get through this process, we also get the other inclusion.
 \end{bew}
 %% \begin{bew}
 %% We will show that $\a^{\{m\}} = [\s^k(y_1)\s^l(y_2) \mid k,l = 0,1,\ldots,m]$ by induction. The assertion that the $\a^{\{m\}}$ form an infinite chain of properly ascending $\s$-ideals is obvious from this.\\
@@ -101,7 +99,7 @@ Similarly, $\s^m(y_1)\s^l(y_2) = \s^l(y_2)\s^m(y_1) \in \a^{\{m\}}$ implies that
 
 When trying to find $\{\a\}_m$ for a $\s$-ideal $\a \si R$ in a difference ring $R$, it might be tempting to consider $\a':= \{ f\s(g) \mid fg \in \a \}$, or to ensure it is a difference ideal rather, $[\a']$. The example above shows that this is not enough,
 as the ideal $[\a']$ does not have to be mixed in general. However, by iteratively repeating this process and taking the union of $\s$-ideals obtained this way, we do get a mixed $\s$-ideal. We will see this in the following lemma, 
-which is very similar to Lemma 3.1 of \cite{levinmixed}, where the mixed closue is obtained this way.
+which is very similar to Lemma 3.1 of \cite{levinmixed}, where the mixed closure is obtained this way.
 \begin{lem}\label{lemshuffling}
 Let $R$ be a $\s$-ring and $F \subseteq R$. Further, let \\ $F'~:=~\{f\s(g)~\mid~fg~\in~F~\}$, and set $F^{\{1\}}:= [F']$, $F^{\{n\}}:= [{F^{\{n-1\}}}']$ for all $n \in \NE$. Then
 \begin{align} \{F\}_m = \sqrt{\bigcup_{n=1}^{\infty} F^{\{n\}}}. \end{align}
@@ -162,7 +160,7 @@ Let $\a \si R$ be a mixed, radical $\s$-ideal. By Proposition \ref{bijideals} th
 that $R$ is finitely $\s$-generated over $\Z$. \\
 
 \indent Let thus $f \in R$ be such that $f \in \q \fa \q \si R$ prime. We assert that $f$ then has to be $0$. Assume this is not the case, i.e. $f \neq 0$. Then, by assumption on $R$, there is an $n \in \N$, such that $f \in \Z[A,\s(A),\ldots,\s^n(A)]$.
-We can now argue with the usal case of commutative algebra (Lemma \ref{commalg}): since $\Z[A,\s(A),\ldots,\s^n(A)]$ is Noetherian and reduced, $(0) \unlhd \Z[A,\ldots,\s^n(A)]$ is the intersection of all prime ideals of $R$. In particular, there exist prime ideals which do not contain $f$.
+We can now argue with the usual case of commutative algebra (Lemma \ref{commalg}): since $\Z[A,\s(A),\ldots,\s^n(A)]$ is Noetherian and reduced, $(0) \unlhd \Z[A,\ldots,\s^n(A)]$ is the intersection of all prime ideals of $R$. In particular, there exist prime ideals which do not contain $f$.
 Let $\q_0 \unlhd \Z[A,\ldots,\s^n(A)]$ be a minimal prime ideal with $f \notin \q_0$. Since $f \in \Z[A,\s(A),\ldots,\s^n(A)] \subset \Z[A,\s(A),\ldots,\s^{n+1}(A)]$, by Lemma \ref{commalg}, we can find a minimal prime ideal $\q_1 \unlhd \Z[A,\s(A),\ldots,\s^{n+1}(A)]$
 such that $\q_1 \cap \Z[A,\s(A),\ldots,\s^{n}(A)] = \q_0$. \\
 
@@ -327,7 +325,6 @@ $$\{ \a \si R \mid \a\text{ mixed, radical }\} \rightarrow \{ A \subseteq \sSpec
 \item The basic open sets $\{ \sD(f) \mid f \in R \}$ form a basis for the topology on $\sSpec(R)$.
 \item Every irreducible closed subset $Y$ of $\sSpec(R)$ has a unique generic point $y$.
 \end{enumerate}
-\clearpage %%FIXME: remove, just so a page is not left basically completely blank
 \begin{bew} $~$
 \begin{enumerate}[(a)]
 \item \label{orderreversingbij} That the mapping is order-reversing is obvious. The injectivity follows from the fact that by Theorem \ref{intersectionprimes} $\a = \bigcap_{\a \subseteq \p \in \sSpec(R)} \p$. By Remark \ref{vmsequal} we obtain the surjectivity,
@@ -341,8 +338,8 @@ which means that $a \in \p$ or $b \in \p$, since $\p$ is prime. This implies tha
 Now, by assumption, $\Vm(F)$ is irreducible, and thus it has to be that $\Vm(F) \subseteq \Vm(\{a\}_{m})$ or $\Vm(F) \subseteq \Vm(\{b\}_m)$. By the bijectivity of the mapping in (\ref{orderreversingbij}) this means that $a \in F$ or $b \in F$.
 \item Let $\Vm(\a_i)_{i \in I}$ be a family of closed sets, $\a_i \si R$ mixed, radical for all $i \in I$, satisfying that 
 $\bigcap_{i \in J} \Vm( a_i) \neq \emptyset$ for every finite $J \subseteq I$. By  going to the complement of open sets, quasi-compactness is equivalent to the implication that $\bigcap_{i \in I} \Vm(a_i) \neq \emptyset$.
-By Lemma \ref{topologywelldef} we see that $\bigcap_{i \in I} \Vm( \a_i) = \Vm ( \sum_{i \in I} \a_i)$. Assume that $ \Vm ( \sum_{i \in I} \a_i) = \emptyset$. 
-By Theorem \ref{intersectionprimes} this means that $\{ \sum_{i \in I} \a_i \}_m = R$. In particular, $1 \in \{ \sum_{i \in I} \a_i \}_m$. By the construction in Lemma \ref{lemshuffling} (and with the notation used there), this means that there has to be an $n \in \NE$,
+By Lemma \ref{topologywelldef} we see that $$\bigcap_{i \in I} \Vm( \a_i) = \Vm ( \sum_{i \in I} \a_i).$$ Assume that $ \Vm ( \sum_{i \in I} \a_i) = \emptyset$. 
+By Theorem \ref{intersectionprimes} this means that \\ $\{\sum_{i \in I}~\a_i\}_m~=~R$. In particular, $1 \in \{ \sum_{i \in I} \a_i \}_m$. By the construction in Lemma \ref{lemshuffling} (and with the notation used there), this means that there has to be an $n \in \NE$,
 so that $1 \in (\sum_{i \in I} \a_i )^{\{n\}}$. In particular, this means that $1$ can be written as a $\s$-polynomial in finitely many elements from finitely many $\a_i$. This implies that there exists a $J \subseteq I$ finite, such that
 $1 \in (\sum_{i \in J} \a_i)^{\{n\}}$. This in turn means that $$\Vm(\sum_{i \in J} \a_i) = \cap_{i \in J} \Vm(\a_i) = \emptyset,$$ a contradiction. 
 \item For an open subset $U \subseteq \sSpec(R)$ there exists by definition an $\a \si R$, such that $U = \sSpec(R) \setminus \Vm(\a)$. We can then write $U$ as a union of basic open sets as follows: $$U = \bigcup_{a \in \a} \sD(a).$$

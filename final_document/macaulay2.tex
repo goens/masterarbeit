@@ -22,12 +22,12 @@
 
 \section{Code for the Examples in Macaulay2}\label{appendixcode}
 
-In this appendix we give the code used for calculating two examples in the thesis with its corresponding output. We do this with brief commentary inbetween to make it easier to understand.
+In this appendix we give the code used for calculating two examples in the thesis with its corresponding output. We do this with brief commentary in between to make it easier to understand.
 
 \subsection{Example \ref{counterexker}}
-We consider the difference polynomials $$f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in k[y_1,y_2,\s(y_1),\s(y_2)] =: R.$$
+We consider the difference polynomials $$f_1 := \s(y_2) + 1, f_2:= \s(y_1)y_2 + y_1y_2 + \s(y_1) + y_1 + y_2 \in \Q[y_1,y_2,\s(y_1),\s(y_2)] =: R.$$
 
-For the calculations we considered the rational numbers $\Q$ as a constant $\s$-field. Since these calculations do not depend on the field, there should not much be of a difference. We begin by defining the ring $R$:
+For the calculations we considered the rational numbers $\Q$ as a constant $\s$-field. We begin by defining the ring $R$:
 
 \begin{lstlisting}
 i1 : R = QQ[s2y_1,s2y_2,sy_1,sy_2,y_1,y_2]
@@ -38,8 +38,8 @@ o1 : PolynomialRing
 
 \end{lstlisting}
 
-The definition is that of a simple polynomial ring, and we just take the names of the variables in a way we can easily interpret them as powers of $\s$ applied on a variable. We add one more power of $\s$ as in the example, so that we can calculate the relation stated later, which includes $\s^2$.
-The output, which can be recognized from the lines begining with an ``o'', indicates that a polynomial ring has been succesfully constructed. We continue and define the ideal.
+The definition is that of a simple polynomial ring, and we just take the names of the variables in a way we can easily interpret them as powers of $\s$ applied to a variable. We add one more power of $\s$ as in the example, so that we can calculate the relation stated later, which includes $\s^2$.
+The output, which can be recognized from the lines beginning with an ``o'', indicates that a polynomial ring has been successfully constructed. We continue and define the ideal.
 
 \begin{lstlisting}
 i2 : I = ideal(sy_2+1,sy_1*y_2 + y_1*y_2 + sy_1 + y_1 + y_2)
@@ -61,7 +61,7 @@ o3 = true
 
 \end{lstlisting}
 
-This, however, does not necesarilly mean that the ideal is a prime kernel. To see this, we use Gr\"{o}bner bases.
+This, however, does not necessarily mean that the ideal is a prime kernel. To see this, we use Gr\"{o}bner bases.
 
 \begin{lstlisting}
 
@@ -79,12 +79,12 @@ o5 = true
 \end{lstlisting}
 
 It tells us that $f_1, f_2$ is a Gr\"{o}bner basis of $I$.
-The variable ordering is per default reverse lexicographical with respect to the input.  
+The variable ordering is per default graded reverse lexicographical with respect to the input.  
 We tested it here as an example to make sure it was as intended.
 Using elimination theory (see for example Theorem 2 in Chapter 3 of \cite{cox}),
 we thus see that $(f_1,f_2)[0] = \{0\}$.
 
-Finally, we use macaulay to test the relation given in the example.
+Finally, we use Macaulay to test the relation given in the example.
 
 \begin{lstlisting}
 
@@ -100,7 +100,7 @@ o6 : R
 \subsection{Example \ref{secondexamplem2}}
 
 This second example is a bit more complex, since we have to check the condition that
-$$(ker(\s)) \cap k\{a,\s(a)\} = ker(\s).$$
+$$(\ker(\s)) \cap \Q[a,\s(a)] = \ker(\s).$$
 
 We begin again by defining the ring we will work with
 
@@ -115,7 +115,7 @@ o1 : PolynomialRing
 
 \end{lstlisting}
 
-This time, we want to consider a quotient ring, so we begin by defining the subring $DM1 = k[y_1,y_2,\s(y_1),\s(y_2)]$.
+This time, we want to consider a quotient ring, so we begin by defining the subring $DM1 = \Q[y_1,y_2,\s(y_1),\s(y_2)]$.
 
 \begin{lstlisting}
 
@@ -153,45 +153,51 @@ o5 = | s2y_2+1 s2y_1y_2+sy_1y_2+s2y_1+sy_1+y_2 |
 o5 : Matrix D  <--- D
 
 
+i6 : isPrime(I)
+
+o6 = true
+
+
 \end{lstlisting}
 
-From the Gr\"{o}bner basis we again see that $I$ is indeed a prime kernel.
+From the Gr\"{o}bner basis we again see that $I$ is indeed a prime kernel, since $I[1] = 0$.
 Now we can define the quotient ring $D/I$.
 
 \begin{lstlisting}
 
-i6 : F2 = D/I
+i7 : F2 = D/I
 
-o6 = F2
+o7 = F2
 
-o6 : QuotientRing
+o7 : QuotientRing
 
 \end{lstlisting}
 
-Now we proceed to define the mapping $\s$. Since $I \cap k\{y\}[1] = \{ 0 \}$ 
-we know that $k[a,\s(a)] \cong k[y,\s(y)]$ and can use the latter for defining $\s$.
+Now we proceed to define the mapping $\s$. Since $I \cap \Q\{y\}[1] = \{ 0 \}$ 
+we know that $\Q[a,\s(a)] \cong \Q[y,\s(y)]$ and can use the latter for defining $\s$.
+Since $I[1] = 0$, the factor ring $F1 := \Q\{y\}[1]/I[1] \cong \Q\{y\}[1]$, so we can define them to be equal.
 
 \begin{lstlisting}
 
 
-i7 : F1 = DM1
-
-o7 = DM1
-
-o7 : PolynomialRing
-
-i8 : use F1
+i8 : F1 = DM1
 
 o8 = DM1
 
 o8 : PolynomialRing
 
-i9 :  sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2)})
+i9 : use F1
 
-o9 = map(F2,DM1,{s2y , -1, sy , sy })
+o9 = DM1
+
+o9 : PolynomialRing
+
+i10 :  sigma = map(F2,F1,{y_1 => F2_(symbol sy_1),y_2 => F2_(symbol sy_2), sy_1 => F2_(symbol s2y_1), sy_2 => F2_(symbol s2y_2)})
+
+o10 = map(F2,DM1,{s2y , -1, sy , sy })
                     1        1    2
 
-o9 : RingMap F2 <--- DM1
+o10 : RingMap F2 <--- DM1
 
 \end{lstlisting}
 
@@ -199,45 +205,44 @@ With this output Macaulay2 tells us that it successfully defined the mapping. We
 
 \begin{lstlisting}
 
-i10 :  groebnerBasis kernel(sigma)
+i11 :  groebnerBasis kernel(sigma)
 
-o10 = | sy_2+1 |
+o11 = | sy_2+1 |
 
                 1         1
-o10 : Matrix DM1  <--- DM1
+o11 : Matrix DM1  <--- DM1
 
 
 \end{lstlisting}
 
 
-We see that $\ker(\s) = (\s(y_2) + 1) \unlhd k[y_1,y_2, \s(y_1), \s(y_2)]$. 
+We see that $\ker(\s) = (\s(y_2) + 1) \unlhd \Q[y_1,y_2, \s(y_1), \s(y_2)]$. 
 From this we should be able to already deduce that the condition holds, but we can ask Macaulay to explicitly
-calculate it too
+calculate it too, by going back to the polynomial ring. 
 
 \begin{lstlisting}
 
-i11 : use F2
+i12 : use D
 
-o11 = F2
+o12 = D
 
-o11 : QuotientRing
+o12 : PolynomialRing
 
-i12 : J = ideal(sy_2 + 1)
+i13 : H = ideal(sy_2 + 1, s2y_2 + 1, s2y_1 * y_2 + sy_1*y_2 + s2y_1 + sy_1 + y_2)
 
-o12 = ideal(sy  + 1)
-              2
+o13 = ideal (sy  + 1, s2y  + 1, s2y y  + sy y  + s2y  + sy  + y )
+               2         2         1 2     1 2      1     1    2
 
-o12 : Ideal of F2
+o13 : Ideal of D
 
-i13 : groebnerBasis(J)
+i14 : groebnerBasis H
 
-o13 = | sy_2+1 |
+o14 = | sy_2+1 s2y_2+1 s2y_1y_2+sy_1y_2+s2y_1+sy_1+y_2 |
 
-               1        1
-o13 : Matrix F2  <--- F2
+              1       3
 
 \end{lstlisting}
  
 Which, using elimination theory again, gives the desired result, namely
 
-$$ (\ker(\s)) \cap k[y_1,y_2,\s(y_1),\s(y_2)] = (\s(y_2) +1) = \ker(\s) .$$
+$$ (\ker(\s)) \cap \Q[y_1,y_2,\s(y_1),\s(y_2)] = (\s(y_2) +1) = \ker(\s) .$$
