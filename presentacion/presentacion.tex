@@ -104,7 +104,7 @@
 \newtheorem{defn}[satz]{Definition}
 \newtheorem{lem}[satz]{Lemma}
 
-\title{Geometrische Aspekte von Mixed Differenzenideale}
+\title{Geometrische Aspekte von gemischten Differenzenidealen}
 \author{Andr\'{e}s Goens}
 \date{\today}
 \begin{document}
@@ -130,7 +130,6 @@
 \item Weitere Ergebnisse
 \end{itemize}
 \item Differenzenkerne
-\item Referenzen
 \end{itemize}
 \end{frame}
 
@@ -141,12 +140,11 @@
 \end{frame}
 
 \begin{frame}\frametitle{Differenzenalgebra}
-Hauptstudienobjekte:
 \begin{defn}
 Sei  $R$ ein kommutativer Ring mit 1 (K\"{o}rper) , und sei
- $\sigma: R \rightarrow R$ ein Ringendomorphismus in $R$.
+ $\sigma: R \rightarrow R$ ein Ringendomorphismus.
 \begin{itemize}
-\item Dann heißt der Tupel $(R,\sigma)$ ein \emph{Differenzenring(k\"{o}rper)}, oder $\sigma$\emph{-Ring(K\"{o}rper)}.
+\item Dann heißt das Tupel $(R,\sigma)$ ein \emph{Differenzenring(k\"{o}rper)}, oder $\sigma$\emph{-Ring(K\"{o}rper)}.
 \item Ein Ideal $I \unlhd R$ der stabil unter $\s$ ist, d.h. $\s(I) \subseteq I$, heißt \emph{Differenzenideal} oder $\s$-\emph{Ideal}. Symbol: $I \si R$.
 \end{itemize}
 \end{defn}
@@ -154,7 +152,7 @@ Sei  $R$ ein kommutativer Ring mit 1 (K\"{o}rper) , und sei
 
 \begin{frame}\frametitle{Differenzenpolynomringe}
 \begin{defn}
-Sei $k$ ein $\s$-Körper. Der polynomring in unendlich viele Variablen $k[y_1,\s(y_1),\s^2(y_1),\ldots]$ heißt $\s$-\emph{Polynomring} in der \emph{Differenzenvariable} $y_1$. Symbol: $k\{y_1\}.$
+Sei $k$ ein $\s$-Körper. Der Polynomring in unendlich vielen Variablen $k[y_1,\s(y_1),\s^2(y_1),\ldots]$ heißt $\s$-\emph{Polynomring} in der \emph{Differenzenvariable} $y_1$. Symbol: $k\{y_1\}.$
 Es wird ein $\s$-Ring durch $$\s( \s^n(y_1)) := \s^{n+1}(y_1).$$
 
  Analog für ein Tupel von Variablen $y=(y_1,\ldots,y_n)$, ist $$ k\{y\} := k\{y_1,\ldots,y_n\} := k[y_1,\ldots,y_n,\s(y_1),\ldots,\s(y_n),\s^2(y_1),\ldots] $$
@@ -175,10 +173,10 @@ $$ \operatorname{Ord}(g) = 3, \operatorname{Eord}(g) = 2 $$
 
 \begin{frame}\frametitle{Differenzenvarietäten}
 \begin{defn}
-Sei k ein $\s$-Körper, $F \subseteq k\{y_1,\ldots,y_n\}$ ein Menge von Differenzenpolynome. 
-Für ein $\s$-Körper $K$ mit $k \subseteq K$ und $\s_{|k} = \s$ setzen wir:
+Sei k ein $\s$-Körper, $F \subseteq k\{y_1,\ldots,y_n\}$ ein Menge von Differenzenpolynomen. 
+Für einen $\s$-Körper $K$ mit $k \subseteq K$ und $\s_{|k} = \s$ setzen wir:
 $$\VV_K(F) := \{ x \in K^n \mid f(x) = 0~\forall~ f \in F \}.$$
-Dies ist ein Funktor der Kategorie der $\s$-Körper wie oben ($\s$-\emph{Körpererweiterungen}) auf der Kategorie der Mengen und heißt \emph{$\s$-Varietät} oder \emph{Differenzenvarietät}.
+Dies ist ein Funktor der Kategorie der $\s$-Körper wie oben ($\s$-\emph{Körpererweiterungen}) in die Kategorie der Mengen und heißt \emph{$\s$-Varietät} oder \emph{Differenzenvarietät}.
 \end{defn}
 \end{frame}
 
@@ -190,8 +188,8 @@ Sei $k$ ein $\s$-Körper, $X = \VV(F)$ eine $\s$-Varietät. Dann ist
 \end{defn}
 
 \begin{defn}
-Für die Menge $F$ gibt es ein kleinstes $\s$-ideal $\{F\} \si k\{y_1,\ldots,y_n\}$ der \emph{perfekt} ist ($\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \{F\} \Rightarrow f \in \{F\}$), und $F$ und $k$ enthält. 
-Dieser heißt der \emph{perfekte Abschluss} von $F$.
+Für die Menge $F$ gibt es ein kleinstes $\s$-Ideal $\{F\} \si k\{y_1,\ldots,y_n\}$ das \emph{perfekt} ist ($\sigma^{i_1}(f) \cdots \sigma^{i_n}(f) \in \{F\} \Rightarrow f \in \{F\}$), und $F$ enthält. 
+Dieses heißt der \emph{perfekte Abschluss} von $F$.
 \end{defn}
 \end{frame}
 
@@ -203,7 +201,11 @@ Dann ist $\I(\VV(F)) = \{F\}$
 \end{frame}
 
 \begin{frame}\frametitle{Differenzenalgebraische Ergebnisse}
-Es gibt eine spezielle Klasse von prime Differenzenideale die $\s$-Prim heißt. Sie erfüllt folgendes:
+\begin{defn}
+Sei $\p \si R$ ein $\s$-Ideal. Dann heißt $\p$ $\s$-\emph{prim}, falls $\p$ prim ist und $\s^{-1}(\p) \subseteq \p$ gilt.
+\end{defn}
+
+
 \begin{satz}
 Sei $R$ ein $\s$-Ring und $F \subseteq R$ eine Teilmenge. Dann gilt:
 \begin{equation*} \{F\} = \bigcap_{\substack{F \subseteq \p \si R, \\ \p ~ \s\text{-Prim}}} \p. \end{equation*}
@@ -212,19 +214,19 @@ Sei $R$ ein $\s$-Ring und $F \subseteq R$ eine Teilmenge. Dann gilt:
 
 \begin{frame}\frametitle{Differenzenalgebraische Ergebnisse (Fortsetzung)}
 \begin{itemize}
-\item Die Menge aller $\s$-Prime $\s$-Ideale eines $\s$-rings $R$ bezeichnet man durch $\Spec^\s(R)$. 
-Sie ist ein topologischer Raum, der noethersch ist wenn $R$ ein so-gennanter \emph{Ritt} Differenzenring ist.
-\item $\Spec^\s(R)$ ist Quasi-Kompakt.
-\item Die $\s$-Prime $\s$-Ideale von $R$ stehen in bijektion zu den irreduziblen, abgeschlossenen Mengen in $\Spec^\s(R)$.
+\item Die Menge aller $\s$-primen $\s$-Ideale eines $\s$-Rings $R$ bezeichnet man mit $\Spec^\s(R)$. 
+Sie ist ein topologischer Raum, der noethersch ist für $R = k\{y\}$.
+\item $\Spec^\s(R)$ ist quasi-kompakt.
+\item Die $\s$-primen $\s$-Ideale von $R$ stehen in Bijektion zu den irreduziblen, abgeschlossenen Mengen in $\Spec^\s(R)$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{Differenzenalgebraische Ergebnisse (Fortsetzung)}
-Konzepte von Differenzengrad und Differenzendimension. Ergebnis damit: 
-\begin{satz}\label{irredcomp}
-Sei $k$ ein $\s$-Körper und $f \in k\{y_1,\ldots,y_n\}, f \notin k$ ein irreduzibler $\s$-Polynom, so dass $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Dann hat die $\s$-Varietät $\VV(f)$ eine irreduzible Komponente $X$, so dass $\s$-$\dim(X) = n-1$ und $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
-\end{satz}
-\end{frame}
+%% \begin{frame}\frametitle{Differenzenalgebraische Ergebnisse (Fortsetzung)}
+%% Konzepte von Differenzengrad und Differenzendimension. Ergebnis damit: 
+%% \begin{satz}\label{irredcomp}
+%% Sei $k$ ein $\s$-Körper und $f \in k\{y_1,\ldots,y_n\}, f \notin k$ ein irreduzibler $\s$-Polynom, so dass $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Dann hat die $\s$-Varietät $\VV(f)$ eine irreduzible Komponente $X$, so dass $\s$-$\dim(X) = n-1$ und $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
+%% \end{satz}
+%% \end{frame}
 
 \begin{frame}
 \begin{center}
@@ -235,28 +237,30 @@ Sei $k$ ein $\s$-Körper und $f \in k\{y_1,\ldots,y_n\}, f \notin k$ ein irreduz
 \begin{frame}\frametitle{Motivation}
 Sei $k$ ein Körper. Dann haben die Polynome $y, y^2$ die Gleichen Nullstellen: 
 \[ y^2 = 0 \Leftrightarrow y = 0 \]
-Aber: $y^2 = (y - 0) \cdot (y - 0)$ hat die Nullstelle $0$ ``doppelt''. \\
+Aber: $y^2$ hat die Nullstelle $0$ ``doppelt''. \\
 Wie kann man sie unterscheiden?\\
 \vspace{10pt}
 Suchen der Nullstellen: \\
-Sucht man nicht in einen Körper, sondern zum Beispiel in der $k$-algebra $k[y]/(y^2)$,
+Sucht man nicht in einen Körper, sondern zum Beispiel in der $k$-Algebra $k[y]/(y^2)$,
 dann ist 
 \[ y^2 = 0 \not \Leftrightarrow y = 0 \]
-Das Polynom $y^2$ hat die Nullstellen $\bar 0, \bar y \in k[y]/(y^2)$.
-\end{frame}
-
-\begin{frame}\frametitle{Motivation (Fortsetzung)}
-
-Unterscheidung durch die $k$-Algebren (vgl. Koordinatenring):
-$$k[y]/(y) \not \cong k[y]/(y^2)$$
-Sogar:
+%Das Polynom $y^2$ hat die Nullstellen $\bar 0, \bar y \in k[y]/(y^2)$.
+Dimension:
 $$\dim_k(k[y]/(y)) = 1, \dim_k(k[y]/(y^2)) = 2$$
 \end{frame}
+
+%% \begin{frame}\frametitle{Motivation (Fortsetzung)}
+
+%% Unterscheidung durch die $k$-Algebren (vgl. Koordinatenring):
+%% $$k[y]/(y) \not \cong k[y]/(y^2)$$
+%% Sogar:
+
+%% \end{frame}
 
 \begin{frame}\frametitle{Motivation (Fortsetzung)}
 $\rightarrow$ Suche Analogie für Differenzenfall \\
 $\phantom{ }$ \\
-Differenzengleichungen $\s(y) = 0, \s^2(y) = 0$ haben gleiche Lösungen über Differenzenkörper,
+Differenzengleichungen $\s(y) = 0, \s^2(y) = 0$ haben die gleichen Lösungen über Differenzenkörper,
 verschiedene ``Vielfachheit''.\\
 Wie kann man sie unterscheiden?
 \[ \{ \s(y) \} = \{ \s^2(y) \} = (y,\s(y),\s^2(y),\ldots) \si k\{y\} \]
@@ -272,9 +276,9 @@ Gleichungen liefern gleiche Differenzenvarietät. Neuer Konzept: suche nicht nur
 \begin{frame}\frametitle{Mixed Differenzenvarietäten}
 
 \begin{defn}\label{defnVV}
-Sei $k$ ein $\s$-Körper und $B$ ein $\s$-ring, der ein Integritätsbereich ist mit $k \subseteq B$, $\s_{|k} = \s$. Weiter sei $F \subseteq k\{y_1, \ldots, y_n\}$ eine Menge von $\s$-Polynome.
-Setze $$\VV_B(F):= \{ b \in B^n \mid f(b) = 0 \forall f \in F \}.$$
-Durch $B \mapsto \VV_B(F)$ ist ein Funktor der Kategorie solcher Ringe auf der Kategorie der Mengen gegeben. Wir nennen ihn eine \emph{Mixed $\s$-Varietät über $k$}, oder \emph{$k$-$\s$-m-Varietät}.
+Sei $k$ ein $\s$-Körper und $B$ ein $\s$-Ring, der ein Integritätsbereich ist mit $k \subseteq B$, $\s_{|k} = \s$. Weiter sei $F \subseteq k\{y_1, \ldots, y_n\}$ eine Menge von $\s$-Polynomen.
+Setze $$\VV_B(F):= \{ b \in B^n \mid f(b) = 0~\forall~f \in F \}.$$
+Durch $B \mapsto \VV_B(F)$ ist ein Funktor der Kategorie solcher Ringe in die Kategorie der Mengen gegeben. Wir nennen ihn eine \emph{Mixed $\s$-Varietät über $k$}, oder \emph{$k$-$\s$-m-Varietät}.
 \end{defn}
 $\phantom{ }$ \\
 Andere Möglichkeiten: Perfekt-reduzierte $\s$-Ringe, $\s$-Integritätsberreiche $\rightarrow$ Wieder Differenzenvarietäten.
@@ -284,8 +288,7 @@ Andere Möglichkeiten: Perfekt-reduzierte $\s$-Ringe, $\s$-Integritätsberreiche
 \begin{defn} 
 \begin{itemize}
 \item Ein Ideal $\a \si k\{y\}$ heißt mixed, wenn $fg \in \a \Rightarrow f\s(g) \in \a$.
-\item Für $F \subseteq k\{y\}$ gibt es ein kleinstes radikales, mixed $\s$-Ideal. Dieser wird
-der radikale, mixed Abschluss von $F$ genannt und mit $\{F\}_m$ bezeichnet.
+\item Für $F \subseteq k\{y\}$ gibt es ein kleinstes radikales, mixed $\s$-Ideal, das $F$ enthält. Bez: $\{F\}_m.$
 \end{itemize}
 \end{defn}
 \end{frame}
@@ -294,7 +297,7 @@ der radikale, mixed Abschluss von $F$ genannt und mit $\{F\}_m$ bezeichnet.
 \begin{center} Verbindung: \\  mixed Differenzenideale $\leftrightarrow$ mixed Differenzenvarietäten. \end{center}
 Mit $\I_m$ analog zu $\I$ für mixed Differenzenvarietäten: 
 \begin{satz}
-Sei $k$ ein Körper, $F \subseteq k\{y_1,\ldots,y_n\}$, und $X = \VV(F)$ eine $\s$-m-Varietät. Dann:
+Sei $k$ ein $\s$-Körper, $F \subseteq k\{y_1,\ldots,y_n\}$, und $X = \VV(F)$ eine $\s$-m-Varietät. Dann:
 \[ \I_m(\VV(F)) = \{ F \}_m \]
 \end{satz}
 \end{frame}
@@ -304,7 +307,7 @@ Sei $k$ ein Körper, $F \subseteq k\{y_1,\ldots,y_n\}$, und $X = \VV(F)$ eine $\
 Sei $R$ ein $\s$-Ring und $F \subseteq R$. Dann:
 \begin{align*} \{F\}_m = \bigcap_{\substack{F \subseteq \p \si R \\ \p \text{ Prim}}} \p. \end{align*}
 \end{satz}
-Offen: Endlich viele $\p$?
+Offen: Endlich viele $\p$ für $R = k\{y\}$?
 \end{frame}
 
 \begin{frame}\frametitle{Weitere Ergebnisse (Fortsetzung)}
@@ -312,8 +315,8 @@ Topologischer Raum: $$\sSpec(R):= \{ \p \si R \mid \p \text{ prim }\} \supseteq 
 
 \begin{itemize}
 \item $\sSpec(R)$ ist Quasi-Kompakt.
-\item Die prime $\s$-Ideale von $R$ stehen in bijektion zu den irreduziblen, abgeschlossenen Mengen in $\sSpec(R)$.
-\item Offen: Noethersch? Äquivalent zu endlich viele $\p$
+\item Die primen $\s$-Ideale von $R$ stehen in Bijektion zu den irreduziblen, abgeschlossenen Mengen in $\sSpec(R)$.
+\item Offen: noethersch für $R = k\{y\}$? 
 \end{itemize}
 \end{frame}
 
@@ -332,8 +335,8 @@ Topologischer Raum: $$\sSpec(R):= \{ \p \si R \mid \p \text{ prim }\} \supseteq 
 
 \begin{frame}\frametitle{Differenzenkerne}
 \begin{itemize}
-\item Problem: $\s$-Polynomring hat unendlich viele Variablen, nicht Noethersch. 
-\item Idee: Untersuche $\s$-Ideale in Noethersche Unterringe.
+\item Problem: $\s$-Polynomring hat unendlich viele Variablen, nicht noethersch. 
+\item Idee: Untersuche $\s$-Ideale in noethersche Unterringe.
 \end{itemize}
 \begin{defn}
 Sei $k$ ein Differenzenkörper. Wir setzen $$k\{y\}[d]:= k[y,\s(y),\ldots,\s^d(y)] \subseteq k\{y\} \text{ und }k\{y\}[-1] := k.$$
@@ -343,12 +346,12 @@ Sei $k$ ein Differenzenkörper. Wir setzen $$k\{y\}[d]:= k[y,\s(y),\ldots,\s^d(y
 
 \begin{frame}\frametitle{Differenzenkerne (Fortsetzung)}
 \begin{defn}
-Sei $\a \unlhd k\{y\}[d], d \geq 1$. Dann heißt $\a$ ein \emph{Differenzenkern der Länge $d$}, wenn $\s(\a[d-1]) \subseteq \a$. Er heißt ein primer Differenzenkern, falls zusätzlich $\a$ ein primer Ideal in $k\{y\}[d]$ ist.
+Sei $\a \unlhd k\{y\}[d], d \geq 1$. Dann heißt $\a$ ein \emph{Differenzenkern der Länge $d$}, wenn $\s(\a[d-1]) \subseteq \a$. Er heißt ein primer Differenzenkern, falls zusätzlich $\a$ ein primes $\s$-Ideal in $k\{y\}[d]$ ist.
 Weiterhin wird $\a$ reflexiv genannt, falls $\s^{-1}(\a) = \a[d-1]$. 
 \end{defn}\index{difference kernels}
 \begin{ex}
-Sei $\p \si k\{y\}$ ein primer $\s$-Ideal, $d \geq 1$. Dann ist $\p[d] \unlhd k\{y\}[d]$ ein primer Differenzenkern. 
-Ist $\p$ auch $\s$-Prim, dann ist $\p[d]$ auch reflexiv.
+Sei $\p \si k\{y\}$ ein primes $\s$-Ideal, $d \geq 1$. Dann ist $\p[d] \unlhd k\{y\}[d]$ ein primer Differenzenkern. 
+Ist $\p$ auch $\s$-prim, dann ist $\p[d]$ auch reflexiv.
 \end{ex}
 \end{frame}
 
@@ -358,49 +361,73 @@ Sei $\a \unlhd k\{y\}[d]$ ein reflexiver, primer Differenzenkern. Dann existiert
 mit $\p[d] = \a$.
 \end{satz}
 $\phantom{ }$ \\
-Frage: Gilt das auch für prime Differenzenkerne? (mit prime Differenzenideale)
+Frage: Gilt das auch für prime Differenzenkerne? (mit primen Differenzenidealen)
 \end{frame}
 
 \begin{frame}\frametitle{Differenzenkerne (Fortsetzung)}
 \begin{prop}
 Sei $\a \subseteq k[y,\ldots,\s^d(y)]$ ein primer Differenzenkern und sei $k[y,\ldots,\s^d(y)]/\a =: k[a,\s(a),\ldots,\s^d(a)]$. Betrachte die Abbildung
 \[ \s: k[a,\ldots,\s^{d-1}(a)] \rightarrow k[a,\ldots,\s^d(a)]. \]
-Dann existiert ein primer Differenzenkern $\a'$ der Länge $d+1$ mit $\a'[d] = \a$ genau dann, wenn das von $\operatorname{ker}(\s)$ erzeugte Ideal, $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$, folgendes erfüllt:
+Dann existiert ein primer Differenzenkern $\a'$ der Länge $d+1$ mit $\a'[d] = \a$ genau dann, wenn das von $\operatorname{ker}(\s)$ erzeugte Ideal, $(\operatorname{ker}(\s)) \subseteq k[a,\ldots,\s^d(a)]$, Folgendes erfüllt:
  \begin{equation*} (\operatorname{ker}(\s)) \cap k[a,\ldots,\s^{d-1}(a)] = \operatorname{ker}(\s).\end{equation*} 
 \end{prop}
 \end{frame}
 
 
 \begin{frame}\frametitle{Differenzenkerne (Fortsetzung)}
-Für reflexive, prime Differenzenkerne ist einmal Fortsetzen Äquivalent zu beliebig oft Fortsetzen. Ohne reflexiv zu sein nicht. \\
+Für reflexive, prime Differenzenkerne ist einmal Fortsetzen äquivalent zu beliebig oft Fortsetzen. Ohne Reflexivität ist das i.A. nicht der Fall. \\
 $\rightarrow$ Gegenbeispiel. 
 \begin{conj}
-Sei $k$ ein Differenzenkörper und $\a \subseteq k\{y\}[d]$ ein primes Differenzenkern.
+Sei $k$ ein $\s$-Körper und $\a \subseteq k\{y\}[d]$ ein primes Differenzenkern.
 Weiter sei $a_1 = y_1 + \a ,\ldots,a_n = y_n + \a$.
 Für $r \geq 1$ betrachte die Abbildung 
 \[ \s^r : k[a,\s(a),\ldots,\s^{d-r}(a)] \rightarrow k[a,\ldots,\s^{d}(a)], f \mapsto \s^r(f). \]
-Dann existiert ein primes $\s$-ideal $\p$ mit $\p[d] = \a$, genau dann wenn
+Dann existiert ein primes $\s$-ideal $\p$ mit $\p[d] = \a$ genau dann, wenn
 \begin{equation*} (\operatorname{ker}(\s),\ldots,\operatorname{ker}(\s^r)) \cap k[a,\ldots,\s^{d-r}(a)] = \operatorname{ker}(\s^r). \end{equation*}
 \end{conj}
 ``$\Rightarrow$'' klar.
 \end{frame}
 
+\begin{frame}
+\begin{theorem}\label{di=d(i+1)+e}
+Sei $k$ ein $\s$-Körper und sei $\p \si k\{y\} = k\{y_1,\ldots,y_n\}$ ein primes $\s$-Ideal. Setze $$d_i := \dim(k\{y\}[i]/\p[i]).$$
+Dann existieren ganze Zahlen $d, e \in \N$, so dass $d_i = d(i+1) + e$ für $i \gg 0$. %%Moreover, $d = \s\operatorname{-trdeg}(k\{y\}/\p^*)$.
+\end{theorem}
+
+\begin{defn}
+\begin{itemize}
+\item Die Zahl $d$ heißt die \emph{$\s$-Dimension} von $\p$ (Bez.: $\s$-$\dim(\p)$). 
+\item Die Zahl $e$ heißt \emph{$\s$-Grad} von $\p$ (Bez.: $\s$-$\operatorname{deg}(\p)$).
+\end{itemize}
+\end{defn}
+
+\end{frame}
+
 \begin{frame}\frametitle{Differenzenkerne (Fortsetzung)}
+
+\begin{satz}\label{irredcomp}
+Sei $k$ ein $\s$-Körper und $f \in k\{y_1,\ldots,y_n\}, f \notin k$ ein irreduzibles $\s$-Polynom, so dass $\operatorname{Eord}(f) = \operatorname{Ord}(f)$. Dann hat die $\s$-Varietät $\VV(f)$ eine irreduzible Komponente $X$, so dass $\s$-$\dim(X) = n-1$ und $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
+\end{satz}
+
+
 \begin{satz}\label{corfinal}
 Sei $k$ ein $\s$-Körper und $f \in k\{y_1,\ldots,y_n\}, f \notin k$ ein irreduzibles $\s$-Polynom.
-Dann hat die $\s$-m-Varietät $\VV(f)$ eine irreduzible, geschlossene Teilmenge $X$ so dass $\s$-$\dim(X) = n-1$ und $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
+Dann hat die $\s$-m-Varietät $\VV(f)$ eine irreduzible, abgeschlossene Teilmenge $X$ so, dass $\s$-$\dim(X) = n-1$ und $\s$-$\operatorname{deg}(X) = \operatorname{Ord}(f)$.
 \end{satz}
 \end{frame}
 
 
 \begin{frame}\frametitle{Differenzenkerne (Fortsetzung)}
 \begin{ex}
-Betrachte das $\s$-Polynomring $\Q\{y_1\}$, und das irreduzible $\s$-Polynom $f := \s(y_1) - 1 \in \Q\{y_1\}$.  
+Betrachte den $\s$-Polynomring $\Q\{y_1\}$, und das irreduzible $\s$-Polynom $f := \s(y_1) - 1 \in \Q\{y_1\}$.  
 Weiter seinen $X:= \VV(f)$ als $\s$-Varietät, und $Y:= \VV(f)$ als $\s$-m-Varietät. Beide haben nur eine Primkomponente:
 $$[y_1 -1 ] = \{ \s(y_1) - 1 \},~ [\s(y_1) -1 ] = \{ \s(y_1) - 1 \}_m$$ 
 \end{ex}
 \end{frame}
 
+\begin{frame}
+\LARGE Vielen dank für ihre Aufmerksamkeit!
+\end{frame}
 
 \begin{frame}[allowframebreaks]\frametitle{Referenzen}
 \begin{thebibliography}{9}
@@ -416,9 +443,6 @@ $$[y_1 -1 ] = \{ \s(y_1) - 1 \},~ [\s(y_1) -1 ] = \{ \s(y_1) - 1 \}_m$$
 \bibitem{levinmixed} Levin, Alexander, \emph{On the ascending chain condition for mixed difference ideals}, 	arXiv:1207.4721
 \bibitem{cox} Cox, Little and O'Shea, \emph{ Ideals, Varieties and Algorithms}, Second Edition, Springer, 1997
 \end{thebibliography}
-\end{frame}
-\begin{frame}
-\LARGE Vielen dank für ihre Aufmerksamkeit!
 \end{frame}
 \end{document}
 
